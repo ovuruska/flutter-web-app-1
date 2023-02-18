@@ -1,0 +1,16 @@
+Commit,Workhours
+Added branch retrieval.,4
+Added me endpoint.,4
+Add remove dog is added.,4
+Dog modification is implemented.,1
+Added product and service API.,4
+Added appointment model.,4
+Schedule API is impelemented.,4
+Schedule API is updated.,2
+Clashing appointment creation is disabled.,4
+Created a new retrieve serializer.,2
+Added role enum.,4
+Mock data generation is added.,4
+Fixed model errors.,4
+Payroll backend is implemented.,4
+Total,49

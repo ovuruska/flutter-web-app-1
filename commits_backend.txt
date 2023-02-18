@@ -1,0 +1,14 @@
+ce82513|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 15:26:52 2022 +0300|Payroll backend is implemented.
+96fe136|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 02:20:56 2022 +0300|Fixed model errors.
+95f1fd7|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 18:14:01 2022 +0300|Mock data generation is added.
+f1548b3|Oguz Vuruskaner|ovuruska@outlook.com|Sat Dec 17 22:09:43 2022 +0300|Added role enum.
+1de749d|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 13 13:53:16 2022 +0300|Created a new retrieve serializer.
+25ef1ca|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 13 11:53:52 2022 +0300|Clashing appointment creation is disabled.
+88c15d9|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 13 03:26:26 2022 +0300|Schedule API is updated.
+ef55f99|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 13 02:13:50 2022 +0300|Schedule API is impelemented.
+5fd8447|Oguz Vuruskaner|ovuruska@outlook.com|Fri Dec 9 00:57:13 2022 +0300|Added appointment model.
+b52f38f|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 7 21:33:52 2022 +0300|Added product and service API.
+331be67|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 7 18:24:39 2022 +0300|Dog modification is implemented.
+9d24f00|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 7 18:19:08 2022 +0300|Add remove dog is added.
+614121e|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 6 22:36:30 2022 +0300|Added me endpoint.
+6384f99|Oguz Vuruskaner|ovuruska@outlook.com|Mon Dec 5 16:44:13 2022 +0300|Added branch retrieval.

@@ -1,0 +1,41 @@
+Commit,Workhours
+Initial commit,4
+Fixed rendorflow issue.,1
+Temporary,4
+Added horizontal and vertical scrolling.,1
+Reactive sidebar.,3
+Sidebar is implemented.,1
+Sidebar appointment results are sorted.,1
+Fixed overflow errors.,1
+Header is refactored.,4
+Text is shown when no branch is selected.,4
+Awaiting appointments now update current branch too.,1
+Print button's size is decreased and service type filter is implemented.,1
+Checkboxes are added.,1
+Merge pull request #1 from Scrubbers-Pet-Grooming-Self-Service/dashboard-page,1
+Fixed vertical view problem in legend row.,4
+Top layout is finished.,4
+Added data table.,2
+Added advanced querying.,1
+Merge pull request #2 from Scrubbers-Pet-Grooming-Self-Service/appointments-page,1
+Input fields are implemented.,4
+Proliferated services data table.,4
+CRUD are implemented.,1
+Fixed oveflow error.,1
+Merge pull request #3 from Scrubbers-Pet-Grooming-Self-Service/services_page,1
+Added filter row.,4
+Added mock data.,4
+Fixed data table in appointments page.,1
+Fixed services view.,1
+Initiated modal view.,4
+Added checkbox fields.,2
+Added data table.,4
+Initiated checkout info.,1
+Checkpoint,2
+Checkpoint errors are fixed.,1
+Added buttons.,1
+Added ticket information modal.,1
+Fixed overflow error.,1
+Added sidebar.,2
+List item styling is implemented.,1
+Total,81
