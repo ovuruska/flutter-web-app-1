@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/Controller.dart';
+import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/controller.dart';
 import 'package:scrubbers_employee_application/widgets/weekly_schedule_branch/schedule.dart';
 
 import 'controller.dart';

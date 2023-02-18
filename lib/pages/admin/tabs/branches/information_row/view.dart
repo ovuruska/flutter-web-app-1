@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'ButtonGroup.dart';
-import 'LeftColumn/View.dart';
-import 'RightColumn/View.dart';
+import 'button_group.dart';
+import 'left/view.dart';
+import 'right/view.dart';
 
 class AdminBranchesTabInformationRowView extends StatelessWidget {
   @override

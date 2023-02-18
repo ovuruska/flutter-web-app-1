@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:scrubbers_employee_application/common/Bloc.dart';
-import 'package:scrubbers_employee_application/pages/admin/login/Model.dart';
+import 'package:scrubbers_employee_application/pages/admin/login/model.dart';
 
 class AdminLoginBloc extends Bloc<AdminLoginModel>{
   AdminLoginBloc() {

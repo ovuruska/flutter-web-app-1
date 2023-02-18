@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 
-import 'Controller.dart';
-import 'InformationRow/view.dart';
+import 'controller.dart';
+import 'information_row/view.dart';
 import 'sidebar/view.dart';
 import 'content/controller.dart';
 import 'content/view.dart';

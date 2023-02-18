@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 
-import '../../Controller.dart';
-import 'LeftColumn.dart';
-import 'LeftColumnEditable.dart';
+import '../../controller.dart';
+import 'column.dart';
+import 'column_editable.dart';
 
-class AdminBranchesTabInformationRowLeftColumnView extends StatelessWidget{
+class AdminBranchesTabInformationRowRightColumnView extends StatelessWidget{
   @override
   Widget build(BuildContext context) => StreamListenableBuilder(
       stream: adminBranchesTabBloc.stream,
@@ -19,9 +19,9 @@ class AdminBranchesTabInformationRowLeftColumnView extends StatelessWidget{
   Widget _build(BuildContext context) {
     var editable = adminBranchesTabBloc.value.editable;
     if(editable){
-      return AdminBranchesTabInformationRowLeftColumnEditable();
+      return AdminBranchesTabInformationRowRightColumnEditable();
     }else{
-      return AdminBranchesTabInformationRowLeftColumn();
+      return AdminBranchesTabInformationRowRightColumn();
     }
 
   }

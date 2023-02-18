@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/widgets/header.dart';
 
-import 'Form.dart';
+import 'form.dart';
 
 class AdminLoginView extends StatelessWidget {
   @override

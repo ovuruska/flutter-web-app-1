@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/widgets/header.dart';
 
 import 'branches/view.dart';
 import 'employees/view.dart';
-import 'Services/View.dart';
+import 'Services/view.dart';
 
 class AdminTabsView extends StatelessWidget {
   @override

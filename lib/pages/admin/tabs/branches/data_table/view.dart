@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/blocs/branches/Controller.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/Controller.dart';
+import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/controller.dart';
 
-import 'Data.dart';
+import 'data.dart';
 import 'columns.dart';
 
 class AdminBranchesTabDataTableView extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:scrubbers_employee_application/blocs/employees/Controller.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/pages/admin/tabs/Employees/controller.dart';
 
-import 'Controller.dart';
+import 'controller.dart';
 
 class AdminBranchTabHeader extends StatelessWidget {
   @override

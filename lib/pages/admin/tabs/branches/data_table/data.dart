@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/blocs/branches/Controller.dart';
 import 'package:scrubbers_employee_application/models/Employee.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/Controller.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/DataTable/selector.dart';
+
+import 'selector.dart';
 
 class AdminBranchesTabDataTableSource extends DataTableSource {
   // Generate some made-up services

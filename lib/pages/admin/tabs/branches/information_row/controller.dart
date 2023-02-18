@@ -3,7 +3,7 @@
 import 'package:scrubbers_employee_application/common/Bloc.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 
-import 'Model.dart';
+import 'model.dart';
 
 class AdminBranchesTabInformationRowBloc extends Bloc<AdminBranchesTabInformationRowModel> {
 

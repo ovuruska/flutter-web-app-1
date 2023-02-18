@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ClearableTextInput.dart';
 
-import '../Controller.dart';
+import '../controller.dart';
 
 class AdminBranchesTabSearchbar extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
-import 'package:scrubbers_employee_application/pages/admin/login/Controller.dart';
+import 'package:scrubbers_employee_application/pages/admin/login/controller.dart';
 
 class AdminLoginForm extends StatelessWidget {
   @override

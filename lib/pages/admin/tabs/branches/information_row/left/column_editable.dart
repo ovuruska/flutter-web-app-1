@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/blocs/branches/Controller.dart';
 import 'package:scrubbers_employee_application/common/StringUtils.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/Controller.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/InformationRow/Controller.dart';
 import 'package:scrubbers_employee_application/widgets/BoldText.dart';
 import 'package:scrubbers_employee_application/widgets/InfoText.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ClearableTextInput.dart';
 
+import '../../controller.dart';
+import '../controller.dart';
 import '../utils.dart';
 
 class AdminBranchesTabInformationRowLeftColumnEditable extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     var currentIndex = adminBranchesTabBloc.value.currentIndex;
+
     var branch = branchesBloc.value.branches[currentIndex];
   var totalInvoice = totalInvoiceOfBranch(branch);
     return Container(

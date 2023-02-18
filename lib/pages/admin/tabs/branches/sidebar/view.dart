@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Results.dart';
-import 'Searchbar.dart';
+import 'results.dart';
+import 'searchbar.dart';
 
 class AdminBranchesTabSidebarView extends StatelessWidget {
   @override

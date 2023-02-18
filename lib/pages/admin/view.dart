@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
-import 'package:scrubbers_employee_application/pages/admin/login/Controller.dart';
+import 'package:scrubbers_employee_application/pages/admin/login/controller.dart';
 import 'package:scrubbers_employee_application/pages/admin/tabs/view.dart';
 
 class AdminView extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:scrubbers_employee_application/blocs/branches/Controller.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 
-import '../Controller.dart';
-import 'ListItem.dart';
+import '../controller.dart';
+import 'item.dart';
 
 class AdminBranchesTabResults extends StatelessWidget {
   @override
