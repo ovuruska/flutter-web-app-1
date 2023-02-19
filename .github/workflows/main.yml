@@ -21,7 +21,10 @@ jobs:
         with:
           flutter-version: '3.7.0'
           channel: 'stable'
-
+      - name: Create .env variables
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          - envkey_BACKEND_URL=${{ secrets.BACKEND_URL }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
