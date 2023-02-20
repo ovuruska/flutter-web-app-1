@@ -74,7 +74,7 @@ class _SelectBranchExpandableState extends State<SelectBranchExpandable> {
             collapsed: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                 child: Container(
-                    width: 360, child: BranchItem(branch: widget.value))),
+                    width: 360, child: BranchItem(branch: widget.value,selected: true,))),
             expanded: ListView(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,

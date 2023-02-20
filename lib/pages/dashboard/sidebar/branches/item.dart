@@ -23,8 +23,7 @@ class BranchItem extends StatelessWidget {
               padding: EdgeInsets.only(left: 8),
               width: 100,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: (this.selected)
+                  color: (!this.selected)
                       ? FlutterFlowTheme.of(context).primaryBackground
                       : FlutterFlowTheme.of(context).primaryColor),
               child: Text(

@@ -54,11 +54,6 @@ class TicketInformationLeftSideView extends StatelessWidget {
                   tabs: getTabs(context),
                 ),
               ),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 32, 0),
-                  child: ElevatedButton(
-                      onPressed: () => print("Expand all"),
-                      child: Text("Expand all")))
             ],
           ),
           Container(

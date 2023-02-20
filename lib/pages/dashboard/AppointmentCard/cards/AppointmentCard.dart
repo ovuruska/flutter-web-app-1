@@ -44,8 +44,8 @@ class AppointmentCard extends StatelessWidget {
     TimeOfDay appointmentDuration =
         TimeOfDay(hour: difference.inHours, minute: difference.inMinutes);
 
-    return ShadowContainer(
-        child: Container(
+    return Container(
+          margin: EdgeInsets.all(2),
       height: height,
       width: itemWidth,
       decoration: BoxDecoration(
@@ -172,7 +172,7 @@ class AppointmentCard extends StatelessWidget {
                   ),
                 ]),
           )),
-    ));
+    );
   }
 
   double getTotalInvoice(Appointment appointment) {
