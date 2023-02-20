@@ -4,6 +4,7 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.d
 
 import '../Current/View.dart';
 import 'Past/View.dart';
+import 'Upcoming/Checkin/View.dart';
 import 'Upcoming/View.dart';
 
 
@@ -73,7 +74,9 @@ class TicketInformationLeftSideView extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .4,
                   child: TicketInformationPastAppointmentView()),
             ],
-          ))
+          )),
+          TicketInformationCheckinView()
+
         ]));
   }
 }
