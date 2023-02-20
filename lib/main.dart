@@ -10,9 +10,11 @@ import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 import 'initWithData.dart';
 import 'services/auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
 
   await FlutterFlowTheme.initialize();
   await SchedulingAuthService.instance.init();
