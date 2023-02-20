@@ -56,6 +56,17 @@ class _DashboardDailyScheduleSelectedViewState
       return false;
     }).toList();
 
+
+    if(branchEmployees.length == 0){
+      return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Center(
+          child: Text("No employees available."),
+        ),
+      );
+    }
+
     return Container(
         child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
