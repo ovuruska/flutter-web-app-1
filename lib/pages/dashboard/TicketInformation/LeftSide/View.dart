@@ -43,19 +43,7 @@ class TicketInformationLeftSideView extends StatelessWidget {
           borderRadius: BorderRadius.circular(1),
         ),
         child: Column(children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * .4,
-                child: TabBar(
-                  controller: tabController,
-                  tabs: getTabs(context),
-                ),
-              ),
-            ],
-          ),
+
           Container(
             width: MediaQuery.of(context).size.width * .8,
             child: Padding(
@@ -63,8 +51,16 @@ class TicketInformationLeftSideView extends StatelessWidget {
               child: TicketInformationCurrentAppointmentView(),
             ),
           ),
+          Container(
+            width: MediaQuery.of(context).size.width * .8,
+            child: TabBar(
+              controller: tabController,
+              tabs: getTabs(context),
+            ),
+          ),
           Expanded(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
             controller: tabController,
             children: [
               Container(
