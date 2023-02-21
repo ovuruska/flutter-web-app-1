@@ -15,6 +15,7 @@ Future<void> buildTicketInfoDialog(
         (customerDetails) =>
             ticketInformationInputBloc.setCustomerDetails(customerDetails));
     ticketInformationInputBloc.setAppointment(appointment.clone());
+
     DashboardRepository.instance.getUpcomingAppointments(appointment.dog).then(
         (appointments) =>
             ticketInformationInputBloc.setUpcomingAppointments(appointments!));
@@ -30,5 +31,3 @@ Future<void> buildTicketInfoDialog(
     },
   );
 }
-
-

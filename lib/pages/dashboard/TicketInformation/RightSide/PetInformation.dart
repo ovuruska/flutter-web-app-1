@@ -42,7 +42,7 @@ class TicketInformationPetInformation extends StatelessWidget {
       DataRow(cells: [
         boldCell("Special Handling"),
         DataCell(Checkbox(
-          value: appointment.specialHandling,
+          value: appointment.dog.specialHandling,
           onChanged: (value) {
             var petId = appointment.dog.id;
             ticketInformationInputBloc.setSpecialHandling(

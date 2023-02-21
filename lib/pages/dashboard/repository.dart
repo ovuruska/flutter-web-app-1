@@ -1,17 +1,25 @@
+import 'dart:convert' show jsonDecode;
+
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
-import 'package:scrubbers_employee_application/models/Customer.dart';
 import 'package:scrubbers_employee_application/models/Employee.dart';
 import 'package:scrubbers_employee_application/models/Pet.dart';
 import 'package:scrubbers_employee_application/repositories/utils.dart';
-import 'package:http/http.dart' as http;
 import 'package:scrubbers_employee_application/services/auth.dart';
 
 class DashboardRepository {
   static final instance = DashboardRepository._();
 
   DashboardRepository._();
+
+  Future<Appointment?> getAppointment(int id) async {
+    var response = await SchedulingAuthService.instance.request(
+        "/api/schedule/appointment/${id.toString()}",);
+    var respJson = await response.stream.bytesToString();
+    var resp = jsonDecode(respJson);
+    return Appointment.fromJson(resp);
+  }
 
   Future<List<Appointment>?> getCancelledAppointments() async {
     var dateNow = DateTime.now();

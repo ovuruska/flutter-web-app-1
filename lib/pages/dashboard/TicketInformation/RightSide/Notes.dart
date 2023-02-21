@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
+import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
-import 'package:scrubbers_employee_application/widgets/savable_text_field/view.dart';
+import 'package:scrubbers_employee_application/widgets/savable_text_field.dart';
+import 'package:scrubbers_employee_application/widgets/white_container.dart';
 
 import 'TextInput.dart';
 
@@ -50,7 +52,9 @@ class _TicketInformationRightSideNotesState
       initialIndex: 0,
       child: Column(
         children: [
-          TabBar(tabs: [
+          TabBar(
+              physics: NeverScrollableScrollPhysics(),
+              tabs: [
             Tab(
                 child: Text("Special handling notes",
                     style: TextStyle(color: Colors.black))),
@@ -63,23 +67,19 @@ class _TicketInformationRightSideNotesState
               child: TabBarView(
             controller: _tabController,
             children: [
-              SavableTextField(
+              WhiteContainer(
+                padding: EdgeInsets.all(8),
+                  child: SavableTextField(
                   controller: controller,
                   onSaved: (s) {
                     ticketInformationInputBloc.setEmployeeNotes(petId, s);
-                  }),
+                  })),
               (customerNotes.isNotEmpty)
-                  ? Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black.withOpacity(.5)),
-                      ),
-                      child: Text(appointment.dog.customerNotes),
+                  ? WhiteContainer(
+                padding: EdgeInsets.all(8),
+                      child: Text(appointment.dog.customerNotes,style: TextStyle(fontSize: 16),),
                     )
-                  : Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.black.withOpacity(.5)),
-                      ),
+                  : WhiteContainer(
                       child: Center(child: Text("No notes")),
                     )
             ],

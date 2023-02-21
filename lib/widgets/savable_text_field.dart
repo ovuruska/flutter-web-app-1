@@ -9,9 +9,10 @@ class SavableTextField extends StatefulWidget {
   final Function(String) onSaved;
   final String? initialValue;
   final TextEditingController? controller;
+  final InputDecoration? decoration;
 
   const SavableTextField(
-      {Key? key, required this.onSaved, this.initialValue, this.controller})
+      {Key? key, required this.onSaved, this.initialValue, this.controller, this.decoration})
       : super(key: key);
   @override
   _SavableTextFieldState createState() => _SavableTextFieldState();
@@ -50,16 +51,10 @@ class _SavableTextFieldState extends State<SavableTextField> {
       Container(
           child: TextFormField(
         initialValue: widget.initialValue,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.black.withOpacity(.5))),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.black.withOpacity(.5))),
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.black.withOpacity(.5)))),
+        decoration:widget.decoration ?? InputDecoration(
+          border: InputBorder.none,
+        ),
+
         maxLines: null,
         expands: true,
         textAlignVertical: TextAlignVertical.top,

@@ -19,7 +19,7 @@ class PetModel {
   final int age;
   final double weight;
   final Customer owner;
-  final bool specialHandling;
+  bool specialHandling;
   final String customerNotes;
   String employeeNotes;
   late DateTime rabiesVaccination = DateTime.now();

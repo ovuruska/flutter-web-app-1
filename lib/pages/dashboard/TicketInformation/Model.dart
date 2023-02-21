@@ -24,7 +24,7 @@ class TicketInformationInputModel {
   }
 
   setSpecialHandling(bool value){
-    appointment!.specialHandling = value;
+    appointment!.dog.specialHandling = value;
     return this;
   }
 
