@@ -3,13 +3,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:scrubbers_employee_application/widgets/savable_text_field/view.dart';
+
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'initWithData.dart';
 import 'services/auth.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,13 +19,12 @@ void main() async {
   await SchedulingAuthService.instance.init();
   await dotenv.load(fileName: ".env");
 
-  if(SchedulingAuthService.instance.isLogged()){
-    try{
+  if (SchedulingAuthService.instance.isLogged()) {
+    try {
       await initFromServer();
-    }catch(e){
+    } catch (e) {
       ;
     }
-
   }
 
   if (kDebugMode) {
@@ -69,6 +69,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp.router(
       scrollBehavior: MaterialScrollBehavior().copyWith(
         dragDevices: {

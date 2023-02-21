@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:scrubbers_employee_application/models/Pet.dart';
 import 'package:scrubbers_employee_application/repositories/utils.dart';
+import 'package:scrubbers_employee_application/services/auth.dart';
 
 class PetRepository{
   static final PetRepository instance = PetRepository._();
@@ -26,4 +27,30 @@ class PetRepository{
       return null;
     }
   }
+
+  setSpecialHandling(int petId,bool value) async {
+
+    var response = await SchedulingAuthService.instance.jsonRequest(
+        "/api/dog/$petId",
+        method:"PATCH",
+        body:{"special_handling": value}
+    );
+    var respString = await response.stream.bytesToString();
+    var jsonMap = jsonDecode(respString);
+    return PetModel.fromJson(jsonMap);
+
+  }
+
+  setEmployeeNotes(int petId,String employeeNotes) async{
+    var response = await SchedulingAuthService.instance.jsonRequest(
+        "/api/dog/$petId",
+        method:"PATCH",
+        body:{"employee_notes": employeeNotes}
+    );
+
+    var respString = await response.stream.bytesToString();
+    var jsonMap = jsonDecode(respString);
+    return PetModel.fromJson(jsonMap);
+  }
+
 }

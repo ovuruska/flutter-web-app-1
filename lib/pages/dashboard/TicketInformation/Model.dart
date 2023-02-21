@@ -28,6 +28,11 @@ class TicketInformationInputModel {
     return this;
   }
 
+  setEmployeeNotes(String? val) {
+    appointment!.dog.employeeNotes = val ?? "";
+    return this;
+  }
+
   setPriorAppointments(List<Appointment> appointments) {
     priorAppointments = appointments;
     return this;

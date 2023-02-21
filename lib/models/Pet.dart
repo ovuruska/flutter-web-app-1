@@ -21,7 +21,7 @@ class PetModel {
   final Customer owner;
   final bool specialHandling;
   final String customerNotes;
-  final String employeeNotes;
+  String employeeNotes;
   late DateTime rabiesVaccination = DateTime.now();
   final CoatType coatType;
 

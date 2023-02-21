@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
+import 'package:scrubbers_employee_application/widgets/savable_text_field/view.dart';
 
 import 'TextInput.dart';
 
@@ -29,8 +31,19 @@ class _TicketInformationRightSideNotesState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => StreamListenableBuilder(
+      stream: ticketInformationInputBloc.stream,
+      listener: (val) {},
+      builder: (context, snapshot) => _build(context));
+
+  Widget _build(BuildContext context) {
     var appointment = ticketInformationInputBloc.value.appointment!;
+
+    var customerNotes = appointment.dog.customerNotes;
+    var employeeNotes = appointment.dog.employeeNotes;
+    var petId = appointment.dog.id;
+    var controller = TextEditingController(text: employeeNotes);
+
     return Container(
         child: DefaultTabController(
       length: 2,
@@ -50,8 +63,25 @@ class _TicketInformationRightSideNotesState
               child: TabBarView(
             controller: _tabController,
             children: [
-              SpecialHandlingNotesTextInput(),
-              Text(appointment.dog.customerNotes),
+              SavableTextField(
+                  controller: controller,
+                  onSaved: (s) {
+                    ticketInformationInputBloc.setEmployeeNotes(petId, s);
+                  }),
+              (customerNotes.isNotEmpty)
+                  ? Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black.withOpacity(.5)),
+                      ),
+                      child: Text(appointment.dog.customerNotes),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.black.withOpacity(.5)),
+                      ),
+                      child: Center(child: Text("No notes")),
+                    )
             ],
           ))
         ],

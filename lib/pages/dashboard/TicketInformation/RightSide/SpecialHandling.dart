@@ -11,6 +11,7 @@ class TicketInformationSpecialHandling extends StatelessWidget {
 
   Widget _build(BuildContext context) {
     var appointment = ticketInformationInputBloc.value.appointment!;
+    var petId = appointment.dog.id;
     return Container(
         child: Row(
       children: [
@@ -24,23 +25,6 @@ class TicketInformationSpecialHandling extends StatelessWidget {
         Row(
           children: [
             Text(
-              "Yes",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-              ),
-            ),
-            Checkbox(
-                activeColor: Colors.red,
-                value: appointment.specialHandling,
-                onChanged: (_) =>
-                    ticketInformationInputBloc.setSpecialHandling(true))
-          ],
-        ),
-        Container(width: 8),
-        Row(
-          children: [
-            Text(
               "No",
               style: TextStyle(
                 fontSize: 16,
@@ -50,8 +34,8 @@ class TicketInformationSpecialHandling extends StatelessWidget {
             Checkbox(
                 activeColor: Colors.green,
                 value: !appointment.specialHandling,
-                onChanged: (_) =>
-                    ticketInformationInputBloc.setSpecialHandling(false))
+                onChanged: (value) =>
+                    ticketInformationInputBloc.setSpecialHandling(petId,value ?? false))
           ],
         ),
       ],
