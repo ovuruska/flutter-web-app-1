@@ -8,13 +8,12 @@ class HeadlessDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-        child: DataTable(
+    return DataTable(
       headingRowHeight: 0,
       dividerThickness: null,
       columns: List.generate(
           numberOfColumns, (index) => DataColumn(label: Container())),
       rows: rows,
-    ));
+    );
   }
 }
