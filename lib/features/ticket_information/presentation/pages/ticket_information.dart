@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scrubbers_employee_application/features/ticket_information/domain/usecases/get_concrete_appointment.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/presentation/bloc/bloc.dart';
 
 import '../../../../injection.dart';
