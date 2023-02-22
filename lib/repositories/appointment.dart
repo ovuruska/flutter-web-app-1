@@ -44,4 +44,19 @@ class AppointmentRepository {
     var result = await listOfAppointments(response);
     return result;
   }
+
+  Future<Appointment?> fetchAppointment(int appointmentId) async {
+    var route = "/api/schedule/appointment/$appointmentId";
+    SchedulingAuthService authService = SchedulingAuthService.instance;
+    var response = await authService.request(route,method: "GET");
+    var respString = await response.stream.bytesToString();
+
+    if (response.statusCode == 200) {
+      return Appointment.fromJson(jsonDecode(respString));
+    } else {
+      print(response.reasonPhrase);
+      return null;
+    }
+  }
+
 }

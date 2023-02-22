@@ -10,6 +10,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'initWithData.dart';
+import 'injection.dart';
 import 'services/auth.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ void main() async {
   await FlutterFlowTheme.initialize();
   await SchedulingAuthService.instance.init();
   await dotenv.load(fileName: ".env");
+  await initSl();
 
   if (SchedulingAuthService.instance.isLogged()) {
     try {

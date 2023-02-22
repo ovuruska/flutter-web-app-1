@@ -12,6 +12,7 @@ import 'package:scrubbers_employee_application/pages/pets/view.dart';
 import 'package:scrubbers_employee_application/pages/print/View.dart';
 import 'package:scrubbers_employee_application/pages/signout/view.dart';
 
+import '../../features/ticket_information/presentation/pages/ticket_information.dart';
 import '../../index.dart';
 import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
@@ -43,6 +44,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) => LoginRequired(DashboardView()),
           routes: [
+            FFRoute(name: 'TicketInformation', path: 'appointment/:id', builder: (context, params)  {
+              var appointmentId = params.state.params['id']!;
+              return LoginRequired(TicketInformationPage(appointmentId: int.parse(appointmentId),));
+            }),
             FFRoute(
               name: 'Dashboard',
               path: 'dashboard',

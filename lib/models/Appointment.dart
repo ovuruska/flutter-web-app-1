@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 import '../common/DataTypes.dart';
@@ -21,7 +22,7 @@ enum AppointmentStatus {
   NO_SHOW,
 }
 
-class Appointment {
+class Appointment extends Equatable{
   final String id;
   final Customer customer;
   final PetModel dog;
@@ -79,6 +80,9 @@ class Appointment {
     required this.lastCustomerAppointment,
     required this.lastDogAppointment,
   });
+
+  @override
+  List<Object> get props => [id];
 
   get modifiable => !this.submitted;
 
