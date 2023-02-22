@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
-
-import 'ButtonGroup.dart';
 import 'ClientInformation.dart';
 import 'Notes.dart';
 import 'PetInformation.dart';
-import 'SpecialHandling.dart';
 
 class TicketInformationRightSideView extends StatelessWidget {
   @override
@@ -16,17 +12,33 @@ class TicketInformationRightSideView extends StatelessWidget {
           color: Color(0xFFF6F5FA),
           borderRadius: BorderRadius.circular(1),
         ),
-        child: Column(children: [
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+        Padding(
+        padding: EdgeInsets.only(left:16),
+          child:
+          Text(
+            'Client',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(0xFF2D7CB6),
+              fontWeight: FontWeight.bold,
+            ),
+          )),
+          TicketInformationClientInformation(),
+          Padding(
+            padding: EdgeInsets.only(left:16),
+              child:Text(
+            'Pet',
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(0xFF2D7CB6),
+              fontWeight: FontWeight.bold,
+            ),
+          )),
           Container(
-              height: 128,
-              padding: EdgeInsets.all(8),
-              child: TicketInformationClientInformation()),
-          Container(
-              height: 96,
-              padding: EdgeInsets.all(8),
-              child: TicketInformationRightButtonGroup()),
-          Container(
-              height: 216,
               padding: EdgeInsets.all(8),
               child: TicketInformationPetInformation()),
           Expanded(

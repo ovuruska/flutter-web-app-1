@@ -4,6 +4,7 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.d
 
 import '../Current/View.dart';
 import 'Past/View.dart';
+import 'Upcoming/Checkin/View.dart';
 import 'Upcoming/View.dart';
 
 
@@ -43,24 +44,7 @@ class TicketInformationLeftSideView extends StatelessWidget {
           borderRadius: BorderRadius.circular(1),
         ),
         child: Column(children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * .4,
-                child: TabBar(
-                  controller: tabController,
-                  tabs: getTabs(context),
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 32, 0),
-                  child: ElevatedButton(
-                      onPressed: () => print("Expand all"),
-                      child: Text("Expand all")))
-            ],
-          ),
+
           Container(
             width: MediaQuery.of(context).size.width * .8,
             child: Padding(
@@ -68,8 +52,16 @@ class TicketInformationLeftSideView extends StatelessWidget {
               child: TicketInformationCurrentAppointmentView(),
             ),
           ),
+          Container(
+            width: MediaQuery.of(context).size.width * .8,
+            child: TabBar(
+              controller: tabController,
+              tabs: getTabs(context),
+            ),
+          ),
           Expanded(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
             controller: tabController,
             children: [
               Container(
@@ -82,7 +74,9 @@ class TicketInformationLeftSideView extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .4,
                   child: TicketInformationPastAppointmentView()),
             ],
-          ))
+          )),
+          TicketInformationCheckinView()
+
         ]));
   }
 }

@@ -17,11 +17,12 @@ class TicketInformationUpcomingView extends StatelessWidget {
   Color borderColor = const Color(0xFFD3D9E4);
 
   Widget _build(BuildContext context) {
+    var appointments = ticketInformationInputBloc.value.upcomingAppointments;
+
     return Column(
       children: [
-        Expanded(child: TicketInformationUpcomingCardList()),
+        Expanded(child: TicketInformationUpcomingCardList(appointments: appointments)),
         Divider(color: Color(0xFFD9D9D9), height: 1,indent:16,endIndent: 16,),
-        TicketInformationCheckinView()
       ],
     );
   }

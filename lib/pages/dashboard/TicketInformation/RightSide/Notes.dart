@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
+import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
+import 'package:scrubbers_employee_application/widgets/savable_text_field.dart';
+import 'package:scrubbers_employee_application/widgets/white_container.dart';
 
 import 'TextInput.dart';
 
@@ -29,15 +33,28 @@ class _TicketInformationRightSideNotesState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => StreamListenableBuilder(
+      stream: ticketInformationInputBloc.stream,
+      listener: (val) {},
+      builder: (context, snapshot) => _build(context));
+
+  Widget _build(BuildContext context) {
     var appointment = ticketInformationInputBloc.value.appointment!;
+
+    var customerNotes = appointment.dog.customerNotes;
+    var employeeNotes = appointment.dog.employeeNotes;
+    var petId = appointment.dog.id;
+    var controller = TextEditingController(text: employeeNotes);
+
     return Container(
         child: DefaultTabController(
       length: 2,
       initialIndex: 0,
       child: Column(
         children: [
-          TabBar(tabs: [
+          TabBar(
+              physics: NeverScrollableScrollPhysics(),
+              tabs: [
             Tab(
                 child: Text("Special handling notes",
                     style: TextStyle(color: Colors.black))),
@@ -50,8 +67,21 @@ class _TicketInformationRightSideNotesState
               child: TabBarView(
             controller: _tabController,
             children: [
-              SpecialHandlingNotesTextInput(),
-              Text(appointment.dog.customerNotes),
+              WhiteContainer(
+                padding: EdgeInsets.all(8),
+                  child: SavableTextField(
+                  controller: controller,
+                  onSaved: (s) {
+                    ticketInformationInputBloc.setEmployeeNotes(petId, s);
+                  })),
+              (customerNotes.isNotEmpty)
+                  ? WhiteContainer(
+                padding: EdgeInsets.all(8),
+                      child: Text(appointment.dog.customerNotes,style: TextStyle(fontSize: 16),),
+                    )
+                  : WhiteContainer(
+                      child: Center(child: Text("No notes")),
+                    )
             ],
           ))
         ],

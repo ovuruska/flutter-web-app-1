@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'blocs/tap.dart';
+
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
-import 'index.dart';
 import 'initWithData.dart';
 import 'services/auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -18,13 +18,14 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
   await SchedulingAuthService.instance.init();
-  if(SchedulingAuthService.instance.isLogged()){
-    try{
+  await dotenv.load(fileName: ".env");
+
+  if (SchedulingAuthService.instance.isLogged()) {
+    try {
       await initFromServer();
-    }catch(e){
+    } catch (e) {
       ;
     }
-
   }
 
   if (kDebugMode) {

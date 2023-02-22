@@ -45,6 +45,7 @@ Future<void> initFromServer() async {
         .then((appointments) {
       if (appointments != null)
         sidebarPendingAppointmentsBloc.setAppointments(appointments);
+
     }),
     DashboardRepository.instance
         .getReschedulingAppointments()

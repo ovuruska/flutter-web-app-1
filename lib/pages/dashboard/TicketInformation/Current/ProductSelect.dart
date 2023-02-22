@@ -27,6 +27,21 @@ class _TicketInformationProductSelectState
     super.initState();
   }
 
+  onSelect(List<Product> products) {
+    setState(() {
+      _products = products;
+      var appointment = ticketInformationInputBloc.value.appointment!;
+      var newAppointment = appointment.update(
+        products: _products,
+      );
+      ticketInformationInputBloc.setAppointment(
+        newAppointment,
+      );
+      dashboardBloc.patchAppointment(appointment);
+      AppointmentRepository.instance.patchAppointment(newAppointment);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var products = productsBloc.value.products;
@@ -43,18 +58,9 @@ class _TicketInformationProductSelectState
           searchable: true,
           buttonText: const Text('Add-ons'),
           title: const Text("Add-ons"),
-          onConfirm: (values) {
+          onConfirm: (products) {
             setState(() {
-              _products = values.cast<Product>();
-              var appointment = ticketInformationInputBloc.value.appointment!;
-              var newAppointment = appointment.update(
-                products: _products,
-              );
-              ticketInformationInputBloc.setAppointment(
-                newAppointment,
-              );
-              dashboardBloc.patchAppointment(appointment);
-              AppointmentRepository.instance.patchAppointment(newAppointment);
+              onSelect(products);
             });
           },
         ));

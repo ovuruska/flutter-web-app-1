@@ -24,7 +24,12 @@ class TicketInformationInputModel {
   }
 
   setSpecialHandling(bool value){
-    appointment!.specialHandling = value;
+    appointment!.dog.specialHandling = value;
+    return this;
+  }
+
+  setEmployeeNotes(String? val) {
+    appointment!.dog.employeeNotes = val ?? "";
     return this;
   }
 

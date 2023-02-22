@@ -1,63 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/controller.dart';
 import 'package:scrubbers_employee_application/repositories/appointment.dart';
+import 'package:scrubbers_employee_application/widgets/savable_text_field.dart';
 
 import '../Controller.dart';
 
+class EmployeeNotesTextInput extends StatelessWidget {
+  final Appointment appointment;
 
-class EmployeeNotesTextInput extends StatefulWidget {
-  _EmployeeNotesTextInputState createState() => _EmployeeNotesTextInputState();
-}
+  const EmployeeNotesTextInput({Key? key, required this.appointment})
+      : super(key: key);
 
-class _EmployeeNotesTextInputState extends State<EmployeeNotesTextInput> {
-  TextEditingController _textEditingController = TextEditingController();
-  FocusNode focusNode = FocusNode();
+  onSaved(String? value) async {
+    var newAppointment = appointment.update(
+      employeeNotes: value,
+    );
+    ticketInformationInputBloc.setAppointment(
+      newAppointment,
+    );
+    dashboardBloc.patchAppointment(newAppointment);
 
-  @override
-  void dispose() {
-    focusNode.dispose();
-    _textEditingController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    var appointment = ticketInformationInputBloc.value.appointment!;
-    var employeeNotes = appointment.employeeNotes;
-    setState(() {
-      _textEditingController.text = employeeNotes;
-    });
-    focusNode.addListener(() {
-      setState(() {});
-      var note = _textEditingController.text;
-      var newAppointment = appointment.update(
-        employeeNotes: note,
-      );
-      ticketInformationInputBloc.setAppointment(
-        newAppointment,
-      );
-      dashboardBloc.patchAppointment(appointment);
-      AppointmentRepository.instance.patchAppointment(newAppointment);
-    });
+    await AppointmentRepository.instance.patchAppointment(newAppointment);
   }
 
   Widget divider() => VerticalDivider(thickness: 2, color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      focusNode: focusNode,
+    return SavableTextField(
+      initialValue: appointment.employeeNotes,
+      onSaved: onSaved,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: 'Notes',
       ),
-      controller: _textEditingController,
-      maxLines: null,
-      maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
-      onChanged: (value) {},
     );
   }
 }
