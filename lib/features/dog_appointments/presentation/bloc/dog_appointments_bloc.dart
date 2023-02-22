@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scrubbers_employee_application/features/dog_appointments/domain/usecases/get_prior_appointments.dart';
-import 'package:scrubbers_employee_application/features/dog_appointments/presentation/bloc/dog_appointments_event.dart';
-import 'package:scrubbers_employee_application/models/Appointment.dart';
-
+import '../../../../models/Appointment.dart';
+import '../../domain/usecases/get_prior_appointments.dart';
 import '../../domain/usecases/get_upcoming_appointments.dart';
+import 'dog_appointments_event.dart';
 import 'dog_appointments_state.dart';
 
 class DogAppointmentsBloc
@@ -14,7 +13,7 @@ class DogAppointmentsBloc
       {required this.getPriorAppointments,
       required this.getUpcomingAppointments})
       : super(Empty()) {
-    on<FetchAppointments>((event, emit) async* {
+    on<GetPetAppointments>((event, emit) async {
       emit(Loading());
       var failureOrAppointment = await getUpcomingAppointments(event.petId);
       var upcomingAppointments = failureOrAppointment.fold(

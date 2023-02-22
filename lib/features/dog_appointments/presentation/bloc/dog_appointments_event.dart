@@ -9,10 +9,10 @@ abstract class DogAppointmentsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchAppointments extends DogAppointmentsEvent {
+class GetPetAppointments extends DogAppointmentsEvent {
   final int petId;
 
-  FetchAppointments(this.petId);
+  GetPetAppointments(this.petId);
 
   @override
   List<Object> get props => [petId];

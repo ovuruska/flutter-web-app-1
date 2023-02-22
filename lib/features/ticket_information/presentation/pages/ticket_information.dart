@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/features/dog_appointments/presentation/pages/dog_appointments_provider.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/presentation/bloc/bloc.dart';
 
 import '../../../../injection.dart';
@@ -44,7 +45,8 @@ class _TicketInformationPageState extends State<TicketInformationPage> {
         if (state is Loading || state is Empty) {
           return LoadingWidget();
         } else if (state is Loaded) {
-          return Text("Loaded");
+          var appointment = state.appointment;
+          return DogAppointmentsProvider(petId: appointment.dog.id,);
         } else if (state is Error) {
           return Text("Error");
         }
