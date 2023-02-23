@@ -17,7 +17,7 @@ class SidebarPendingAppointmentList extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         children: appointments
-            .map((e) => SidebarAppointmentItem(appointment: e))
+            .map((e) => SidebarAppointmentItem(key:ValueKey(e.id),appointment: e))
             .toList());
   }
 }

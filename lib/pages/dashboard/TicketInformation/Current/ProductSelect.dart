@@ -6,6 +6,7 @@ import 'package:scrubbers_employee_application/blocs/products/Controller.dart';
 import 'package:scrubbers_employee_application/models/Product.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 import 'package:scrubbers_employee_application/repositories/appointment.dart';
+import 'package:scrubbers_employee_application/widgets/quicker_multi_select/multi_select.dart';
 
 import '../../controller.dart';
 
@@ -49,20 +50,7 @@ class _TicketInformationProductSelectState
     return Container(
         padding: EdgeInsets.all(16),
         height: 256,
-        child: MultiSelectDialogField<Product>(
-          items: products
-              .map((product) => MultiSelectItem(product, product.name))
-              .toList(),
-          listType: MultiSelectListType.CHIP,
-          initialValue: _products,
-          searchable: true,
-          buttonText: const Text('Add-ons'),
-          title: const Text("Add-ons"),
-          onConfirm: (products) {
-            setState(() {
-              onSelect(products);
-            });
-          },
-        ));
+        child: QuickerMultiSelect(items: products,initialValue:_products ,onChanged: (selectedProducts) => onSelect(selectedProducts as List<Product>),)
+    );
   }
 }

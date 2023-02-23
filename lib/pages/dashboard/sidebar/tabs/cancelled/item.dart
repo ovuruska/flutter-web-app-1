@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
-import 'package:scrubbers_employee_application/pages/dashboard/AppointmentCard/Draggable.dart';
 import '../../../sidebar/calendar/controller.dart';
 import '../../../sidebar/controller.dart';
 import '../../../constants.dart';
 import '../../../controller.dart';
 import '../../../repository.dart';
-import 'controller.dart';
 
 class SidebarCancelledAppointmentItem extends StatelessWidget {
   Appointment appointment;
 
   SidebarCancelledAppointmentItem({required this.appointment});
 
-  Widget _build(BuildContext context) {
+  Widget build(BuildContext context) {
     String formattedDate =
         DateFormat('yyyy/MM/dd h:mm a').format(appointment.start);
     return ListTile(
@@ -67,23 +65,4 @@ class SidebarCancelledAppointmentItem extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    var draggedAppointment = appointment.update(
-      status: AppointmentStatus.PENDING,
-    );
-    return Draggable(
-      data: draggedAppointment,
-      child: _build(context),
-      hitTestBehavior: HitTestBehavior.translucent,
-      ignoringFeedbackPointer: false,
-      feedback: DashboardAppointmentCardDraggable(
-        appointment: draggedAppointment,
-      ),
-      onDragCompleted: () {
-        sidebarCancelledAppointmentsBloc.removeAppointment(appointment);
-      },
-      childWhenDragging: Container(),
-    );
-  }
 }

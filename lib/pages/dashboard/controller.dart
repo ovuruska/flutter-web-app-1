@@ -22,6 +22,28 @@ class DashboardBloc extends Bloc<DashboardModel> {
     return appointments.where((a) => a.status != AppointmentStatus.RESCHEDULING && a.status != AppointmentStatus.CANCELLED).toList();
   }
 
+  List<Appointment> cancelled(){
+    return subject.value.appointments.where((a) => a.status == AppointmentStatus.CANCELLED).toList();
+  }
+
+  List<Appointment> rescheduling(){
+    return subject.value.appointments.where((a) => a.status == AppointmentStatus.RESCHEDULING).toList();
+  }
+
+  List<Appointment> completed(){
+    return subject.value.appointments.where((a) => a.status == AppointmentStatus.COMPLETED).toList();
+  }
+
+  List<Appointment> confirmed(){
+    return subject.value.appointments.where((a) => a.status == AppointmentStatus.CONFIRMED).toList();
+  }
+
+  List<Appointment> pending(){
+    return subject.value.appointments.where((a) => a.status == AppointmentStatus.PENDING).toList();
+  }
+
+
+
   fetchDailyAppointments(Branch branch,DateTime dateTime) async {
     var appointments = await DashboardRepository.instance.getDailyAppointments(branch,dateTime);
     if(appointments == null) return null;

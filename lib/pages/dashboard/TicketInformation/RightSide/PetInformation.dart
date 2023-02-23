@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/common/StringUtils.dart';
@@ -33,7 +32,7 @@ class TicketInformationPetInformation extends StatelessWidget {
       ]),
       DataRow(cells: [
         boldCell("Weight"),
-        normalCell(StringUtils.capitalize(appointment.dog.weight.toString())),
+        normalCell(StringUtils.capitalize(appointment.dog.weight.toInt().toString())),
       ]),
       DataRow(cells: [
         boldCell("Service Time"),

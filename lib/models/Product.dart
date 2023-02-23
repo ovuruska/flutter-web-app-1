@@ -16,6 +16,7 @@ class Product {
         description = json['description'],
         cost = double.parse(json['cost']);
 
+  toString() => name;
   toJson() => {
         'id': id,
         'name': name,
