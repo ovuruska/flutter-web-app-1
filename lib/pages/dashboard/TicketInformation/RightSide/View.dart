@@ -12,32 +12,29 @@ class TicketInformationRightSideView extends StatelessWidget {
           color: Color(0xFFF6F5FA),
           borderRadius: BorderRadius.circular(1),
         ),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-        Padding(
-        padding: EdgeInsets.only(left:16,top:8),
-          child:
-          Text(
-            'Client',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 16,
-              color: Color(0xFF2D7CB6),
-              fontWeight: FontWeight.bold,
-            ),
-          )),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+              padding: EdgeInsets.only(left: 16, top: 8,bottom:8),
+              child: Text(
+                'Client',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF2D7CB6),
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
           TicketInformationClientInformation(),
           Padding(
-            padding: EdgeInsets.only(left:16),
-              child:Text(
-            'Pet',
-            style: TextStyle(
-              fontSize: 16,
-              color: Color(0xFF2D7CB6),
-              fontWeight: FontWeight.bold,
-            ),
-          )),
+              padding: EdgeInsets.only(left: 16),
+              child: Text(
+                'Pet',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF2D7CB6),
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
           Container(
               padding: EdgeInsets.all(8),
               child: TicketInformationPetInformation()),

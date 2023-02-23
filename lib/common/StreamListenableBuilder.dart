@@ -4,15 +4,19 @@ typedef StreamListener<T> = void Function(T value);
 
 class StreamListenableBuilder<T> extends StreamBuilder<T> {
 
-  final StreamListener<T>? listener;
+  static Null Function(dynamic value) emptyListener = (dynamic value) {};
 
-  const StreamListenableBuilder({
+  late StreamListener<T>? listener;
+
+  StreamListenableBuilder({
     Key? key,
     T? initialData,
     required Stream<T>? stream,
-    required this.listener,
+    this.listener ,
     required AsyncWidgetBuilder<T> builder,
-  }) : super(key: key, initialData: initialData, stream: stream, builder: builder);
+  }) : super(key: key, initialData: initialData, stream: stream, builder: builder){
+    listener ??= emptyListener;
+  }
 
   @override
   AsyncSnapshot<T> afterData(AsyncSnapshot<T> current, T data) {
