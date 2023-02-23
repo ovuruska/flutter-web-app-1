@@ -16,7 +16,7 @@ class TicketInformationRightSideView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
         Padding(
-        padding: EdgeInsets.only(left:16),
+        padding: EdgeInsets.only(left:16,top:8),
           child:
           Text(
             'Client',

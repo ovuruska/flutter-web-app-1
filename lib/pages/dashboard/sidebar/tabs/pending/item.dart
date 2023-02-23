@@ -17,7 +17,7 @@ import '../../controller.dart';
 class SidebarAppointmentItem extends StatelessWidget {
   Appointment appointment;
 
-  SidebarAppointmentItem({required this.appointment});
+  SidebarAppointmentItem({required this.appointment,Key ? key}) : super(key: key);
 
   double getTopOffset(TimeOfDay timeOfDay) {
     var hour = timeOfDay.hour;
