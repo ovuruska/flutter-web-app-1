@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'package:scrubbers_employee_application/models/Employee.dart';
+import 'package:scrubbers_employee_application/pages/dashboard/sidebar/tabs/pending/controller.dart';
 import 'package:scrubbers_employee_application/repositories/appointment.dart';
 
 import 'controller.dart';
@@ -85,6 +86,7 @@ Function(DragTargetDetails<Appointment>) acceptWithDateAndEmployee(
       employee: employee,
     );
     dashboardBloc.patchAppointment(newAppointment);
+    sidebarPendingAppointmentsBloc.patchAppointment(newAppointment);
 
     AppointmentRepository.instance.patchAppointment(newAppointment);
   }
@@ -119,6 +121,7 @@ Function(DragTargetDetails<Appointment>) acceptWithEmployee(Employee employee) {
     );
 
     dashboardBloc.patchAppointment(newAppointment);
+    sidebarPendingAppointmentsBloc.patchAppointment(newAppointment);
     AppointmentRepository.instance.patchAppointment(newAppointment);
   }
 

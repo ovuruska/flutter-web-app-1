@@ -11,23 +11,22 @@ class Header extends StatelessWidget {
     ['Customers', "Customers"],
     ['Payroll', "Payroll"],
     ['Notifications', "Notifications"],
-    ['Admin', "Admin"],
    */
-
+    ['Admin', "Admin"],
     ['Sign Out', "Signout"],
   ];
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-          flex:0,
-          child: Flex(
-            direction: Axis.horizontal,
-            children: [
-              for (int i = 0; i < buttonNames.length; i++)
-                HeaderButton(text: buttonNames[i][0], route: buttonNames[i][1])
-            ],
-          ),
-        );
+      flex: 0,
+      child: Flex(
+        direction: Axis.horizontal,
+        children: [
+          for (int i = 0; i < buttonNames.length; i++)
+            HeaderButton(text: buttonNames[i][0], route: buttonNames[i][1])
+        ],
+      ),
+    );
   }
 }

@@ -6,22 +6,38 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_util.da
 import 'package:scrubbers_employee_application/initWithData.dart';
 import 'package:scrubbers_employee_application/pages/login/repository.dart';
 
+import 'login_button.dart';
+
 const primaryColor = const Color(0xFF78D9FB);
 const secondaryColor = const Color(0xFF74C284);
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool loading = false;
 
   onLogin(BuildContext context) async {
     var username = usernameController.text;
     var password = passwordController.text;
-    final result = await LoginViewRepository.instance.login(username, password);
-    if (result) {
-      await initFromServer();
-      context.pushNamed('Dashboard');
-    } else
-      print('Login failed');
+    setState(() => loading = true);
+    try {
+      final result = await LoginViewRepository.instance.login(
+          username, password);
+      setState(() => loading = false);
+      if (result) {
+        await initFromServer();
+        context.pushNamed('Dashboard');
+      } else
+        showSnackbar(context, "Wrong username or password");
+    }
+    catch (e) {
+      setState(() => loading = false);
+      showSnackbar(context, "Something went wrong 🤗");
+    }
   }
 
   @override
@@ -108,28 +124,11 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 96),
-                        SizedBox(
-                          height: 48,
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              onLogin(context);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: secondaryColor,
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                            child: Text('Submit',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontFamily:
-                                      GoogleFonts.comfortaa().fontFamily,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
+                        LoginButton(
+                          onPressed: () async {
+                            onLogin(context);
+                          },
+                          loading: !loading,
                         )
                       ],
                     ))),
