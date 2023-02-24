@@ -16,7 +16,8 @@ class StreamListenableBuilder<T> extends StreamBuilder<T> {
 
   @override
   AsyncSnapshot<T> afterData(AsyncSnapshot<T> current, T data) {
-    listener!(data);
+    if(listener != null)
+      listener!(data);
     return super.afterData(current, data);
   }
 }
