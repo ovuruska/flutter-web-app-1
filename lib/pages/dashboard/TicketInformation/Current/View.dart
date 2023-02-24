@@ -16,10 +16,10 @@ class TicketInformationCurrentAppointmentView extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              ShadowContainer(
-                  child: Container(
+              Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(16),
@@ -35,20 +35,20 @@ class TicketInformationCurrentAppointmentView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .6 - 16,
                         child:
                             TicketInformationCurrentAppointmentEmployeeNotes(),
-                      ))),
+                      )),
               Container(
                 width: 8,
               ),
               Expanded(
-                  child: ShadowContainer(
-                child: Container(
+                  child: Container(
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
                       color: Colors.white,
                     ),
                     padding: EdgeInsets.all(16),
                     height: 256,
                     child: TicketInformationProductSelect()),
-              )),
+              ),
             ],
           ),
           Padding(

@@ -67,12 +67,17 @@ dependencies:
   card_settings: ^3.3.0
   checkmark: ^0.0.2+1
   stream_transform: ^2.1.0
-
+  get_it: ^7.2.0
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.3
+  dartz: ^0.10.0
+  meta:
+  flutter_layout_grid: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  very_good_analysis: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -123,7 +128,6 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 # flutter_native_splash-development.yaml
 flutter_native_splash:
-  color: "#3894D7"
-  color_dark: "#4B39EF"
-  image: assets/images/splash_logo.png
+  image: assets/images/web_splash.png
+  web_image_mode: cover
 

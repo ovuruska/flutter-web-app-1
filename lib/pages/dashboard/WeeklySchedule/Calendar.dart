@@ -45,7 +45,7 @@ class DashboardWeeklyScheduleCalendar extends StatelessWidget {
               children: <Widget>[
                     Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFFF6F5FA),
+                          color: FlutterFlowTheme.of(context).primaryColor,
                         ),
                         height: 48,
                         width: itemWidth,

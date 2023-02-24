@@ -3,12 +3,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:scrubbers_employee_application/injection.dart';
 
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'initWithData.dart';
+import 'pages/admin_branches/admin_branches.dart';
 import 'services/auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -17,6 +19,7 @@ void main() async {
   await dotenv.load(fileName: ".env");
 
   await FlutterFlowTheme.initialize();
+  await initSl();
   await SchedulingAuthService.instance.init();
   await dotenv.load(fileName: ".env");
 
@@ -70,6 +73,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp.router(
       scrollBehavior: MaterialScrollBehavior().copyWith(
         dragDevices: {

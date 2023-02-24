@@ -9,12 +9,12 @@ class CurrentAppointmentCustomerNotes extends StatelessWidget {
   Widget build(BuildContext context) {
     var appointment = ticketInformationInputBloc.value.appointment!;
     var customerNotes = appointment.customerNotes;
-    return ShadowContainer(
-        child:Container(
+    return Container(
 
         width: MediaQuery.of(context).size.width * .8,
         height: 128,
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
           color: Colors.white,
         ),
         child: Column(
@@ -28,6 +28,6 @@ class CurrentAppointmentCustomerNotes extends StatelessWidget {
                       child: Text("Customer Notes",
                           style: TextStyle(fontWeight: FontWeight.bold)))),
               Padding(padding: EdgeInsets.all(8), child: Text(customerNotes))
-            ])));
+            ]));
   }
 }

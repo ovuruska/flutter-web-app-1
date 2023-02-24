@@ -61,7 +61,7 @@ class _QuickerMultiSelectState<T> extends State<QuickerMultiSelect<T>> {
                                           _selectedItems
                                               .remove(widget.items[index]);
                                         }
-                                        widget.onChanged(_selectedItems as List<T>);
+                                        widget.onChanged(_selectedItems);
                                       }));
                                 },
                               );
@@ -75,16 +75,20 @@ class _QuickerMultiSelectState<T> extends State<QuickerMultiSelect<T>> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
+                        /*
                         TextButton(
                           onPressed: () {
                             setState(() {
                               _selectedItems = [];
-                              widget.onChanged(_selectedItems as List<T>);
                             });
+                            widget.onChanged(_selectedItems);
+
                             Navigator.pop(context);
                           },
                           child: Text('Clear'),
                         ),
+                        
+                         */
                         TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Text('Ok'),
@@ -109,7 +113,7 @@ class _QuickerMultiSelectState<T> extends State<QuickerMultiSelect<T>> {
               onPressed: (item) {
                 setState(() {
                   _selectedItems.remove(item);
-                  widget.onChanged(_selectedItems as List<T>);
+                  widget.onChanged(_selectedItems);
                 });
               },
             ),

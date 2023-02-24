@@ -27,7 +27,6 @@ class DashboardDailyScheduleCalendar extends StatelessWidget {
     return SizedBox(
         child: Container(
             decoration: BoxDecoration(
-              color: Color(0xFFF6F5FA),
               borderRadius: BorderRadius.circular(1),
               border: Border.all(
                 color:Colors.black.withOpacity(.5),
