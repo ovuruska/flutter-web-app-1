@@ -11,8 +11,9 @@ class Header extends StatelessWidget {
     ['Customers', "Customers"],
     ['Payroll', "Payroll"],
     ['Notifications', "Notifications"],
-   */
     ['Admin', "Admin"],
+
+   */
     ['Sign Out', "Signout"],
   ];
 
