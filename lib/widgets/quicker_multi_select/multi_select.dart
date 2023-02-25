@@ -75,20 +75,6 @@ class _QuickerMultiSelectState<T> extends State<QuickerMultiSelect<T>> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        /*
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _selectedItems = [];
-                            });
-                            widget.onChanged(_selectedItems);
-
-                            Navigator.pop(context);
-                          },
-                          child: Text('Clear'),
-                        ),
-                        
-                         */
                         TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Text('Ok'),
@@ -106,19 +92,20 @@ class _QuickerMultiSelectState<T> extends State<QuickerMultiSelect<T>> {
     return Container(
         constraints: BoxConstraints(minHeight: 160),
         child: WhiteContainer(
-          padding: EdgeInsets.all(8),
           child: Stack(children: [
-            QuickerChipList<T>(
-              items: _selectedItems,
-              onPressed: (item) {
-                setState(() {
-                  _selectedItems.remove(item);
-                  widget.onChanged(_selectedItems);
-                });
-              },
-            ),
+            Container(
+                margin: EdgeInsets.all(8),
+                child: QuickerChipList<T>(
+                  items: _selectedItems,
+                  onPressed: (item) {
+                    setState(() {
+                      _selectedItems.remove(item);
+                      widget.onChanged(_selectedItems);
+                    });
+                  },
+                )),
             Positioned(
-                right: 8,
+                right: 0,
                 child: IconButton(
                   style: ButtonStyle(
                       backgroundColor:

@@ -10,7 +10,8 @@ class QuickerChipList<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
+    return SingleChildScrollView(
+        child:Wrap(
         children: List<Widget>.generate(
       items.length,
       (int idx) {
@@ -21,6 +22,6 @@ class QuickerChipList<T> extends StatelessWidget {
           onPressed: () => onPressed(items[idx]),
         ));
       },
-    ).toList());
+    ).toList()));
   }
 }

@@ -72,7 +72,7 @@ class PetsMainInformationRowPetInformationRight extends StatelessWidget {
     var aggressive = false;
     for(var appointment in sidebarBloc.value.calendarAppointments){
       if(appointment.dog.id == petId){
-        if(appointment.specialHandling){
+        if(appointment.dog.specialHandling){
           aggressive = true;
         }
       }

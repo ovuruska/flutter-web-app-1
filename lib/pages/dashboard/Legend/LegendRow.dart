@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
-import 'package:scrubbers_employee_application/pages/dashboard/constants.dart';
-
 import '../sidebar/calendar/controller.dart';
 import 'EmployeeSelect.dart';
 import 'PrintButton.dart';
@@ -10,7 +8,7 @@ import 'PrintButton.dart';
 class DashboardLegendRow extends StatelessWidget {
   Widget getLegend(BuildContext context, Color color, String label) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
       child: Container(
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -76,11 +74,10 @@ class DashboardLegendRow extends StatelessWidget {
         ),
       ),
       VerticalDivider(
-        endIndent: 16,
-        indent:16,
-        color: FlutterFlowTheme.of(context).primaryText,
-        width:16
-      ),
+          endIndent: 16,
+          indent: 16,
+          color: FlutterFlowTheme.of(context).primaryText,
+          width: 16),
       Padding(
         padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
         child: DashboardEmployeeSelectDropdown(),
@@ -93,19 +90,12 @@ class DashboardLegendRow extends StatelessWidget {
             size: 16,
           ),
           "Special handling"),
-      getLegendsWithIcon(
-          context,
-          Icon(
-            Icons.check,
-            color: Color(0xFF4CBB17),
-            size: 16,
-          ),
-          "Confirmed"),
-      getLegend(context, Color(0xFFD2D2D2), "Off"),
+      getLegend(context, const Color(0xFF3894D7), "Regular"),
+      getLegend(context, const Color(0xFF4CA336), "In Session"),
+      getLegend(context, const Color(0xFF989898), "Completed"),
       getLegend(
-          context, FlutterFlowTheme.of(context).secondaryColor, "New Client"),
-      getLegend(context, FlutterFlowTheme.of(context).alternate, "Time Block"),
-      getLegend(context, blueAccent, "Regular"),
+          context, FlutterFlowTheme.of(context).secondaryColor, "New Pet"),
+      getLegend(context, FlutterFlowTheme.of(context).primaryColor, "Vacation"),
       Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
         child: DashboardLegendPrintButton(),

@@ -1,17 +1,14 @@
-import 'dart:html';
+import 'dart:convert' show base64Encode;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_util.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_widgets.dart';
 import 'package:scrubbers_employee_application/pages/print/Controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../DailySchedule/Bloc.dart';
-import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 
 class DashboardLegendPrintButton extends StatefulWidget {
   @override
@@ -58,9 +55,11 @@ class _DashboardLegendPrintButtonState
                           setState(() {
                             loading = false;
                           });
+                          launchUrl(Uri.parse("data:application/octet-stream;base64,${base64Encode(value)}"),);
+
                           printViewBloc.setDocument(document);
                           printViewBloc.setContent(value);
-                          context.pushNamed("Print");
+
                         }).catchError(() {
                           setState(() {
                             loading = false;
@@ -69,9 +68,9 @@ class _DashboardLegendPrintButtonState
                       });
                     }
                   },
-                  text: 'Print',
+                  text: 'Download',
                   options: FFButtonOptions(
-                    width: 72,
+                    width: 96,
                     height: 24,
                     color: buttonColor,
                     textStyle: FlutterFlowTheme.of(context).bodyText2,

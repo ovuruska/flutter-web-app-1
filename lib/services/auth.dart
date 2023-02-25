@@ -54,6 +54,7 @@ class SchedulingAuthService {
 
   bool isLogged() {
     var token = tokenProvider.get();
+
     if (token != null) {
       return true;
     } else {

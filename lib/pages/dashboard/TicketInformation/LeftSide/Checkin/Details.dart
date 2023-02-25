@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/DateWithCheckbox.dart';
 
+import '../../../../../common/StreamListenableBuilder.dart';
 import 'utils.dart';
 
 class TicketInformationCheckinDetails extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => StreamListenableBuilder(
+      stream: ticketInformationInputBloc.stream,
+      listener: (value) {},
+      builder: (context, snapshot) => _build(context));
+  Widget _build(BuildContext context) {
     var appointment = ticketInformationInputBloc.value.appointment!;
     return Row(children: [
       Padding(
@@ -30,9 +35,11 @@ class TicketInformationCheckinDetails extends StatelessWidget {
             date: appointment.checkIn,
             onChanged: ticketInformationInputBloc.setCheckIn),
         DateWithCheckbox(
+            disabled : appointment.checkIn == null,
             date: appointment.pickUp,
             onChanged: ticketInformationInputBloc.setPickUp),
         DateWithCheckbox(
+            disabled : appointment.pickUp == null,
             date: appointment.checkoutTime,
             onChanged: ticketInformationInputBloc.setCheckout),
       ])

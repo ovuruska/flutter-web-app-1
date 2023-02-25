@@ -18,7 +18,7 @@ class DashboardWeeklyScheduleDayColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     var employee = dashboardLegendBloc.value.employee!;
     var employeeAppointments =
-        dashboardBloc.value.appointments.where((appointment) {
+        dashboardBloc.value.filterAppointments().where((appointment) {
       var appointmentDate = appointment.start;
       if (appointmentDate.year == date.year &&
           appointmentDate.month == date.month &&

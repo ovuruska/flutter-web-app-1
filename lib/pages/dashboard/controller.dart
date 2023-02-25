@@ -102,6 +102,18 @@ class DashboardBloc extends Bloc<DashboardModel> {
   clearScrollUpdated(){
     subject.sink.add(subject.value.clearScrollUpdated());
   }
+
+  setShowPickUpReady(value) {
+    subject.sink.add(subject.value.setShowPickUpReady(value));
+  }
+
+  void setShowNoShow(value) {
+    subject.sink.add(subject.value.setShowNoShow(value));
+  }
+
+  void setShowNoShowUnpaid(value) {
+    subject.sink.add(subject.value.setShowNoShowUnpaid(value));
+  }
 }
 
 final dashboardBloc = DashboardBloc();

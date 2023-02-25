@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 
-import 'Card.dart';
 import 'CardList.dart';
-import 'Checkin/View.dart';
 
 class TicketInformationUpcomingView extends StatelessWidget {
   @override

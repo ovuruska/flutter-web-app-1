@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
 import '../Current/View.dart';
+import 'Checkin/View.dart';
 import 'Past/View.dart';
-import 'Upcoming/Checkin/View.dart';
 import 'Upcoming/View.dart';
 
 

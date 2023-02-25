@@ -23,7 +23,7 @@ class DashboardDailyScheduleInner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var employeeAppointments =
-        dashboardBloc.value.appointments.where((appointment) {
+        dashboardBloc.value.filterAppointments().where((appointment) {
       var currentDate = sidebarCalendarBloc.value.selectedDate;
       var appointmentDate = appointment.start;
       if (currentDate.year == appointmentDate.year &&

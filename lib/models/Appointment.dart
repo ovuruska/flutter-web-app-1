@@ -19,6 +19,9 @@ enum AppointmentStatus {
   PICKUP_READY,
   CLOSED_CHARGED,
   NO_SHOW,
+  NO_SHOW_UNPAID
+
+
 }
 
 class Appointment {

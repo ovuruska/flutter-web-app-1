@@ -74,7 +74,7 @@ class DashboardAppointmentCard extends StatelessWidget {
     } else if (appointment.status == AppointmentStatus.RESCHEDULING) {
       return Container();
     } else if (appointment.status == AppointmentStatus.CONFIRMED) {
-      if (appointment.specialHandling)
+      if (appointment.dog.specialHandling)
         return DashboardAppointmentCardSpecialHandling(
           appointment: appointment,
         );

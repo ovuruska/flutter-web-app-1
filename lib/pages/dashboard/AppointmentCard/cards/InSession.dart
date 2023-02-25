@@ -14,7 +14,7 @@ class DashboardAppointmentCardInSession extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    const headerColor = Color(0xFF4CA336);
+    const headerColor = const Color(0xFF4CA336);
     return AppointmentCardWrapper(
         appointment: appointment,
         child: AppointmentCard(

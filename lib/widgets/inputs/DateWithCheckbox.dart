@@ -7,8 +7,9 @@ class DateWithCheckbox extends StatelessWidget {
   final Function(DateTime?) onChanged;
   final double height;
   final double width;
+  final bool disabled;
 
-  DateWithCheckbox({Key? key,this.width=192,this.height = 24, required this.date, required this.onChanged})
+  DateWithCheckbox({Key? key,this.width=192,this.height = 24, required this.date, required this.onChanged,this.disabled=false})
       : super(key: key);
   DateFormat format = new DateFormat("MMMM dd, yyyy");
 
@@ -22,7 +23,7 @@ class DateWithCheckbox extends StatelessWidget {
         children: [
           Checkbox(
             value: this.date != null,
-            onChanged: (value) {
+            onChanged: (disabled) ? null :(value) {
               if (onChanged == null) return;
               if (value == true) {
                 onChanged(DateTime.now());
