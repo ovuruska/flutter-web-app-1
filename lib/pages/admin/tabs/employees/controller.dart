@@ -72,15 +72,22 @@ class AdminEmployeeTabBloc extends Bloc<AdminEmployeeTabModel>{
     List<Employee> filtered = [];
 
     for (var employee in employeesBloc.value.employees) {
+      if(employee.name == "") continue;
       if (employeeName != "" && !employee.name.toLowerCase().contains(employeeName.toLowerCase())) continue;
       if (branch != null && employee.branch.id != branch.id) continue;
+
       filtered.add(employee);
     }
 
     return filtered;
   }
 
+  setEmployee(Employee? employee) {
+    subject.sink.add(subject.value.setEmployee(employee));
+  }
+
   Employee? getCurrent(){
+    return value.employee;
     var index = subject.value.currentIndex;
     if(index == -1) return null;
     var employee = employeesBloc.value.employees[index];

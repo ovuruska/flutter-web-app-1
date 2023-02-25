@@ -33,6 +33,7 @@ class TicketInformationCheckinButtonGroup extends StatelessWidget {
               closeTicket(appointment);
             }),
         getStyledButton(
+
             text: "Save Changes",
             onPressed: () {
               dashboardBloc.patchAppointment(appointment);

@@ -18,10 +18,12 @@ class AdminEmployeeTabEmployeeRowRightColumnView extends StatelessWidget{
 
   Widget _build(BuildContext context) {
     var editable = adminEmployeeTabBloc.value.editable;
+
     if(editable){
       return AdminEmployeeTabEmployeeRowRightColumnEditable();
     }else{
-      return AdminEmployeeTabEmployeeRowRightColumn();
+      var employee = adminEmployeeTabBloc.value.employee;
+      return AdminEmployeeTabEmployeeRowRightColumn(employee: employee );
     }
 
   }

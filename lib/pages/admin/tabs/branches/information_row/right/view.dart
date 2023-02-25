@@ -8,16 +8,13 @@ import 'column.dart';
 import 'column_editable.dart';
 
 class AdminBranchesTabInformationRowRightColumnView extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) => StreamListenableBuilder(
-      stream: adminBranchesTabBloc.stream,
-      listener: (value) {},
-      builder: (context, snapshot) => _build(context));
+  final bool editable;
+
+  const AdminBranchesTabInformationRowRightColumnView({Key? key, this.editable = false}) : super(key: key);
 
 
 
-  Widget _build(BuildContext context) {
-    var editable = adminBranchesTabBloc.value.editable;
+  Widget build(BuildContext context) {
     if(editable){
       return AdminBranchesTabInformationRowRightColumnEditable();
     }else{

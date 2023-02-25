@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/blocs/branches/Controller.dart';
 import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
-import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledDropdownButton.dart';
 import '../controller.dart';
 
-class AdminEmployeeTabEmployeeRowRightColumnSelectBranch extends StatelessWidget {
+class AdminEmployeeTabEmployeeRowRightColumnSelectBranch
+    extends StatefulWidget {
+  final Branch? branch;
 
-
+  const AdminEmployeeTabEmployeeRowRightColumnSelectBranch(
+      {Key? key, this.branch})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context) => StreamListenableBuilder(
-      stream: adminEmployeeTabEmployeeRowBloc.stream,
-      listener: (value) {},
-      builder: (context, snapshot) => _build(context));
+  _AdminEmployeeTabEmployeeRowRightColumnSelectBranchState createState() =>
+      _AdminEmployeeTabEmployeeRowRightColumnSelectBranchState();
+}
 
-  Widget _build(BuildContext context) {
-    var options = branchesBloc.value.branches;
-    return Container(
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text("Branch", style: FlutterFlowTheme.of(context).bodyText1),
-          ControlledDropdownButton<Branch>(
-            options: options,
-            value: adminEmployeeTabEmployeeRowBloc.value.branch,
-            onChanged: (value) {
-              if (value != null) {
-                adminEmployeeTabEmployeeRowBloc.setBranch(value);
-              }
-            },
-            iconOnClick:() =>  adminEmployeeTabEmployeeRowBloc.setBranch(null),
-          )
-        ],
-      ),
-    );
+class _AdminEmployeeTabEmployeeRowRightColumnSelectBranchState
+    extends State<AdminEmployeeTabEmployeeRowRightColumnSelectBranch> {
+  Branch? current;
+
+  @override
+  void initState() {
+    super.initState();
+    current = widget.branch;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ControlledDropdownButton<Branch>(
+        value: current,
+        onChanged: (branch) {
+          setState(() {
+            current = branch;
+            adminEmployeeTabEmployeeRowBloc.setBranch(branch);
+          });
+        },
+        options: branchesBloc.value.branches);
   }
 }

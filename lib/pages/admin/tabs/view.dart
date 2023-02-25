@@ -22,15 +22,18 @@ class AdminTabsView extends StatelessWidget {
             children: <Widget>[
               Header(),
               TabBar(tabs: [
-                Tab(
-                    child: Text(
-                  'Employees',
-                  style: TextStyle(
-                      color: FlutterFlowTheme.of(context).primaryText),
-                )),
+                /*
                 Tab(
                     child: Text(
                   'Branches',
+                  style: TextStyle(
+                      color: FlutterFlowTheme.of(context).primaryText),
+                )),
+
+                 */
+                Tab(
+                    child: Text(
+                  'Employees',
                   style: TextStyle(
                       color: FlutterFlowTheme.of(context).primaryText),
                 )),
@@ -45,8 +48,11 @@ class AdminTabsView extends StatelessWidget {
                   child: TabBarView(
                       physics: NeverScrollableScrollPhysics(),
                       children: [
-                    AdminEmployeeTabView(),
+                    /*
                     AdminBranchesTabView(),
+                                             */
+
+                    AdminEmployeeTabView(),
                     AdminServicesTabView(),
                   ])),
             ],

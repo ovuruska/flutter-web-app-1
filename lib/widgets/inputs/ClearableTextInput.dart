@@ -5,7 +5,7 @@ class ClearableTextInput extends StatefulWidget {
   final Function(String?) onChanged;
   final String label;
   final String? initialValue;
-  final int boxWidth;
+  final double? boxWidth;
   final int maxLines;
   final String hintText;
 
@@ -27,7 +27,6 @@ class _ClearableTextInputState extends State<ClearableTextInput> {
   FocusNode focusNode = FocusNode();
   TextEditingController controller = TextEditingController();
 
-
   @override
   void dispose() {
     focusNode.dispose();
@@ -39,14 +38,11 @@ class _ClearableTextInputState extends State<ClearableTextInput> {
   void initState() {
     super.initState();
     setState(() {
-
       controller.text = widget.initialValue ?? "";
       widget.onChanged(controller.text);
     });
     focusNode.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -56,56 +52,55 @@ class _ClearableTextInputState extends State<ClearableTextInput> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        (widget.label == "") ? Container() : Text(widget.label, style: FlutterFlowTheme.of(context).bodyText1),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
-          child: SizedBox(
-            width: widget.boxWidth.toDouble(),
-            child: TextFormField(
-              maxLines: widget.maxLines,
-              controller: controller,
-              onChanged: (value) => setState(() {
-                if (widget.onChanged != null) {
-                  widget.onChanged(value);
-                }
-              }),
-              decoration: InputDecoration(
-                hintText: widget.hintText,
-                hintStyle: FlutterFlowTheme.of(context).subtitle2,
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(0),
+        (widget.label == "")
+            ? Container()
+            : Text(widget.label, style: FlutterFlowTheme.of(context).bodyText1),
+        SizedBox(
+          width: widget.boxWidth,
+          child: TextFormField(
+            maxLines: widget.maxLines,
+            controller: controller,
+            onChanged: (value) => setState(() {
+              if (widget.onChanged != null) {
+                widget.onChanged(value);
+              }
+            }),
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              hintStyle: FlutterFlowTheme.of(context).subtitle2,
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  width: 2,
                 ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).primaryColor,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(0),
-                ),
-                suffixIcon: controller.text.isNotEmpty
-                    ? IconButton(
-                        onPressed: () => setState(() {
-                          controller.clear();
-                          if (widget.onChanged != null) {
-                            widget.onChanged(null);
-                          }
-                        }),
-                        icon: Icon(
-                          Icons.clear,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
-                        ),
-                      )
-                    : null,
+                borderRadius: BorderRadius.circular(0),
               ),
-              style: FlutterFlowTheme.of(context).bodyText1,
-              textAlign: TextAlign.start,
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(0),
+              ),
+              suffixIcon: controller.text.isNotEmpty
+                  ? IconButton(
+                      onPressed: () => setState(() {
+                        controller.clear();
+                        if (widget.onChanged != null) {
+                          widget.onChanged(null);
+                        }
+                      }),
+                      icon: Icon(
+                        Icons.clear,
+                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                      ),
+                    )
+                  : null,
             ),
+            style: FlutterFlowTheme.of(context).bodyText1,
+            textAlign: TextAlign.start,
           ),
-        )
+        ),
       ],
     );
   }

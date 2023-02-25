@@ -34,12 +34,14 @@ class TicketInformationUpcomingCardList extends StatelessWidget {
         ),
       );
     else
-      return SingleChildScrollView(
+      return Container(
+        margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+        child:SingleChildScrollView(
           child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemBuilder: (context, index) => itemBuilder(context, index),
         itemCount: appointments.length,
-      ));
+      )));
   }
 }

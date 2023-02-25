@@ -16,7 +16,10 @@ class AdminEmployeeTabResults extends StatelessWidget{
         child:ListView(
           shrinkWrap: true,
           children: adminEmployeeTabBloc.getQueryResults().map((employee) => AdminEmployeeTabListItem(
-              onClick: (index) =>    adminEmployeeTabBloc.setCurrentIndex(index),
+              onClick: (index,employee) {
+                adminEmployeeTabBloc.setCurrentIndex(index);
+                adminEmployeeTabBloc.setEmployee(employee);
+              },
               employee:employee,index:index++,selected: employee.id == currentEmployee?.id)).toList(),
         )
 

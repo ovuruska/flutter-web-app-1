@@ -21,7 +21,8 @@ class AdminBranchesTabInformationRowLeftColumnView extends StatelessWidget{
     if(editable){
       return AdminBranchesTabInformationRowLeftColumnEditable();
     }else{
-      return AdminBranchesTabInformationRowLeftColumn();
+      var branch = adminBranchesTabBloc.current();
+      return AdminBranchesTabInformationRowLeftColumn(branch: branch,);
     }
 
   }

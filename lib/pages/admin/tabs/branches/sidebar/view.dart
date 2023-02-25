@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../common/StreamListenableBuilder.dart';
+import '../../Branches/controller.dart';
 import 'results.dart';
 import 'searchbar.dart';
 
 class AdminBranchesTabSidebarView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>StreamListenableBuilder(
+      stream: adminBranchesTabBloc.stream,
+
+      builder: (context, value) => _build(context));
+  Widget _build(BuildContext context) {
+
+    var branch = adminBranchesTabBloc.current();
     return Container(
 
         child: Flex(
@@ -16,7 +24,7 @@ class AdminBranchesTabSidebarView extends StatelessWidget {
               child:            AdminBranchesTabSearchbar(),
 
             ),
-            Expanded(child: AdminBranchesTabResults())
+            Expanded(child: AdminBranchesTabResults(branch: branch))
           ],
         ));
   }

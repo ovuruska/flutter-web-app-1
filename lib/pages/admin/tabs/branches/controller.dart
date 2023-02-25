@@ -10,7 +10,13 @@ class AdminBranchesTabBloc extends Bloc<AdminBranchesTabModel> {
     subject.add(AdminBranchesTabModel());
   }
 
+  setBranch(Branch? branch) {
+    var model = subject.value.setBranch(branch);
+    subject.sink.add(model);
+  }
+
   Branch? current(){
+    return subject.value.branch;
     var index = subject.value.currentIndex;
     if(index == -1) return null;
     return branchesBloc.value.branches[index];

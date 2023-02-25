@@ -21,7 +21,8 @@ class AdminEmployeeTabEmployeeRowLeftColumnView extends StatelessWidget{
     if(editable){
       return AdminEmployeeTabEmployeeRowLeftColumnEditable();
     }else{
-      return AdminEmployeeTabEmployeeRowLeftColumn();
+      var employee = adminEmployeeTabBloc.value.employee;
+      return AdminEmployeeTabEmployeeRowLeftColumn(employee: employee,);
     }
 
   }

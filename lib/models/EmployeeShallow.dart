@@ -24,6 +24,42 @@ class EmployeeShallow {
     this.weeklyProgram = WeeklyScheduleDataStructure(values ?? {});
   }
 
+  static String getRole(int role){
+
+
+    switch(role){
+      case 10:
+        return 'We Wash';
+      case 15:
+        return 'Full Grooming';
+      case 20:
+        return 'Accountant';
+      case 30:
+        return 'Manager';
+      case 40:
+        return 'Admin';
+      default:
+        return 'We Wash';
+    }
+  }
+
+  static int getRoleValue(String role){
+    switch(role){
+      case 'We Wash':
+        return 10;
+      case 'Full Grooming':
+        return 15;
+      case 'Accountant':
+        return 20;
+      case 'Manager':
+        return 30;
+      case 'Admin':
+        return 40;
+      default:
+        return 10;
+    }
+  }
+
   static EmployeeShallow empty(){
     return EmployeeShallow(id: '', name: '', phone: '', email: '', role: '', branch: -1, uid: '',);
   }
@@ -35,7 +71,7 @@ class EmployeeShallow {
       name: json['name'],
       phone: json['phone'],
       email: json['email'],
-      role: json['role'],
+      role: getRole(json['role'] as int),
       branch: json['branch'],
       uid: json['uid'],
     );
@@ -46,7 +82,7 @@ class EmployeeShallow {
     'name': name,
     'phone': phone,
     'email': email,
-    'role': role,
+    'role': getRoleValue(role),
     'branch':branch,
     'uid': uid,
   };

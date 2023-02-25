@@ -4,6 +4,8 @@ import 'package:scrubbers_employee_application/widgets/inputs/ClearableTextInput
 import '../controller.dart';
 
 class AdminBranchesTabSearchbar extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Container(

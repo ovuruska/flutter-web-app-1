@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 import 'package:scrubbers_employee_application/pages/admin/tabs/Branches/controller.dart';
-import 'package:scrubbers_employee_application/repositories/employee.dart';
 
 class AdminBranchesTabListItem extends StatelessWidget {
   final Branch branch;
@@ -90,6 +89,7 @@ class AdminBranchesTabListItem extends StatelessWidget {
 
   onClick() {
     adminBranchesTabBloc.setCurrentIndex(index);
+    adminBranchesTabBloc.setBranch(branch);
   }
 
   @override

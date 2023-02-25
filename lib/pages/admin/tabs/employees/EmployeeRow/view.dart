@@ -21,8 +21,14 @@ class AdminEmployeeTabEmployeeRowView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          AdminEmployeeTabEmployeeRowLeftColumnView(),
-          AdminEmployeeTabEmployeeRowRightColumnView(),
+          SizedBox(
+            width: 256,
+            child: AdminEmployeeTabEmployeeRowLeftColumnView(),
+          ),
+          SizedBox(
+            width: 512,
+            child: AdminEmployeeTabEmployeeRowRightColumnView(),
+          ),
           AdminEmployeeTabEmployeeRowButtonGroup()
         ],
       ),

@@ -24,7 +24,7 @@ class AdminBranchesTabInformationRowRightColumnEditable
                   initialValue: branch.description,
                   onChanged: (String? value) {
                     if (value == null) {
-                      adminBranchesTabInformationRowBloc.setDescription("");
+                      adminBranchesTabInformationRowBloc.setDescription(branch.description);
                     } else {
                       adminBranchesTabInformationRowBloc.setDescription(value);
                     }
@@ -37,7 +37,7 @@ class AdminBranchesTabInformationRowRightColumnEditable
                   initialValue: branch.phone,
                   onChanged: (String? value) {
                     if (value == null) {
-                      adminBranchesTabInformationRowBloc.setPhone("");
+                      adminBranchesTabInformationRowBloc.setPhone(branch.phone);
                     } else {
                       adminBranchesTabInformationRowBloc.setPhone(value);
                     }
@@ -50,7 +50,7 @@ class AdminBranchesTabInformationRowRightColumnEditable
                 initialValue: branch.address,
                 onChanged: (String? value) {
                   if (value == null) {
-                    adminBranchesTabInformationRowBloc.setAddress("");
+                    adminBranchesTabInformationRowBloc.setAddress(branch.address);
                   } else {
                     adminBranchesTabInformationRowBloc.setAddress(value);
                   }

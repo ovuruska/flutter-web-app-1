@@ -6,7 +6,7 @@ import 'package:scrubbers_employee_application/models/Employee.dart';
 class AdminEmployeeTabListItem extends StatelessWidget {
   final Employee employee;
   bool selected;
-  final Function(int) onClick;
+  final Function(int,Employee) onClick;
   int index;
 
   AdminEmployeeTabListItem(
@@ -137,7 +137,7 @@ class AdminEmployeeTabListItem extends StatelessWidget {
       );
 
   handleClick() {
-    onClick(index);
+    onClick(index,employee);
   }
 
   @override

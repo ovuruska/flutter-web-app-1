@@ -37,7 +37,7 @@ class AdminBranchesTabInformationRowButtonGroup extends StatelessWidget {
                 BranchRepository.instance.init().then((branch) {
                   branchesBloc.addBranch(branch);
                   var totalBranches = branchesBloc.value.branches.length;
-                  adminBranchesTabBloc.setCurrentIndex(totalBranches - 1);
+                  adminBranchesTabBloc.setBranch(branch);
                   adminBranchesTabBloc.setEditable();
                 });
               },

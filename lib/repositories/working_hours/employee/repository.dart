@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:scrubbers_employee_application/models/employee_wh.dart';
+import 'package:scrubbers_employee_application/services/auth.dart';
 import '../../utils.dart';
 
 class WorkingHoursEmployeeRepository {
@@ -18,14 +19,12 @@ class WorkingHoursEmployeeRepository {
       'start': formatter.format(start),
       'end': formatter.format(end),
     };
-    var uri = getUri(
+
+    var response = await SchedulingAuthService.instance.request(
       "/api/scheduling/hours/employee/${employeeId.toString()}",
       queryParams: queryParams,
     );
 
-    var request = http.Request('GET', uri);
-
-    http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
       var respString = await response.stream.bytesToString();
@@ -37,19 +36,17 @@ class WorkingHoursEmployeeRepository {
   }
 
   Future<void> clearWorkingHour(int employeeId,DateTime date) async{
-    var headers = {'Content-Type': 'application/json'};
-    var uri = getUri("/api/scheduling/hours/employee/${employeeId.toString()}");
-    var request = http.Request('POST', uri);
     var body = {
       'branch': null,
       "date": formatter.format(date),
-
     };
 
-    request.body = json.encode(body);
-    request.headers.addAll(headers);
+    var response = await SchedulingAuthService.instance.jsonRequest(
+      "/api/scheduling/hours/employee/${employeeId.toString()}",
+      method: "POST",
+      body: body,
+    );
 
-    http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
       return;
@@ -59,9 +56,8 @@ class WorkingHoursEmployeeRepository {
   }
 
   Future<void> setWorkingHour(int employeeId, int? branchId, DateTime date,DateTime start,DateTime end) async {
-    var headers = {'Content-Type': 'application/json'};
-    var uri = getUri("/api/scheduling/hours/employee/${employeeId.toString()}");
-    var request = http.Request('POST', uri);
+
+
     var body = {
       'branch': branchId,
       "start":start.toString(),
@@ -69,10 +65,12 @@ class WorkingHoursEmployeeRepository {
       'date': formatter.format(date),
     };
 
-    request.body = json.encode(body);
-    request.headers.addAll(headers);
+    var response = await SchedulingAuthService.instance.jsonRequest(
+      "/api/scheduling/hours/employee/${employeeId.toString()}",
+      method: "POST",
+      body: body,
+    );
 
-    http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
       return;

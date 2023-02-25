@@ -6,7 +6,13 @@ class AdminEmployeeTabModel {
   Branch? currentBranch;
   int currentIndex = -1;
   bool editable = false;
+  Employee? employee;
   List<DateTime> selectedDates = [];
+
+  setEmployee(Employee? employee) {
+    this.employee = employee;
+    return this;
+  }
 
   setSelectedDates(List<DateTime> dates) {
     selectedDates = dates;

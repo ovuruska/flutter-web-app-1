@@ -8,16 +8,14 @@ String formatDate(DateTime date) {
   return dateString;
 }
 
-Widget getStyledButton({void Function()? onPressed, required String text,double width = 160,double fontSize=16}) =>
-    ShadowContainer(
-  child:
+Widget getStyledButton({void Function()? onPressed,bool disabled = false, required String text,double width = 160,double fontSize=16}) =>
     Container(
 
         width: width,
         height:24,
-        child: ElevatedButton(onPressed: onPressed,style:ButtonStyle(
+        child: ElevatedButton(onPressed:(disabled) ? null : onPressed,style:ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-        ), child: Text(text,style:TextStyle(color: Colors.black,fontSize: fontSize,fontWeight: FontWeight.bold),))));
+        ), child: Text(text,style:TextStyle(color: Colors.black,fontSize: fontSize,fontWeight: FontWeight.bold),)));
 
 
 

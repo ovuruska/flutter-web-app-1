@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StringUtils.dart';
 import 'package:scrubbers_employee_application/widgets/BoldText.dart';
 import 'package:scrubbers_employee_application/widgets/InfoText.dart';
+import 'package:scrubbers_employee_application/widgets/headless_table%202.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ClearableTextInput.dart';
 
 import '../../controller.dart';
@@ -18,40 +19,33 @@ class AdminEmployeeTabEmployeeRowRightColumnEditable extends StatelessWidget {
     if(employee != null) totalInvoice = totalInvoiceOfEmployee(employee);
 
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              textPadding(BoldText(text: "ID")),
-              Flexible(
-                child:ClearableTextInput(
-                  label: "Phone number",
-                  initialValue: employee?.phone ?? "",
-                  onChanged: (String? value) {
-                    if(value == null){
-                      adminEmployeeTabEmployeeRowBloc.setPhone("");
-                    }else{
-                      adminEmployeeTabEmployeeRowBloc.setPhone(value);
-                    }
-                  },),
-              ),
-              Flexible(
-                  child:AdminEmployeeTabEmployeeRowRightColumnSelectBranch()
-              )
+
+      child:HeadlessDataTable(rows: [
+        DataRow(cells: [
+          DataCell(textPadding(BoldText(text: "Total invoice"))),
+          DataCell(textPadding(InfoText(text:totalInvoice.toStringAsFixed(2)))),
+        ]),
+        DataRow(cells:[
+          DataCell(textPadding(BoldText(text: "Phone number"))),
+          DataCell(Flexible(child:ClearableTextInput(
+            boxWidth: 256,
+            initialValue: employee?.phone ?? "",
+            onChanged: (String? value) {
+              if(value == null){
+                adminEmployeeTabEmployeeRowBloc.setPhone("");
+              }else{
+                adminEmployeeTabEmployeeRowBloc.setPhone(value);
+              }
+            },),))
+        ]),
+        DataRow(cells:[
+          DataCell(textPadding(BoldText(text: "Branch"))),
+          DataCell(Flexible(child:AdminEmployeeTabEmployeeRowRightColumnSelectBranch(branch: employee?.branch,)))
+        ])
+      ], numberOfColumns: 2,
+
+      ));
 
 
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              textPadding(InfoText(text: StringUtils.formatCurrency(totalInvoice),)),
-            ],
-          )
-        ],
-      ),
-    );
   }
 }

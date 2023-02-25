@@ -13,6 +13,7 @@ class InfoText extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: FlutterFlowTheme.of(context).bodyText1.merge(TextStyle(
             decoration: TextDecoration.none,
+            overflow: TextOverflow.ellipsis,
             color: FlutterFlowTheme.of(context).primaryText,
             fontSize: fontSize)));
   }

@@ -11,8 +11,7 @@ class AdminBranchesTabView extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) => StreamListenableBuilder(stream: adminBranchesTabBloc.stream, listener: (value){}, builder: (context, snapshot) => _build(context));
-  Widget _build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
         child: Flex(direction: Axis.horizontal, children: [
       Container(

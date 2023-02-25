@@ -72,6 +72,7 @@ class AdminEmployeeTabEmployeeRowButtonGroup extends StatelessWidget {
                                 adminEmployeeTabEmployeeRowBloc.value.name;
                             var phoneNumber =
                                 adminEmployeeTabEmployeeRowBloc.value.phone;
+                            print(branch);
                             var employee = employeesBloc.updateEmployee(currentIndex,
                                 branch: branch,
                                 role: role,
@@ -80,6 +81,7 @@ class AdminEmployeeTabEmployeeRowButtonGroup extends StatelessWidget {
                             EmployeeRepository.instance.modify(employee).then((value) {
                               showSnackbar(context, "Employee successfully updated.");
                             });
+                            adminEmployeeTabBloc.setEmployee(employee);
                           },
                   ),
                 )
@@ -118,7 +120,9 @@ class AdminEmployeeTabEmployeeRowButtonGroup extends StatelessWidget {
                       var currentIndex =
                           adminEmployeeTabBloc.value.currentIndex;
                       employeesBloc.removeEmployee(currentIndex);
+                      adminEmployeeTabBloc.setEmployee(null);
                       adminEmployeeTabBloc.prevIndex();
+
                     });
                   },
           ))

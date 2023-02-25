@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/widgets/BoldText.dart';
 import 'package:scrubbers_employee_application/widgets/InfoText.dart';
+import 'package:scrubbers_employee_application/widgets/headless_table%202.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ClearableTextInput.dart';
 
 import '../../controller.dart';
@@ -12,7 +13,7 @@ class AdminEmployeeTabEmployeeRowLeftColumnEditable extends StatelessWidget {
   Widget build(BuildContext context) {
     var employee = adminEmployeeTabBloc.getCurrent();
 
-    return Container(
+    /*
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -54,6 +55,52 @@ class AdminEmployeeTabEmployeeRowLeftColumnEditable extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+
+       */
+
+    return Container(
+      child: HeadlessDataTable(
+        rows: [
+          DataRow(cells: [
+            DataCell(BoldText(text: "ID")),
+            DataCell(InfoText(text: employee?.id.toString() ?? "")),
+          ]),
+          DataRow(cells: [
+            DataCell(BoldText(text: "Name")),
+            DataCell(Flexible(
+              child: ClearableTextInput(
+                initialValue: employee?.name ?? "",
+                onChanged: (String? value) {
+                  if (value == null) {
+                    adminEmployeeTabEmployeeRowBloc.setName("");
+                  } else {
+                    adminEmployeeTabEmployeeRowBloc.setName(value);
+                  }
+                },
+              ),
+            ))
+          ]),
+          DataRow(cells: [
+            DataCell(BoldText(text: "Role")),
+            DataCell(
+              Flexible(
+                child: ClearableTextInput(
+                  initialValue: employee?.role ?? "",
+                  onChanged: (String? value) {
+                    if (value == null) {
+                      adminEmployeeTabEmployeeRowBloc.setRole("");
+                    } else {
+                      adminEmployeeTabEmployeeRowBloc.setRole(value);
+                    }
+                  },
+                ),
+              ),
+            ),
+          ]),
+        ],
+        numberOfColumns: 2,
       ),
     );
   }

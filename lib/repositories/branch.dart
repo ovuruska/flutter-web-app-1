@@ -37,11 +37,8 @@ class BranchRepository {
   }
 
   Future<bool> remove(int id) async {
-    var client = http.Client();
 
-    var uri = getUri("/api/branch/${id.toString()}");
-
-    var response = await client.delete(uri);
+    var response = await SchedulingAuthService.instance.request("/api/branch/${id.toString()}", method: "DELETE");
     if (response.statusCode == 200) {
       return true;
     } else {

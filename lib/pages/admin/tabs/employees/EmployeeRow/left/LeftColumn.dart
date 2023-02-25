@@ -1,46 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 import 'package:scrubbers_employee_application/pages/admin/tabs/Employees/controller.dart';
 import 'package:scrubbers_employee_application/widgets/BoldText.dart';
 import 'package:scrubbers_employee_application/widgets/InfoText.dart';
 
-import '../utils.dart';
+import '../../../../../../models/Employee.dart';
+import '../../../../../../widgets/headless_table 2.dart';
 
 class AdminEmployeeTabEmployeeRowLeftColumn extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => StreamListenableBuilder(
-      stream: adminEmployeeTabBloc.stream,
-      listener: (value) {},
-      builder: (context, snapshot) => _build(context));
+
+  final Employee? employee;
+
+  const AdminEmployeeTabEmployeeRowLeftColumn({Key? key, this.employee}) : super(key: key);
 
 
-
-  Widget _build(BuildContext context) {
-    var employee = adminEmployeeTabBloc.getCurrent();
+  Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              textPadding(BoldText(text: "ID")),
-              textPadding(BoldText(text: "Name")),
-              textPadding(BoldText(text: "Role")),
+      child:HeadlessDataTable(
+        numberOfColumns: 2,
+        rows:[
+          DataRow(cells: [
+            DataCell(BoldText(text: "ID")),
+            DataCell(InfoText(text: employee?.id.toString() ?? "")),
+          ]),
+          DataRow(cells: [
+            DataCell(BoldText(text: "Name")),
+            DataCell(InfoText(text: employee?.name ?? "")),
+          ]),
+          DataRow(cells: [
+            DataCell(BoldText(text: "Role")),
+            DataCell(InfoText(text: employee?.role ?? "")),
+          ]),
+        ]
+      )
 
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              textPadding(InfoText(text: employee?.id.toString() ?? "")),
-              textPadding(InfoText(text: employee?.name ?? "")),
-              textPadding(InfoText(text: employee?.role ?? "")),
-
-            ],
-          )
-        ],
-      ),
     );
   }
 }
