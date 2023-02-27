@@ -25,7 +25,7 @@ class HeaderButton extends StatelessWidget {
     ),
       child:FFButtonWidget(
         onPressed: () {
-          context.pushNamed(route);
+          if(currentRoute != route) context.pushNamed(route);
         },
         text: text,
         options: FFButtonOptions(

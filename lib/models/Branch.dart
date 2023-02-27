@@ -20,6 +20,8 @@ class Branch  extends BaseModel{
     return "$name";
   }
 
+
+
   Branch.empty()
       : this(id: -1, name: "", address: "", phone: "", description: "");
 

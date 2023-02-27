@@ -73,11 +73,16 @@ dependencies:
   dartz: ^0.10.0
   meta:
   flutter_layout_grid: ^2.0.1
+  widgetbook_annotation: 2.1.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^4.0.0
+  build_runner:
+  widgetbook_generator:
+  widgetbook:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

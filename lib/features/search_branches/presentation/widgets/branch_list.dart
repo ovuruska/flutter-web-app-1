@@ -15,9 +15,12 @@ class BranchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
         itemCount: branches.length,
         itemBuilder: (context, index) {
+        var branch = branches[index];
           return BranchCard(
+            key:Key(branch.name),
             branch: branches[index],
             onPressed: () => onPressed(branches[index]),
           );
