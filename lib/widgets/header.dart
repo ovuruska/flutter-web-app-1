@@ -5,13 +5,13 @@ import 'header_button.dart';
 class Header extends StatelessWidget {
   static final buttonNames = [
     ['Dashboard', "Dashboard"],
+    ['Admin', "Admin"],
     /*
     ['Pets', "Pets"],
     ["Appointments", "Appointments"],
     ['Customers', "Customers"],
     ['Payroll', "Payroll"],
     ['Notifications', "Notifications"],
-    ['Admin', "Admin"],
 
    */
     ['Sign Out', "Signout"],

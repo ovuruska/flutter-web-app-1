@@ -72,7 +72,6 @@ class AdminEmployeeTabEmployeeRowButtonGroup extends StatelessWidget {
                                 adminEmployeeTabEmployeeRowBloc.value.name;
                             var phoneNumber =
                                 adminEmployeeTabEmployeeRowBloc.value.phone;
-                            print(branch);
                             var employee = employeesBloc.updateEmployee(currentIndex,
                                 branch: branch,
                                 role: role,

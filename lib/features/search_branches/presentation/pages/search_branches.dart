@@ -3,11 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/features/search_branches/presentation/bloc/search_branches_state.dart';
 
 import '../../../../injection.dart';
+import '../../../../models/Branch.dart';
 import '../bloc/search_branches_bloc.dart';
 import '../bloc/search_branches_event.dart';
-import '../widgets/search.dart';
+import '../widgets/search_branches.dart';
 
 class SearchBranchesView extends StatefulWidget {
+
+  final Function(Branch)? selectBranch;
+
+  const SearchBranchesView({Key? key, this.selectBranch}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _SearchBranchesViewState();
@@ -34,6 +40,11 @@ class _SearchBranchesViewState extends State<SearchBranchesView> {
           var branches = state.branches;
           return SearchBranches(
             branches: branches,
+            onPressed: (branch) {
+              if (widget.selectBranch != null) {
+                widget.selectBranch!(branch);
+              }
+            },
           );
         }
         return Container();

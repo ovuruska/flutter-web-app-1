@@ -1,5 +1,3 @@
-
-
 import 'package:equatable/equatable.dart';
 
 import '../../../../models/Branch.dart';
@@ -21,7 +19,7 @@ class Loaded extends SearchBranchesState {
   const Loaded({required this.branches});
 
   @override
-  List<Object> get props => [branches];
+  List<Object> get props => branches.map((branch) => branch.toJson()).toList();
 }
 
 class Failed extends SearchBranchesState {

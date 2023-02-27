@@ -18,7 +18,7 @@ class AdminEmployeeTabView extends StatelessWidget {
     return Container(
         child: Flex(direction: Axis.horizontal, children: [
       Container(
-          width: 384, child: Expanded(child: AdminEmployeeTabSidebarView())),
+          width: 384, child: AdminEmployeeTabSidebarView()),
       Expanded(
           child: Flex(direction: Axis.vertical, children: [
         AdminEmployeeTabEmployeeRowView(),

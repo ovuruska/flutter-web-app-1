@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
 
+import '../../../../features/search_branches/presentation/pages/search_branches.dart';
 import 'controller.dart';
 import 'information_row/view.dart';
-import 'sidebar/view.dart';
 import 'content/controller.dart';
 import 'content/view.dart';
 
@@ -13,10 +12,12 @@ class AdminBranchesTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Flex(direction: Axis.horizontal, children: [
-      Container(
-          width: 384, child: Expanded(child: AdminBranchesTabSidebarView())),
+        child: Flex(direction: Axis.horizontal,crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Expanded(
+        flex: 1,
+          child: SearchBranchesView()),
+      Expanded(
+        flex:4,
           child: Flex(direction: Axis.vertical, children: [
         AdminBranchesTabInformationRowView(),
         Divider(
