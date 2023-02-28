@@ -9,21 +9,33 @@ import 'package:card_settings/card_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/app.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/domain/entities/branch_entity.dart';
-import 'package:scrubbers_employee_application/features/modify_branch/domain/usecases/create_branch.dart';
+import 'package:scrubbers_employee_application/features/modify_branch/domain/usecases/save_branch.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/presentation/bloc/modify_branch_bloc.dart';
+import 'package:scrubbers_employee_application/features/modify_branch/presentation/bloc/modify_branch_event.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/presentation/bloc/modify_branch_state.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/presentation/widgets/branch_card_settings.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/register.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/widgetbook/branch_card_settings.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/widgetbook/modify_branch.dart';
+import 'package:scrubbers_employee_application/features/search_branches/presentation/bloc/search_branches_bloc.dart';
+import 'package:scrubbers_employee_application/features/search_branches/presentation/bloc/search_branches_event.dart';
 import 'package:scrubbers_employee_application/features/search_branches/presentation/widgets/branch_card.dart';
 import 'package:scrubbers_employee_application/features/search_branches/presentation/widgets/branch_list.dart';
-import 'package:scrubbers_employee_application/features/search_branches/register.dart';
+import 'package:scrubbers_employee_application/features/search_branches/presentation/widgets/search_branches.dart';
 import 'package:scrubbers_employee_application/features/search_branches/widgetbook/branch_card.dart';
 import 'package:scrubbers_employee_application/features/search_branches/widgetbook/branch_list.dart';
 import 'package:scrubbers_employee_application/features/search_branches/widgetbook/search_branches.dart';
+import 'package:scrubbers_employee_application/features/view_logs/domain/entity/log_entity.dart';
+import 'package:scrubbers_employee_application/features/view_logs/presentation/widgets/card_description.dart';
+import 'package:scrubbers_employee_application/features/view_logs/presentation/widgets/log_card.dart';
+import 'package:scrubbers_employee_application/features/view_logs/widgetbook/card_description.dart';
+import 'package:scrubbers_employee_application/features/view_logs/widgetbook/log_card.dart';
+import 'package:scrubbers_employee_application/features/view_logs/widgetbook/log_list.dart';
+import 'package:scrubbers_employee_application/features/view_logs/widgetbook/log_tabs.dart';
+import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -49,6 +61,39 @@ class HotReload extends StatelessWidget {
       ],
       devices: [
         Device(
+          name: 'iPhone 12 Pro Max',
+          resolution: Resolution(
+            nativeSize: DeviceSize(
+              height: 926.0,
+              width: 428.0,
+            ),
+            scaleFactor: 3.0,
+          ),
+          type: DeviceType.mobile,
+        ),
+        Device(
+          name: 'iPhone 12 Pro',
+          resolution: Resolution(
+            nativeSize: DeviceSize(
+              height: 844.0,
+              width: 390.0,
+            ),
+            scaleFactor: 3.0,
+          ),
+          type: DeviceType.mobile,
+        ),
+        Device(
+          name: 'iPhone 12',
+          resolution: Resolution(
+            nativeSize: DeviceSize(
+              height: 844.0,
+              width: 390.0,
+            ),
+            scaleFactor: 2.0,
+          ),
+          type: DeviceType.mobile,
+        ),
+        Device(
           name: 'Macbook Pro',
           resolution: Resolution(
             nativeSize: DeviceSize(
@@ -73,6 +118,62 @@ class HotReload extends StatelessWidget {
               name: 'features',
               widgets: [],
               folders: [
+                WidgetbookFolder(
+                  name: 'view_logs',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'LogCard',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Log Card',
+                                  builder: (context) => logCardUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                            WidgetbookComponent(
+                              name: 'LogList',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Log List',
+                                  builder: (context) => logListUseCase(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'Log List',
+                                  builder: (context) => logTabsUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                            WidgetbookComponent(
+                              name: 'CardDescription',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Card Description',
+                                  builder: (context) =>
+                                      cardDescriptionUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
                 WidgetbookFolder(
                   name: 'modify_branch',
                   widgets: [],

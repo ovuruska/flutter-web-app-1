@@ -4,6 +4,7 @@ import 'package:scrubbers_employee_application/common/StringUtils.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 import 'package:scrubbers_employee_application/widgets/headless_table.dart';
 
+import '../../../../features/view_logs/presentation/pages/view_logs_dialog.dart';
 import 'cells.dart';
 
 class TicketInformationPetInformation extends StatelessWidget {
@@ -32,23 +33,30 @@ class TicketInformationPetInformation extends StatelessWidget {
       ]),
       DataRow(cells: [
         boldCell("Weight"),
-        normalCell(StringUtils.capitalize(appointment.dog.weight.toInt().toString())),
+        normalCell(
+            StringUtils.capitalize(appointment.dog.weight.toInt().toString())),
       ]),
       DataRow(cells: [
         boldCell("Service Time"),
         normalCell("${duration} minutes"),
       ]),
-      DataRow(cells: [
-        boldCell("Special Handling"),
-        DataCell(Checkbox(
-          value: appointment.dog.specialHandling,
-          onChanged: (value) {
-            var petId = appointment.dog.id;
-            ticketInformationInputBloc.setSpecialHandling(
-                petId, value ?? false);
-          },
-        )),
-      ]),
+      DataRow(
+        cells: [
+          DataCell(
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) =>
+                        ViewLogsDialog(id: int.parse(appointment.id)));
+              },
+              child: Text("History"),
+            ),
+            
+          ),
+          DataCell(Container())
+        ],
+      )
     ], numberOfColumns: 2);
   }
 }
