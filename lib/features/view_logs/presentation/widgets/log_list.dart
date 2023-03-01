@@ -13,6 +13,7 @@ class LogList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    logs.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     return SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.symmetric(vertical:16),
