@@ -12,6 +12,7 @@ import 'package:scrubbers_employee_application/pages/pets/view.dart';
 import 'package:scrubbers_employee_application/pages/print/View.dart';
 import 'package:scrubbers_employee_application/pages/signout/view.dart';
 
+import '../../features/view_logs/presentation/pages/view_logs.dart';
 import '../../index.dart';
 import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
@@ -58,6 +59,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'appointments',
               builder: (context, params) => LoginRequired(AppointmentsView()),
             ),
+
             FFRoute(
                 name: "Signout",
                 path: "signout",
