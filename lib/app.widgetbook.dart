@@ -6,11 +6,16 @@
 
 import 'dart:core';
 import 'package:card_settings/card_settings.dart';
+import 'package:card_settings/helpers/platform_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/app.dart';
+import 'package:scrubbers_employee_application/features/create_new_appointment/presentation/widgets/customer_section.dart';
+import 'package:scrubbers_employee_application/features/create_new_appointment/widgetbook/create_appointment_form.dart';
+import 'package:scrubbers_employee_application/features/create_new_appointment/widgetbook/customer_section.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/domain/usecases/save_branch.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/presentation/bloc/modify_branch_bloc.dart';
@@ -114,6 +119,23 @@ class HotReload extends StatelessWidget {
         WidgetbookCategory(
           name: 'use cases',
           folders: [
+            WidgetbookFolder(
+              name: 'widgets',
+              widgets: [
+                WidgetbookComponent(
+                  name: 'CardSettingsSection',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Customer Section',
+                      builder: (context) => customerSectionUseCase(context),
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+              ],
+              folders: [],
+              isExpanded: true,
+            ),
             WidgetbookFolder(
               name: 'features',
               widgets: [],
@@ -263,6 +285,38 @@ class HotReload extends StatelessWidget {
                                 WidgetbookUseCase(
                                   name: 'BranchCard',
                                   builder: (context) => searchUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+                WidgetbookFolder(
+                  name: 'create_new_appointment',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'CreateAppointmentForm',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Create appointment form',
+                                  builder: (context) =>
+                                      createAppointmentFormUseCase(context),
                                 ),
                               ],
                               isExpanded: true,
