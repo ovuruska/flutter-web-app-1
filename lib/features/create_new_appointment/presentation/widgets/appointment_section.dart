@@ -1,9 +1,14 @@
 import 'package:card_settings/card_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/models/Branch.dart';
 
 CardSettingsSection appointmentSection({
   void Function(TimeOfDay?)? onTimeChanged,
   void Function(DateTime?)? onDateChanged,
+  required List<Branch> branches,
+  Function(Branch?)? onBranchSelected,
+
+
 }) =>
     CardSettingsSection(
 
@@ -13,12 +18,14 @@ CardSettingsSection appointmentSection({
         children: <CardSettingsWidget>[
 
           CardSettingsDatePicker(
-            label: 'Name',
+            label: 'Date',
             onSaved: onDateChanged,
           ),
           CardSettingsTimePicker(
             onSaved: onTimeChanged,
-            label: 'Pet',
+            label: 'Time',
           ),
+          CardSettingsSelectionPicker<Branch>(items: branches, label: 'Branch', onSaved:onBranchSelected)
+
 
         ]);
