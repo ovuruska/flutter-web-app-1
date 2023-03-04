@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 

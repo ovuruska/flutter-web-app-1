@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
 
+import '../../domain/all_breeds.dart';
 import '../../domain/entities/branch_entity.dart';
 import '../../domain/entities/employee_entity.dart';
 import 'appointment_section.dart';
@@ -34,7 +35,9 @@ class _CreateAppointmentFormState extends State<CreateAppointmentForm> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController petController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController breedController = TextEditingController();
+  final TextEditingController breedController = TextEditingController(
+      text: (allBreeds.isEmpty) ? null : allBreeds.first
+  );
   final TextEditingController emailController = TextEditingController();
 
   DateTime date = DateTime.now();

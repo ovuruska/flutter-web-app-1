@@ -1,5 +1,6 @@
 import 'package:card_settings/card_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
 
 CardSettingsSection customerSection({
   TextEditingController? nameController,
@@ -15,6 +16,7 @@ CardSettingsSection customerSection({
         children: <CardSettingsWidget>[
           CardSettingsText(
             controller: nameController,
+            maxLength: 100,
             label: 'Name',
           ),
           CardSettingsText(
@@ -26,9 +28,12 @@ CardSettingsSection customerSection({
             label: 'Email',
             maxLength: 100,
           ),
-          CardSettingsText(
-            controller:breedController,
-              label:"Breed"
+          CardSettingsListPicker<String>(
+              label:"Breed", items: allBreeds,
+            initialItem: (allBreeds.isEmpty) ? null : allBreeds.first,
+            onChanged: (value) {
+                if (value != null) breedController!.text = value;
+            },
           ),
           CardSettingsText(
             label: 'Phone',

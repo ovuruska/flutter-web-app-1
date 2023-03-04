@@ -1,6 +1,6 @@
 import 'package:scrubbers_employee_application/common/StringUtils.dart';
 
-final allBreeds = [
+final List<String> allBreeds = [
   "AFFENPINSCHER",
   "AFGHAN HOUND",
   "AIREDALE TERRIER",
