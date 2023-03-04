@@ -49,7 +49,6 @@ class SearchBranchesBloc
       emit(Loading());
       final failureOrBranch = await createNewBranch(NoParams());
 
-      print(failureOrBranch);
       failureOrBranch.fold(
               (failure) => emit(Failed(message: "Failed to create new branch.")
               as SearchBranchesState),

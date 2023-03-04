@@ -45,7 +45,7 @@ class PetModel {
         owner: Customer.fromJson(json['owner']),
         name: json['name'].toString(),
         breed: json['breed'].toString(),
-        age: json['age'],
+        age: json['age'] ?? 0,
         specialHandling: json.containsKey("special_handling")
             ? json["special_handling"]
             : false,
@@ -55,13 +55,13 @@ class PetModel {
         customerNotes: json.containsKey("customer_notes")
             ? json['customer_notes'].toString()
             : "",
-        rabiesVaccination: json.containsKey("rabies_vaccination")
+        rabiesVaccination: json.containsKey("rabies_vaccination") && json['rabies_vaccination'] != null
             ? DateTime.parse(json['rabies_vaccination']).toLocal()
             : DateTime.now(),
         coatType: json.containsKey("coat_type")
             ? DataTypes.stringToCoatType(json['coat_type'])
             : CoatType.DOODLES,
-        weight: json['weight']);
+        weight: json['weight'] ?? 0.0);
   }
 
   toJson() =>

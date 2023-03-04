@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
+import '../../../features/create_appointment/presentation/pages/create_appointment_dialog.dart';
 import '../sidebar/calendar/controller.dart';
 import 'EmployeeSelect.dart';
-import 'PrintButton.dart';
 
 class DashboardLegendRow extends StatelessWidget {
   Widget getLegend(BuildContext context, Color color, String label) {
@@ -90,15 +90,21 @@ class DashboardLegendRow extends StatelessWidget {
             size: 16,
           ),
           "Special handling"),
+
       getLegend(context, const Color(0xFF3894D7), "Regular"),
       getLegend(context, const Color(0xFF4CA336), "In Session"),
       getLegend(context, const Color(0xFF989898), "Completed"),
       getLegend(
           context, FlutterFlowTheme.of(context).secondaryColor, "New Pet"),
-      getLegend(context, FlutterFlowTheme.of(context).primaryColor, "Vacation"),
+      getLegend(context, FlutterFlowTheme.of(context).primaryColor, "Pending"),
       Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-        child: DashboardLegendPrintButton(),
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(context: context, builder: (context) => CreateNewAppointmentDialog());
+          },
+          child: Text('Create appointment'),
+        ),
       ),
     ])));
   }
