@@ -60,7 +60,6 @@ class BranchRepository {
       return Branch.fromJson(jsonDecode(respString));
     }
     else {
-      print(await response.stream.bytesToString());
       print(response.reasonPhrase);
     }
 

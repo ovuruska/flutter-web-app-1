@@ -1,17 +1,17 @@
 import 'package:get_it/get_it.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/data/repositories/create_appointment_repository_impl.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/repositories/create_appointment_repository.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/repositories/get_branches_repository.dart';
 
+import 'data/repositories/create_appointment_repository_impl.dart';
 import 'data/repositories/get_branches_repository_impl.dart';
 import 'data/repositories/get_employees_repository_impl.dart';
+import 'domain/repositories/create_appointment_repository.dart';
+import 'domain/repositories/get_branches_repository.dart';
 import 'domain/repositories/get_employees_repository.dart';
 import 'domain/usecases/create_appointment.dart';
 import 'domain/usecases/get_branches.dart';
 import 'domain/usecases/get_employees.dart';
 import 'presentation/bloc/create_appointment_bloc.dart';
 
-registerCreateAppointment(GetIt sl) {
+registerRebookAppointment(GetIt sl) {
   // BLoCs
   sl.registerLazySingleton(() => CreateAppointmentBloc(
         getBranches: sl(),
@@ -22,7 +22,7 @@ registerCreateAppointment(GetIt sl) {
   sl.registerLazySingleton<GetBranchesRepository>(
       () => GetBranchesRepositoryImpl());
   sl.registerLazySingleton<GetEmployeesRepository>(
-      () => GetAllEmployeesRepositoryImpl());
+      () => GetEmployeesRepositoryImpl());
   sl.registerLazySingleton<CreateAppointmentRepository>(
       () => CreateAppointmentRepositoryImpl());
 

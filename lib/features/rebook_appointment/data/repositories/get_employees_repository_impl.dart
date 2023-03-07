@@ -7,8 +7,8 @@ import '../../../../services/auth.dart';
 import '../../domain/entities/employee_entity.dart';
 import '../../domain/repositories/get_employees_repository.dart';
 
-class GetAllEmployeesRepositoryImpl implements GetEmployeesRepository {
-  GetAllEmployeesRepositoryImpl();
+class GetEmployeesRepositoryImpl implements GetEmployeesRepository {
+  GetEmployeesRepositoryImpl();
 
   @override
   Future<Either<Failure, List<EmployeeEntity>>> getEmployees(
