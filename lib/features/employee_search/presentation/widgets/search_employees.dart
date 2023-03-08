@@ -8,10 +8,10 @@ import 'employee_list.dart';
 
 class EmployeeSearch extends StatefulWidget {
   final List<EmployeeEntity> employees;
-
+  final int? selected;
   final Function(EmployeeEntity)? onPressed;
 
-  const EmployeeSearch({Key? key, required this.employees, this.onPressed}) : super(key: key);
+  const EmployeeSearch({Key? key, required this.employees, this.onPressed, this.selected}) : super(key: key);
 
   @override
   _EmployeeSearchState createState() => _EmployeeSearchState();
@@ -51,6 +51,7 @@ class _EmployeeSearchState extends State<EmployeeSearch> {
       Expanded(
         child:SingleChildScrollView(
           child: EmployeeList(
+            selected: widget.selected,
               employees: widget.employees
                   .where(
                       (element) => element.name.contains(editingController.text))

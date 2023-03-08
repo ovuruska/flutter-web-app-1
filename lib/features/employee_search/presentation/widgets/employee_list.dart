@@ -7,8 +7,9 @@ import 'employee_card.dart';
 class EmployeeList extends StatelessWidget {
   final List<EmployeeEntity> employees;
   final Function(EmployeeEntity) onPressed;
+  final int? selected;
 
-  const EmployeeList({Key? key, required this.employees, required this.onPressed})
+  const EmployeeList({Key? key, required this.employees, required this.onPressed, this.selected})
       : super(key: key);
 
   @override
@@ -20,6 +21,7 @@ class EmployeeList extends StatelessWidget {
           var employee = employees[index];
           return EmployeeCard(
             key:Key(employee.name),
+            selected: selected == employee.id,
             onPressed: () => onPressed(employees[index]), employee: employee,
           );
         });

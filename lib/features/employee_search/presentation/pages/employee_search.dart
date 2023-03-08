@@ -23,6 +23,9 @@ class EmployeeSearchView extends StatefulWidget {
 }
 
 class _EmployeeSearchViewState extends State<EmployeeSearchView> {
+
+  int ?selected;
+
   @override
   void initState() {
     super.initState();
@@ -41,10 +44,15 @@ class _EmployeeSearchViewState extends State<EmployeeSearchView> {
         } else if (state is Loaded) {
           var employees = state.employees;
           return EmployeeSearch(
+            selected: selected,
             employees: employees,
             onPressed: (employee) {
+              setState(() {
+                selected = employee.id;
+              });
               if (widget.selectEmployee != null) {
                 widget.selectEmployee!(employee);
+
               }
             },
           );

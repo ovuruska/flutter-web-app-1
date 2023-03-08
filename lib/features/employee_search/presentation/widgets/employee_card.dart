@@ -13,13 +13,14 @@ class EmployeeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var employeeName = employee.name;
     var firstLetter = (employeeName != null && employeeName.isNotEmpty) ? employeeName[0].toUpperCase() : '';
+    var surnameFirstLetter = employeeName.split(' ').length > 1 ? employeeName.split(' ')[1][0].toUpperCase() : '';
     return ListTile(
       selected: selected,
       selectedColor: Colors.grey.shade300,
       leading:CircleAvatar(
         backgroundColor: Colors.grey.shade800,
         child: Text(
-          firstLetter,
+          firstLetter + surnameFirstLetter,
           style: TextStyle(
 
             color: Colors.white,
