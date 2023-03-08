@@ -8,6 +8,8 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.d
 import '../../features/employee_modify/presentation/bloc/employee_modify_bloc.dart';
 import '../../features/employee_modify/presentation/bloc/employee_modify_event.dart';
 import '../../features/employee_modify/presentation/pages/employee_modify.dart';
+import '../../features/employee_search/presentation/bloc/employee_search_bloc.dart';
+import '../../features/employee_search/presentation/bloc/employee_search_event.dart';
 import '../../features/employee_search/presentation/pages/employee_search.dart';
 import '../../features/employee_working_hours/presentation/pages/employee_working_hours.dart';
 import '../../features/modify_branch/presentation/bloc/modify_branch_bloc.dart';
@@ -39,7 +41,7 @@ class AdminEmployeesTab extends StatelessWidget {
           Expanded(
               flex: 4,
               child: Container(
-                height: double.infinity,
+                  height: double.infinity,
                   margin: EdgeInsets.all(8),
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -47,10 +49,24 @@ class AdminEmployeesTab extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: SingleChildScrollView(
-                child: Column(
-                  children: [EmployeeModifyView(), EmployeeWorkingHoursView()],
-                ),
-              )))
+                    child: Column(
+                      children: [
+                        EmployeeModifyView(
+                          onRemoved: (employee) {
+                            sl<EmployeeSearchBloc>()
+                                .add(RemoveEmployeeEvent(id:employee.id));
+                            sl<EmployeeWorkingHoursBloc>()
+                                .add(PurgeWorkingHoursEvent());
+                          },
+                        ),
+                        Container(
+                          height: 96,
+                        ),
+
+                        EmployeeWorkingHoursView()
+                      ],
+                    ),
+                  )))
         ],
       ),
     );

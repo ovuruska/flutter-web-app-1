@@ -13,9 +13,9 @@ import '../../domain/repositories/employee_modify_repository.dart';
 
 class EmployeeModifyRepositoryImpl extends EmployeeModifyRepository {
   @override
-  Future<Either<Failure, EmployeeEntity>> delete(int id) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<Failure, void>> delete(int id) async {
+    var response = await SchedulingAuthService.instance.request("/api/employee/$id", method:"DELETE");
+    return Right(null);
   }
 
   @override

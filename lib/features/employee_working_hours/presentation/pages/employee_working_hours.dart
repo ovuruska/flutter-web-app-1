@@ -14,27 +14,38 @@ class EmployeeWorkingHoursView extends StatefulWidget {
 }
 
 class _EmployeeWorkingHoursViewState extends State<EmployeeWorkingHoursView> {
+  Widget _container(List<DailyScheduleEntity> workingHours, int employee) =>
+      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-  Widget _container(List<DailyScheduleEntity> workingHours,int employee) =>  WeeklyScheduleWidget(
-        key: Key(DateTime.now().toString()),
-        initialValue: workingHours,
-        employee: employee,
-        onClear: () {
-          sl<EmployeeWorkingHoursBloc>().add(
-            ClearWorkingHoursEvent(
-              id: employee,
-            ),
-          );
-        },
-        onSaved: (workingHours) {
-          sl<EmployeeWorkingHoursBloc>().add(
-            UpsertWorkingHoursEvent(
-              id: employee,
-              workingHours: workingHours,
-            ),
-          );
-        },
-      );
+        Container(
+          height: 48,
+          margin: EdgeInsets.only(left: 16),
+          child:Text(
+            "Working hours",
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+        WeeklyScheduleWidget(
+          key: Key(DateTime.now().toString()),
+          initialValue: workingHours,
+          employee: employee,
+          onClear: () {
+            sl<EmployeeWorkingHoursBloc>().add(
+              ClearWorkingHoursEvent(
+                id: employee,
+              ),
+            );
+          },
+          onSaved: (workingHours) {
+            sl<EmployeeWorkingHoursBloc>().add(
+              UpsertWorkingHoursEvent(
+                id: employee,
+                workingHours: workingHours,
+              ),
+            );
+          },
+        )
+      ]);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +57,7 @@ class _EmployeeWorkingHoursViewState extends State<EmployeeWorkingHoursView> {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is Loaded ) {
+          } else if (state is Loaded) {
             var workingHours = state.workingHours;
             var employee = state.id;
             return _container(workingHours, employee);
@@ -54,14 +65,12 @@ class _EmployeeWorkingHoursViewState extends State<EmployeeWorkingHoursView> {
             return Center(
               child: Text(state.message),
             );
-          } else if(state is Initial){
+          } else if (state is Initial) {
             var workingHours = WeeklyScheduleWidget.empty();
             var employeeId = state.id;
             return _container(workingHours, employeeId);
-          }
-          else {
-            return Container(
-            );
+          } else {
+            return Container();
           }
         },
       ),

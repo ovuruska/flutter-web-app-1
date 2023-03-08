@@ -127,6 +127,8 @@ class EmployeeWorkingHoursBloc
 
     });
 
-
+    on<PurgeWorkingHoursEvent>((event,emit) async {
+      emit(Empty());
+    });
   }
 }

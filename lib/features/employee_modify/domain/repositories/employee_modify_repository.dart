@@ -8,5 +8,5 @@ abstract class EmployeeModifyRepository {
 
   Future<Either<Failure, EmployeeEntity>> patch(EmployeeEntity employee);
 
-  Future<Either<Failure, EmployeeEntity>> delete(int id);
+  Future<Either<Failure, void>> delete(int id);
 }

@@ -51,3 +51,8 @@ class UpsertWorkingHoursEvent extends EmployeeWorkingHoursEvent {
   @override
   List<Object> get props => workingHours;
 }
+
+class PurgeWorkingHoursEvent extends EmployeeWorkingHoursEvent {
+
+
+}
