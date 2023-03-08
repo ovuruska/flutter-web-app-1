@@ -3,7 +3,7 @@
 
 /// The roles of the app
 
-final employeeRoles = {
+final Map<int,String> employeeRoles = {
   10: 'We Wash',
   15: 'Full Grooming',
   20: 'Accountant',
@@ -11,7 +11,7 @@ final employeeRoles = {
   40: 'Admin',
 };
 
-final roles = {
+final Map<int,String> roles = {
   0: 'Anonymous',
   1: 'Customer',
   ...employeeRoles,

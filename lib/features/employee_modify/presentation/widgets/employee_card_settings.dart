@@ -2,7 +2,9 @@ import 'package:card_settings/card_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/roles.dart';
 import '../../domain/entities/employee_entity.dart';
+import 'select_role.dart';
 
 class EmployeeCardSettings extends StatefulWidget {
   final EmployeeEntity initialValue;
@@ -102,6 +104,23 @@ class _EmployeeCardSettingsState extends State<EmployeeCardSettings> {
               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
               label: 'Email',
             ),
+            CardSettingsHeader(
+                child: Row(children: [
+                  Container(width: 8),
+              Text(
+                "Role",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Container(width: 88),
+              SelectRole(
+                  initialValue: role,
+                  onChanged: (value) {
+                    setState(() {
+                      role = value;
+                    });
+                  },
+                ),
+            ])),
             CardSettingsHeader(
                 child: Row(
               children: [
