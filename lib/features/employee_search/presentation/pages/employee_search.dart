@@ -40,7 +40,6 @@ class _EmployeeSearchViewState extends State<EmployeeSearchView> {
           );
         } else if (state is Loaded) {
           var employees = state.employees;
-          print(employees);
           return EmployeeSearch(
             employees: employees,
             onPressed: (employee) {
@@ -50,7 +49,6 @@ class _EmployeeSearchViewState extends State<EmployeeSearchView> {
             },
           );
         }else if(state is Failed){
-          print("patlıad");
           showSnackbar(context,state.message);
           return Center(child: Text(state.message),);
         }

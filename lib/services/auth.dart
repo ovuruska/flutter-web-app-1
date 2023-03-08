@@ -81,7 +81,7 @@ class SchedulingAuthService {
 
   Future<http.StreamedResponse> jsonRequest(
     String route, {
-    Map<String,dynamic> body = const {},
+    dynamic body = const {},
     String method = "POST",
         Map<String,String> headers = const {},
     Map<String, dynamic> queryParams = const {},

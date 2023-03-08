@@ -62,7 +62,6 @@ class _CreateAppointmentFormState extends State<CreateAppointmentForm> {
       appointmentSection(
         onDateChanged: (date) {
           setState(() {
-            print(date);
             this.date = date ?? DateTime.now();
           });
         },

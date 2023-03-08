@@ -5,6 +5,7 @@ import 'package:scrubbers_employee_application/features/search_branches/register
 import 'package:scrubbers_employee_application/features/view_logs/register.dart';
 
 import 'features/create_appointment/register.dart';
+import 'features/employee_working_hours/register.dart';
 import 'features/rebook_appointment/register.dart';
 
 final sl = GetIt.instance;
@@ -18,4 +19,5 @@ Future<void> initSl() async{
   registerCreateAppointment(sl);
   registerRebookAppointment(sl);
   registerEmployeeSearch(sl);
+  registerEmployeeWorkingHours(sl);
 }
