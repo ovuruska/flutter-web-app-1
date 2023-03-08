@@ -15,14 +15,7 @@ class EmployeeWorkingHoursView extends StatefulWidget {
 
 class _EmployeeWorkingHoursViewState extends State<EmployeeWorkingHoursView> {
 
-  Widget _container(List<DailyScheduleEntity> workingHours,int employee) => Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(.5),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: WeeklyScheduleWidget(
+  Widget _container(List<DailyScheduleEntity> workingHours,int employee) =>  WeeklyScheduleWidget(
         key: Key(DateTime.now().toString()),
         initialValue: workingHours,
         employee: employee,
@@ -41,7 +34,7 @@ class _EmployeeWorkingHoursViewState extends State<EmployeeWorkingHoursView> {
             ),
           );
         },
-      ));
+      );
 
   @override
   Widget build(BuildContext context) {
