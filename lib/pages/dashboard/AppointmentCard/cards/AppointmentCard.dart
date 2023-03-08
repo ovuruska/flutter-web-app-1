@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 
@@ -45,7 +43,7 @@ class AppointmentCard extends StatelessWidget {
         TimeOfDay(hour: difference.inHours, minute: difference.inMinutes);
 
     return Container(
-          margin: EdgeInsets.all(2),
+      margin: EdgeInsets.all(2),
       height: height,
       width: itemWidth,
       decoration: BoxDecoration(
@@ -69,53 +67,51 @@ class AppointmentCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ShadowContainer(
-                      child: Container(
-                          padding: EdgeInsetsDirectional.all(4),
-                          width: 254,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(8),
-                            ),
-                            color: headerBackgroundColor,
-                          ),
-                          child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Container(
+                      padding: EdgeInsetsDirectional.all(4),
+                      width: 254,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
+                        color: headerBackgroundColor,
+                      ),
+                      child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                child: Row(
                               children: [
-                                Container(
-                                    child: Row(
-                                  children: [
-                                    headerLeadItem ?? Container(),
-                                    Text(
+                                headerLeadItem ?? Container(),
+                                Text(
+                                  getFormattedHourAndMinute(appointment.start) +
+                                      " - " +
                                       getFormattedHourAndMinute(
-                                              appointment.start) +
-                                          " - " +
-                                          getFormattedHourAndMinute(
-                                              appointment.end),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText2
-                                          .override(
-                                            color: headerTextColor,
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ],
+                                          appointment.end),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText2
+                                      .override(
+                                        color: headerTextColor,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ],
+                            )),
+                            Padding(
+                                padding: EdgeInsets.only(right: 4),
+                                child: Text(
+                                  "${difference.inMinutes} minutes",
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText2
+                                      .override(
+                                        color: headerTextColor,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 )),
-                                Padding(
-                                    padding: EdgeInsets.only(right: 4),
-                                    child: Text(
-                                      "${difference.inMinutes} minutes",
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText2
-                                          .override(
-                                            color: headerTextColor,
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    )),
-                              ]))),
+                          ])),
                   Container(height: 8),
                   Container(
                     width: itemWidth,

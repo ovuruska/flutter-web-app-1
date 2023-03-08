@@ -25,16 +25,18 @@ class _LoginScreenState extends State<LoginScreen> {
     var password = passwordController.text;
     setState(() => loading = true);
     try {
-      final result = await LoginViewRepository.instance.login(
-          username, password);
-      setState(() => loading = false);
+      final result =
+          await LoginViewRepository.instance.login(username, password);
       if (result) {
         await initFromServer();
+        setState(() => loading = false);
         context.pushNamed('Dashboard');
-      } else
+      } else{
+        setState(() => loading = false);
         showSnackbar(context, "Wrong username or password");
-    }
-    catch (e) {
+      }
+
+    } catch (e) {
       setState(() => loading = false);
       showSnackbar(context, "Something went wrong 🤗");
     }
@@ -126,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 96),
                         LoginButton(
                           onPressed: () async {
-                            onLogin(context);
+                            await onLogin(context);
                           },
                           loading: !loading,
                         )

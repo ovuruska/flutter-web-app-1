@@ -73,6 +73,7 @@ class _DashboardDailyScheduleSelectedViewState
       child: Screenshot(
           controller: screenshotController,
           child: Row(
+            
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
