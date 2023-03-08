@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/features/employee_working_hours/presentation/bloc/working_hours_bloc.dart';
 import 'package:scrubbers_employee_application/features/employee_working_hours/presentation/bloc/working_hours_event.dart';
-import 'package:scrubbers_employee_application/features/modify_branch/presentation/pages/modify_branch.dart';
-import 'package:scrubbers_employee_application/features/search_branches/presentation/bloc/search_branches_bloc.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
 import '../../features/employee_modify/presentation/bloc/employee_modify_bloc.dart';
@@ -12,12 +10,8 @@ import '../../features/employee_search/presentation/bloc/employee_search_bloc.da
 import '../../features/employee_search/presentation/bloc/employee_search_event.dart';
 import '../../features/employee_search/presentation/pages/employee_search.dart';
 import '../../features/employee_working_hours/presentation/pages/employee_working_hours.dart';
-import '../../features/modify_branch/presentation/bloc/modify_branch_bloc.dart';
-import '../../features/modify_branch/presentation/bloc/modify_branch_event.dart';
-import '../../features/search_branches/presentation/bloc/search_branches_event.dart';
-import '../../features/search_branches/presentation/pages/search_branches.dart';
 import '../../injection.dart';
-import '../../models/Branch.dart';
+import '../../features/employee_search/domain/entities/employee_entity.dart' as employee_search;
 
 class AdminEmployeesTab extends StatelessWidget {
   @override
@@ -57,6 +51,10 @@ class AdminEmployeesTab extends StatelessWidget {
                                 .add(RemoveEmployeeEvent(id:employee.id));
                             sl<EmployeeWorkingHoursBloc>()
                                 .add(PurgeWorkingHoursEvent());
+                          },
+                          onSaved: (employee) {
+                            sl<EmployeeSearchBloc>()
+                                .add(PatchEmployeeEvent(employee: employee_search.EmployeeEntity(id: employee.id, name: employee.name)));
                           },
                         ),
                         Container(

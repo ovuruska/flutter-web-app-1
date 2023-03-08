@@ -24,7 +24,12 @@ class EmployeeModifyView extends StatelessWidget {
             var initialValue = state.employee;
             return EmployeeCardSettings(
               initialValue: initialValue,
-              onSaved: onSaved,
+              onSaved: (entity){
+                sl<EmployeeModifyBloc>()
+                    .add(EmployeeModifySaveEvent(entity));
+
+                onSaved?.call(entity);
+              },
               onRemoved: (entity) {
                 sl<EmployeeModifyBloc>()
                     .add(EmployeeModifyRemoveEvent(initialValue.id));

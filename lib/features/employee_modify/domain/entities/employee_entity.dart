@@ -29,4 +29,14 @@ class EmployeeEntity extends Equatable {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'phone': phone,
+      'email': email,
+      'role': role,
+    };
+  }
+
 }
