@@ -1,4 +1,4 @@
-import 'dart:convert' show jsonDecode;
+import 'dart:convert' show jsonDecode, jsonEncode;
 
 import 'package:dartz/dartz.dart';
 
@@ -40,7 +40,7 @@ class EmployeeModifyRepositoryImpl extends EmployeeModifyRepository {
     var response = await SchedulingAuthService.instance.jsonRequest(
         "/api/employee/${employee.id}",
         method: "PATCH",
-        body: employee.toJson());
+        body: body);
     var respString = await response.stream.bytesToString();
     var respJson = jsonDecode(respString);
     if (response.statusCode == 200) {
