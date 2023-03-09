@@ -13,7 +13,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/app.dart';
+import 'package:scrubbers_employee_application/common/DateUtils.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/repositories/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/appointment_card.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/daily_calendar.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/cards/root/appointment_card.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/employee_entity.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/appointment_section.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/branch_section.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/customer_section.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/appointment_section.dart';
+import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/branch_section.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/create_appointment_form.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/customer_section.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/domain/entities/branch_entity.dart';
@@ -128,6 +141,18 @@ class HotReload extends StatelessWidget {
                     WidgetbookUseCase(
                       name: 'Customer Section',
                       builder: (context) => customerSectionUseCase(context),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Customer Section',
+                      builder: (context) => appointmentSectionUseCase(context),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Branch Section Empty',
+                      builder: (context) => branchSectionUseCase(context),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Branch Section Filled',
+                      builder: (context) => branchFilledUseCase(context),
                     ),
                   ],
                   isExpanded: true,
@@ -300,7 +325,107 @@ class HotReload extends StatelessWidget {
                   isExpanded: true,
                 ),
                 WidgetbookFolder(
-                  name: 'create_new_appointment',
+                  name: 'appointment_schedule',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'DailyCalendar',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Daily Calendar',
+                                  builder: (context) =>
+                                      dailyCalendarUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [
+                            WidgetbookFolder(
+                              name: 'cards',
+                              widgets: [
+                                WidgetbookComponent(
+                                  name: 'AppointmentCardCancelled',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Appointment Card Cancelled',
+                                      builder: (context) =>
+                                          appointmentCardCancelledUseCase(
+                                              context),
+                                    ),
+                                  ],
+                                  isExpanded: true,
+                                ),
+                                WidgetbookComponent(
+                                  name: 'AppointmentCardApproved',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Appointment Card Approved',
+                                      builder: (context) =>
+                                          appointmentCardApprovedUseCase(
+                                              context),
+                                    ),
+                                  ],
+                                  isExpanded: true,
+                                ),
+                                WidgetbookComponent(
+                                  name: 'AppointmentCardCompleted',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Appointment Card Completed',
+                                      builder: (context) =>
+                                          appointmentCardCompletedUseCase(
+                                              context),
+                                    ),
+                                  ],
+                                  isExpanded: true,
+                                ),
+                                WidgetbookComponent(
+                                  name: 'AppointmentCardPending',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Appointment Card Pending',
+                                      builder: (context) =>
+                                          appointmentCardPendingUseCase(
+                                              context),
+                                    ),
+                                  ],
+                                  isExpanded: true,
+                                ),
+                                WidgetbookComponent(
+                                  name: 'AppointmentCardInProgress',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Appointment Card In Progress',
+                                      builder: (context) =>
+                                          appointmentCardInProgressUseCase(
+                                              context),
+                                    ),
+                                  ],
+                                  isExpanded: true,
+                                ),
+                              ],
+                              folders: [],
+                              isExpanded: true,
+                            ),
+                          ],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+                WidgetbookFolder(
+                  name: 'create_appointment',
                   widgets: [],
                   folders: [
                     WidgetbookFolder(
@@ -314,9 +439,15 @@ class HotReload extends StatelessWidget {
                               name: 'CreateAppointmentForm',
                               useCases: [
                                 WidgetbookUseCase(
-                                  name: 'Create appointment form',
+                                  name: 'Create appointment form - Empty',
                                   builder: (context) =>
                                       createAppointmentFormUseCase(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'Create appointment form - Filled',
+                                  builder: (context) =>
+                                      createAppointmentFormFilledUseCase(
+                                          context),
                                 ),
                               ],
                               isExpanded: true,
