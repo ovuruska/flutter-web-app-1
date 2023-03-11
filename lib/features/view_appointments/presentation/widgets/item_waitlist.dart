@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/widgets/cards/pending.dart';
 
 import '../../../../flutter_flow/flutter_flow_theme.dart';
 import '../../../../widgets/cards/root/entity.dart';
@@ -10,7 +11,7 @@ class AppointmentItemWaitlist extends StatelessWidget {
 
   AppointmentItemWaitlist({required this.appointment});
 
-  Widget build(BuildContext context) {
+  Widget _build(BuildContext context) {
     String formattedDate =
     DateFormat('yyyy/MM/dd h:mm a').format(appointment.start);
     return ListTile(
@@ -36,20 +37,28 @@ class AppointmentItemWaitlist extends StatelessWidget {
         '${formattedDate} | ${appointment.service}',
         style: FlutterFlowTheme.of(context).subtitle3,
       ),
-      trailing: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            child: Icon(
-              Icons.arrow_forward_ios,
-              color: Color(0xFF303030),
-              size: 20,
-            ),
-            onTap: () {
 
-            },
-          )),
       tileColor: Color(0xFFF5F5F5),
       dense: false,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Draggable(
+      data: appointment,
+      child: _build(context),
+      hitTestBehavior: HitTestBehavior.translucent,
+      ignoringFeedbackPointer: false,
+      feedback: Opacity(opacity:.5,child:AppointmentCardPending(
+        appointment: appointment,
+      )),
+      onDragStarted: () {
+      },
+
+      childWhenDragging: Container(),
+      onDragCompleted: () {
+      },
     );
   }
 

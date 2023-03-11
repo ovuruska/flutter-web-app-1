@@ -29,7 +29,6 @@ onAcceptWithDetails(int startHour,int employee) => (DragTargetDetails<DashboardA
   data = data.copyWith(
     start:start,end:end,employee:employee
   );
-
   sl<AppointmentScheduleBloc>().add(
     AppointmentSchedulePatchEvent(appointment: data),
   );

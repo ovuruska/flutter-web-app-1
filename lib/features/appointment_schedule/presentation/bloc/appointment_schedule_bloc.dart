@@ -27,12 +27,18 @@ class AppointmentScheduleBloc
       var params = PatchAppointmentParams( appointment);
       patchAppointment(params);
       var currentAppointments = (state as Loaded).appointments;
-      currentAppointments = currentAppointments.map((e) {
+      bool found = false;
+
+    currentAppointments = currentAppointments.map((e) {
         if(e.id == appointment.id){
+          found = true;
           return appointment;
         }
         return e;
       }).toList();
+      if(!found){
+        currentAppointments.add(appointment);
+      }
       emit(Loaded(employees: (state as Loaded).employees,appointments: currentAppointments));
     });
     on<AppointmentScheduleGetEmployeesEvent>((event, emit) async {

@@ -27,6 +27,7 @@ class DragTargetBox extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return DragTarget<DashboardAppointmentEntity>(
+      onLeave: (data) => print('onLeave'),
       onAcceptWithDetails: onAcceptWithDetails(start, employeeId),
       builder: (context, candidateData, rejectedData) => _build(context),
 

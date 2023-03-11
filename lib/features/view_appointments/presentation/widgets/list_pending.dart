@@ -15,7 +15,7 @@ class AppointmentListPending extends StatelessWidget {
     return SingleChildScrollView(
         child:ListView.builder(shrinkWrap: true,
             itemCount: appointments.length,
-            itemBuilder: (context, index) => AppointmentItemWaitlist(appointment: appointments[index])
+            itemBuilder: (context, index) => AppointmentItemPending(appointment: appointments[index])
         )
     );
   }
