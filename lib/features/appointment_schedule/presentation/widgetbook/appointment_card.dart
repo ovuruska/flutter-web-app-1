@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart'
     show WidgetbookUseCase;
 
-import '../../domain/repositories/dashboard_appointment_entity.dart';
+import '../../domain/entities/dashboard_appointment_entity.dart';
 import '../widgets/cards/approved.dart';
 import '../widgets/cards/cancelled.dart';
 import '../widgets/cards/completed.dart';
@@ -24,7 +24,7 @@ Widget appointmentCardInProgressUseCase(BuildContext context) {
     start: DateTime.now(),
     end: DateTime.now(),
     invoice: 0.0,
-    specialHandling: true,
+    specialHandling: true, status: 'CheckedIn',
   );
 
   return AppointmentCardInProgress(
@@ -47,7 +47,7 @@ Widget appointmentCardApprovedUseCase(BuildContext context) {
     start: DateTime.now(),
     end: DateTime.now(),
     invoice: 0.0,
-    specialHandling: true,
+    specialHandling: true, status: 'Confirmed',
   );
 
   return AppointmentCardApproved(
@@ -70,7 +70,7 @@ Widget appointmentCardCancelledUseCase(BuildContext context) {
     start: DateTime.now(),
     end: DateTime.now(),
     invoice: 0.0,
-    specialHandling: true,
+    specialHandling: true, status: 'Cancelled',
   );
 
   return AppointmentCardCancelled(
@@ -93,7 +93,7 @@ Widget appointmentCardPendingUseCase(BuildContext context) {
     start: DateTime.now(),
     end: DateTime.now(),
     invoice: 0.0,
-    specialHandling: true,
+    specialHandling: true, status: 'Pending',
   );
 
   return AppointmentCardPending(
@@ -108,6 +108,7 @@ Widget appointmentCardCompletedUseCase(BuildContext context) {
   // Generate some dummy data
   var appointment = DashboardAppointmentEntity(
     id: 1,
+    status : 'Completed',
     customerName: 'customerName',
     employee: 1,
     service: 'service',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/repositories/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 
 import 'root/appointment_card.dart';
 

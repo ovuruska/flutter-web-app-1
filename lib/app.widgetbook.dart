@@ -14,10 +14,18 @@ import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/app.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/repositories/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/appointment_card.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/appointment_schedule.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/daily_calendar.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/cards/index.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/cards/root/appointment_card.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/cards/wrapper.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/daily_calendar.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/drag_target_box.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/border.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
@@ -56,6 +64,7 @@ import 'package:scrubbers_employee_application/features/view_logs/widgetbook/log
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
+import 'package:time_machine/time_machine.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 void main() {
@@ -335,6 +344,17 @@ class HotReload extends StatelessWidget {
                         WidgetbookFolder(
                           name: 'widgets',
                           widgets: [
+                            WidgetbookComponent(
+                              name: 'AppointmentSchedule',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Appointment Schedule',
+                                  builder: (context) =>
+                                      appointmentScheduleUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
                             WidgetbookComponent(
                               name: 'DailyCalendar',
                               useCases: [

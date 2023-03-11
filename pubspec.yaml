@@ -74,7 +74,7 @@ dependencies:
   meta:
   flutter_layout_grid: ^2.0.1
   widgetbook_annotation: 2.1.0
-
+  anim_search_bar: ^2.0.3
 
 dev_dependencies:
   flutter_test:

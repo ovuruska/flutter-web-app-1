@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/repositories/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' show WidgetbookUseCase;
 
 import '../widgets/daily_calendar.dart';
@@ -11,6 +11,21 @@ import '../widgets/daily_calendar.dart';
 dailyCalendarUseCase(BuildContext context){
   /// List with 5 random DashboardAppointmentEntity
   /// DashboardAppointmentEntity(id: id, customerName: customerName, employee: employee, service: service, breed: breed, dogName: dogName, start: start, end: end, invoice: invoice)
+  final allStatuses = [
+    'Confirmed',
+    'CheckedIn',
+    'Completed',
+    'Cancelled',
+    'Pending',
+  ];
+  final startEndPair = [
+      [DateTime(2021, 9, 1, 10, 0), DateTime(2021, 9, 1, 11, 0)],
+      [DateTime(2021, 9, 1, 11, 0), DateTime(2021, 9, 1, 12, 0)],
+      [DateTime(2021, 9, 1, 12, 0), DateTime(2021, 9, 1, 13, 0)],
+      [DateTime(2021, 9, 1, 13, 0), DateTime(2021, 9, 1, 14, 0)],
+      [DateTime(2021, 9, 1, 14, 0), DateTime(2021, 9, 1, 15, 0)],
+
+  ];
 
   final appointments = List.generate(5, (index) => DashboardAppointmentEntity(
     id: index,
@@ -19,9 +34,9 @@ dailyCalendarUseCase(BuildContext context){
     service: 'service',
     breed: 'breed',
     dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0, specialHandling: true,
+    start: startEndPair[index][0],
+    end: startEndPair[index][1],
+    invoice: 0.0, specialHandling: true, status: allStatuses[index],
   ));
 
   /// Employee name

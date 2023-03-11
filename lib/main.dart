@@ -3,16 +3,19 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/daily_calendar.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 
+import 'features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
+import 'features/appointment_schedule/presentation/pages/appointment_schedule.dart';
+import 'features/appointment_schedule/presentation/widgets/appointment_schedule.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'initWithData.dart';
-import 'pages/admin_branches/admin_branches.dart';
 import 'services/auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,6 +55,8 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
+  final today = DateTime.now();
+
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
@@ -66,23 +71,33 @@ class _MyAppState extends State<MyApp> {
     setState(() => _locale = createLocale(language));
   }
 
-  void setThemeMode(ThemeMode mode) => setState(() {
+  void setThemeMode(ThemeMode mode) =>
+      setState(() {
         _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
       });
 
+  DateTime getTime(int hour, int minute) => DateTime(
+    today.year,
+    today.month,
+    today.day,
+    hour,
+    minute,
+  );
+
+
+
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp.router(
-      scrollBehavior: MaterialScrollBehavior().copyWith(
-        dragDevices: {
-          PointerDeviceKind.mouse,
-          PointerDeviceKind.touch,
-          PointerDeviceKind.stylus,
-          PointerDeviceKind.unknown
-        },
-      ),
+
+      return MaterialApp.router(
+      scrollBehavior: MaterialScrollBehavior().copyWith(dragDevices: {
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.touch,
+        PointerDeviceKind.stylus,
+        PointerDeviceKind.unknown
+      },),
       debugShowCheckedModeBanner: false,
       title: 'Quicker',
       localizationsDelegates: [
@@ -97,7 +112,6 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: ThemeMode.light,
       routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-    );
+      routerDelegate: _router.routerDelegate,);
   }
 }
