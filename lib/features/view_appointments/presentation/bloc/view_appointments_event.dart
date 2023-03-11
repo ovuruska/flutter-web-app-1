@@ -14,3 +14,9 @@ class GetWaitlistAppointmentsEvent extends ViewAppointmentsEvent {}
 class GetCancelledAppointmentsEvent extends ViewAppointmentsEvent {}
 
 class GetPendingAppointmentsEvent extends ViewAppointmentsEvent {}
+
+class RemoveWaitlistAppointmentEvent extends ViewAppointmentsEvent {
+  final int appointment;
+
+  RemoveWaitlistAppointmentEvent({required this.appointment});
+}

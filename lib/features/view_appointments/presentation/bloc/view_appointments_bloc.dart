@@ -42,5 +42,14 @@ class ViewAppointmentsBloc
       emit(Loaded(pendingAppointments: result.getOrElse(() => [])));
     }
   });
+
+  on<RemoveWaitlistAppointmentEvent>((event,emit) async {
+    if(state is Loaded){
+      var waitlistAppointments = (state as Loaded).waitlistAppointments;
+      waitlistAppointments = waitlistAppointments.where((element) => element.id != event.appointment).toList();
+      var newState = (state as Loaded).setWaitlistAppointments(waitlistAppointments);
+      emit(newState);
+    }
+  });
   }
 }

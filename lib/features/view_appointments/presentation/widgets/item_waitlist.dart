@@ -3,7 +3,10 @@ import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/widgets/cards/pending.dart';
 
 import '../../../../flutter_flow/flutter_flow_theme.dart';
+import '../../../../injection.dart';
 import '../../../../widgets/cards/root/entity.dart';
+import '../bloc/view_appointments_bloc.dart';
+import '../bloc/view_appointments_event.dart';
 
 class AppointmentItemWaitlist extends StatelessWidget {
   DashboardAppointmentEntity appointment;
@@ -49,6 +52,11 @@ class AppointmentItemWaitlist extends StatelessWidget {
       child: _build(context),
       hitTestBehavior: HitTestBehavior.translucent,
       ignoringFeedbackPointer: true,
+    onDragCompleted: (){
+        var appointmentId = appointment.id;
+        var event = RemoveWaitlistAppointmentEvent(appointment: appointmentId);
+      sl<ViewAppointmentsBloc>().add(event);
+    },
       feedback: Opacity(
           opacity: .5,
           child: GestureDetector(

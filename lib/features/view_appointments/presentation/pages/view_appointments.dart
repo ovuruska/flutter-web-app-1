@@ -27,12 +27,12 @@ class _ViewAppointmentsPageState extends State<ViewAppointmentsPage> {
     return BlocBuilder<ViewAppointmentsBloc, ViewAppointmentsState>(
       bloc: sl<ViewAppointmentsBloc>(),
       builder: (context, state) {
+
         if (state is Initial) {
           return ViewAppointmentsLoadingState();
         } else if(state is Loaded){
           var stateAsLoaded = state as Loaded;
           return ViewAppointments(
-            key:ValueKey(stateAsLoaded.hashCode),
             pendingAppointments: stateAsLoaded.pendingAppointments,
             waitlistAppointments: stateAsLoaded.waitlistAppointments,
             cancelledAppointments: stateAsLoaded.cancelledAppointments,
