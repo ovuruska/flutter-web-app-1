@@ -46,7 +46,6 @@ class DashboardAppointmentRepositoryImpl
     var queryParams = {
       "start__gt": formatted,
       "start__lt": nextDayFormatted,
-      "branch": branchId.toString(),
     };
     var response = await SchedulingAuthService.instance
         .request("/api/schedule/appointments", queryParams: queryParams);

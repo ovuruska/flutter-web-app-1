@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/drag_target_box.dart';
 
 import '../../../../widgets/cards/index.dart';
 import '../../../../widgets/cards/root/entity.dart';
 import '../../../../widgets/cards/wrapper.dart';
 import '../../utils/border.dart';
 import '../../utils/constants.dart';
+import '../../utils/onAcceptWithDetails.dart';
+import 'hour_box.dart';
 
 class DailyCalendar extends StatelessWidget {
   final List<DashboardAppointmentEntity> appointments;
+  final DateTime date;
   final String employeeName;
   final int employeeId;
   final int start;
@@ -20,8 +22,14 @@ class DailyCalendar extends StatelessWidget {
       required this.employeeName,
       required this.employeeId,
       required this.start,
-      required this.end})
+      required this.end, required this.date})
       : super(key: key);
+
+  Widget _buildHours(BuildContext context, List<DashboardAppointmentEntity?> t,List<dynamic> a) => Column(
+      children: List.generate(
+        end - start,
+        (index) => HourBox(),
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +60,9 @@ class DailyCalendar extends StatelessWidget {
                     ),
                   ],
                 ))))),
-        ...List.generate(
-            end - start,
-            (index) =>
-                DragTargetBox(start:start, employeeId: employeeId)),
+        DragTarget<DashboardAppointmentEntity>(
+            onAcceptWithDetails: onAcceptWithDetails(date,start, employeeId),
+            builder: _buildHours)
       ])),
       ...appointments.map((appointment) {
         var topMost = DateTime(appointment.start.year, appointment.start.month,
@@ -63,9 +70,7 @@ class DailyCalendar extends StatelessWidget {
         var top = headerHeight +
             appointment.start.difference(topMost).inMinutes * boxHeight / 60;
 
-        var height = (appointment.end
-                        .difference(appointment.start)
-                        .inMinutes)
+        var height = (appointment.end.difference(appointment.start).inMinutes)
                     .toDouble() *
                 boxHeight /
                 60 -

@@ -94,7 +94,7 @@ class DashboardAppointmentEntity extends Equatable {
 
     return {
       "status": status,
-      "employee__id": employee,
+      "employee": employee,
       "start": decodeDateTime(start),
       "end": decodeDateTime(end),
       "appointment_type": service,

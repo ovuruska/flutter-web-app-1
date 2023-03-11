@@ -18,6 +18,7 @@ dailyCalendarUseCase(BuildContext context){
     'Cancelled',
     'Pending',
   ];
+  var date = DateTime(2021, 9, 1, 10, 0);
   final startEndPair = [
       [DateTime(2021, 9, 1, 10, 0), DateTime(2021, 9, 1, 11, 0)],
       [DateTime(2021, 9, 1, 11, 0), DateTime(2021, 9, 1, 12, 0)],
@@ -48,6 +49,7 @@ dailyCalendarUseCase(BuildContext context){
 
 
   return DailyCalendar(
+    date: date,
     start:10,
     end:18,
     appointments: appointments,

@@ -41,6 +41,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
             )),
         ...widget.employees
             .map((employee) => DailyCalendar(
+                date: widget.date,
                 appointments: widget.appointments
                     .where((appointment) => appointment.employee == employee.id)
                     .toList(),
@@ -56,7 +57,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,
       body: SingleChildScrollView(
-        controller: controller,
+        controller: scrollController,
         child:_horizontal(),
       ),
     );

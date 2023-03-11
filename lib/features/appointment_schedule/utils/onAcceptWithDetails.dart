@@ -8,11 +8,11 @@ import '../presentation/bloc/appointment_schedule_bloc.dart';
 import '../presentation/bloc/appointment_schedule_event.dart';
 import 'constants.dart';
 
-onAcceptWithDetails(int startHour,int employee) => (DragTargetDetails<DashboardAppointmentEntity> details) {
+onAcceptWithDetails(DateTime date,int startHour,int employee) => (DragTargetDetails<DashboardAppointmentEntity> details) {
   var data = details.data;
   var offset = details.offset;
   var dy = offset.dy;
-  var absoluteY = dy - headerHeight - 64 + controller.offset;
+  var absoluteY = dy - headerHeight - 64 + scrollController.offset;
 
   var localPosition = (absoluteY) % boxHeight ;
   var hour = (absoluteY) ~/ boxHeight;
@@ -23,12 +23,12 @@ onAcceptWithDetails(int startHour,int employee) => (DragTargetDetails<DashboardA
   var start = data.start;
   var end = data.end;
   var difference = end.difference(start).inMinutes;
-  start = DateTime(start.year, start.month, start.day, hour, minute.toInt());
+  start = DateTime(date.year, date.month, date.day, hour, minute.toInt());
   end = start.add(Duration(minutes: difference));
-
   data = data.copyWith(
     start:start,end:end,employee:employee
   );
+
   sl<AppointmentScheduleBloc>().add(
     AppointmentSchedulePatchEvent(appointment: data),
   );

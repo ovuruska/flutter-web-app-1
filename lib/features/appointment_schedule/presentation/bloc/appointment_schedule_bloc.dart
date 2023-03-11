@@ -22,10 +22,11 @@ class AppointmentScheduleBloc
     on<AppointmentScheduleInitializeEvent>((event, emit) {
       emit(Initial());
     });
-    on<AppointmentSchedulePatchEvent>((event, emit) {
+    on<AppointmentSchedulePatchEvent>((event, emit) async {
     var appointment = event.appointment;
       var params = PatchAppointmentParams( appointment);
-      patchAppointment(params);
+      var result = await patchAppointment(params);
+
       var currentAppointments = (state as Loaded).appointments;
       bool found = false;
 
