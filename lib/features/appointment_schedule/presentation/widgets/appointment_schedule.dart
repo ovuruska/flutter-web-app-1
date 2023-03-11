@@ -27,8 +27,12 @@ class AppointmentSchedule extends StatefulWidget {
 }
 
 class _AppointmentScheduleState extends State<AppointmentSchedule> {
-
-  Widget _horizontal() => SingleChildScrollView(
+  
+  Widget _horizontal() => Scrollbar(
+    controller:horizontalController,
+      scrollbarOrientation: ScrollbarOrientation.top,
+      child:SingleChildScrollView(
+      controller: horizontalController,
       scrollDirection: Axis.horizontal,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -50,14 +54,14 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                 start: 8,
                 end: 20))
             .toList()
-      ]));
+      ])));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,
       body: SingleChildScrollView(
-        controller: scrollController,
+        controller: verticalController,
         child:_horizontal(),
       ),
     );

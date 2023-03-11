@@ -12,7 +12,7 @@ onAcceptWithDetails(DateTime date,int startHour,int employee) => (DragTargetDeta
   var data = details.data;
   var offset = details.offset;
   var dy = offset.dy;
-  var absoluteY = dy - headerHeight - 64 + scrollController.offset;
+  var absoluteY = dy - headerHeight - 64 + verticalController.offset;
 
   var localPosition = (absoluteY) % boxHeight ;
   var hour = (absoluteY) ~/ boxHeight;
