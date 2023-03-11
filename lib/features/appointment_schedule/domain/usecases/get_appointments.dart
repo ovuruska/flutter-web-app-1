@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 
 import '../../../../core/usecases/use_case.dart';
+import '../../../../widgets/cards/root/entity.dart';
 import '../repositories/appointment_repository.dart';
 
 class GetAppointmentsParams extends Equatable {

@@ -2,7 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/dashboard_appointment_entity.dart';
+import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
 
 class AppointmentScheduleState extends Equatable {

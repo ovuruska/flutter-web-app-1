@@ -1,4 +1,3 @@
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'nav.dart';
@@ -34,7 +33,7 @@ class AppHeader extends StatelessWidget {
                   ),
                   onPressed: () {},
                 ),
-                Container(width: 32),
+                Container(width: 16),
                 AppHeaderNav()
               ],
             ),
@@ -71,7 +70,22 @@ class AppHeader extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(width: 16),
+                IconButton(
+                  icon: Icon(
+                    Icons.help,
+                    color: const Color(0xFF5B6871),
+                    size: 24,
+                  ),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.notifications,
+                    color: const Color(0xFF5B6871),
+                    size: 24,
+                  ),
+                  onPressed: () {},
+                ),
                 IconButton(
                   icon: Icon(
                     Icons.settings,

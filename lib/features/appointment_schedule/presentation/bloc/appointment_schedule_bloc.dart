@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/usecases/get_appointments.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/appointment_schedule_event.dart';
 
+import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/usecases/get_branch_employees.dart';
 import '../../domain/usecases/patch_appointment.dart';
 import 'appointment_schedule_state.dart';

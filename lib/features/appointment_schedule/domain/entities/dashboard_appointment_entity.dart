@@ -44,12 +44,12 @@ class DashboardAppointmentEntity extends Equatable {
         customerName: json['customer']['name'],
         specialHandling: json['dog']['special_handling'],
         employee: json['employee']['id'],
-        service: json['service'],
+        service: json['appointment_type'],
         breed: json['dog']['breed'],
         dogName: json['dog']['name'],
         start: DateTime.parse(json['start']),
         end: DateTime.parse(json['end']),
-        invoice: json['cost'],
+        invoice: double.parse(json['cost']),
         status: json['status']);
 
 

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart'
     show WidgetbookUseCase;
 
-import '../../domain/entities/dashboard_appointment_entity.dart';
-import '../widgets/cards/approved.dart';
-import '../widgets/cards/cancelled.dart';
-import '../widgets/cards/completed.dart';
-import '../widgets/cards/in_progress.dart';
-import '../widgets/cards/pending.dart';
+import '../../../../widgets/cards/approved.dart';
+import '../../../../widgets/cards/cancelled.dart';
+import '../../../../widgets/cards/completed.dart';
+import '../../../../widgets/cards/in_progress.dart';
+import '../../../../widgets/cards/pending.dart';
+import '../../../../widgets/cards/root/entity.dart';
+
 
 // AppointmentCardInProgress
 @WidgetbookUseCase(

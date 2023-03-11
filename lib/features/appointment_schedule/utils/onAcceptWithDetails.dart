@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../injection.dart';
-import '../domain/entities/dashboard_appointment_entity.dart';
+import '../../../widgets/cards/root/entity.dart';
 import '../presentation/bloc/appointment_schedule_bloc.dart';
 import '../presentation/bloc/appointment_schedule_event.dart';
 import 'constants.dart';

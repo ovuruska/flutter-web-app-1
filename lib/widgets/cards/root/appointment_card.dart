@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../domain/entities/dashboard_appointment_entity.dart';
+import 'entity.dart';
+
 
 class AppointmentCard extends StatelessWidget {
   final DashboardAppointmentEntity appointment;

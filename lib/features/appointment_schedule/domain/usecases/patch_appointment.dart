@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
 import '../../../../core/usecases/use_case.dart';
-import '../entities/dashboard_appointment_entity.dart';
+import '../../../../widgets/cards/root/entity.dart';
 import '../repositories/appointment_repository.dart';
 
 class PatchAppointmentParams {

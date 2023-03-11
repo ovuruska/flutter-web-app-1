@@ -3,7 +3,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/dashboard_appointment_entity.dart';
+import '../../../../widgets/cards/root/entity.dart';
+
 
 class AppointmentScheduleEvent extends Equatable {
   const AppointmentScheduleEvent();

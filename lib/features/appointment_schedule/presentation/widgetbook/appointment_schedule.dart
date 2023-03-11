@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' show WidgetbookUseCase;
 
+import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
 import '../widgets/appointment_schedule.dart';
 

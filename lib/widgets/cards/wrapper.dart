@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
+
+import 'root/entity.dart';
 
 class DragWrapper extends StatelessWidget {
 

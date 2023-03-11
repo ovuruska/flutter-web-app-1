@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/hour_column.dart';
 
-import '../../domain/entities/dashboard_appointment_entity.dart';
+import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
 import '../../presentation/widgets/daily_calendar.dart';
 

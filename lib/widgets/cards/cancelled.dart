@@ -1,9 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 
 import 'root/appointment_card.dart';
+import 'root/entity.dart';
 
 class AppointmentCardCancelled extends StatelessWidget{
 

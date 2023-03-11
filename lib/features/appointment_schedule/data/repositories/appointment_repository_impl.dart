@@ -5,9 +5,9 @@ import 'package:intl/intl.dart';
 
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 import 'package:scrubbers_employee_application/services/auth.dart';
 
+import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/repositories/appointment_repository.dart';
 
 class DashboardAppointmentRepositoryImpl

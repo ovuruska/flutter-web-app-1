@@ -1,9 +1,9 @@
 
 
 import 'package:dartz/dartz.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
 
 import '../../../../core/error/failures.dart';
+import '../../../../widgets/cards/root/entity.dart';
 
 abstract class DashboardAppointmentRepository {
 

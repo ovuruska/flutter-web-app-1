@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/cards/index.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/drag_target_box.dart';
-import 'package:time_machine/time_machine.dart';
 
-import '../../domain/entities/dashboard_appointment_entity.dart';
+import '../../../../widgets/cards/index.dart';
+import '../../../../widgets/cards/root/entity.dart';
+import '../../../../widgets/cards/wrapper.dart';
 import '../../utils/border.dart';
 import '../../utils/constants.dart';
-import 'cards/wrapper.dart';
 
 class DailyCalendar extends StatelessWidget {
   final List<DashboardAppointmentEntity> appointments;
