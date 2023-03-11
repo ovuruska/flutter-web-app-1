@@ -4,6 +4,8 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/pre
 import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
 import '../../presentation/widgets/daily_calendar.dart';
+import '../../utils/constants.dart';
+
 
 
 class AppointmentSchedule extends StatefulWidget {
@@ -25,9 +27,12 @@ class AppointmentSchedule extends StatefulWidget {
 }
 
 class _AppointmentScheduleState extends State<AppointmentSchedule> {
+
   Widget _horizontal() => SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(children: [
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
         Container(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: HourColumn(
@@ -51,6 +56,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,
       body: SingleChildScrollView(
+        controller: controller,
         child:_horizontal(),
       ),
     );

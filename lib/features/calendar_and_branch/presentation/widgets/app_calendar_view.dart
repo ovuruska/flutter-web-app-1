@@ -4,6 +4,11 @@ import '../../../../widgets/inputs/FlutterFlowCalendar.dart';
 import 'app_calendar.dart';
 
 class AppCalendarView extends StatelessWidget {
+
+  final Function(DateTime)? onDateSelected;
+
+  const AppCalendarView({Key? key, this.onDateSelected}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -21,7 +26,7 @@ class AppCalendarView extends StatelessWidget {
             ],
             color: Colors.white,
           ),
-          child: AppCalendar()),
+          child: AppCalendar(onDateSelected: onDateSelected)),
       Positioned(
           child: CustomIconButton(
             icon: Icon(Icons.add, color: const Color(0xFF494C68).withOpacity(.9)),

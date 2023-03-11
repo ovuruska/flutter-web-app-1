@@ -19,8 +19,20 @@ class DashboardAppointmentRepositoryImpl
 
   @override
   Future<Either<Failure, DashboardAppointmentEntity>> patch(
-      DashboardAppointmentEntity) {
-    throw UnimplementedError();
+      DashboardAppointmentEntity appointment) async {
+
+    var response = await SchedulingAuthService.instance.jsonRequest(
+      "/api/schedule/appointment/${appointment.id}",
+      method: "PATCH",
+      body: appointment.toJson(),
+    );
+    var respString = await response.stream.bytesToString();
+    var respJson = jsonDecode(respString);
+    if (response.statusCode == 200) {
+      return Right(DashboardAppointmentEntity.fromJson(respJson));
+    } else {
+      return Left(ServerFailure());
+    }
   }
 
   @override

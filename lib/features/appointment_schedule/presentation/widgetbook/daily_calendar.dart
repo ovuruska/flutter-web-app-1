@@ -34,6 +34,7 @@ dailyCalendarUseCase(BuildContext context){
     service: 'service',
     breed: 'breed',
     dogName: 'dogName',
+    employeeName: 'Jane Doe',
     start: startEndPair[index][0],
     end: startEndPair[index][1],
     invoice: 0.0, specialHandling: true, status: allStatuses[index],

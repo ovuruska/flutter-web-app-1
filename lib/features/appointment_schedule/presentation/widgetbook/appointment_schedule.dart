@@ -27,10 +27,10 @@ Widget appointmentScheduleUseCase(BuildContext context){
   ];
 
   final appointments = [
-    DashboardAppointmentEntity(id: 1, status: "CheckedIn", customerName: "Cenk", employee: 2, service: "We Wash", breed: "D", dogName: "A", start: getTime(8,0), end: getTime(9,30), invoice: 30, specialHandling: true),
-    DashboardAppointmentEntity(id: 2, status: "Confirmed", customerName: "Cenk", employee: 2, service: "We Wash", breed: "D", dogName: "A", start: getTime(9,30), end: getTime(11,0), invoice: 30, specialHandling: true),
-    DashboardAppointmentEntity(id: 3, status: "Confirmed", customerName: "Cenk", employee: 1, service: "We Wash", breed: "D", dogName: "A", start: getTime(11,0), end: getTime(12,30), invoice: 30, specialHandling: true),
-    DashboardAppointmentEntity(id: 4, status: "Confirmed", customerName: "Cenk", employee: 1, service: "We Wash", breed: "D", dogName: "A", start: getTime(12,30), end: getTime(14,0), invoice: 30, specialHandling: true),
+    DashboardAppointmentEntity(id: 1, status: "CheckedIn", customerName: "Cenk", employee: 2, service: "We Wash", breed: "D", dogName: "A", start: getTime(8,0), end: getTime(9,30), invoice: 30, specialHandling: true, employeeName: 'Jane Doe'),
+    DashboardAppointmentEntity(id: 2, status: "Confirmed", customerName: "Cenk", employee: 2, service: "We Wash", breed: "D", dogName: "A", start: getTime(9,30), end: getTime(11,0), invoice: 30, specialHandling: true, employeeName: 'Jane Doe'),
+    DashboardAppointmentEntity(id: 3, status: "Confirmed", customerName: "Cenk", employee: 1, service: "We Wash", breed: "D", dogName: "A", start: getTime(11,0), end: getTime(12,30), invoice: 30, specialHandling: true, employeeName: 'Jane Doe'),
+    DashboardAppointmentEntity(id: 4, status: "Confirmed", customerName: "Cenk", employee: 1, service: "We Wash", breed: "D", dogName: "A", start: getTime(12,30), end: getTime(14,0), invoice: 30, specialHandling: true, employeeName: 'Jane Doe'),
 
   ];
 

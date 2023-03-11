@@ -19,19 +19,37 @@ class AppointmentScheduleBloc
     required this.getEmployees,
     required this.patchAppointment
   }) : super(Initial()) {
-    on<AppointmentSchedulePatchEvent>((event, emit) {});
+    on<AppointmentScheduleInitializeEvent>((event, emit) {
+      emit(Initial());
+    });
+    on<AppointmentSchedulePatchEvent>((event, emit) {
+    var appointment = event.appointment;
+      var params = PatchAppointmentParams( appointment);
+      patchAppointment(params);
+      var currentAppointments = (state as Loaded).appointments;
+      currentAppointments = currentAppointments.map((e) {
+        if(e.id == appointment.id){
+          return appointment;
+        }
+        return e;
+      }).toList();
+      emit(Loaded(employees: (state as Loaded).employees,appointments: currentAppointments));
+    });
     on<AppointmentScheduleGetEmployeesEvent>((event, emit) async {
       List<DashboardAppointmentEntity> appointments = [];
       List <DashboardEmployeeEntity> employees = [];
       if(state == Loaded){
-        appointments = (state as Loaded).appointments;
         employees = (state as Loaded).employees;
+        appointments = (state as Loaded).appointments;
       }
       var date = event.date;
       var branch = event.branch;
       var params = GetBranchEmployeesParams(date: date, branch: branch);
       var result = await getEmployees(params);
       result.fold((l) {}, (r) {
+        
+        employees = mergeEmployees(employees,getAppointmentEmployees(appointments));
+
         emit(Loaded(employees: r,appointments: appointments));
       });
     });
@@ -46,12 +64,31 @@ class AppointmentScheduleBloc
       var result = await getAppointments(params);
 
 
-
-
       result.fold((l) {}, (r){
-
+        employees = mergeEmployees(employees,getAppointmentEmployees(r));
         emit(Loaded(employees: employees,appointments: r));
       });
     });
+  }
+
+  List<DashboardEmployeeEntity> getAppointmentEmployees(List<DashboardAppointmentEntity> appointments){
+    List<DashboardEmployeeEntity> result = [];
+    for(var appointment in appointments){
+      if(!result.contains(DashboardEmployeeEntity(id: appointment.employee, name: appointment.employeeName, role: appointment.service)))
+        result.add(DashboardEmployeeEntity(id: appointment.employee, name: appointment.employeeName, role: appointment.service));
+    }
+    return result;
+  }
+
+  List<DashboardEmployeeEntity> mergeEmployees(List<DashboardEmployeeEntity> a, List<DashboardEmployeeEntity> b){
+
+    List<DashboardEmployeeEntity> result = b;
+    for(var employee in a){
+      if(!result.contains(employee)){
+        result.add(employee);
+      }
+    }
+    return result;
+
   }
 }

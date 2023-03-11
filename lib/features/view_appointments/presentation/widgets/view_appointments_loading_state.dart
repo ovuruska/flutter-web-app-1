@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
-import 'tab_bar.dart';
 
 class ViewAppointmentsLoadingState extends StatelessWidget {
 

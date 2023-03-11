@@ -9,8 +9,8 @@ abstract class DashboardAppointmentRepository {
 
   Future<Either<Failure,List<DashboardAppointmentEntity>>> getAppointmentsByBranch(int branchId,DateTime date);
 
-  Future<Either<Failure,DashboardAppointmentEntity>> patch(DashboardAppointmentEntity);
+  Future<Either<Failure,DashboardAppointmentEntity>> patch(DashboardAppointmentEntity appointment);
 
-  Future<Either<Failure,void>> delete(int);
+  Future<Either<Failure,void>> delete(int appointmentId);
 
 }

@@ -13,6 +13,12 @@ class AppointmentScheduleEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class AppointmentScheduleInitializeEvent extends AppointmentScheduleEvent {
+
+  @override
+  List<Object> get props => [];
+}
+
 class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
   final DateTime date;
   final int branch;

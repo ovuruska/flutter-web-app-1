@@ -3,13 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_appointment_entity.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/daily_calendar.dart';
 import 'package:scrubbers_employee_application/injection.dart';
-
-import 'features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
-import 'features/appointment_schedule/presentation/pages/appointment_schedule.dart';
-import 'features/appointment_schedule/presentation/widgets/appointment_schedule.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';

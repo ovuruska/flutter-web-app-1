@@ -9,24 +9,25 @@ import '../../../../widgets/cards/in_progress.dart';
 import '../../../../widgets/cards/pending.dart';
 import '../../../../widgets/cards/root/entity.dart';
 
-
+final appointment = DashboardAppointmentEntity(
+  id: 1,
+  employeeName: 'employeeName',
+  customerName: 'customerName',
+  employee: 1,
+  service: 'service',
+  breed: 'breed',
+  dogName: 'dogName',
+  start: DateTime.now(),
+  end: DateTime.now(),
+  invoice: 0.0,
+  specialHandling: true,
+  status: 'CheckedIn',
+);
 // AppointmentCardInProgress
 @WidgetbookUseCase(
     name: 'Appointment Card In Progress', type: AppointmentCardInProgress)
 Widget appointmentCardInProgressUseCase(BuildContext context) {
   // Generate some dummy data
-  var appointment = DashboardAppointmentEntity(
-    id: 1,
-    customerName: 'customerName',
-    employee: 1,
-    service: 'service',
-    breed: 'breed',
-    dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0,
-    specialHandling: true, status: 'CheckedIn',
-  );
 
   return AppointmentCardInProgress(
     appointment: appointment,
@@ -38,18 +39,6 @@ Widget appointmentCardInProgressUseCase(BuildContext context) {
     name: 'Appointment Card Approved', type: AppointmentCardApproved)
 Widget appointmentCardApprovedUseCase(BuildContext context) {
   // Generate some dummy data
-  var appointment = DashboardAppointmentEntity(
-    id: 1,
-    customerName: 'customerName',
-    employee: 1,
-    service: 'service',
-    breed: 'breed',
-    dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0,
-    specialHandling: true, status: 'Confirmed',
-  );
 
   return AppointmentCardApproved(
     appointment: appointment,
@@ -61,18 +50,6 @@ Widget appointmentCardApprovedUseCase(BuildContext context) {
     name: 'Appointment Card Cancelled', type: AppointmentCardCancelled)
 Widget appointmentCardCancelledUseCase(BuildContext context) {
   // Generate some dummy data
-  var appointment = DashboardAppointmentEntity(
-    id: 1,
-    customerName: 'customerName',
-    employee: 1,
-    service: 'service',
-    breed: 'breed',
-    dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0,
-    specialHandling: true, status: 'Cancelled',
-  );
 
   return AppointmentCardCancelled(
     appointment: appointment,
@@ -84,18 +61,6 @@ Widget appointmentCardCancelledUseCase(BuildContext context) {
     name: 'Appointment Card Pending', type: AppointmentCardPending)
 Widget appointmentCardPendingUseCase(BuildContext context) {
   // Generate some dummy data
-  var appointment = DashboardAppointmentEntity(
-    id: 1,
-    customerName: 'customerName',
-    employee: 1,
-    service: 'service',
-    breed: 'breed',
-    dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0,
-    specialHandling: true, status: 'Pending',
-  );
 
   return AppointmentCardPending(
     appointment: appointment,
@@ -107,19 +72,6 @@ Widget appointmentCardPendingUseCase(BuildContext context) {
     name: 'Appointment Card Completed', type: AppointmentCardCompleted)
 Widget appointmentCardCompletedUseCase(BuildContext context) {
   // Generate some dummy data
-  var appointment = DashboardAppointmentEntity(
-    id: 1,
-    status : 'Completed',
-    customerName: 'customerName',
-    employee: 1,
-    service: 'service',
-    breed: 'breed',
-    dogName: 'dogName',
-    start: DateTime.now(),
-    end: DateTime.now(),
-    invoice: 0.0,
-    specialHandling: true,
-  );
 
   return AppointmentCardCompleted(
     appointment: appointment,

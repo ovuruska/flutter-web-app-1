@@ -19,7 +19,7 @@ class HourColumn extends StatelessWidget {
     // 11 AM
     var formatter = new DateFormat('h a');
     return Container(
-      width: boxWidth,
+      width: boxWidth/2,
       child: Column(
         children: List.generate(
           end - start,
