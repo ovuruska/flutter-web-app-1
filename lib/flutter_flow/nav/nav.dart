@@ -15,7 +15,7 @@ import 'package:scrubbers_employee_application/pages/signout/view.dart';
 import '../../index.dart';
 import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
-import '../../pages/schedule/schedule.dart';
+import '../../pages/schedule/view.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';

@@ -30,10 +30,7 @@ class _AppointmentScheduleViewState extends State<AppointmentScheduleView> {
     sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetAppointmentsEvent(
         date: widget.date, branch: widget.branch));
   }
-  void dispose() {
-    super.dispose();
-    sl<AppointmentScheduleBloc>().add(AppointmentScheduleInitializeEvent());
-  }
+
 
   @override
   Widget build(BuildContext context) {

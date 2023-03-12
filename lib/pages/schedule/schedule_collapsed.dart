@@ -5,24 +5,17 @@ import '../../features/app_header/presentation/widgets/header.dart';
 import '../../features/appointment_schedule/presentation/pages/appointment_schedule.dart';
 import '../../features/calendar_and_branch/presentation/pages/calendar_and_branch.dart';
 import '../../features/view_appointments/presentation/pages/view_appointments.dart';
+import 'navbar.dart';
 
-class ScheduleView extends StatefulWidget {
-  const ScheduleView({Key? key}) : super(key: key);
+class ScheduleViewCollapsed extends StatelessWidget {
+  final DateTime selectedDate;
+  final int branch;
+  final Function() onExpand;
+  const ScheduleViewCollapsed({Key? key, required this.selectedDate, required this.branch, required this.onExpand,}) : super(key: key);
 
-  @override
-  _ScheduleViewState createState() => _ScheduleViewState();
-}
 
-class _ScheduleViewState extends State<ScheduleView> {
-  DateTime _selectedDate = DateTime.now();
-  int _branch = -1;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  Widget _grid() => LayoutGrid(
+  Widget _grid() =>
+      LayoutGrid(
         columnSizes: [
           64.px,
           420.px,
@@ -39,36 +32,24 @@ class _ScheduleViewState extends State<ScheduleView> {
             columnStart: 0,
             columnSpan: 4,
           ),
-          ViewAppointmentsPage().withGridPlacement(
-            rowStart: 2,
-            rowSpan: 1,
-            columnStart: 1,
+          ScheduleNavbar(onPressed: onExpand, isFullScreen: true,).withGridPlacement(
+            rowStart: 1,
+            rowSpan: 3,
+            columnStart: 0,
             columnSpan: 1,
           ),
-          AppointmentScheduleView(key:ValueKey(_branch.toString() + " " + _selectedDate.toString()),date: _selectedDate, branch: _branch )
+
+          AppointmentScheduleView(key: ValueKey(
+              branch.toString() + " " + selectedDate.toString()),
+              date: selectedDate,
+              branch: branch)
               .withGridPlacement(
             rowStart: 1,
             rowSpan: 2,
-            columnStart: 2,
-            columnSpan: 1,
-          ),
-          CalendarAndBranchView(
-            onDateSelected: (date) {
-              setState(() {
-                _selectedDate = date;
-              });
-            },
-            onBranchSelected: (branch) {
-              setState(() {
-                _branch = branch;
-              });
-            },
-          ).withGridPlacement(
-            rowStart: 1,
-            rowSpan: 1,
             columnStart: 1,
             columnSpan: 1,
           ),
+
         ],
       );
 
