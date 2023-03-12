@@ -19,35 +19,41 @@ class _SelectBranchState extends State<SelectBranch> {
   @override
   void initState() {
     super.initState();
-    if(widget.branches.isNotEmpty){
+    if (widget.branches.isNotEmpty) {
       _selectedBranch = widget.branches.first.id;
       Future.delayed(Duration.zero, () {
         if (widget.onBranchSelected != null)
           widget.onBranchSelected!(_selectedBranch!);
       });
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<int>(
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-      ),
-      value: _selectedBranch,
-      onChanged: (value) {
-        setState(() {
-          _selectedBranch = value;
-        });
-        if (widget.onBranchSelected != null) widget.onBranchSelected!(value!);
-      },
-      items: widget.branches
-          .map((e) => DropdownMenuItem(
-                value: e.id,
-                child: Text(e.name),
-              ))
-          .toList(),
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text("Branches", style: TextStyle(fontFamily: "Poppins",fontSize:16)),
+      Container(height:8),
+      DropdownButtonFormField<int>(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+        ),
+        value: _selectedBranch,
+        onChanged: (value) {
+          setState(() {
+            _selectedBranch = value;
+          });
+          if (widget.onBranchSelected != null) widget.onBranchSelected!(value!);
+        },
+        items: widget.branches
+            .map((e) => DropdownMenuItem(
+                  value: e.id,
+                  child: Text(
+                    e.name,
+                    style: TextStyle(fontFamily: "Poppins"),
+                  ),
+                ))
+            .toList(),
+      )
+    ]);
   }
 }

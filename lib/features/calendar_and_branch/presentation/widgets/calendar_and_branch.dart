@@ -20,7 +20,6 @@ class CalendarAndBranch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: [
-      Container(height: 32),
       SelectBranch(
         branches: branches,
         onBranchSelected: onBranchSelected,
