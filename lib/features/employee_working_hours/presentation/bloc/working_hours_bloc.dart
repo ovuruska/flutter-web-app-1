@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/usecases/use_case.dart';
 import '../../domain/usecases/create_appointment.dart';
 import '../../domain/usecases/get_branches.dart';
-import '../../domain/usecases/get_employees.dart';
+import '../../domain/usecases/get_branch_employees.dart';
 import 'create_appointment_event.dart';
 import 'create_appointment_state.dart';
 

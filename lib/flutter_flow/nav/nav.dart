@@ -12,10 +12,10 @@ import 'package:scrubbers_employee_application/pages/pets/view.dart';
 import 'package:scrubbers_employee_application/pages/print/View.dart';
 import 'package:scrubbers_employee_application/pages/signout/view.dart';
 
-import '../../features/view_logs/presentation/pages/view_logs.dart';
 import '../../index.dart';
 import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
+import '../../pages/schedule/schedule.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -47,7 +47,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Dashboard',
               path: 'dashboard',
-              builder: (context, params) => LoginRequired(DashboardView()),
+              builder: (context, params) => LoginRequired(ScheduleView()),
             ),
             FFRoute(
               name: 'Customers',
