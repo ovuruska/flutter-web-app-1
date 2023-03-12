@@ -37,116 +37,125 @@ class AppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var duration = appointment.end.difference(appointment.start).inMinutes;
-    return SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.horizontal,
+    var height = duration * boxHeight / 60 - 2 * calendarMargin;
+    return Container(
+        height: height,
+        width: boxWidth,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              spreadRadius: 0,
+              blurRadius: 4,
+              offset: Offset(0, 4), // changes position of shadow
+            ),
+          ],
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(4),
+        ),
         child: SingleChildScrollView(
+            controller: null,
             physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: Container(
-                width: width ?? boxWidth,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Column(
+            scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+                controller: null,
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                child: Flex(
+                  direction: Axis.vertical,
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: headerColor,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  _formatTime(),
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontFamily: 'Inter',
-                                  ),
+                    Container(
+                        width: boxWidth,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: headerColor,
                                 ),
-                                (appointment.specialHandling)
-                                    ? Icon(
-                                        Icons.star,
-                                        color: const Color(0xFFFFD8D8),
-                                      )
-                                    : Container(),
-                                Text(
-                                  duration.toString() + " mins",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontFamily: 'Inter',
-                                  ),
-                                )
-                              ],
-                            )),
-                        Container(height: 8),
-                        Container(
-                          margin: EdgeInsets.only(left: 4),
-                          child: Text(
-                            appointment.customerName,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: headerColor,
-                              fontFamily: 'Inter',
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      _formatTime(),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontFamily: 'Inter',
+                                      ),
+                                    ),
+                                    (appointment.specialHandling)
+                                        ? Icon(
+                                            Icons.star,
+                                            color: const Color(0xFFFFD8D8),
+                                          )
+                                        : Container(),
+                                    Text(
+                                      duration.toString() + " mins",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontFamily: 'Inter',
+                                      ),
+                                    )
+                                  ],
+                                )),
+                            Container(height: 8),
+                            Container(
+                              margin: EdgeInsets.only(left: 4),
+                              child: Text(
+                                appointment.customerName,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: headerColor,
+                                  fontFamily: 'Inter',
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 4),
-                          child: Text(
-                            appointment.dogName,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: const Color(0xFF000000),
-                              fontFamily: 'Inter',
+                            Container(
+                              margin: EdgeInsets.only(left: 4),
+                              child: Text(
+                                appointment.dogName,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: const Color(0xFF000000),
+                                  fontFamily: 'Inter',
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 4),
-                          child: Text(
-                            appointment.breed,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: const Color(0xFF989898),
-                              fontFamily: 'Inter',
+                            Container(
+                              margin: EdgeInsets.only(left: 4),
+                              child: Text(
+                                appointment.breed,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: const Color(0xFF989898),
+                                  fontFamily: 'Inter',
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 4),
-                          child: Text(
-                            appointment.service,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: const Color(0xFF000000),
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                            Container(
+                              margin: EdgeInsets.only(left: 4),
+                              child: Text(
+                                appointment.service,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: const Color(0xFF000000),
+                                  fontFamily: 'Inter',
+                                ),
+                              ),
+                            )
+                          ],
+                        )),
                     Container(
                         margin: EdgeInsets.all(8),
                         child: Row(
@@ -167,3 +176,8 @@ class AppointmentCard extends StatelessWidget {
                 ))));
   }
 }
+
+/*
+
+
+ */
