@@ -31,8 +31,8 @@ class _SelectBranchState extends State<SelectBranch> {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text("Branches", style: TextStyle(fontFamily: "Poppins",fontSize:16)),
-      Container(height:8),
+      Text('Branch', style: TextStyle(fontFamily: "Poppins", fontSize: 20)),
+      Container(height: 8),
       DropdownButtonFormField<int>(
         decoration: InputDecoration(
           border: OutlineInputBorder(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/utils/layout_appointments.dart';
 
 import '../../../../widgets/cards/index.dart';
 import '../../../../widgets/cards/root/entity.dart';
@@ -7,7 +6,9 @@ import '../../../../widgets/cards/wrapper.dart';
 import '../../domain/entities/appointment_layout.dart';
 import '../../utils/border.dart';
 import '../../utils/constants.dart';
+import '../../utils/layout_appointments.dart';
 import '../../utils/onAcceptWithDetails.dart';
+import 'appointment_card.dart';
 import 'hour_box.dart';
 import 'resizable.dart';
 
@@ -78,36 +79,11 @@ class DailyCalendar extends StatelessWidget {
             builder: _buildHours)
       ])),
       ...layouts.map((layout) {
-        var appointment = layout.appointment;
-        var topMost = DateTime(appointment.start.year, appointment.start.month,
-            appointment.start.day, start, 0, 0);
-        var top = headerHeight +
-            appointment.start.difference(topMost).inMinutes * boxHeight / 60;
-
-        var height = (appointment.end.difference(appointment.start).inMinutes)
-                    .toDouble() *
-                boxHeight /
-                60 -
-            2 * calendarMargin;
-
-        var leftMargin = (layout.left) * boxWidth;
-        var width = (layout.right - layout.left) * boxWidth - 2 * calendarMargin;
-
-        return Positioned(
-            key: ValueKey(appointment.id),
-            top: top.toDouble(),
-            left: leftMargin,
-            child: DragTarget<DashboardAppointmentEntity>(
-                onAcceptWithDetails:
-                    onAcceptWithDetails(date, start, employeeId),
-                builder: (context, appointments, builder) => DragWrapper(
-                    data: appointment,
-                    child: AppointmentScheduleResizableWrapper(
-        width: width,
-        appointment: appointment,
-        child:AppointmentCardFactory(
-                          appointment: appointment,
-                        )))));
+        return AppointmentScheduleCard(
+            layout: layout,
+            start: start,
+            date: date,
+            employee: employeeId);
       }).toList()
     ]);
   }

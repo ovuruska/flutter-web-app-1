@@ -11,3 +11,4 @@ final branchEnd = 20;
 final ScrollController verticalController = ScrollController();
 final ScrollController horizontalController = ScrollController();
 final quarterHeight = boxHeight / 4;
+final hourWidth = boxWidth / 2;
