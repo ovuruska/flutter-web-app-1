@@ -12,7 +12,7 @@ class AppointmentCardApproved extends StatelessWidget{
   Widget build(BuildContext context) {
     return AppointmentCard(
       appointment: appointment,
-      backgroundColor: const Color(0xFFFFFFFF),
+      backgroundColor: const Color(0xFFEBF4FB),
       headerColor: const Color(0xFF3894D7),
     );
   }

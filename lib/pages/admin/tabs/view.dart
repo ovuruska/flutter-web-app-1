@@ -22,7 +22,7 @@ class AdminTabsView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                   Header(),
-                  Expanded(child: AdminEmployeesTab())
+                  Expanded(child: AdminBranchesTab())
                 ]))));
   }
 }

@@ -80,9 +80,13 @@ class AppointmentScheduleBloc
 
   List<DashboardEmployeeEntity> getAppointmentEmployees(List<DashboardAppointmentEntity> appointments){
     List<DashboardEmployeeEntity> result = [];
+    List<int> ids = [];
     for(var appointment in appointments){
-      if(!result.contains(DashboardEmployeeEntity(id: appointment.employee, name: appointment.employeeName, role: appointment.service)))
-        result.add(DashboardEmployeeEntity(id: appointment.employee, name: appointment.employeeName, role: appointment.service));
+      var employee = DashboardEmployeeEntity(id: appointment.employee, name: appointment.employeeName, role: appointment.service);
+      if(!ids.contains(employee.id)){
+        ids.add(employee.id);
+        result.add(employee);
+      }
     }
     return result;
   }
@@ -90,8 +94,9 @@ class AppointmentScheduleBloc
   List<DashboardEmployeeEntity> mergeEmployees(List<DashboardEmployeeEntity> a, List<DashboardEmployeeEntity> b){
 
     List<DashboardEmployeeEntity> result = b;
+    var ids = b.map((e) => e.id).toList();
     for(var employee in a){
-      if(!result.contains(employee)){
+      if(!ids.contains(employee.id)){
         result.add(employee);
       }
     }

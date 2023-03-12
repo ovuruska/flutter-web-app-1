@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/layout_appointments.dart';
 
 import '../../../../widgets/cards/index.dart';
 import '../../../../widgets/cards/root/entity.dart';
 import '../../../../widgets/cards/wrapper.dart';
+import '../../domain/entities/appointment_layout.dart';
 import '../../utils/border.dart';
 import '../../utils/constants.dart';
 import '../../utils/onAcceptWithDetails.dart';
@@ -33,6 +35,8 @@ class DailyCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<AppointmentLayout> layouts =  layoutAppointments(appointments);
+    layouts.sort((a, b) => a.zIndex.compareTo(b.zIndex));
     return Stack(children: [
       Container(
           child: Column(children: [
@@ -64,7 +68,8 @@ class DailyCalendar extends StatelessWidget {
             onAcceptWithDetails: onAcceptWithDetails(date,start, employeeId),
             builder: _buildHours)
       ])),
-      ...appointments.map((appointment) {
+      ...layouts.map((layout) {
+        var appointment = layout.appointment;
         var topMost = DateTime(appointment.start.year, appointment.start.month,
             appointment.start.day, start, 0, 0);
         var top = headerHeight +
@@ -75,15 +80,20 @@ class DailyCalendar extends StatelessWidget {
                 boxHeight /
                 60 -
             2 * calendarMargin;
+
+        var leftMargin = (layout.left) * boxWidth;
+        var width = (layout.right-layout.left) * boxWidth;
+
         return Positioned(
             key: ValueKey(appointment.id),
             top: top.toDouble(),
+            left: leftMargin,
             child: DragWrapper(
                 data: appointment,
                 child: Container(
+                    width: width - 2 * calendarMargin,
                     margin: EdgeInsets.all(calendarMargin),
                     height: height,
-                    width: boxWidth - 2 * calendarMargin,
                     child: AppointmentCardFactory(
                       appointment: appointment,
                     ))));
