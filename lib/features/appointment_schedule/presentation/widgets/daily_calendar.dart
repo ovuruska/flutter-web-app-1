@@ -10,7 +10,6 @@ import '../../utils/constants.dart';
 import '../../utils/onAcceptWithDetails.dart';
 import 'hour_box.dart';
 
-const allowed = <String>["Confirmed", "Pending", "CheckedIn", "PickUpReady", "Completed", "Cancelled"];
 
 
 class DailyCalendar extends StatelessWidget {
@@ -44,8 +43,7 @@ class DailyCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var filtered = appointments.where((appointment) => allowed.contains(appointment.status)).toList();
-    List<AppointmentLayout> layouts = layoutAppointments(filtered);
+    List<AppointmentLayout> layouts = layoutAppointments(appointments);
     layouts.sort((a, b) => a.zIndex.compareTo(b.zIndex));
     return Stack(children: [
       Container(

@@ -38,9 +38,11 @@ class AppointmentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var duration = appointment.end.difference(appointment.start).inMinutes;
     var height = duration * boxHeight / 60 - 2 * calendarMargin;
+    var width = boxWidth - 2*calendarMargin;
     return Container(
+      margin:EdgeInsets.all(calendarMargin),
         height: height,
-        width: boxWidth,
+        width: width,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -68,7 +70,7 @@ class AppointmentCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        width: boxWidth,
+                        width: width,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
