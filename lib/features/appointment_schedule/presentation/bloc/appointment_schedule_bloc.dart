@@ -69,7 +69,29 @@ class AppointmentScheduleBloc
         emit(Loaded(employees: employees, appointments: filterAppointments(r)));
       });
     });
+
+    on<AppointmentSchedulePatchLocalEvent>((event, emit) async {
+      var appointment = event.appointment;
+      var currentAppointments = (state as Loaded).appointments;
+      bool found = false;
+
+      currentAppointments = currentAppointments.map((e) {
+        if (e.id == appointment.id) {
+          found = true;
+          return appointment;
+        }
+        return e;
+      }).toList();
+      if (!found) {
+        currentAppointments.add(appointment);
+      }
+      emit(Loaded(
+          employees: (state as Loaded).employees,
+          appointments: currentAppointments));
+    });
   }
+
+
 
   List<DashboardAppointmentEntity> filterAppointments(
       List<DashboardAppointmentEntity> appointments) {

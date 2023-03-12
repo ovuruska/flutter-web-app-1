@@ -9,6 +9,7 @@ import '../../utils/border.dart';
 import '../../utils/constants.dart';
 import '../../utils/onAcceptWithDetails.dart';
 import 'hour_box.dart';
+import 'resizable.dart';
 
 
 
@@ -90,6 +91,7 @@ class DailyCalendar extends StatelessWidget {
             2 * calendarMargin;
 
         var leftMargin = (layout.left) * boxWidth;
+        var width = (layout.right - layout.left) * boxWidth - 2 * calendarMargin;
 
         return Positioned(
             key: ValueKey(appointment.id),
@@ -100,9 +102,12 @@ class DailyCalendar extends StatelessWidget {
                     onAcceptWithDetails(date, start, employeeId),
                 builder: (context, appointments, builder) => DragWrapper(
                     data: appointment,
-                    child: AppointmentCardFactory(
+                    child: AppointmentScheduleResizableWrapper(
+        width: width,
+        appointment: appointment,
+        child:AppointmentCardFactory(
                           appointment: appointment,
-                        ))));
+                        )))));
       }).toList()
     ]);
   }

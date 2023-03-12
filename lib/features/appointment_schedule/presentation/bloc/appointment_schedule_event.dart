@@ -32,6 +32,17 @@ class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
   List<Object> get props => [date,branch];
 }
 
+class AppointmentSchedulePatchLocalEvent extends AppointmentScheduleEvent {
+
+  final DashboardAppointmentEntity appointment;
+
+  AppointmentSchedulePatchLocalEvent({
+    required this.appointment
+  });
+
+  @override
+  List<Object> get props => [appointment];
+}
 
 class AppointmentSchedulePatchEvent extends AppointmentScheduleEvent {
 

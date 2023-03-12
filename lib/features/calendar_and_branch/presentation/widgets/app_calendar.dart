@@ -48,7 +48,6 @@ class _AppCalendarState extends State<AppCalendar> {
               CalendarFormat.month: 'Month',
             },
             selectedDayPredicate: (day) => isSameDay(day, focusedDay),
-
             headerVisible: false,
             calendarFormat: CalendarFormat.month,
             daysOfWeekStyle: DaysOfWeekStyle(

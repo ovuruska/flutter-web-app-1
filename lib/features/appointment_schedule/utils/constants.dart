@@ -10,3 +10,4 @@ final branchStart = 8;
 final branchEnd = 20;
 final ScrollController verticalController = ScrollController();
 final ScrollController horizontalController = ScrollController();
+final quarterHeight = boxHeight / 4;

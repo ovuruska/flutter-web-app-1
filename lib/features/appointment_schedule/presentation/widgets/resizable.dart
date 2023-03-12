@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/appointment_schedule_bloc.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/appointment_schedule_event.dart';
 
-import '../../injection.dart';
-import '../../pages/dashboard/constants.dart';
-import 'root/entity.dart';
+import '../../../../injection.dart';
+import '../../../../widgets/cards/root/entity.dart';
+import '../../utils/constants.dart';
 
-class AppointmentCardResizableWrapper extends StatefulWidget {
+class AppointmentScheduleResizableWrapper extends StatefulWidget {
   final Widget child;
   final double width;
   final DashboardAppointmentEntity appointment;
 
-  const AppointmentCardResizableWrapper(
+  const AppointmentScheduleResizableWrapper(
       {Key? key,
       required this.child,
       required this.width,
@@ -20,12 +20,12 @@ class AppointmentCardResizableWrapper extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AppointmentCardResizableWrapperState createState() =>
-      _AppointmentCardResizableWrapperState();
+  _AppointmentScheduleResizableWrapperState createState() =>
+      _AppointmentScheduleResizableWrapperState();
 }
 
-class _AppointmentCardResizableWrapperState
-    extends State<AppointmentCardResizableWrapper> {
+class _AppointmentScheduleResizableWrapperState
+    extends State<AppointmentScheduleResizableWrapper> {
   double totalDrag = 0;
   bool dragging = false;
 
