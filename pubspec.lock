@@ -1154,6 +1154,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  span_builder:
+    dependency: "direct main"
+    description:
+      name: span_builder
+      sha256: "5ec3822b7d440e75180c8d14cca34592778d7aa6abd8fef8b943cb11af72af95"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   sqflite:
     dependency: "direct main"
     description:
