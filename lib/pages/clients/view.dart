@@ -7,6 +7,7 @@ import 'package:scrubbers_employee_application/features/client_search/presentati
 
 import '../../features/app_header/presentation/widgets/header.dart';
 import '../../features/client_search/presentation/pages/client_search.dart';
+import '../../features/client_top_category/presentation/pages/client_top_category.dart';
 
 class ClientsView extends StatefulWidget {
   @override
@@ -47,6 +48,12 @@ class _ClientsViewState extends State<ClientsView> {
         rowStart: 1,
         rowSpan: 1,
         columnStart: 1,
+        columnSpan: 1,
+      ),
+      ClientTopCategoryView().withGridPlacement(
+        rowStart: 1,
+        rowSpan: 1,
+        columnStart: 2,
         columnSpan: 1,
       ),
       ClientAppointmentsView().withGridPlacement(

@@ -10,6 +10,7 @@ import 'package:scrubbers_employee_application/features/view_appointments/regist
 import 'package:scrubbers_employee_application/features/view_logs/register.dart';
 
 import 'features/client_appointments/register.dart';
+import 'features/client_top_category/register.dart';
 import 'features/create_appointment/register.dart';
 import 'features/employee_modify/register.dart';
 import 'features/employee_working_hours/register.dart';
@@ -36,4 +37,5 @@ Future<void> initSl() async {
   registerClientAppointments(sl);
   registerClientInformation(sl);
   registerClientsView(sl);
+  registerClientTopCategory(sl);
 }

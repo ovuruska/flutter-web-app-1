@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:pie_chart/pie_chart.dart';
 import 'package:scrubbers_employee_application/app.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/common/blue_shadow.dart';
@@ -39,6 +40,8 @@ import 'package:scrubbers_employee_application/features/client_information/domai
 import 'package:scrubbers_employee_application/features/client_information/presentation/widgetbook/client_information_loaded.dart';
 import 'package:scrubbers_employee_application/features/client_information/presentation/widgetbook/client_information_loading.dart';
 import 'package:scrubbers_employee_application/features/client_search/domain/entities/client_dog_entity.dart';
+import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/client_top_category.dart';
+import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/top_category_chart.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
@@ -393,6 +396,49 @@ class HotReload extends StatelessWidget {
                                   name: 'Data Card zero',
                                   builder: (context) =>
                                       dataCard2ZeroUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+                WidgetbookFolder(
+                  name: 'client_top_category',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'TopCategoryChart',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Top category pie chart',
+                                  builder: (context) =>
+                                      topCategoryUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                            WidgetbookComponent(
+                              name: 'ClientTopCategory',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Top category pie chart',
+                                  builder: (context) =>
+                                      clientTopCategoryUseCase(context),
                                 ),
                               ],
                               isExpanded: true,
