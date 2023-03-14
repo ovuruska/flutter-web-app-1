@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:scrubbers_employee_application/features/client_appointments/presentation/pages/client_appointments.dart';
+import 'package:scrubbers_employee_application/features/client_information/presentation/pages/client_information.dart';
 import 'package:scrubbers_employee_application/features/client_search/presentation/widgets/client_search_loaded.dart';
 
 import '../../features/app_header/presentation/widgets/header.dart';
@@ -17,16 +19,20 @@ class _ClientsViewState extends State<ClientsView> {
     columnSizes: [
       420.px,
       1.fr,
+      1.fr,
+      1.fr,
+      120.px,
+      1.fr,
     ],
-    rowSizes: [48.px, 120.px, 1.fr],
-    rowGap: 0,
-    columnGap: 0,
+    rowSizes: [48.px, 240.px, 1.fr],
+    rowGap: 16,
+    columnGap: 16,
     children: [
       AppHeader().withGridPlacement(
         rowStart: 0,
         rowSpan: 1,
         columnStart: 0,
-        columnSpan: 2,
+        columnSpan: 6,
       ),
 
 
@@ -37,21 +43,17 @@ class _ClientsViewState extends State<ClientsView> {
         columnStart: 0,
         columnSpan: 1,
       ),
-      Container(
-        color: Colors.green,
-      ).withGridPlacement(
+      ClientInformationView().withGridPlacement(
         rowStart: 1,
         rowSpan: 1,
         columnStart: 1,
         columnSpan: 1,
       ),
-      Container(
-        color: Colors.blue,
-      ).withGridPlacement(
+      ClientAppointmentsView().withGridPlacement(
         rowStart: 2,
         rowSpan: 1,
         columnStart: 1,
-        columnSpan: 1,
+        columnSpan:5,
       ),
 
     ],

@@ -12,24 +12,7 @@ ThemeData darkTheme() => ThemeData.dark();
 @WidgetbookApp.material(
   name: 'Quicker',
   devices: [
-    Device(
-      name: "iPhone 12 Pro Max",
-      type: DeviceType.mobile,
-      resolution: Resolution(
-          nativeSize: DeviceSize(width: 428, height: 926), scaleFactor: 3),
-    ),
-    Device(
-      name: "iPhone 12 Pro",
-      type: DeviceType.mobile,
-      resolution: Resolution(
-          nativeSize: DeviceSize(width: 390, height: 844), scaleFactor: 3),
-    ),
-    Device(
-      name: "iPhone 12",
-      type: DeviceType.mobile,
-      resolution: Resolution(
-          nativeSize: DeviceSize(width: 390, height: 844), scaleFactor: 2),
-    ),
+
     Device(
       name: "Macbook Pro",
       type: DeviceType.desktop,

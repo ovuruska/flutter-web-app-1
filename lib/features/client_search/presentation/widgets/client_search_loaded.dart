@@ -9,8 +9,9 @@ class ClientSearchLoaded extends StatelessWidget {
   final List<ClientSearchEntity> clients;
   final String query;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
 
-  const ClientSearchLoaded({Key? key, required this.clients, required this.query, this.onChanged}) : super(key: key);
+  const ClientSearchLoaded({Key? key, required this.clients, required this.query, this.onChanged, this.onSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ClientSearchLoaded extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GeneralSearch(onChanged: onChanged,),
+            GeneralSearch(onChanged: onChanged,onSubmitted: onSubmitted,),
             Container(height:32),
             Expanded(
               child:ClientList(

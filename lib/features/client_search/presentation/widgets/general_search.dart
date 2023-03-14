@@ -6,8 +6,9 @@ class GeneralSearch extends StatefulWidget {
 
   final String? initialValue;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
 
-  const GeneralSearch({Key? key, this.initialValue,  this.onChanged}) : super(key: key);
+  const GeneralSearch({Key? key, this.initialValue,  this.onChanged, this.onSubmitted}) : super(key: key);
 
 
   @override
@@ -25,6 +26,8 @@ class _GeneralSearchState extends State<GeneralSearch> {
       child: TextFormField(
         onChanged: widget.onChanged,
         initialValue: widget.initialValue,
+        onFieldSubmitted: widget.onSubmitted,
+
         decoration: InputDecoration(
           hintText: "General Search",
           hintStyle: TextStyle(

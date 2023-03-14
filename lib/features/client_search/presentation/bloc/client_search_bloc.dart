@@ -11,7 +11,17 @@ class ClientSearchBloc extends Bloc<ClientSearchEvent,ClientSearchState>{
 
   ClientSearchBloc(this.getClientsUseCase) : super(Initial()){
     on<ClientSearchQueryChanged>((event, emit) async {
-      emit(Loading());
+      if(state is Loading){
+        return;
+      }
+      if(state is Loaded && event.query == (state as Loaded).query){
+        return;
+      }
+      if(state is Loaded && event.query.isEmpty){
+        emit(Initial());
+        return;
+      }
+      if(state is Initial) emit(Loading());
       var query = event.query;
       var result = await getClientsUseCase(GetClientsParams(query: query));
       result.fold(

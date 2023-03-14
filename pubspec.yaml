@@ -75,7 +75,7 @@ dependencies:
   flutter_layout_grid: ^2.0.1
   widgetbook_annotation: 2.1.0
   shimmer: ^2.0.0
-  span_builder: ^0.1.0
+  json_schema2:
 
 dev_dependencies:
   flutter_test:

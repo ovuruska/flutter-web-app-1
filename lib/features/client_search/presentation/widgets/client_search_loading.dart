@@ -6,9 +6,10 @@ import 'general_search.dart';
 
 class ClientSearchLoading extends StatelessWidget {
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
 
 
-  const ClientSearchLoading({Key? key, this.onChanged}) : super(key: key);
+  const ClientSearchLoading({Key? key, this.onChanged, this.onSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ClientSearchLoading extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GeneralSearch(onChanged: onChanged,),
+            GeneralSearch(onChanged: onChanged,onSubmitted: onSubmitted,),
             Container(height:32),
             Expanded(
               child:Center(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/client_search/presentation/widgets/client_list.dart';
-
-import '../../domain/entities/client_search_entity.dart';
 import 'general_search.dart';
 
 class ClientSearchInitial extends StatelessWidget {
 
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
 
-  const ClientSearchInitial({Key? key, this.onChanged}) : super(key: key);
+  const ClientSearchInitial({Key? key, this.onChanged, this.onSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +19,7 @@ class ClientSearchInitial extends StatelessWidget {
           children: [
             GeneralSearch(
               onChanged: onChanged,
+              onSubmitted: onSubmitted,
             ),
             Container(height:32),
             Expanded(
