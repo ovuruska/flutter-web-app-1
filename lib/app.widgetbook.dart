@@ -36,12 +36,18 @@ import 'package:scrubbers_employee_application/features/client_appointments/pres
 import 'package:scrubbers_employee_application/features/client_appointments/presentation/widgetbook/pets_card.dart';
 import 'package:scrubbers_employee_application/features/client_appointments/presentation/widgets/percent_indicator.dart';
 import 'package:scrubbers_employee_application/features/client_appointments/presentation/widgets/pet_item.dart';
+import 'package:scrubbers_employee_application/features/client_cancellation_rate/widgetbook/cancellation_rate.dart';
 import 'package:scrubbers_employee_application/features/client_information/domain/entities/client_information.dart';
-import 'package:scrubbers_employee_application/features/client_information/presentation/widgetbook/client_information_loaded.dart';
-import 'package:scrubbers_employee_application/features/client_information/presentation/widgetbook/client_information_loading.dart';
+import 'package:scrubbers_employee_application/features/client_information/widgetbook/client_information_loaded.dart';
+import 'package:scrubbers_employee_application/features/client_information/widgetbook/client_information_loading.dart';
+import 'package:scrubbers_employee_application/features/client_no_show_rate/widgetbook/no_show_rate.dart';
 import 'package:scrubbers_employee_application/features/client_search/domain/entities/client_dog_entity.dart';
 import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/client_top_category.dart';
 import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/top_category_chart.dart';
+import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgets/top_category_chart.dart';
+import 'package:scrubbers_employee_application/features/client_visits/presentation/widgets/visits_pie_chart.dart';
+import 'package:scrubbers_employee_application/features/client_visits/widgetbook/client_visits.dart';
+import 'package:scrubbers_employee_application/features/client_visits/widgetbook/visits_pie_chart.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
@@ -225,6 +231,81 @@ class HotReload extends StatelessWidget {
               name: 'features',
               widgets: [],
               folders: [
+                WidgetbookFolder(
+                  name: 'client_visits',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'VisitsPieChart',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Visits pie chart',
+                                  builder: (context) =>
+                                      visitsPieChartUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                            WidgetbookComponent(
+                              name: 'ClientVisits',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'ClientVisits',
+                                  builder: (context) =>
+                                      clientVisitsUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+                WidgetbookFolder(
+                  name: 'client_cancellation_rate',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'CancellationRate',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Client Cancellation Rate',
+                                  builder: (context) =>
+                                      cancellationRateUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
                 WidgetbookFolder(
                   name: 'search_branches',
                   widgets: [],
@@ -545,6 +626,38 @@ class HotReload extends StatelessWidget {
                                   name: 'ModifyBranch',
                                   builder: (context) =>
                                       modifyBranchUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                          ],
+                          folders: [],
+                          isExpanded: true,
+                        ),
+                      ],
+                      isExpanded: true,
+                    ),
+                  ],
+                  isExpanded: true,
+                ),
+                WidgetbookFolder(
+                  name: 'client_no_show_rate',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'widgets',
+                          widgets: [
+                            WidgetbookComponent(
+                              name: 'NoShowRate',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Client No Show Rate',
+                                  builder: (context) =>
+                                      noShowRateUseCase(context),
                                 ),
                               ],
                               isExpanded: true,

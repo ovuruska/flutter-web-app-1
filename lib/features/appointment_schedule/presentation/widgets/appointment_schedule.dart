@@ -35,6 +35,9 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
     if (!isSameDay(now, widget.date)) {
       return Container();
     }
+    if(now.hour < 8 || now.hour > 20) {
+      return Container();
+    }
     var top = headerHeight +
         now
                 .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))

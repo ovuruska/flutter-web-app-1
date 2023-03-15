@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' show WidgetbookUseCase;
 
-import '../../domain/entities/client_information.dart';
-import '../widgets/client_information_loaded.dart';
+import '../domain/entities/client_information.dart';
+import '../presentation/widgets/client_information_loaded.dart';
 
 
 @WidgetbookUseCase(name:"Client information loaded",type:ClientInformationLoadedView)
