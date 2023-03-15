@@ -8,8 +8,10 @@ import 'package:scrubbers_employee_application/features/client_search/presentati
 import '../../features/app_header/presentation/widgets/header.dart';
 import '../../features/client_cancellation_rate/presentation/pages/cancellation_rate.dart';
 import '../../features/client_no_show_rate/presentation/pages/no_show_rate.dart';
+import '../../features/client_pets/presentation/pages/client_pets.dart';
 import '../../features/client_search/presentation/pages/client_search.dart';
 import '../../features/client_top_category/presentation/pages/client_top_category.dart';
+import '../../features/client_yearly_appointment/presentation/pages/client_yearly_appointments.dart';
 import 'analytics_column.dart';
 
 class ClientsView extends StatefulWidget {
@@ -21,12 +23,13 @@ class _ClientsViewState extends State<ClientsView> {
 
   Widget _layout() => LayoutGrid(
     columnSizes: [
-      420.px,
+      320.px,
+      2.fr,
+      2.fr,
       1.fr,
-      1.fr,
-      1.fr,
-      120.px,
-      1.fr,
+      2.fr,
+      2.fr
+
     ],
     rowSizes: [48.px, 240.px, 1.fr],
     rowGap: 16,
@@ -38,8 +41,6 @@ class _ClientsViewState extends State<ClientsView> {
         columnStart: 0,
         columnSpan: 6,
       ),
-
-
       ClientSearchView(
       ).withGridPlacement(
         rowStart: 1,
@@ -71,6 +72,18 @@ class _ClientsViewState extends State<ClientsView> {
         rowSpan: 1,
         columnStart: 1,
         columnSpan:5,
+      ),
+      ClientPetsView().withGridPlacement(
+        rowStart: 1,
+        rowSpan: 1,
+        columnStart: 5,
+        columnSpan: 1,
+      ),
+      ClientYearlyAppointmentsView().withGridPlacement(
+        rowStart: 1,
+        rowSpan: 1,
+        columnStart: 4,
+        columnSpan: 1,
       ),
 
     ],

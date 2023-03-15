@@ -3,6 +3,7 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/reg
 import 'package:scrubbers_employee_application/features/calendar_and_branch/register.dart';
 import 'package:scrubbers_employee_application/features/client_cancellation_rate/register.dart';
 import 'package:scrubbers_employee_application/features/client_information/register.dart';
+import 'package:scrubbers_employee_application/features/client_pets/register.dart';
 import 'package:scrubbers_employee_application/features/client_search/register.dart';
 import 'package:scrubbers_employee_application/features/employee_search/register.dart';
 import 'package:scrubbers_employee_application/features/modify_branch/register.dart';
@@ -14,6 +15,7 @@ import 'features/client_appointments/register.dart';
 import 'features/client_no_show_rate/register.dart';
 import 'features/client_top_category/register.dart';
 import 'features/client_visits/register.dart';
+import 'features/client_yearly_appointment/register.dart';
 import 'features/create_appointment/register.dart';
 import 'features/employee_modify/register.dart';
 import 'features/employee_working_hours/register.dart';
@@ -44,4 +46,6 @@ Future<void> initSl() async {
   registerCancellationRate(sl);
   registerNoShowRate(sl);
   registerClientVisits(sl);
+  registerClientPets(sl);
+  registerClientYearlyAppointments(sl);
 }

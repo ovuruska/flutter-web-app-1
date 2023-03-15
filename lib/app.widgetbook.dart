@@ -41,6 +41,9 @@ import 'package:scrubbers_employee_application/features/client_information/domai
 import 'package:scrubbers_employee_application/features/client_information/widgetbook/client_information_loaded.dart';
 import 'package:scrubbers_employee_application/features/client_information/widgetbook/client_information_loading.dart';
 import 'package:scrubbers_employee_application/features/client_no_show_rate/widgetbook/no_show_rate.dart';
+import 'package:scrubbers_employee_application/features/client_pets/domain/entities/client_pet_item.dart';
+import 'package:scrubbers_employee_application/features/client_pets/widgetbook/all_pets.dart';
+import 'package:scrubbers_employee_application/features/client_pets/widgetbook/pet_item.dart';
 import 'package:scrubbers_employee_application/features/client_search/domain/entities/client_dog_entity.dart';
 import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/client_top_category.dart';
 import 'package:scrubbers_employee_application/features/client_top_category/presentation/widgetbook/top_category_chart.dart';
@@ -484,6 +487,40 @@ class HotReload extends StatelessWidget {
                                   name: 'Data Card zero',
                                   builder: (context) =>
                                       dataCard2ZeroUseCase(context),
+                                ),
+                              ],
+                              isExpanded: true,
+                            ),
+                            WidgetbookComponent(
+                              name: 'PetItem',
+                              useCases: [
+                                WidgetbookUseCase(
+                                  name: 'All pets 3 pets',
+                                  builder: (context) => allPetsUseCase(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'All pets 0 pets',
+                                  builder: (context) =>
+                                      allPetsUseCase0Pets(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'All pets 1 pet',
+                                  builder: (context) =>
+                                      allPetsUseCase1Pets(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'All pets 2 pets',
+                                  builder: (context) =>
+                                      allPetsUseCase2Pets(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'All pets 10 pets',
+                                  builder: (context) =>
+                                      allPetsUseCase10Pets(context),
+                                ),
+                                WidgetbookUseCase(
+                                  name: 'PetItem',
+                                  builder: (context) => petItemUseCase(context),
                                 ),
                               ],
                               isExpanded: true,

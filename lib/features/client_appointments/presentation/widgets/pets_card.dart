@@ -29,13 +29,7 @@ class PetsCard extends StatelessWidget {
             quarterTurns: 3,
             child: Text('Pets', style: TextStyle(fontSize: 40, color:const Color(0xFFACACAC)),),
           ),
-          Expanded(
-            child:ListView(
-              scrollDirection: Axis.vertical,
-              children: dogs.map<Widget>((e) => PetItem(dog: e,)).toList(),
 
-            )
-          )
         ],
       )
     );

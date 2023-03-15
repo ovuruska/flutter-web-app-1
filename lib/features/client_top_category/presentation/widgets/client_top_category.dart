@@ -10,7 +10,7 @@ class ClientTopCategory extends StatelessWidget {
   Text _header(String header) => Text(header,
       style: GoogleFonts.plusJakartaSans(
         textStyle: TextStyle(
-          fontSize: 12,
+          fontSize: 16,
           color: const Color(0xFF71717A),
           fontWeight: FontWeight.w600,
         ),
