@@ -20,6 +20,9 @@ class AnalyticsColumn extends StatelessWidget{
           Expanded(
           child:CancellationRateView()),
           Container(height:8),
+          Expanded(
+            child:ClientVisitsView()
+          )
         ]
       )
     );

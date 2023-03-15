@@ -13,8 +13,8 @@ class CancellationRateState extends Equatable {
 class CancellationRateLoadingState extends CancellationRateState {}
 class CancellationRateInitial extends CancellationRateState {}
 class CancellationRateLoaded extends CancellationRateState {
-  final double cancellationRate;
-  CancellationRateLoaded({required this.cancellationRate});
+  final double rate;
+  CancellationRateLoaded({required this.rate});
   @override
-  List<Object?> get props => [cancellationRate];
+  List<Object?> get props => [rate];
 }

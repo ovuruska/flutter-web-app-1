@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NoShowRate extends StatelessWidget {
-  final double cancellationRate;
-  const NoShowRate({Key? key, required this.cancellationRate}) : super(key: key);
+  final double rate;
+  const NoShowRate({Key? key, required this.rate}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class NoShowRate extends StatelessWidget {
             color:const Color(0xFF71717A),
           )
         )),
-        Text("${cancellationRate.toStringAsFixed(0)}%",style:GoogleFonts.plusJakartaSans(
+        Text("${rate.toStringAsFixed(0)}%",style:GoogleFonts.plusJakartaSans(
           textStyle: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,

@@ -16,7 +16,7 @@ class NoShowRateView extends StatelessWidget {
         } else if (state is NoShowRateLoadingState) {
           return Container();
         } else if (state is NoShowRateLoaded) {
-          return NoShowRate(cancellationRate: state.cancellationRate);
+          return NoShowRate(rate: state.rate);
         }else {
           return Container();
         }

@@ -13,7 +13,7 @@ class NoShowRateBloc extends Bloc<NoShowRateEvent,NoShowRateState>{
       emit(NoShowRateLoadingState());
       var params = GetNoShowRateParams(id: event.id);
       var result = await getNoShowRate(params);
-      emit(NoShowRateLoaded(cancellationRate: 0.0));
+      result.fold((failure) => emit(NoShowRateInitial()), (rate) => emit(NoShowRateLoaded(rate: rate)));
     });
   }
 

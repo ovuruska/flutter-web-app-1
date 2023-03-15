@@ -6,5 +6,5 @@ import '../presentation/widgets/no_show_rate.dart';
 
 @WidgetbookUseCase(name: 'Client No Show Rate', type: NoShowRate)
 Widget noShowRateUseCase(BuildContext context) {
-  return NoShowRate(cancellationRate: 0.0);
+  return NoShowRate(rate: 0.0);
 }

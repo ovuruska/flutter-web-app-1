@@ -48,6 +48,7 @@ import 'package:scrubbers_employee_application/features/client_top_category/pres
 import 'package:scrubbers_employee_application/features/client_visits/presentation/widgets/visits_pie_chart.dart';
 import 'package:scrubbers_employee_application/features/client_visits/widgetbook/client_visits.dart';
 import 'package:scrubbers_employee_application/features/client_visits/widgetbook/visits_pie_chart.dart';
+import 'package:scrubbers_employee_application/features/client_visits/widgetbook/visits_pie_chart_2.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
@@ -92,6 +93,7 @@ import 'package:scrubbers_employee_application/widgets/cards/root/entity.dart';
 import 'package:scrubbers_employee_application/widgets/cards/wrapper.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 void main() {
@@ -245,6 +247,11 @@ class HotReload extends StatelessWidget {
                             WidgetbookComponent(
                               name: 'VisitsPieChart',
                               useCases: [
+                                WidgetbookUseCase(
+                                  name: 'Visits pie chart',
+                                  builder: (context) =>
+                                      visitsPieChart2UseCase(context),
+                                ),
                                 WidgetbookUseCase(
                                   name: 'Visits pie chart',
                                   builder: (context) =>

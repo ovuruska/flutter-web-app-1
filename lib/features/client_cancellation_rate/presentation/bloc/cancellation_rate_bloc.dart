@@ -14,7 +14,7 @@ class CancellationRateBloc extends Bloc<CancellationRateEvent,CancellationRateSt
       emit(CancellationRateLoadingState());
       var params = GetCancellationRateParams(id: event.id);
       var result = await getCancellationRate(params);
-      emit(CancellationRateLoaded(cancellationRate: 0.0));
+      result.fold((failure) => emit(CancellationRateInitial()), (rate) => emit(CancellationRateLoaded(rate: rate)));
     });
   }
 

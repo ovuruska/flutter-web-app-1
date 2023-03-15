@@ -13,8 +13,8 @@ class NoShowRateState extends Equatable {
 class NoShowRateLoadingState extends NoShowRateState {}
 class NoShowRateInitial extends NoShowRateState {}
 class NoShowRateLoaded extends NoShowRateState {
-  final double cancellationRate;
-  NoShowRateLoaded({required this.cancellationRate});
+  final double rate;
+  NoShowRateLoaded({required this.rate});
   @override
-  List<Object?> get props => [cancellationRate];
+  List<Object?> get props => [rate];
 }

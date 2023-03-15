@@ -6,5 +6,5 @@ import '../presentation/widgets/cancellation_rate.dart';
 
 @WidgetbookUseCase(name: 'Client Cancellation Rate', type: CancellationRate)
 Widget cancellationRateUseCase(BuildContext context) {
-  return CancellationRate(cancellationRate: 0.0);
+  return CancellationRate(rate: 0.0);
 }

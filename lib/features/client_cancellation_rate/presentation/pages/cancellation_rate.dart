@@ -17,7 +17,7 @@ class CancellationRateView extends StatelessWidget {
         } else if (state is CancellationRateLoadingState) {
           return Container();
         } else if (state is CancellationRateLoaded) {
-          return CancellationRate(cancellationRate: state.cancellationRate);
+          return CancellationRate(rate: state.rate);
         }else {
           return Container();
         }
