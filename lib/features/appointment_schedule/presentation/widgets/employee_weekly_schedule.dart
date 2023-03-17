@@ -7,28 +7,25 @@ import '../../presentation/widgets/daily_calendar.dart';
 import '../../utils/constants.dart';
 import 'hour_column.dart';
 
-class AppointmentSchedule extends StatefulWidget {
+class EmployeeWeeklySchedule extends StatefulWidget {
   final DateTime date;
   final List<DashboardAppointmentEntity> appointments;
-  final List<DashboardEmployeeEntity> employees;
-  final int? branch;
 
-  const AppointmentSchedule(
+  const EmployeeWeeklySchedule(
       {Key? key,
-      required this.date,
-      required this.branch,
-      required this.appointments,
-      required this.employees})
+        required this.date,
+        required this.appointments,
+        })
       : super(key: key);
 
   @override
-  _AppointmentScheduleState createState() => _AppointmentScheduleState();
+  _EmployeeWeeklyScheduleState createState() => _EmployeeWeeklyScheduleState();
 }
 
-class _AppointmentScheduleState extends State<AppointmentSchedule> {
+class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
   Widget _noemployees() => Container(
-        child: Center(child: Text("No employees available.")),
-      );
+    child: Center(child: Text("No employees available.")),
+  );
 
   Widget _ray() {
     var now = DateTime.now();
@@ -40,8 +37,8 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
     }
     var top = headerHeight +
         now
-                .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
-                .inMinutes *
+            .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
+            .inMinutes *
             boxHeight /
             60;
     var width = MediaQuery.of(context).size.width - 2 * calendarMargin;
@@ -89,15 +86,15 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                     )),
                 ...widget.employees
                     .map((employee) => DailyCalendar(
-                        date: widget.date,
-                        appointments: widget.appointments
-                            .where((appointment) =>
-                                appointment.employee == employee.id)
-                            .toList(),
-                        header: employee.name,
-                        employeeId: employee.id,
-                        start: 8,
-                        end: 20))
+                    date: widget.date,
+                    appointments: widget.appointments
+                        .where((appointment) =>
+                    appointment.employee == employee.id)
+                        .toList(),
+                    header: employee.name,
+                    employeeId: employee.id,
+                    start: 8,
+                    end: 20))
                     .toList()
               ]),
               _ray()
@@ -105,8 +102,8 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
   }
 
   Widget _nobranch() => Container(
-        child: Center(child: Text("No branch selected.")),
-      );
+    child: Center(child: Text("No branch selected.")),
+  );
 
   @override
   Widget build(BuildContext context) {

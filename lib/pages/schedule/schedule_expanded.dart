@@ -26,7 +26,7 @@ class ScheduleViewExpanded extends StatelessWidget {
             rowStart: 0,
             rowSpan: 1,
             columnStart: 0,
-            columnSpan: 4,
+            columnSpan:4 ,
           ),
           ScheduleNavbar(onPressed: onExpand, isFullScreen: true,).withGridPlacement(
             rowStart: 1,
@@ -40,7 +40,7 @@ class ScheduleViewExpanded extends StatelessWidget {
             rowStart: 1,
             rowSpan: 2,
             columnStart: 1,
-            columnSpan: 1,
+            columnSpan: 3,
           ),
 
         ],

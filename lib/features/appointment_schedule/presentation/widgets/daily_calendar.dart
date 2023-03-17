@@ -17,7 +17,7 @@ import 'resizable.dart';
 class DailyCalendar extends StatelessWidget {
   final List<DashboardAppointmentEntity> appointments;
   final DateTime date;
-  final String employeeName;
+  final String header;
   final int employeeId;
   final int start;
   final int end;
@@ -25,7 +25,7 @@ class DailyCalendar extends StatelessWidget {
   const DailyCalendar(
       {Key? key,
       required this.appointments,
-      required this.employeeName,
+      required this.header,
       required this.employeeId,
       required this.start,
       required this.end,
@@ -58,7 +58,7 @@ class DailyCalendar extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child: Center(
                     child: Text.rich(TextSpan(
-                  text: employeeName,
+                  text: header,
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: 'Poppins',

@@ -53,7 +53,7 @@ dailyCalendarUseCase(BuildContext context){
     start:10,
     end:18,
     appointments: appointments,
-    employeeName: employeeName,
+    header: employeeName,
     employeeId: employeeId,
   );
 }
