@@ -19,7 +19,7 @@ class AppointmentScheduleView extends StatelessWidget {
             builder: (context, state) {
               if (state is Initial) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text("No branch is available."),
                 );
               } else if (state is Loaded) {
                 return AppointmentSchedule(

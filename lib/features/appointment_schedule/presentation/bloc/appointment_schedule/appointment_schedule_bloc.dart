@@ -6,9 +6,7 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/pre
 import '../../../../../widgets/cards/root/entity.dart';
 import '../../../domain/usecases/get_branch_employees.dart';
 import '../../../domain/usecases/patch_appointment.dart';
-import '../schedule_header/schedule_header_bloc.dart';
 import 'appointment_schedule_state.dart';
-import '../../../../../injection.dart';
 
 const allowed = <String>[
   "Confirmed",
@@ -18,8 +16,6 @@ const allowed = <String>[
   "Completed",
   "Cancelled"
 ];
-
-
 
 class AppointmentScheduleBloc
     extends Bloc<AppointmentScheduleEvent, AppointmentScheduleState> {
@@ -35,7 +31,6 @@ class AppointmentScheduleBloc
     on<AppointmentScheduleInitializeEvent>((event, emit) {
       emit(Initial());
     });
-
 
     on<AppointmentSchedulePatchEvent>((event, emit) async {
       var appointment = event.appointment;
@@ -67,13 +62,19 @@ class AppointmentScheduleBloc
       }
       var date = event.date;
       var branch = event.branch;
-      var params = GetAppointmentsParams(date: date, branch: branch);
-      var result = await getAppointments(params);
 
-      result.fold((l) {}, (r) {
-        employees = mergeEmployees(employees, getAppointmentEmployees(r));
-        emit(Loaded(employees: employees, appointments: filterAppointments(r)));
-      });
+      if (branch == null) {
+        emit(Initial());
+      } else {
+        var params = GetAppointmentsParams(date: date, branch: branch);
+        var result = await getAppointments(params);
+
+        result.fold((l) {}, (r) {
+          employees = mergeEmployees(employees, getAppointmentEmployees(r));
+          emit(Loaded(
+              employees: employees, appointments: filterAppointments(r)));
+        });
+      }
     });
 
     on<AppointmentSchedulePatchLocalEvent>((event, emit) async {
@@ -96,8 +97,6 @@ class AppointmentScheduleBloc
           appointments: currentAppointments));
     });
   }
-
-
 
   List<DashboardAppointmentEntity> filterAppointments(
       List<DashboardAppointmentEntity> appointments) {

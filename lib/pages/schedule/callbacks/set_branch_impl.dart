@@ -11,13 +11,13 @@ import '../../../injection.dart';
 
 class ScheduleSetBranchCallbackImpl extends AppSelectBranchSetBranchCallback{
   @override
-  void call(BranchIdAndName branch) {
+  void call(BranchIdAndName? branch) {
     var date = sl<AppointmentScheduleHeaderBloc>().state.date;
     sl<AppointmentScheduleBloc>().add(
-      AppointmentScheduleGetAppointmentsEvent(date:date,branch:branch.id),
+      AppointmentScheduleGetAppointmentsEvent(date:date,branch:branch?.id),
     );
     sl<AppointmentScheduleHeaderBloc>().add(
-      ScheduleHeaderSetBranchEvent(branch:branch.id),
+      ScheduleHeaderSetBranchEvent(branch:branch?.id),
     );
   }
 }

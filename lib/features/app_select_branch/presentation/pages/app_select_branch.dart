@@ -18,6 +18,7 @@ class _AppSelectBranchViewState extends State<AppSelectBranchView> {
   void initState() {
     super.initState();
     sl.get<AppSelectBranchBloc>().add(GetAllBranchesEvent());
+
   }
 
   @override

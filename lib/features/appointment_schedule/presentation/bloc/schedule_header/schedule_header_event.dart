@@ -22,12 +22,12 @@ class ScheduleHeaderSetDateEvent extends ScheduleHeaderEvent{
 }
 
 class ScheduleHeaderSetBranchEvent extends ScheduleHeaderEvent{
-  final int branch;
+  final int? branch;
 
   ScheduleHeaderSetBranchEvent({
     required this.branch,
   });
 
   @override
-  List<Object> get props => [branch];
+  List<Object> get props => [branch ?? -1];
 }

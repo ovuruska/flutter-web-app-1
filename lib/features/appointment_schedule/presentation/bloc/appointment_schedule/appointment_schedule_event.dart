@@ -69,7 +69,7 @@ class AppointmentSchedulePatchEvent extends AppointmentScheduleEvent {
 
 class AppointmentScheduleGetAppointmentsEvent extends AppointmentScheduleEvent {
   final DateTime date;
-  final int branch;
+  final int? branch;
 
   AppointmentScheduleGetAppointmentsEvent({
     required this.date,
@@ -77,5 +77,5 @@ class AppointmentScheduleGetAppointmentsEvent extends AppointmentScheduleEvent {
   });
 
   @override
-  List<Object> get props => [date,branch];
+  List<Object> get props => [date,branch ?? -1];
 }
