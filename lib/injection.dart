@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/register.dart';
-import 'package:scrubbers_employee_application/features/calendar_and_branch/register.dart';
+import 'package:scrubbers_employee_application/features/app_calendar/register.dart';
+import 'package:scrubbers_employee_application/features/app_select_branch/register.dart';
 import 'package:scrubbers_employee_application/features/client_cancellation_rate/register.dart';
 import 'package:scrubbers_employee_application/features/client_information/register.dart';
 import 'package:scrubbers_employee_application/features/client_pets/register.dart';
@@ -37,7 +38,7 @@ Future<void> initSl() async {
   registerEmployeeModify(sl);
   registerViewAppointments(sl);
   registerAppointmentSchedule(sl);
-  registerCalendarAndBranch(sl);
+  registerAppSelectBranch(sl);
   registerClientSearch(sl);
   registerClientAppointments(sl);
   registerClientInformation(sl);
@@ -48,4 +49,5 @@ Future<void> initSl() async {
   registerClientVisits(sl);
   registerClientPets(sl);
   registerClientYearlyAppointments(sl);
+  registerAppCalendar(sl);
 }

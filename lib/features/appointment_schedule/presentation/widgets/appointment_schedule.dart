@@ -11,7 +11,7 @@ class AppointmentSchedule extends StatefulWidget {
   final DateTime date;
   final List<DashboardAppointmentEntity> appointments;
   final List<DashboardEmployeeEntity> employees;
-  final int branch;
+  final int? branch;
 
   const AppointmentSchedule(
       {Key? key,
@@ -104,10 +104,16 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
             ])));
   }
 
+  Widget _nobranch() => Container(
+        child: Center(child: Text("No branch selected.")),
+      );
+
   @override
   Widget build(BuildContext context) {
     if (widget.employees.isEmpty) return _noemployees();
-
+    else if(widget.branch == null){
+      return _nobranch();
+    }
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,

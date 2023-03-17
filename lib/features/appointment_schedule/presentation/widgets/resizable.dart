@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/appointment_schedule_bloc.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/appointment_schedule_event.dart';
 
 import '../../../../injection.dart';
 import '../../../../widgets/cards/root/entity.dart';
 import '../../utils/constants.dart';
+import '../bloc/appointment_schedule/appointment_schedule_bloc.dart';
+import '../bloc/appointment_schedule/appointment_schedule_event.dart';
 
 class AppointmentScheduleResizableWrapper extends StatefulWidget {
   final Widget child;

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../injection.dart';
+import 'register.dart';
 import 'schedule_collapsed.dart';
 import 'schedule_expanded.dart';
 
@@ -10,24 +13,14 @@ class ScheduleView extends StatefulWidget {
 }
 
 class _ScheduleViewState extends State<ScheduleView> {
-  DateTime _selectedDate = DateTime.now();
-  int _branch = -1;
-  bool collapsed = false;
+  late bool collapsed;
   @override
   void initState() {
     super.initState();
-  }
-
-  onDateSelected(DateTime date) {
     setState(() {
-      _selectedDate = date;
+      collapsed = false;
     });
-  }
-
-  onBranchSelected(int branch) {
-    setState(() {
-      _branch = branch;
-    });
+    registerSchedulePage(sl);
   }
 
   onCollapse() {
@@ -38,18 +31,11 @@ class _ScheduleViewState extends State<ScheduleView> {
 
   Widget build(BuildContext context) {
     if (collapsed) {
-      return ScheduleViewCollapsed(
+      return ScheduleViewExpanded(
         onExpand: onCollapse,
-        selectedDate: _selectedDate,
-        branch: _branch,
       );
     } else {
-      return ScheduleViewExpanded(
-          onCollapse: onCollapse,
-          selectedDate: _selectedDate,
-          branch: _branch,
-          onDateSelected: onDateSelected,
-          onBranchSelected: onBranchSelected);
+      return ScheduleViewCollapsed(onCollapse: onCollapse);
     }
   }
 }

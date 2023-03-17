@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../features/app_header/presentation/widgets/header.dart';
-import '../../features/appointment_schedule/presentation/pages/appointment_schedule.dart';
-import '../../features/calendar_and_branch/presentation/pages/calendar_and_branch.dart';
+import '../../features/appointment_schedule/presentation/pages/layout.dart';
 import '../../features/view_appointments/presentation/pages/view_appointments.dart';
+import 'calendar_and_branch.dart';
 import 'navbar.dart';
 
 class ScheduleViewCollapsed extends StatelessWidget {
-  final DateTime selectedDate;
-  final int branch;
-  final Function() onExpand;
-  const ScheduleViewCollapsed({Key? key, required this.selectedDate, required this.branch, required this.onExpand,}) : super(key: key);
+  const ScheduleViewCollapsed({Key? key, required this.onCollapse})
+      : super(key: key);
+  final Function() onCollapse;
 
-
-  Widget _grid() =>
-      LayoutGrid(
+  Widget _grid() => LayoutGrid(
         columnSizes: [
           64.px,
           420.px,
@@ -32,24 +29,34 @@ class ScheduleViewCollapsed extends StatelessWidget {
             columnStart: 0,
             columnSpan: 4,
           ),
-          ScheduleNavbar(onPressed: onExpand, isFullScreen: true,).withGridPlacement(
+          ViewAppointmentsPage().withGridPlacement(
+            rowStart: 2,
+            rowSpan: 1,
+            columnStart: 1,
+            columnSpan: 1,
+          ),
+          ScheduleNavbar(
+            onPressed: onCollapse,
+            isFullScreen: false,
+          ).withGridPlacement(
             rowStart: 1,
             rowSpan: 3,
             columnStart: 0,
             columnSpan: 1,
           ),
-
-          AppointmentScheduleView(key: ValueKey(
-              branch.toString() + " " + selectedDate.toString()),
-              date: selectedDate,
-              branch: branch)
-              .withGridPlacement(
+          AppointmentScheduleLayout().withGridPlacement(
             rowStart: 1,
             rowSpan: 2,
+            columnStart: 2,
+            columnSpan: 1,
+          ),
+          CalendarAndBranchView(
+          ).withGridPlacement(
+            rowStart: 1,
+            rowSpan: 1,
             columnStart: 1,
             columnSpan: 1,
           ),
-
         ],
       );
 

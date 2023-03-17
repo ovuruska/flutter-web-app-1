@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../injection.dart';
 import '../../../widgets/cards/root/entity.dart';
-import '../presentation/bloc/appointment_schedule_bloc.dart';
-import '../presentation/bloc/appointment_schedule_event.dart';
+import '../presentation/bloc/appointment_schedule/appointment_schedule_bloc.dart';
+import '../presentation/bloc/appointment_schedule/appointment_schedule_event.dart';
 import 'constants.dart';
 
 onAcceptWithDetails(DateTime date,int startHour,int employee) => (DragTargetDetails<DashboardAppointmentEntity> details) {
