@@ -1,41 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
-import '../../../../widgets/cards/root/entity.dart';
-import '../../domain/entities/dashboard_employee_entity.dart';
-import '../../presentation/widgets/daily_calendar.dart';
-import '../../utils/constants.dart';
-import 'hour_column.dart';
+import '../../../../../widgets/cards/root/entity.dart';
+import '../../../domain/entities/dashboard_employee_entity.dart';
+import '../../../utils/constants.dart';
+import '../daily_calendar.dart';
+import '../hour_column.dart';
 
-class AppointmentSchedule extends StatefulWidget {
+class EmployeeWeeklySchedule extends StatefulWidget {
   final DateTime date;
   final List<DashboardAppointmentEntity> appointments;
-  final List<DashboardEmployeeEntity> employees;
-  final int? branch;
+  final DashboardEmployeeEntity employee;
 
-  const AppointmentSchedule(
-      {Key? key,
-      required this.date,
-      required this.branch,
-      required this.appointments,
-      required this.employees})
-      : super(key: key);
+  const EmployeeWeeklySchedule({
+    Key? key,
+    required this.date,
+    required this.employee,
+    required this.appointments,
+  }) : super(key: key);
 
   @override
-  _AppointmentScheduleState createState() => _AppointmentScheduleState();
+  _EmployeeWeeklyScheduleState createState() => _EmployeeWeeklyScheduleState();
 }
 
-class _AppointmentScheduleState extends State<AppointmentSchedule> {
+class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
+
   Widget _noemployees() => Container(
         child: Center(child: Text("No employees available.")),
       );
 
+  List<DateTime> getWeekDays(DateTime date) {
+    var startOfWeek = date.startOfWeek();
+    var endOfWeek = date.endOfWeek();
+    var days = <DateTime>[];
+    while (startOfWeek.isBefore(endOfWeek)) {
+      days.add(startOfWeek);
+      startOfWeek = startOfWeek.add(Duration(days: 1));
+    }
+    return days;
+  }
+
   Widget _ray() {
     var now = DateTime.now();
-    if (!isSameDay(now, widget.date)) {
-      return Container();
-    }
-    if(now.hour < 8 || now.hour > 20) {
+    if (now.hour < 8 || now.hour > 20) {
       return Container();
     }
     var top = headerHeight +
@@ -72,7 +81,26 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
             )));
   }
 
+  List<Widget> dayColumns(DateTime date){
+    var weekDays = getWeekDays(widget.date);
+    // 24 January 2023, Wednesday
+    var formatter = DateFormat('EEEE, d MMMM yyyy');
+    return weekDays
+        .map((current) => DailyCalendar(
+        date: widget.date,
+        appointments: widget.appointments
+            .where((appointment) => isSameDay(appointment.start, current))
+            .toList(),
+        header: formatter.format(current),
+        employeeId: widget.employee.id,
+        start: 8,
+        end: 20))
+    .toList();
+
+  }
+
   Widget _horizontal() {
+
     return Scrollbar(
         controller: horizontalController,
         scrollbarOrientation: ScrollbarOrientation.top,
@@ -87,18 +115,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                       start: 8,
                       end: 20,
                     )),
-                ...widget.employees
-                    .map((employee) => DailyCalendar(
-                        date: widget.date,
-                        appointments: widget.appointments
-                            .where((appointment) =>
-                                appointment.employee == employee.id)
-                            .toList(),
-                        header: employee.name,
-                        employeeId: employee.id,
-                        start: 8,
-                        end: 20))
-                    .toList()
+                ...dayColumns(widget.date)
               ]),
               _ray()
             ])));
@@ -110,10 +127,6 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.employees.isEmpty) return _noemployees();
-    else if(widget.branch == null){
-      return _nobranch();
-    }
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,

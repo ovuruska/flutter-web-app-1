@@ -75,7 +75,7 @@ class DailyCalendar extends StatelessWidget {
                   ],
                 ))))),
         DragTarget<DashboardAppointmentEntity>(
-            onAcceptWithDetails: onAcceptWithDetails(date, start, employeeId),
+            onAcceptWithDetails: onAcceptWithBranch(date, start, employeeId),
             builder: _buildHours)
       ])),
       ...layouts.map((layout) {

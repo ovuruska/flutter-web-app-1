@@ -13,4 +13,6 @@ abstract class DashboardAppointmentRepository {
 
   Future<Either<Failure,void>> delete(int appointmentId);
 
+  Future<Either<Failure,List<DashboardAppointmentEntity>>> getAppointmentByEmployee(int employeeId,DateTime start,DateTime end);
+
 }

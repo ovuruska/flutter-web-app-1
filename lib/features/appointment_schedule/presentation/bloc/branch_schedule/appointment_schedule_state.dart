@@ -12,13 +12,13 @@ class AppointmentScheduleState extends Equatable {
   List<Object> get props => [];
 }
 
-class Initial extends AppointmentScheduleState {}
+class AppointmentScheduleStateInitial extends AppointmentScheduleState {}
 
-class Loaded extends AppointmentScheduleState {
+class AppointmentScheduleStateLoaded extends AppointmentScheduleState {
   final List<DashboardEmployeeEntity> employees;
   final List<DashboardAppointmentEntity> appointments;
 
-  Loaded({
+  AppointmentScheduleStateLoaded({
     this.employees = const [],
     this.appointments = const [],
   });

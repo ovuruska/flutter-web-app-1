@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import '../../../../injection.dart';
 import '../../../../widgets/cards/root/entity.dart';
 import '../../utils/constants.dart';
-import '../bloc/appointment_schedule/appointment_schedule_bloc.dart';
-import '../bloc/appointment_schedule/appointment_schedule_event.dart';
 
 class AppointmentScheduleResizableWrapper extends StatefulWidget {
   final Widget child;
   final double width;
   final DashboardAppointmentEntity appointment;
+  final Function(DashboardAppointmentEntity) onLocalUpdate;
+  final Function(DashboardAppointmentEntity) onRemoteUpdate;
 
   const AppointmentScheduleResizableWrapper(
       {Key? key,
       required this.child,
       required this.width,
-      required this.appointment})
+      required this.appointment, required this.onLocalUpdate, required this.onRemoteUpdate})
       : super(key: key);
 
   @override
@@ -50,9 +50,8 @@ class _AppointmentScheduleResizableWrapperState
                       );
                       if (newAppointment.start.isBefore(
                           newAppointment.end.subtract(Duration(minutes: 14)))) {
-                        sl<AppointmentScheduleBloc>().add(
-                            AppointmentSchedulePatchLocalEvent(
-                                appointment: newAppointment));
+                        widget.onLocalUpdate(newAppointment);
+
                       }
                     } else if (totalDrag < -quarterHeight) {
                       totalDrag = 0;
@@ -60,15 +59,12 @@ class _AppointmentScheduleResizableWrapperState
                         start: widget.appointment.start
                             .subtract(Duration(minutes: 15)),
                       );
-                      sl<AppointmentScheduleBloc>().add(
-                          AppointmentSchedulePatchLocalEvent(
-                              appointment: newAppointment));
+                      widget.onLocalUpdate(newAppointment);
                     }
                   },
                   onVerticalDragEnd: (details) {
-                    sl<AppointmentScheduleBloc>().add(
-                        AppointmentSchedulePatchEvent(
-                            appointment: widget.appointment));
+                    totalDrag = 0;
+                    widget.onRemoteUpdate(widget.appointment);
                   },
                   child: Container(
                     width: widget.width,
@@ -91,9 +87,7 @@ class _AppointmentScheduleResizableWrapperState
                       var newAppointment = widget.appointment.copyWith(
                         end: widget.appointment.end.add(Duration(minutes: 15)),
                       );
-                      sl<AppointmentScheduleBloc>().add(
-                          AppointmentSchedulePatchLocalEvent(
-                              appointment: newAppointment));
+                      widget.onLocalUpdate(newAppointment);
                     } else if (totalDrag < -quarterHeight) {
                       totalDrag = 0;
                       var newAppointment = widget.appointment.copyWith(
@@ -102,9 +96,7 @@ class _AppointmentScheduleResizableWrapperState
                       );
                       if (newAppointment.start.isBefore(
                           newAppointment.end.subtract(Duration(minutes: 14)))) {
-                        sl<AppointmentScheduleBloc>().add(
-                            AppointmentSchedulePatchLocalEvent(
-                                appointment: newAppointment));
+                        widget.onLocalUpdate(newAppointment);
                       }
                     } else if (totalDrag < -quarterHeight) {
                       totalDrag = 0;
@@ -114,16 +106,13 @@ class _AppointmentScheduleResizableWrapperState
                       );
                       if (newAppointment.start.isBefore(
                           newAppointment.end.subtract(Duration(minutes: 14)))) {
-                        sl<AppointmentScheduleBloc>().add(
-                            AppointmentSchedulePatchLocalEvent(
-                                appointment: newAppointment));
+                        widget.onLocalUpdate(newAppointment);
                       }
                     }
                   },
                   onVerticalDragEnd: (details) {
-                    sl<AppointmentScheduleBloc>().add(
-                        AppointmentSchedulePatchEvent(
-                            appointment: widget.appointment));
+                    totalDrag = 0;
+                    widget.onRemoteUpdate(widget.appointment);
                   },
                   child: Container(
                     width: widget.width,

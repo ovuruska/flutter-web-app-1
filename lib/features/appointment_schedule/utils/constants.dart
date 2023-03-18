@@ -12,3 +12,9 @@ final ScrollController verticalController = ScrollController();
 final ScrollController horizontalController = ScrollController();
 final quarterHeight = boxHeight / 4;
 final hourWidth = boxWidth / 2;
+
+final nonEmployeeTabs = [
+  'All Employees',
+  'Full Grooming',
+  'We Wash',
+];

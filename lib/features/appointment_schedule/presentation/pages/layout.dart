@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/pages/parent.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/pages/schedule_header.dart';
 
 import 'appointment_schedule.dart';
@@ -21,7 +22,7 @@ class AppointmentScheduleLayout extends StatelessWidget {
         columnStart: 0,
         columnSpan: 1,
       ),
-      AppointmentScheduleView().withGridPlacement(
+      AppointmentScheduleParentView().withGridPlacement(
         rowStart: 1,
         rowSpan: 1,
         columnStart: 0,

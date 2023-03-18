@@ -38,4 +38,9 @@ class DashboardEmployeeEntity extends Equatable {
     };
   }
 
+  @override
+  String toString(){
+    return name;
+  }
+
 }

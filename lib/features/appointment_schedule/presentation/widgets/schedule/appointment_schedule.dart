@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
-import '../../../../widgets/cards/root/entity.dart';
-import '../../domain/entities/dashboard_employee_entity.dart';
-import '../../presentation/widgets/daily_calendar.dart';
-import '../../utils/constants.dart';
-import 'hour_column.dart';
+import '../../../../../widgets/cards/root/entity.dart';
+import '../../../domain/entities/dashboard_employee_entity.dart';
+import '../daily_calendar.dart';
+import '../../../utils/constants.dart';
+import '../hour_column.dart';
 
-class EmployeeWeeklySchedule extends StatefulWidget {
+class AppointmentSchedule extends StatefulWidget {
   final DateTime date;
   final List<DashboardAppointmentEntity> appointments;
+  final List<DashboardEmployeeEntity> employees;
+  final int? branch;
 
-  const EmployeeWeeklySchedule(
+  const AppointmentSchedule(
       {Key? key,
-        required this.date,
-        required this.appointments,
-        })
+      required this.date,
+      required this.branch,
+      required this.appointments,
+      required this.employees})
       : super(key: key);
 
   @override
-  _EmployeeWeeklyScheduleState createState() => _EmployeeWeeklyScheduleState();
+  _AppointmentScheduleState createState() => _AppointmentScheduleState();
 }
 
-class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
+class _AppointmentScheduleState extends State<AppointmentSchedule> {
   Widget _noemployees() => Container(
-    child: Center(child: Text("No employees available.")),
-  );
+        child: Center(child: Text("No employees available.")),
+      );
 
   Widget _ray() {
     var now = DateTime.now();
@@ -37,8 +40,8 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
     }
     var top = headerHeight +
         now
-            .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
-            .inMinutes *
+                .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
+                .inMinutes *
             boxHeight /
             60;
     var width = MediaQuery.of(context).size.width - 2 * calendarMargin;
@@ -86,15 +89,15 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
                     )),
                 ...widget.employees
                     .map((employee) => DailyCalendar(
-                    date: widget.date,
-                    appointments: widget.appointments
-                        .where((appointment) =>
-                    appointment.employee == employee.id)
-                        .toList(),
-                    header: employee.name,
-                    employeeId: employee.id,
-                    start: 8,
-                    end: 20))
+                        date: widget.date,
+                        appointments: widget.appointments
+                            .where((appointment) =>
+                                appointment.employee == employee.id)
+                            .toList(),
+                        header: employee.name,
+                        employeeId: employee.id,
+                        start: 8,
+                        end: 20))
                     .toList()
               ]),
               _ray()
@@ -102,8 +105,8 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
   }
 
   Widget _nobranch() => Container(
-    child: Center(child: Text("No branch selected.")),
-  );
+        child: Center(child: Text("No branch selected.")),
+      );
 
   @override
   Widget build(BuildContext context) {
