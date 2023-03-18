@@ -7,7 +7,7 @@ import '../../domain/entities/appointment_layout.dart';
 import '../../utils/border.dart';
 import '../../utils/constants.dart';
 import '../../utils/layout_appointments.dart';
-import '../../utils/onAcceptWithDetails.dart';
+import '../../utils/on_accept_with_details.dart';
 import 'appointment_card.dart';
 import 'hour_box.dart';
 import 'resizable.dart';
@@ -21,6 +21,7 @@ class DailyCalendar extends StatelessWidget {
   final int employeeId;
   final int start;
   final int end;
+  final Function(DateTime,int,int) onAccept;
 
   const DailyCalendar(
       {Key? key,
@@ -29,7 +30,7 @@ class DailyCalendar extends StatelessWidget {
       required this.employeeId,
       required this.start,
       required this.end,
-      required this.date})
+      required this.date, required this.onAccept})
       : super(key: key);
 
   Widget _buildHours(BuildContext context, List<DashboardAppointmentEntity?> t,
@@ -75,7 +76,7 @@ class DailyCalendar extends StatelessWidget {
                   ],
                 ))))),
         DragTarget<DashboardAppointmentEntity>(
-            onAcceptWithDetails: onAcceptWithBranch(date, start, employeeId),
+            onAcceptWithDetails:onAccept(date, start, employeeId),
             builder: _buildHours)
       ])),
       ...layouts.map((layout) {

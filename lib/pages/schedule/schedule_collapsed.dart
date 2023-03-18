@@ -3,7 +3,7 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../features/app_header/presentation/widgets/header.dart';
 import '../../features/appointment_schedule/presentation/pages/layout.dart';
-import '../../features/view_appointments/presentation/pages/view_appointments.dart';
+import '../../features/information/appointment_tabs/presentation/pages/view_appointments.dart';
 import 'calendar_and_branch.dart';
 import 'navbar.dart';
 

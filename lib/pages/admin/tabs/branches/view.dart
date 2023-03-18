@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../features/search_branches/presentation/pages/search_branches.dart';
+import '../../../../features/sidebars/branch_search/presentation/pages/search_branches.dart';
 import 'controller.dart';
 import 'information_row/view.dart';
 import 'content/controller.dart';

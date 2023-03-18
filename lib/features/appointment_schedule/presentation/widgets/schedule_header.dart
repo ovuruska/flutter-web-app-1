@@ -71,19 +71,7 @@ class ScheduleHeader extends StatelessWidget {
               child:ScheduleHeaderDropdown(),
             ),
             Container(width: 16),
-            DropdownButton<String>(
-              value: 'Filter',
-              items: <String>['Filter', 'Option 1', 'Option 2']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
 
-              },
-            ),
           ],
         ),
         Row(

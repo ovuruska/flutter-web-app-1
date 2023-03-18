@@ -7,7 +7,7 @@ import '../../../../widgets/cards/root/entity.dart';
 import '../../../../widgets/cards/wrapper.dart';
 import '../../domain/entities/appointment_layout.dart';
 import '../../utils/constants.dart';
-import '../../utils/onAcceptWithDetails.dart';
+import '../../utils/on_accept_with_details.dart';
 import '../bloc/branch_schedule/appointment_schedule_bloc.dart';
 import '../bloc/branch_schedule/appointment_schedule_event.dart';
 import 'resizable.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
 import '../../../../../widgets/cards/root/entity.dart';
@@ -87,7 +88,8 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
     var formatter = DateFormat('EEEE, d MMMM yyyy');
     return weekDays
         .map((current) => DailyCalendar(
-        date: widget.date,
+      onAccept: onAcceptWithEmployee,
+        date: current,
         appointments: widget.appointments
             .where((appointment) => isSameDay(appointment.start, current))
             .toList(),

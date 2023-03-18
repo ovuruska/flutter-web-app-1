@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/employee_working_hours/presentation/bloc/working_hours_bloc.dart';
-import 'package:scrubbers_employee_application/features/employee_working_hours/presentation/bloc/working_hours_event.dart';
-import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
-import '../../features/employee_modify/presentation/bloc/employee_modify_bloc.dart';
-import '../../features/employee_modify/presentation/bloc/employee_modify_event.dart';
-import '../../features/employee_modify/presentation/pages/employee_modify.dart';
-import '../../features/employee_search/presentation/bloc/employee_search_bloc.dart';
-import '../../features/employee_search/presentation/bloc/employee_search_event.dart';
-import '../../features/employee_search/presentation/pages/employee_search.dart';
-import '../../features/employee_working_hours/presentation/pages/employee_working_hours.dart';
+
+import '../../features/forms/employee_modify/presentation/bloc/employee_modify_bloc.dart';
+import '../../features/forms/employee_modify/presentation/bloc/employee_modify_event.dart';
+import '../../features/forms/employee_modify/presentation/pages/employee_modify.dart';
+import '../../features/forms/employee_working_hours/presentation/bloc/working_hours_bloc.dart';
+import '../../features/forms/employee_working_hours/presentation/bloc/working_hours_event.dart';
+import '../../features/forms/employee_working_hours/presentation/pages/employee_working_hours.dart';
+import '../../features/sidebars/employee_search/presentation/bloc/employee_search_bloc.dart';
+import '../../features/sidebars/employee_search/presentation/bloc/employee_search_event.dart';
+import '../../features/sidebars/employee_search/presentation/pages/employee_search.dart';
+import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../injection.dart';
-import '../../features/employee_search/domain/entities/employee_entity.dart' as employee_search;
+import '../../features/sidebars/employee_search/domain/entities/employee_entity.dart' as employee_search;
 
 class AdminEmployeesTab extends StatelessWidget {
   @override

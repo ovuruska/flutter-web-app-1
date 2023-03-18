@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
 import '../../../../../widgets/cards/root/entity.dart';
@@ -89,6 +90,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                     )),
                 ...widget.employees
                     .map((employee) => DailyCalendar(
+                  onAccept: onAcceptWithBranch,
                         date: widget.date,
                         appointments: widget.appointments
                             .where((appointment) =>
