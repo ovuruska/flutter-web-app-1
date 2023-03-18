@@ -7,7 +7,7 @@ import '../../features/app_header/presentation/widgets/header.dart';
 import '../../features/information/client_information/presentation/pages/client_information.dart';
 import '../../features/information/client_pets/presentation/pages/client_pets.dart';
 import '../../features/sidebars/client_search/presentation/pages/client_search.dart';
-import '../../features/tables/client_appointments/presentation/pages/client_appointments.dart';
+import '../../features/tables/client_appointments_table/presentation/pages/client_appointments.dart';
 import 'analytics_column.dart';
 
 class ClientsView extends StatefulWidget {

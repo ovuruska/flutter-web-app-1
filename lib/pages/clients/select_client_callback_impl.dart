@@ -1,4 +1,3 @@
-
 import '../../../../injection.dart';
 import '../../features/analytics/client_cancellation_rate/presentation/bloc/cancellation_rate_bloc.dart';
 import '../../features/analytics/client_cancellation_rate/presentation/bloc/cancellation_rate_event.dart';
@@ -16,8 +15,8 @@ import '../../features/information/client_pets/presentation/bloc/client_pets_blo
 import '../../features/information/client_pets/presentation/bloc/client_pets_event.dart';
 import '../../features/sidebars/client_search/domain/callbacks/select_client_callback.dart';
 import '../../features/sidebars/client_search/domain/entities/client_search_entity.dart';
-import '../../features/tables/client_appointments/presentation/bloc/client_appointments_bloc.dart';
-import '../../features/tables/client_appointments/presentation/bloc/client_appointments_event.dart';
+import '../../features/tables/client_appointments_table/presentation/bloc/client_appointments_bloc.dart';
+import '../../features/tables/client_appointments_table/presentation/bloc/client_appointments_event.dart';
 
 class SelectClientCallbackImpl implements SelectClientCallback {
   @override

@@ -24,8 +24,8 @@ ThemeData darkTheme() => ThemeData.dark();
     2,
     3,
   ],
-  foldersExpanded: true,
-  widgetsExpanded: true,
+  foldersExpanded: false,
+  widgetsExpanded: false,
 )
 class App extends StatelessWidget {
   @override

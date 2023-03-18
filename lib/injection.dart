@@ -21,7 +21,8 @@ import 'features/rebook_appointment/register.dart';
 import 'features/sidebars/branch_search/register.dart';
 import 'features/sidebars/client_search/register.dart';
 import 'features/sidebars/employee_search/register.dart';
-import 'features/tables/client_appointments/register.dart';
+import 'features/tables/appointments_page_table/register.dart';
+import 'features/tables/client_appointments_table/register.dart';
 import 'pages/clients/register.dart';
 
 final sl = GetIt.instance;
@@ -51,4 +52,5 @@ Future<void> initSl() async {
   registerClientPets(sl);
   registerClientYearlyAppointments(sl);
   registerAppCalendar(sl);
+  registerAppointmentsPageTable(sl);
 }

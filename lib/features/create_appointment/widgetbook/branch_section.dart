@@ -4,7 +4,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' show Widgetboo
 
 import '../domain/entities/branch_entity.dart';
 import '../domain/entities/employee_entity.dart';
-import '../presentation/widgets/appointment_section.dart';
 import '../presentation/widgets/branch_section.dart';
 
 @WidgetbookUseCase(name: 'Branch Section Empty', type: CardSettingsSection)
