@@ -6,16 +6,16 @@ import 'package:page_transition/page_transition.dart';
 import 'package:scrubbers_employee_application/common/login_required.dart';
 import 'package:scrubbers_employee_application/pages/admin/view.dart';
 import 'package:scrubbers_employee_application/pages/appointments/View.dart';
-import 'package:scrubbers_employee_application/pages/customers/view.dart';
 import 'package:scrubbers_employee_application/pages/payroll/View.dart';
 import 'package:scrubbers_employee_application/pages/pets/view.dart';
 import 'package:scrubbers_employee_application/pages/print/View.dart';
 import 'package:scrubbers_employee_application/pages/signout/view.dart';
 
 import '../../index.dart';
+import '../../pages/clients/view.dart';
 import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
-import '../../pages/schedule/schedule.dart';
+import '../../pages/schedule/view.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -50,9 +50,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginRequired(ScheduleView()),
             ),
             FFRoute(
-              name: 'Customers',
-              path: 'customers',
-              builder: (context, params) => LoginRequired(CustomersView()),
+              name: 'Clients',
+              path: 'clients',
+              builder: (context, params) => LoginRequired(ClientsView()),
             ),
             FFRoute(
               name: "Appointments",

@@ -3,7 +3,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' show Widgetboo
 
 import '../../../../widgets/cards/root/entity.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
-import '../widgets/appointment_schedule.dart';
+import '../widgets/schedule/appointment_schedule.dart';
 
 final today = DateTime.now();
 

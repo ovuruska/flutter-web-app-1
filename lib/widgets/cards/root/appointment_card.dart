@@ -159,7 +159,7 @@ class AppointmentCard extends StatelessWidget {
                           ],
                         )),
                     Container(
-                        margin: EdgeInsets.all(8),
+                        margin: EdgeInsets.only(left:4),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -167,7 +167,7 @@ class AppointmentCard extends StatelessWidget {
                             Text(
                               appointment.invoice.toStringAsFixed(0) + "\$",
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 16,
                                 color: const Color(0xFF989898),
                                 fontFamily: 'Inter',
                               ),

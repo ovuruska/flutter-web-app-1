@@ -5,7 +5,9 @@ import 'credential.dart';
 import 'scheduling_api.dart';
 import 'token.dart';
 
-class SchedulingAuthService {
+class
+
+SchedulingAuthService {
   final tokenProvider = TokenService.instance;
   final credentialProvider = CredentialService.instance;
   final apiProvider = SchedulingApiService.instance;

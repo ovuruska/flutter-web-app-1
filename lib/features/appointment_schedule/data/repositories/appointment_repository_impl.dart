@@ -60,4 +60,27 @@ class DashboardAppointmentRepositoryImpl
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, List<DashboardAppointmentEntity>>> getAppointmentByEmployee(int employeeId, DateTime start, DateTime end) async {
+    var formatter = DateFormat('yyyy-MM-dd');
+    var formattedStart = formatter.format(start);
+    var formattedEnd = formatter.format(end);
+    var queryParams = {
+      "employee": employeeId.toString(),
+      "start__gt": formattedStart,
+      "start__lt": formattedEnd,
+    };
+    var response = await SchedulingAuthService.instance
+        .request("/api/schedule/appointments", queryParams: queryParams);
+    var respString = await response.stream.bytesToString();
+    var respJson = jsonDecode(respString);
+    if (response.statusCode == 200) {
+      return Right(respJson
+          .map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e))
+          .toList());
+    } else {
+      return Left(ServerFailure());
+    }
+  }
 }

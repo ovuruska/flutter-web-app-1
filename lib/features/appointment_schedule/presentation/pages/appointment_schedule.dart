@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_event.dart';
 
 import '../../../../injection.dart';
-import '../bloc/appointment_schedule_bloc.dart';
-import '../bloc/appointment_schedule_event.dart';
-import '../bloc/appointment_schedule_state.dart';
-import '../widgets/appointment_schedule.dart';
+import '../bloc/branch_schedule/appointment_schedule_bloc.dart';
+import '../bloc/branch_schedule/appointment_schedule_state.dart';
+import '../widgets/schedule/appointment_schedule.dart';
 
 class AppointmentScheduleView extends StatefulWidget {
+  final int? branch;
   final DateTime date;
-  final int branch;
+  final String? role;
 
-  AppointmentScheduleView({
-    Key? key,
-    required this.date,
-    required this.branch,
-  }): super(key: key);
+
+  const AppointmentScheduleView({Key? key, this.branch,this.role, required this.date})
+      : super(key: key);
 
   @override
-  _AppointmentScheduleViewState createState() =>
-      _AppointmentScheduleViewState();
+  AppointmentScheduleViewState createState() => AppointmentScheduleViewState();
 }
 
-class _AppointmentScheduleViewState extends State<AppointmentScheduleView> {
+class AppointmentScheduleViewState extends State<AppointmentScheduleView> {
+  @override
   void initState() {
     super.initState();
-    sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetEmployeesEvent(
-        date: widget.date, branch: widget.branch));
-    sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetAppointmentsEvent(
-        date: widget.date, branch: widget.branch));
-  }
-  void dispose() {
-    super.dispose();
-    sl<AppointmentScheduleBloc>().add(AppointmentScheduleInitializeEvent());
+    if(widget.branch != null) {
+      var branch = widget.branch!;
+      sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetAppointmentsEvent(
+          branch: branch, date: widget.date));
+      sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetEmployeesEvent(
+          date: widget.date, branch: branch));
+    }
+
   }
 
   @override
@@ -40,15 +39,18 @@ class _AppointmentScheduleViewState extends State<AppointmentScheduleView> {
     return BlocBuilder<AppointmentScheduleBloc, AppointmentScheduleState>(
       bloc: sl<AppointmentScheduleBloc>(),
       builder: (context, state) {
-        if (state is Initial) {
+        if (widget.branch == null) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: Text("No branch is available."),
           );
-        } else if (state is Loaded) {
+        } else if (state is AppointmentScheduleStateLoaded) {
+          var employees = state.employees;
+          if(widget.role != null) employees = employees.where((element) => element.role == widget.role).toList();
+
           return AppointmentSchedule(
-            date: widget.date,
             branch: widget.branch,
-            employees: state.employees,
+            date: widget.date,
+            employees: employees,
             appointments: state.appointments,
           );
         } else {
