@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 import 'package:scrubbers_employee_application/features/app_calendar/domain/callbacks/calendar_set_date.dart';
+import 'package:scrubbers_employee_application/features/app_calendar/domain/callbacks/calendar_week_changed.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../injection.dart';
@@ -13,13 +14,26 @@ class AppCalendar extends StatelessWidget {
 
   const AppCalendar({Key? key, this.date}) : super(key: key);
 
-
+  weekChanged(DateTime newDate) {
+    // Check newDate and date are on the same week or not.
+    // If not, then call the callback
+    if (date != null) {
+      var newDateWeekDay = newDate.weekday;
+      var dateWeekDay = date!.weekday;
+      var weekDayDifference = newDateWeekDay - dateWeekDay;
+      var dayDifference = newDate.difference(date!).inDays;
+      if (weekDayDifference != dayDifference) {
+        getItMaybe<AppCalendarWeekChangedCallback>()?.call(newDate);
+      }
+    }
+  }
 
   setDate(DateTime date) {
-      getItMaybe<AppCalendarSetDateCallback>()?.call(date);
-      sl<AppCalendarBloc>().add(
-        AppCalendarSetDateEvent(date),
-      );
+    weekChanged(date);
+    getItMaybe<AppCalendarSetDateCallback>()?.call(date);
+    sl<AppCalendarBloc>().add(
+      AppCalendarSetDateEvent(date),
+    );
   }
 
   get focusedDay => date ?? DateTime.now();
@@ -40,6 +54,7 @@ class AppCalendar extends StatelessWidget {
             availableCalendarFormats: const {
               CalendarFormat.month: 'Month',
             },
+            startingDayOfWeek: StartingDayOfWeek.monday,
             selectedDayPredicate: (day) => isSameDay(day, focusedDay),
             headerVisible: false,
             calendarFormat: CalendarFormat.month,
@@ -61,7 +76,6 @@ class AppCalendar extends StatelessWidget {
             ),
             rowHeight: 48,
             focusedDay: focusedDay,
-
             firstDay: startOfMonth,
             lastDay: lastDayOfMonth,
             onDaySelected: (newSelectedDay, _) => setDate(newSelectedDay),

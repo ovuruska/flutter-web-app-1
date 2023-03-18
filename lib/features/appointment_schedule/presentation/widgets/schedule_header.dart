@@ -5,6 +5,7 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/pre
 
 import '../../../../injection.dart';
 import '../../domain/callbacks/appointment_header_set_date.dart';
+import '../../domain/callbacks/schedule_header_week_changed.dart';
 import '../bloc/schedule_header/schedule_header_bloc.dart';
 import '../bloc/schedule_header/schedule_header_event.dart';
 
@@ -19,15 +20,28 @@ class ScheduleHeader extends StatelessWidget {
     sl<AppointmentScheduleHeaderBloc>()
         .add(ScheduleHeaderSetDateEvent(date: date));
     getItMaybe<AppointmentHeaderSetDateCallback>()?.call(date);
+
+  }
+
+  void weekChanged(DateTime date) {
+    getItMaybe<ScheduleHeaderWeekChangedCallback>()?.call(date);
   }
 
   void _onPrevious() {
     var previousDay = date.subtract(Duration(days: 1));
+    if(previousDay.day == 1) {
+      weekChanged(previousDay);
+    }
     setDate(previousDay);
   }
 
   void _onNext() {
+
     var nextDay = date.add(Duration(days: 1));
+    if(nextDay.day == 1) {
+      weekChanged(nextDay);
+    }
+
     setDate(nextDay);
   }
 

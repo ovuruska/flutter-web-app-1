@@ -29,31 +29,26 @@ class ScheduleHeaderDropdown extends StatelessWidget {
                 bloc: sl<ScheduleHeaderDropdownBloc>(),
                 builder: (event, dropdownState) {
                   var value = dropdownState.value;
-                  // Check if selected employee is still in the list of employees
-                  if (items.contains(value)) {
-                    return DropdownButton<String>(
-                        isExpanded: true,
-                        value: value,
-                        items:
-                            items.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          sl<ScheduleHeaderDropdownBloc>().add(
-                              ScheduleHeaderDropdownSetEvent(
-                                  newValue ?? 'All Employees'));
-                        });
-                  } else {
-                    sl<ScheduleHeaderDropdownBloc>().add(
-                        ScheduleHeaderDropdownSetEvent('All Employees'));
-                    return Container();
+                  if (!items.contains(value)) {
+                    items = items + [value];
                   }
+                  return DropdownButton<String>(
+                      isExpanded: true,
+                      value: value,
+                      items:
+                          items.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        sl<ScheduleHeaderDropdownBloc>().add(
+                            ScheduleHeaderDropdownSetEvent(
+                                newValue ?? 'All Employees'));
+                      });
                 });
-          }
-          else{
+          } else {
             return Container();
           }
         });

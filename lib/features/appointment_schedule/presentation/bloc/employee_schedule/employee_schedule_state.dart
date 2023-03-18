@@ -14,9 +14,10 @@ class EmployeeScheduleLoading extends EmployeeScheduleState {}
 class EmployeeScheduleLoaded extends EmployeeScheduleState {
 
   final List<DashboardAppointmentEntity> appointments;
+  final int id;
 
-  EmployeeScheduleLoaded({this.appointments = const []});
+  EmployeeScheduleLoaded({required this.id,this.appointments = const []});
 
   @override
-  List<Object?> get props => [appointments];
+  List<Object?> get props => [id,appointments];
 }

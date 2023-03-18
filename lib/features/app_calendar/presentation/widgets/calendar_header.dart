@@ -29,14 +29,7 @@ class AppCalendarHeader extends StatelessWidget {
       margin: const EdgeInsets.all(0),
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Stack(children: [
-        Positioned(
-          child: CustomIconButton(
-            icon: Icon(Icons.calendar_today,  color: const Color(0xFF494C68).withOpacity(.9)),
-            onTap: onTodayButtonTap,
-          ),
-          left: 0,
-          top: 0,
-        ),
+
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,

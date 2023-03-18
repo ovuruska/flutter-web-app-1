@@ -22,13 +22,15 @@ class EmployeeScheduleBloc
       );
 
       var results = await getAppointments(params);
-      results.fold(
-          (l) => emit(EmployeeScheduleInitial()), (r) => emit(EmployeeScheduleLoaded(appointments: r)));
+      results.fold((l) => emit(EmployeeScheduleInitial()),
+          (r) => emit(EmployeeScheduleLoaded(id: event.id, appointments: r)));
     });
 
     on<EmployeeSchedulePatchEvent>((event, emit) async {
       var appointment = event.appointment;
+      var employeeId = appointment.employee;
       var params = PatchAppointmentParams(appointment);
+
       patchAppointment(params);
 
       var currentAppointments = (state as EmployeeScheduleLoaded).appointments;
@@ -44,7 +46,7 @@ class EmployeeScheduleBloc
       if (!found) {
         currentAppointments.add(appointment);
       }
-      emit(EmployeeScheduleLoaded(appointments: currentAppointments));
+      emit(EmployeeScheduleLoaded(id:employeeId,appointments: currentAppointments));
     });
   }
 }
