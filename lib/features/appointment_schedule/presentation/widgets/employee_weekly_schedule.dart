@@ -82,6 +82,8 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
             child: Stack(children: [
               Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
+                    margin:
+                    EdgeInsets.only(top: schedulingContext.headerHeight),
                     padding: EdgeInsets.only(left: 16, right: 16),
                     child: SchedulingHourColumn(
                     )),

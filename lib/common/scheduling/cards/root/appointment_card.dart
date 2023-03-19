@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
 
 import '../../models/scheduling_appointment_entity.dart';
@@ -37,8 +38,11 @@ class AppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var duration = appointment.end.difference(appointment.start).inMinutes;
+    var schedulingContext = SchedulingContextProvider.of(context);
+    var boxHeight = schedulingContext.boxHeight;
+
     var height = duration * boxHeight / 60 - 2 * calendarMargin;
-    var width = boxWidth - 2*calendarMargin;
+
     return Container(
       margin:EdgeInsets.all(calendarMargin),
         height: height,
@@ -70,7 +74,7 @@ class AppointmentCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        width: width,
+                        width: boxWidth,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,

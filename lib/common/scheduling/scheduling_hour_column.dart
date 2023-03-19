@@ -16,12 +16,13 @@ class SchedulingHourColumn extends StatelessWidget {
         children: [
           for (int i = schedulingContext.startHour; i <= schedulingContext.endHour ; i++)
             Container(
-              height: schedulingContext.hourColumnHeight.toDouble(),
+              height: schedulingContext.boxHeight.toDouble(),
               child: Row(
                 children: [
                   Container(
+                    padding: EdgeInsets.only(right: 8),
                     width: schedulingContext.hourColumnWidth,
-                    child: Text(getFormattedHour(i),),
+                    child: Text(getFormattedHour(i),textAlign: TextAlign.right,),
                   )
                 ],
               ),

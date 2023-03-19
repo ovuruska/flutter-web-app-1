@@ -9,8 +9,9 @@ class SchedulingContext extends Equatable {
   final int startHour;
   final int topOffset;
   final int endHour;
-  final double hourColumnHeight;
   final double hourColumnWidth;
+  final double hourColumnTopMargin;
+
   final ScrollController verticalController = ScrollController();
   final ScrollController horizontalController = ScrollController();
 
@@ -19,9 +20,9 @@ class SchedulingContext extends Equatable {
     required this.boxHeight,
     required this.boxWidth,
     required this.calendarMargin,
-    required this.hourColumnHeight,
     required this.hourColumnWidth,
     required this.topOffset,
+    this.hourColumnTopMargin = 0,
     this.startHour = 8,
     this.endHour = 20,
   });
@@ -48,7 +49,6 @@ class SchedulingContext extends Equatable {
         calendarMargin: calendarMargin ?? this.calendarMargin,
         startHour: startHour ?? this.startHour,
         endHour: endHour ?? this.endHour,
-        hourColumnHeight: hourColumnHeight ?? this.hourColumnHeight,
         hourColumnWidth: hourColumnWidth ?? this.hourColumnWidth,
         topOffset: topOffset ?? this.topOffset,
       );

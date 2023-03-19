@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../common/scheduling/scheduling_context_provider.dart';
+import '../../../../../common/scheduling/scheduling_hour_column.dart';
 import 'daily_column_sidebar.dart';
 
 class DailyColumnScroll extends StatelessWidget {
@@ -26,13 +27,19 @@ class DailyColumnScroll extends StatelessWidget {
 
     return SingleChildScrollView(
       controller: schedulingContext.verticalController,
-      child: DailyColumnSidebar(
-        date: date,
-        appointments: appointments,
-        employee: employee,
-        employeeName: employeeName,
-        target: target,
-      ),
+      child: Row(mainAxisSize: MainAxisSize.max, children: [
+        Container(
+          margin: EdgeInsets.only(top: schedulingContext.headerHeight),
+          child: SchedulingHourColumn(),
+        ),
+        DailyColumnSidebar(
+          date: date,
+          appointments: appointments,
+          employee: employee,
+          employeeName: employeeName,
+          target: target,
+        )
+      ]),
     );
   }
 }

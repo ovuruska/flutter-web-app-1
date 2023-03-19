@@ -28,7 +28,7 @@ class DailyColumnSidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     var filteredAppointments =
         appointments.map<SchedulingAppointmentEntity>((element) {
-      if (element.id == target) {
+      if (element.id == target || element.status == "Pending") {
         return element..editable = true;
       } else {
         return element..editable = false;
