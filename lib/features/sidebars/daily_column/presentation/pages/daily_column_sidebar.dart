@@ -9,27 +9,8 @@ import '../bloc/daily_column_bloc.dart';
 import '../bloc/daily_column_state.dart';
 import '../widgets/daily_column_scroll.dart';
 
-class DailyColumnSidebarView extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _DailyColumnSidebarViewState();
-}
+class DailyColumnSidebarView extends StatelessWidget {
 
-class _DailyColumnSidebarViewState extends State<DailyColumnSidebarView> {
-  @override
-  void initState() {
-    super.initState();
-    sl.registerLazySingleton<SchedulingContext>(
-        () => getDefaultSchedulingContext().copyWith(topOffset: 80));
-  }
-
-  @override
-  void dispose() {
-    sl<SchedulingContext>().verticalController.dispose();
-    sl<SchedulingContext>().horizontalController.dispose();
-    sl.unregister<SchedulingContext>();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +21,9 @@ class _DailyColumnSidebarViewState extends State<DailyColumnSidebarView> {
           return Scaffold(
               body: Center(
                   child: SchedulingContextProvider(
-                      schedulingContext: sl<SchedulingContext>(),
+                      schedulingContext: getDefaultSchedulingContext().copyWith(
+                        topOffset: 32
+                      ),
                       child: DailyColumnScroll(
                         date: state.date,
                         appointments: state.appointments,

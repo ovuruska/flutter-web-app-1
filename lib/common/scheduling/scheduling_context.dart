@@ -52,4 +52,9 @@ class SchedulingContext extends Equatable {
         hourColumnWidth: hourColumnWidth ?? this.hourColumnWidth,
         topOffset: topOffset ?? this.topOffset,
       );
+
+  void dispose() {
+    verticalController.dispose();
+    horizontalController.dispose();
+  }
 }

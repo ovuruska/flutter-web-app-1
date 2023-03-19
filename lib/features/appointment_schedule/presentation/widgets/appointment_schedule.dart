@@ -43,6 +43,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
             child: Stack(children: [
               Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
+                    margin: EdgeInsets.only(top: schedulingContext.headerHeight),
                     padding: EdgeInsets.only(left: 16, right: 16),
                     child: SchedulingHourColumn()),
                 ...widget.employees
@@ -54,9 +55,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                                 appointment.employee == employee.id)
                             .toList(),
                         header: employee.name,
-                        employeeId: employee.id,
-                        start: 8,
-                        end: 20))
+                        employeeId: employee.id))
                     .toList()
               ]),
               CurrentTimeRay()

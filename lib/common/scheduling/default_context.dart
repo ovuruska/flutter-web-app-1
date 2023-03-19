@@ -5,9 +5,9 @@ final getDefaultSchedulingContext = () => SchedulingContext(
       boxHeight: 160,
       boxWidth: 256,
       calendarMargin: 4,
-      hourColumnHeight: 256,
+      hourColumnHeight: 160,
       hourColumnWidth: 128,
-      topOffset: 160,
+      topOffset: 210,
     );
 
 

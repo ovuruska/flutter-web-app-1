@@ -13,8 +13,6 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
   final DateTime date;
   final String header;
   final int employeeId;
-  final int start;
-  final int end;
   final Function(SchedulingAppointmentEntity)? onLocalUpdate;
   final Function(SchedulingAppointmentEntity)? onRemoteUpdate;
   final Function(DragTargetDetails<SchedulingAppointmentEntity>) Function(
@@ -25,8 +23,6 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
         required this.appointments,
         required this.header,
         required this.employeeId,
-        required this.start,
-        required this.end,
         required this.date,
         this.onAccept,
         this.onLocalUpdate,
@@ -34,12 +30,17 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
       }) : super(key: key);
 
   Widget _buildHours(BuildContext context, List<SchedulingAppointmentEntity?> t,
-          List<dynamic> a) =>
-      Column(
-          children: List.generate(
-        end - start,
-        (index) => SchedulingHourBox(),
-      ));
+          List<dynamic> a) {
+    var schedulingContext = SchedulingContextProvider.of(context);
+    var start = schedulingContext.startHour;
+    var end = schedulingContext.endHour;
+    return  Column(
+        children: List.generate(
+          end - start,
+              (index) => SchedulingHourBox(),
+        ));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +75,9 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
                   ],
                 ))))),
         DragTarget<SchedulingAppointmentEntity>(
-            onAcceptWithDetails: onAccept == null ? null :onAccept!(date, start, employeeId),
-            builder: _buildHours)
+            onAcceptWithDetails: onAccept == null ? null :onAccept!(date, schedulingContext.startHour, employeeId),
+            builder: (context, candidateData, rejectedData) =>
+                SchedulingContextProvider(schedulingContext: schedulingContext,child:_buildHours(context, candidateData, rejectedData)))
       ]),
       ...layouts.map((layout) {
         return SchedulingAppointmentCard(
@@ -83,7 +85,7 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
           onRemoteUpdate: onRemoteUpdate,
           onLocalUpdate: onLocalUpdate,
           layout: layout,
-          start: start,
+          start: schedulingContext.startHour,
           date: date,
           employee: employeeId,
         );

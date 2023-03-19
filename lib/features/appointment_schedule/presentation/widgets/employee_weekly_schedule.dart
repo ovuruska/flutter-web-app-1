@@ -44,7 +44,9 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
     return days;
   }
 
-  List<Widget> dayColumns(DateTime date){
+  List<Widget> dayColumns(BuildContext context,DateTime date){
+    var schedulingContext = SchedulingContextProvider.of(context);
+
     var weekDays = getWeekDays(widget.date);
     // 24 January 2023, Wednesday
     var formatter = DateFormat('EEEE, d MMMM yyyy');
@@ -56,9 +58,7 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
             .where((appointment) => appointment.start.isSameDay( current))
             .toList(),
         header: formatter.format(current),
-        employeeId: widget.employee.id,
-        start: 8,
-        end: 20))
+        employeeId: widget.employee.id))
     .toList();
 
   }
@@ -77,7 +77,7 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
                     padding: EdgeInsets.only(left: 16, right: 16),
                     child: SchedulingHourColumn(
                     )),
-                ...dayColumns(widget.date)
+                ...dayColumns(context,widget.date)
               ]),
               CurrentTimeRay()
             ])));

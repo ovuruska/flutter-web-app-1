@@ -8,7 +8,7 @@ SchedulingAppointmentEntity calculateAppointmentDetails(SchedulingContext contex
   var offset = details.offset;
   var dy = offset.dy;
 
-  var absoluteY = dy  - context.topOffset + context.verticalController.offset;
+  var absoluteY = dy  - context.headerHeight - context.topOffset + context.verticalController.offset;
 
   var localPosition = (absoluteY) % context.boxHeight ;
   var hour = (absoluteY) ~/ context.boxHeight;
