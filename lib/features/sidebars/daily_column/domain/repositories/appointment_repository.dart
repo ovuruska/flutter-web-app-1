@@ -10,8 +10,6 @@ abstract class  SchedulingAppointmentRepository {
 
   Future<Either<Failure,SchedulingAppointmentEntity>> patch(SchedulingAppointmentEntity appointment);
 
-  Future<Either<Failure,void>> delete(int appointmentId);
-
   Future<Either<Failure,List<SchedulingAppointmentEntity>>> getAppointments(DateTime date, int employeeId);
 
 }

@@ -10,16 +10,14 @@ import 'package:scrubbers_employee_application/features/tables/appointments_page
 
 import '../../../../../injection.dart';
 import '../../domain/entities/appointments_table_data_row_entity.dart';
+import '../bloc/appointment_data_bloc.dart';
+import '../bloc/appointment_data_event.dart';
 
 class PendingAppointmentsDataSource extends AsyncDataTableSource {
   final AppointmentsTableGetPendingAppointmentsUseCase getPendingAppointments =
       sl<AppointmentsTableGetPendingAppointmentsUseCase>();
   final AppointmentsTableGetPendingIntervalUseCase getPendingInterval =
       sl<AppointmentsTableGetPendingIntervalUseCase>();
-
-  PendingAppointmentsDataSource({
-    required PaginatedAppointments data,
-  });
 
   @override
   bool get isRowCountApproximate => false;
@@ -40,6 +38,20 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     return Colors.transparent;
   }
 
+  Color _selectedRawColor(Set<MaterialState> states){
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    else{
+      return Colors.blueAccent[100]!;
+    }
+  }
+
   Text _text(String text) {
     return Text(
       text,
@@ -52,16 +64,25 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     var hourFormatter = new DateFormat('hh:mm a');
     var apptDate = formatter.format(data.start);
     var apptTime = hourFormatter.format(data.start);
-    var nameAndSurname = getNameAndSurname(data.employeeName);
+    var nameAndSurname = getNameAndSurname(data.clientName);
     var clientName = nameAndSurname.first;
     var clientSurname = nameAndSurname.last;
     var branchName = data.branchName;
 
+    var selected = sl<AppointmentDataBloc>().state.selected;
+    var ifSelected = selected == data.id;
+
     return DataRow2(
         onTap: () {
-          getItMaybe<AppointmentsPageTableSelectRowCallback>()?.call(data);
+          if(selected != null && selected == data.id) {
+            sl<AppointmentDataBloc>().add(AppointmentDataEventDeselect());
+          } else {
+            sl<AppointmentDataBloc>().add(AppointmentDataEventSelect(data.id));
+            getItMaybe<AppointmentsPageTableSelectRowCallback>()?.call(data);
+          }
         },
-        color: MaterialStateProperty.resolveWith(_getDataRowColor),
+        selected: ifSelected,
+        color: MaterialStateProperty.resolveWith((ifSelected) ? _selectedRawColor : _getDataRowColor ),
         key: ValueKey(data.id),
         cells: [
           DataCell(Text(data.id.toString())),
@@ -94,10 +115,10 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
   @override
   Future<AsyncRowsResponse> getRows(int offset, int limit) async {
     var params = AppointmentsTableGetPendingIntervalParams(
-      start:DateTime.now(),
-        offset: offset, limit: limit, status: 'Pending');
+        start: DateTime.now(), offset: offset, limit: limit, status: 'Pending');
     var response = await getPendingInterval(params);
-    var obj = response.getOrElse(() => PaginatedAppointments(results: [], count: 0));
+    var obj =
+        response.getOrElse(() => PaginatedAppointments(results: [], count: 0));
     var rows = obj.results.map<DataRow>((e) => getDataRow(e)).toList();
     var count = obj.count;
     return AsyncRowsResponse(

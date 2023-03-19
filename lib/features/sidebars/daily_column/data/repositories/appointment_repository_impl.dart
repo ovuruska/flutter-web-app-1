@@ -13,10 +13,7 @@ import '../../domain/repositories/appointment_repository.dart';
 
 class SchedulingAppointmentRepositoryImpl
     extends SchedulingAppointmentRepository {
-  @override
-  Future<Either<Failure, void>> delete(int) {
-    throw UnimplementedError();
-  }
+
 
   @override
   Future<Either<Failure, SchedulingAppointmentEntity>> patch(
@@ -44,15 +41,16 @@ class SchedulingAppointmentRepositoryImpl
     var startLt = formatter.format(date.add(Duration(days: 1)));
 
 
-    var queryParms = {
-      "start_gt": startGt,
-      "start_lt": startLt,
+    var queryParams = {
+      "start__gt": startGt,
+      "start__lt": startLt,
       "employee": employeeId.toString(),
     };
 
     var response = await SchedulingAuthService.instance.jsonRequest(
       "/api/schedule/appointments",
-      method: "PATCH",
+      method: "GET",
+      queryParams: queryParams
     );
     var respString = await response.stream.bytesToString();
     var respJson = jsonDecode(respString);

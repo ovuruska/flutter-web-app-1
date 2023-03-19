@@ -58,8 +58,8 @@ class AppointmentsTableDataRowEntity extends Equatable{
   factory AppointmentsTableDataRowEntity.fromJson(Map<String, dynamic> json) {
     return AppointmentsTableDataRowEntity(
       id: json['id'],
-      start: DateTime.parse(json['start']),
-      end: DateTime.parse(json['end']),
+      start: DateTime.parse(json['start']).toLocal(),
+      end: DateTime.parse(json['end']).toLocal(),
       service: json['appointment_type'],
       employeeName: json['employee']['name'],
       employeeId: json['employee']['id'],

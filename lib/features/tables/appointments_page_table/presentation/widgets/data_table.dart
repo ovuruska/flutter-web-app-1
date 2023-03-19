@@ -7,15 +7,12 @@ import '../bloc/appointment_data_notifier.dart';
 import 'pending_appointments_data_source.dart';
 
 class DataTableScreen extends StatelessWidget {
-  final PaginatedAppointments data;
-
-  const DataTableScreen({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
 
-    final _dtSource = PendingAppointmentsDataSource(data: data);
+    final _dtSource = PendingAppointmentsDataSource();
 
 
     return AsyncPaginatedDataTable2(

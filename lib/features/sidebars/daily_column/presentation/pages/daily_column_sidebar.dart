@@ -6,6 +6,7 @@ import '../../../../../common/scheduling/default_context.dart';
 import '../../../../../injection.dart';
 import '../bloc/daily_column_bloc.dart';
 import '../bloc/daily_column_state.dart';
+import '../widgets/daily_column_scroll.dart';
 import '../widgets/daily_column_sidebar.dart';
 
 class DailyColumnSidebarView extends StatelessWidget {
@@ -18,13 +19,15 @@ class DailyColumnSidebarView extends StatelessWidget {
       bloc: sl<DailyColumnBloc>(),
       builder: (context, state) {
         if (state is DailyColumnLoaded) {
-          return _withProvider(DailyColumnSidebar(
+          return Scaffold(
+              body: Center(
+                  child: _withProvider(DailyColumnScroll(
             date: state.date,
             appointments: state.appointments,
             employee: state.employee,
             target: state.target,
             employeeName: state.employeeName,
-          ));
+          ))));
         } else {
           return Scaffold(
             backgroundColor: Colors.white,

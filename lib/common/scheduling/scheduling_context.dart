@@ -24,7 +24,7 @@ class SchedulingContext extends Equatable{
     required this.hourColumnWidth,
     required this.topOffset,
     this.startHour = 8,
-    this.numberOfHours = 10,
+    this.numberOfHours = 12,
 
   });
 

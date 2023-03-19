@@ -6,6 +6,7 @@ import 'package:scrubbers_employee_application/features/tables/appointments_page
 import 'data/repositories/paginated_appointments_repository_impl.dart';
 import 'domain/repositories/paginated_appointments_repository.dart';
 import 'domain/usecases/get_pending_appointments.dart';
+import 'presentation/bloc/appointment_data_bloc.dart';
 import 'presentation/bloc/appointment_data_notifier.dart';
 
 registerAppointmentsPageTable(GetIt sl) {
@@ -15,6 +16,7 @@ registerAppointmentsPageTable(GetIt sl) {
 
   // BLoCs
   sl.registerFactory(() => AppointmentDataNotifier(sl()));
+  sl.registerLazySingleton(() => AppointmentDataBloc());
 
   // Use Cases
   sl.registerLazySingleton(() => AppointmentsTableGetPendingAppointmentsUseCase(sl()));

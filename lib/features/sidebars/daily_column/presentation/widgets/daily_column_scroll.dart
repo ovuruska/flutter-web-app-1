@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+import '../../../../../common/scheduling/scheduling_context_provider.dart';
 import 'daily_column_sidebar.dart';
 
 class DailyColumnScroll extends StatelessWidget {
@@ -21,7 +22,10 @@ class DailyColumnScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var schedulingContext = SchedulingContextProvider.of(context);
+
     return SingleChildScrollView(
+      controller: schedulingContext.verticalController,
       child: DailyColumnSidebar(
         date: date,
         appointments: appointments,
