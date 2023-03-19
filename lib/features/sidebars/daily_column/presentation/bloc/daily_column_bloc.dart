@@ -38,7 +38,29 @@ class DailyColumnBloc extends Bloc<DailyColumnEvent, DailyColumnState> {
       emit(state);
     });
     on<DailyColumnEventPatchAppointment>((event, emit) {
-      emit(DailyColumnLoading());
+      var appointment = event.appointment;
+      patchAppointment(DailyColumnPatchAppointmentParams(
+        appointment: appointment,
+      ));
+      var oldState = (state as DailyColumnLoaded);
+      var oldAppointments = oldState.appointments;
+      var newAppointments = oldAppointments.map((e) {
+        if (e.id == appointment.id) {
+          return appointment;
+        } else {
+          return e;
+        }
+      }).toList();
+
+      var newState = DailyColumnLoaded(
+        date: oldState.date,
+        employeeName: oldState.employeeName,
+        appointments: newAppointments,
+        employee: oldState.employee,
+        target: oldState.target,
+      );
+      emit(newState);
+
     });
   }
 }

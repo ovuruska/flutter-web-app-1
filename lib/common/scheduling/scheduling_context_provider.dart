@@ -12,7 +12,7 @@ class SchedulingContextProvider extends InheritedWidget {
     final SchedulingContextProvider? result =
     context.dependOnInheritedWidgetOfExactType<SchedulingContextProvider>();
     if (result == null) {
-      throw FlutterError('No ConstantsProvider found in the widget tree');
+      throw FlutterError('No SchedulingContextProvider is found in the widget tree');
     }
     return result.schedulingContext;
   }

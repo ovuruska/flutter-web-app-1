@@ -2,6 +2,8 @@
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+
 class DailyColumnEvent extends Equatable{
   @override
   List<Object?> get props => [];
@@ -27,23 +29,13 @@ class DailyColumnEventSetTarget extends DailyColumnEvent {
 }
 
 class DailyColumnEventPatchAppointment extends DailyColumnEvent {
-  final int employee;
-  final DateTime date;
-  final int branch;
-  final int appointment;
-  final int start;
-  final int end;
+  final SchedulingAppointmentEntity appointment;
 
   DailyColumnEventPatchAppointment({
-    required this.employee,
-    required this.date,
-    required this.branch,
     required this.appointment,
-    required this.start,
-    required this.end,
   });
 
   @override
-  List<Object?> get props => [employee, date, branch, appointment, start, end];
+  List<Object?> get props => [appointment];
 }
 

@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
+import 'package:scrubbers_employee_application/common/scheduling/default_context.dart';
 
 import 'cards/index.dart';
-import 'models/scheduling_appointment_entity.dart';
 import 'cards/wrapper.dart';
+import 'models/scheduling_appointment_entity.dart';
 import 'models/scheduling_appointment_layout.dart';
 import 'resizable.dart';
+import 'scheduling_context.dart';
 import 'scheduling_context_provider.dart';
 
 class AppointmentScheduleCard extends StatelessWidget {
-
   final SchedulingAppointmentLayout layout;
   final int start;
   final DateTime date;
   final int employee;
   final Function(SchedulingAppointmentEntity)? onLocalUpdate;
   final Function(SchedulingAppointmentEntity)? onRemoteUpdate;
-  final Function(DragTargetDetails<SchedulingAppointmentEntity>) Function(DateTime,int,int)? onAccept;
+  final Function(DragTargetDetails<SchedulingAppointmentEntity>) Function(
+      DateTime, int, int)? onAccept;
 
+  const AppointmentScheduleCard(
+      {Key? key,
+      required this.layout,
+      required this.start,
+      required this.date,
+      required this.employee,
+      this.onLocalUpdate,
+      this.onRemoteUpdate,
+      this.onAccept})
+      : super(key: key);
 
-  const AppointmentScheduleCard({Key? key, required this.layout, required this.start, required this.date, required this.employee, this.onLocalUpdate, this.onRemoteUpdate, this.onAccept}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var appointment = layout.appointment;
@@ -28,38 +40,41 @@ class AppointmentScheduleCard extends StatelessWidget {
     var schedulingContext = SchedulingContextProvider.of(context);
 
     var top = schedulingContext.headerHeight +
-        appointment.start.difference(topMost).inMinutes * schedulingContext.boxHeight / 60;
-
+        appointment.start.difference(topMost).inMinutes *
+            schedulingContext.boxHeight /
+            60;
 
     var leftMargin = (layout.left) * schedulingContext.boxWidth;
-    var width = (layout.right - layout.left) * schedulingContext.boxWidth - 2 * schedulingContext.calendarMargin;
+    var width = (layout.right - layout.left) * schedulingContext.boxWidth -
+        2 * schedulingContext.calendarMargin;
 
     return Positioned(
         key: ValueKey(appointment.id),
         top: top.toDouble(),
         left: leftMargin,
         child: DragTarget<SchedulingAppointmentEntity>(
-            onAcceptWithDetails: onAccept == null ? null : onAccept!(date, start, employee),
-            builder: (context, appointments, builder){
-
-              if(appointment.editable == false) return AppointmentCardFactory(
-                appointment: appointment,
-              );
-              else{
+            onAcceptWithDetails:
+                onAccept == null ? null : onAccept!(date, start, employee),
+            builder: (context, appointments, builder) {
+              if (appointment.editable == false)
+                return AppointmentCardFactory(
+                  appointment: appointment,
+                );
+              else {
                 return DragWrapper(
                     data: appointment,
-                    child: AppointmentScheduleResizableWrapper(
-                        onLocalUpdate: onLocalUpdate,
-                        onRemoteUpdate: onRemoteUpdate,
-                        width: width,
-                        appointment: appointment,
-                        child:AppointmentCardFactory(
-                          appointment: appointment,
-                        )));
+                    child: SchedulingContextProvider(
+                        schedulingContext: getItMaybe<SchedulingContext>() ??
+                            defaultSchedulingContext,
+                        child: SchedulingResizableWrapper(
+                            onLocalUpdate: onLocalUpdate,
+                            onRemoteUpdate: onRemoteUpdate,
+                            width: width,
+                            appointment: appointment,
+                            child: AppointmentCardFactory(
+                              appointment: appointment,
+                            ))));
               }
-
-            } ));
+            }));
   }
-
-
 }

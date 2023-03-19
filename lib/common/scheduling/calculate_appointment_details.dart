@@ -8,14 +8,14 @@ SchedulingAppointmentEntity calculateAppointmentDetails(SchedulingContext contex
   var offset = details.offset;
   var dy = offset.dy;
 
-  var absoluteY = dy - context.headerHeight - context.topOffset + context.verticalController.offset;
+  var absoluteY = dy  - context.topOffset + context.verticalController.offset;
 
   var localPosition = (absoluteY) % context.boxHeight ;
   var hour = (absoluteY) ~/ context.boxHeight;
   hour += startHour;
   var minute = localPosition / (context.boxHeight / 60);
 
-  minute = (minute / 15).round() * 15;
+  minute = (minute / 15).floor() * 15;
   var start = data.start;
   var end = data.end;
   var difference = end.difference(start).inMinutes;

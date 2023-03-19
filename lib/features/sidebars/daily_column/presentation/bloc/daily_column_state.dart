@@ -28,5 +28,8 @@ class DailyColumnLoaded extends DailyColumnState {
     required this.employee,
     required this.target,
 });
+
+  @override
+  List<Object?> get props => [date, appointments, target,employeeName,employee];
 }
 

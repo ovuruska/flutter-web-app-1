@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:intl/intl.dart';
 
 class SchedulingAppointmentEntity extends Equatable {
   final int id;
@@ -14,23 +13,27 @@ class SchedulingAppointmentEntity extends Equatable {
   final DateTime end;
   final double invoice;
   final bool specialHandling;
+  final String branchName;
+  final int branch;
   bool editable;
 
-  SchedulingAppointmentEntity(
-      {required this.id,
-      required this.status,
-      required this.customerName,
-      required this.employee,
-      required this.service,
-      required this.breed,
-      required this.dogName,
-      required this.start,
-      required this.employeeName,
-      required this.end,
-      required this.invoice,
-      required this.specialHandling,
-      this.editable = true,
-      });
+  SchedulingAppointmentEntity({
+    required this.id,
+    required this.status,
+    required this.customerName,
+    required this.employee,
+    required this.service,
+    required this.breed,
+    required this.dogName,
+    required this.start,
+    required this.employeeName,
+    required this.end,
+    required this.invoice,
+    required this.specialHandling,
+    required this.branch,
+    required this.branchName,
+    this.editable = true,
+  });
 
   @override
   List<Object?> get props => [
@@ -53,6 +56,8 @@ class SchedulingAppointmentEntity extends Equatable {
   factory SchedulingAppointmentEntity.fromJson(Map<String, dynamic> json) =>
       SchedulingAppointmentEntity(
           id: json['id'],
+          branch: json['branch']['id'],
+          branchName: json['branch']['name'],
           customerName: json['customer']['name'],
           specialHandling: json['dog']['special_handling'],
           employee: json['employee']['id'],
@@ -70,31 +75,34 @@ class SchedulingAppointmentEntity extends Equatable {
     String? status,
     String? customerName,
     int? employee,
+    String? employeeName,
     String? service,
     String? breed,
     String? dogName,
     DateTime? start,
     DateTime? end,
     double? invoice,
+    int? branch,
+    String? branchName,
     bool? specialHandling,
   }) =>
       SchedulingAppointmentEntity(
-        id: id ?? this.id,
-        status: status ?? this.status,
-        customerName: customerName ?? this.customerName,
-        employee: employee ?? this.employee,
-        service: service ?? this.service,
-        breed: breed ?? this.breed,
-        dogName: dogName ?? this.dogName,
-        start: start ?? this.start,
-        end: end ?? this.end,
-        invoice: invoice ?? this.invoice,
-        employeeName: employeeName ?? this.employeeName,
-        specialHandling: specialHandling ?? this.specialHandling,
-      );
+          id: id ?? this.id,
+          status: status ?? this.status,
+          customerName: customerName ?? this.customerName,
+          employee: employee ?? this.employee,
+          service: service ?? this.service,
+          breed: breed ?? this.breed,
+          dogName: dogName ?? this.dogName,
+          start: start ?? this.start,
+          end: end ?? this.end,
+          invoice: invoice ?? this.invoice,
+          employeeName: employeeName ?? this.employeeName,
+          specialHandling: specialHandling ?? this.specialHandling,
+          branch: branch ?? this.branch,
+          branchName: branchName ?? this.branchName);
 
   Map<String, dynamic> toJson() {
-
     return {
       "status": status,
       "employee": employee,

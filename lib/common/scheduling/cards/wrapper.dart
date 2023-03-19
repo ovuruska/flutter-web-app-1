@@ -11,11 +11,13 @@ class DragWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable<SchedulingAppointmentEntity>(
+    return MouseRegion(
+      cursor: SystemMouseCursors.grab,
+        child:Draggable<SchedulingAppointmentEntity>(
       child: child,
       data:data,
       feedback: Opacity(opacity: .5, child: child),
       childWhenDragging: Container(),
-    );
+    ));
   }
 }

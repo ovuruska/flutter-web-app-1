@@ -3,15 +3,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 
 import '../../../../../common/scheduling/default_context.dart';
+import '../../../../../common/scheduling/scheduling_context.dart';
 import '../../../../../injection.dart';
+import '../../utils/withProvider.dart';
 import '../bloc/daily_column_bloc.dart';
 import '../bloc/daily_column_state.dart';
 import '../widgets/daily_column_scroll.dart';
 import '../widgets/daily_column_sidebar.dart';
 
-class DailyColumnSidebarView extends StatelessWidget {
-  _withProvider(Widget child) => SchedulingContextProvider(
-      child: child, schedulingContext: defaultContext);
+class DailyColumnSidebarView extends StatefulWidget {
+
+
+
+  @override
+  State<StatefulWidget> createState() => _DailyColumnSidebarViewState();
+}
+
+class _DailyColumnSidebarViewState extends State<DailyColumnSidebarView> {
+  @override
+  void initState() {
+    super.initState();
+    sl.registerLazySingleton<SchedulingContext>(() => defaultSchedulingContext.copyWith(topOffset: 80));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +35,13 @@ class DailyColumnSidebarView extends StatelessWidget {
         if (state is DailyColumnLoaded) {
           return Scaffold(
               body: Center(
-                  child: _withProvider(DailyColumnScroll(
-            date: state.date,
-            appointments: state.appointments,
-            employee: state.employee,
-            target: state.target,
-            employeeName: state.employeeName,
-          ))));
+                  child: withProvider(DailyColumnScroll(
+                    date: state.date,
+                    appointments: state.appointments,
+                    employee: state.employee,
+                    target: state.target,
+                    employeeName: state.employeeName,
+                  ))));
         } else {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -36,4 +50,5 @@ class DailyColumnSidebarView extends StatelessWidget {
       },
     );
   }
+
 }

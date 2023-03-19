@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'models/scheduling_appointment_entity.dart';
 import 'scheduling_context_provider.dart';
 
-class AppointmentScheduleResizableWrapper extends StatefulWidget {
+class SchedulingResizableWrapper extends StatefulWidget {
   final Widget child;
   final double width;
   final SchedulingAppointmentEntity appointment;
   final Function(SchedulingAppointmentEntity)? onLocalUpdate;
   final Function(SchedulingAppointmentEntity)? onRemoteUpdate;
 
-  const AppointmentScheduleResizableWrapper(
+  const SchedulingResizableWrapper(
       {Key? key,
         required this.child,
         required this.width,
@@ -19,12 +19,12 @@ class AppointmentScheduleResizableWrapper extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AppointmentScheduleResizableWrapperState createState() =>
-      _AppointmentScheduleResizableWrapperState();
+  _SchedulingResizableWrapperState createState() =>
+      _SchedulingResizableWrapperState();
 }
 
-class _AppointmentScheduleResizableWrapperState
-    extends State<AppointmentScheduleResizableWrapper> {
+class _SchedulingResizableWrapperState
+    extends State<SchedulingResizableWrapper> {
   double totalDrag = 0;
   bool dragging = false;
 

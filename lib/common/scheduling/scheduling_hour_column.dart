@@ -14,7 +14,7 @@ class SchedulingHourColumn extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          for (int i = schedulingContext.startHour; i <= schedulingContext.numberOfHours + schedulingContext.startHour; i++)
+          for (int i = schedulingContext.startHour; i <= schedulingContext.endHour ; i++)
             Container(
               height: schedulingContext.hourColumnHeight.toDouble(),
               child: Row(

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../common/scheduling/models/scheduling_employee_entity.dart';
+import '../../../../../common/scheduling/scheduling_context_provider.dart';
 import '../../../../../common/scheduling/scheduling_daily_calendar_column.dart';
+import '../../utils/on_accept_with_details.dart';
 
 class DailyColumnSidebar extends StatelessWidget {
   final DateTime date;
@@ -30,13 +32,15 @@ class DailyColumnSidebar extends StatelessWidget {
         return element..editable = false;
       }
     }).toList();
+    var schedulingContext = SchedulingContextProvider.of(context);
 
     return SchedulingDailyCalendarColumn(
         appointments: filteredAppointments,
+        onAccept:onAcceptWithContext(context),
         header: employeeName,
         employeeId: employee,
-        start: 8,
-        end: 18,
+        start: schedulingContext.startHour,
+        end: schedulingContext.endHour,
         date: date);
   }
 }

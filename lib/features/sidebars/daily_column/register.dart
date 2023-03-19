@@ -1,7 +1,11 @@
 
 
 
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:scrubbers_employee_application/common/scheduling/default_context.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_context.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 
 import 'data/repositories/appointment_repository_impl.dart';
 import 'domain/repositories/appointment_repository.dart';
@@ -21,6 +25,5 @@ registerDailyColumn(GetIt sl){
   // Use Cases
   sl.registerLazySingleton(() => DailyColumnGetAppointmentsUseCase(sl()));
   sl.registerLazySingleton(() => DailyColumnPatchAppointmentUseCase(sl()));
-
 
 }
