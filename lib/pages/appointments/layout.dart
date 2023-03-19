@@ -12,30 +12,27 @@ class AppointmentsLayout extends StatelessWidget {
         columnSizes: [
           320.px,
           1.fr,
-          1.fr,
-          1.fr,
-          1.fr,
-          1.fr
+
 
         ],
-        rowSizes: [48.px, 240.px, 1.fr],
+        rowSizes: [48.px,  1.fr],
       children:[
         AppHeader().withGridPlacement(
           rowStart: 0,
           rowSpan: 1,
           columnStart: 0,
-          columnSpan: 6,
+          columnSpan: 2,
         ),
 
         AppointmentPagesTableView().withGridPlacement(
-          rowStart: 2,
+          rowStart: 1,
           rowSpan: 1,
           columnStart: 1,
-          columnSpan: 5,
+          columnSpan: 1,
         ),
         DailyColumnSidebarView().withGridPlacement(
           rowStart: 1,
-          rowSpan: 2,
+          rowSpan: 1,
           columnStart: 0,
           columnSpan: 1,
         )

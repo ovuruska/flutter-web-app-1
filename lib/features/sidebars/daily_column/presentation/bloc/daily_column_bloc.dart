@@ -14,6 +14,11 @@ class DailyColumnBloc extends Bloc<DailyColumnEvent, DailyColumnState> {
     required this.getAppointments,
     required this.patchAppointment,
   }) : super(DailyColumnInitial()) {
+
+    on<DailyColumnEventClearTarget>((event, emit) {
+      emit(DailyColumnInitial());
+      print("asdf");
+    });
     on<DailyColumnEventSetTarget>((event, emit) async {
       emit(DailyColumnLoading());
       var employeeId = event.employee;

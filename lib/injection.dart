@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 
+import 'core/register.dart';
 import 'features/analytics/client_cancellation_rate/register.dart';
 import 'features/analytics/client_no_show_rate/register.dart';
 import 'features/analytics/client_top_category/register.dart';
@@ -30,6 +31,8 @@ final sl = GetIt.instance;
 
 Future<void> initSl() async {
   sl.allowReassignment=true;
+
+  registerCore(sl);
 
   registerModifyBranchFeature(sl);
   registerSearchBranchesFeature(sl);

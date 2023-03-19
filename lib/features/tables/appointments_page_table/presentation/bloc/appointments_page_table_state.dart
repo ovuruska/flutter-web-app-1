@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class AppointmentDataState extends Equatable {
+class AppointmentsPageTableState extends Equatable {
   final int? selected;
 
-  AppointmentDataState({this.selected});
+  AppointmentsPageTableState({this.selected});
 
   @override
   List<Object?> get props => [selected ?? -1];

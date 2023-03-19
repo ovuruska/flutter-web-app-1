@@ -10,14 +10,22 @@ import 'package:scrubbers_employee_application/features/tables/appointments_page
 
 import '../../../../../injection.dart';
 import '../../domain/entities/appointments_table_data_row_entity.dart';
-import '../bloc/appointment_data_bloc.dart';
-import '../bloc/appointment_data_event.dart';
+import '../bloc/appointments_page_table_bloc.dart';
+import '../bloc/appointments_page_table_event.dart';
 
 class PendingAppointmentsDataSource extends AsyncDataTableSource {
   final AppointmentsTableGetPendingAppointmentsUseCase getPendingAppointments =
       sl<AppointmentsTableGetPendingAppointmentsUseCase>();
   final AppointmentsTableGetPendingIntervalUseCase getPendingInterval =
       sl<AppointmentsTableGetPendingIntervalUseCase>();
+
+  final Function(AppointmentsTableDataRowEntity) onApprove;
+  final Function(AppointmentsTableDataRowEntity) onDecline;
+
+  PendingAppointmentsDataSource({
+    required this.onApprove,
+    required this.onDecline,
+  });
 
   @override
   bool get isRowCountApproximate => false;
@@ -38,7 +46,7 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     return Colors.transparent;
   }
 
-  Color _selectedRawColor(Set<MaterialState> states){
+  Color _selectedRawColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
       MaterialState.hovered,
@@ -46,8 +54,7 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     };
     if (states.any(interactiveStates.contains)) {
       return Colors.blue;
-    }
-    else{
+    } else {
       return Colors.blueAccent[100]!;
     }
   }
@@ -59,6 +66,17 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     );
   }
 
+  onTap(AppointmentsTableDataRowEntity data, bool selected) => () {
+        if (selected != null && selected == data.id) {
+          sl<AppointmentsPageTableBloc>()
+              .add(AppointmentsPageTableEventDeselect());
+        } else {
+          sl<AppointmentsPageTableBloc>()
+              .add(AppointmentsPageTableEventSelect(data.id));
+          getItMaybe<AppointmentsPageTableSelectRowCallback>()?.call(data);
+        }
+      };
+
   DataRow getDataRow(AppointmentsTableDataRowEntity data) {
     var formatter = new DateFormat('MM/dd/yyyy');
     var hourFormatter = new DateFormat('hh:mm a');
@@ -69,22 +87,32 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     var clientSurname = nameAndSurname.last;
     var branchName = data.branchName;
 
-    var selected = sl<AppointmentDataBloc>().state.selected;
+    var selected = sl<AppointmentsPageTableBloc>().state.selected;
     var ifSelected = selected == data.id;
 
     return DataRow2(
-        onTap: () {
-          if(selected != null && selected == data.id) {
-            sl<AppointmentDataBloc>().add(AppointmentDataEventDeselect());
-          } else {
-            sl<AppointmentDataBloc>().add(AppointmentDataEventSelect(data.id));
-            getItMaybe<AppointmentsPageTableSelectRowCallback>()?.call(data);
-          }
-        },
+        onTap: onTap(data, ifSelected),
         selected: ifSelected,
-        color: MaterialStateProperty.resolveWith((ifSelected) ? _selectedRawColor : _getDataRowColor ),
+        color: MaterialStateProperty.resolveWith(
+            (ifSelected) ? _selectedRawColor : _getDataRowColor),
         key: ValueKey(data.id),
         cells: [
+          DataCell(IconButton(
+              icon: Icon(Icons.done),
+              color: Colors.green,
+              onPressed: () {
+                onApprove(data);
+                onTap(data, ifSelected)();
+              })),
+          DataCell(IconButton(
+            icon: Icon(Icons.delete),
+            color: Colors.red,
+            onPressed: () {
+              onDecline(data);
+              onTap(data, ifSelected)();
+
+            }
+          )),
           DataCell(Text(data.id.toString())),
           DataCell(Text(apptDate)),
           DataCell(Text(apptTime)),

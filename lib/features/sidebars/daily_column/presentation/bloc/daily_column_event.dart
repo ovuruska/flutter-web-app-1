@@ -10,6 +10,8 @@ class DailyColumnEvent extends Equatable{
 
 }
 
+class DailyColumnEventClearTarget extends DailyColumnEvent {}
+
 class DailyColumnEventSetTarget extends DailyColumnEvent {
 
   final int employee;

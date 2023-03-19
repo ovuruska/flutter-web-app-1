@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 
+import '../../features/tables/appointments_page_table/domain/callbacks/deselect_row_callback.dart';
 import '../../features/tables/appointments_page_table/domain/callbacks/select_row_callback.dart';
 import '../../injection.dart';
 import 'layout.dart';
-import 'select_item_callback.dart';
+import 'callbacks.dart';
 
 class AppointmentsView extends StatefulWidget {
 
@@ -19,6 +20,7 @@ class _AppointmentsViewState extends State<AppointmentsView> {
   void initState() {
     super.initState();
     sl.registerLazySingleton<AppointmentsPageTableSelectRowCallback>(() => AppointmentsPageTableSelectRowCallbackImpl());
+    sl.registerLazySingleton<AppointmentsPageTableDeSelectRowCallback>(() => AppointmentsPageTableDeSelectRowCallbackImpl());
   }
 
 
