@@ -14,6 +14,7 @@ class DashboardAppointmentEntity extends Equatable {
   final DateTime end;
   final double invoice;
   final bool specialHandling;
+  bool editable;
 
   DashboardAppointmentEntity(
       {required this.id,
@@ -27,7 +28,9 @@ class DashboardAppointmentEntity extends Equatable {
       required this.employeeName,
       required this.end,
       required this.invoice,
-      required this.specialHandling});
+      required this.specialHandling,
+      this.editable = true,
+      });
 
   @override
   List<Object?> get props => [

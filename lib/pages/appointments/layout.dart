@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../features/app_header/presentation/widgets/header.dart';
+import '../../features/sidebars/daily_column/presentation/pages/daily_column_sidebar.dart';
 import '../../features/tables/appointments_page_table/presentation/pages/appointments_page_table.dart';
 
 class AppointmentsLayout extends StatelessWidget {
@@ -31,6 +32,12 @@ class AppointmentsLayout extends StatelessWidget {
           rowSpan: 1,
           columnStart: 1,
           columnSpan: 5,
+        ),
+        DailyColumnSidebarView().withGridPlacement(
+          rowStart: 1,
+          rowSpan: 2,
+          columnStart: 0,
+          columnSpan: 1,
         )
 
       ]

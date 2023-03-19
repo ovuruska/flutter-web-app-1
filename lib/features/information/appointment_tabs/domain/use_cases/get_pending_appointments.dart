@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../../core/error/failures.dart';
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../../../../../widgets/cards/root/entity.dart';
 import '../repositories/view_appointments_repository.dart';
 

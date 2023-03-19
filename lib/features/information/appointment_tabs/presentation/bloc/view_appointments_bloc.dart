@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../../domain/use_cases/get_cancelled_appointments.dart';
 import '../../domain/use_cases/get_pending_appointments.dart';
 import '../../domain/use_cases/get_waitlist_appointments.dart';

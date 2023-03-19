@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/widgets/cards/root/entity.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../../../core/usecases/use_case.dart';
+import '../../../../core/use_case.dart';
 import '../repositories/appointment_repository.dart';
 
 class GetEmployeeAppointmentsParams {

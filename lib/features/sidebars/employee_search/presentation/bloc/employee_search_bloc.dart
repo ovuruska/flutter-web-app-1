@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../../domain/usecases/create_new_employee.dart';
 import '../../domain/usecases/get_employees.dart';
 import '../../domain/usecases/patch_employee.dart';

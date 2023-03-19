@@ -9,8 +9,6 @@ bool isEqual(DateTime a, DateTime b) {
 }
 
 
-/// Pick the left and right positions of each event, such that there are no overlap.
-/// Step 3 in the algorithm.
 List<AppointmentLayout> layoutAppointments(
     List<DashboardAppointmentEntity> appointments) {
   List<List<AppointmentLayout>> columns = [];

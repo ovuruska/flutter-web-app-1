@@ -2,6 +2,8 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
+import 'package:scrubbers_employee_application/features/tables/appointments_page_table/domain/callbacks/select_row_callback.dart';
 import 'package:scrubbers_employee_application/features/tables/appointments_page_table/domain/entities/paginated_appointments.dart';
 import 'package:scrubbers_employee_application/features/tables/appointments_page_table/domain/usecases/get_pending_appointments.dart';
 import 'package:scrubbers_employee_application/features/tables/appointments_page_table/domain/usecases/get_pending_interval.dart';
@@ -56,7 +58,9 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
     var branchName = data.branchName;
 
     return DataRow2(
-        onTap: () {},
+        onTap: () {
+          getItMaybe<AppointmentsPageTableSelectRowCallback>()?.call(data);
+        },
         color: MaterialStateProperty.resolveWith(_getDataRowColor),
         key: ValueKey(data.id),
         cells: [

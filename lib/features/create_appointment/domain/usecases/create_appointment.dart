@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
-import '../../../../core/usecases/use_case.dart';
+import '../../../../core/use_case.dart';
 import '../../../../models/Appointment.dart';
 import '../entities/appointment_entity.dart';
 import '../repositories/create_appointment_repository.dart';

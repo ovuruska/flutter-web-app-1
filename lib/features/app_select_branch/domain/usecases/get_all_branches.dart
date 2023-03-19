@@ -3,7 +3,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
-import '../../../../core/usecases/use_case.dart';
+import '../../../../core/use_case.dart';
 import '../entities/branch_id_and_name.dart';
 import '../repositories/branch_repository.dart';
 

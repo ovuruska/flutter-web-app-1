@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/error/failures.dart';
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../entities/client_pet_item.dart';
 import '../repositories/client_pets_repository.dart';
 

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../../core/use_case.dart';
 import '../../../../../core/error/failures.dart';
-import '../../../../../core/usecases/use_case.dart';
 import '../repositories/cancellation_rate_repository.dart';
 
 class GetCancellationRateParams extends Equatable{

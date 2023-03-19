@@ -20,6 +20,7 @@ import 'features/information/transactions_grid/register.dart';
 import 'features/rebook_appointment/register.dart';
 import 'features/sidebars/branch_search/register.dart';
 import 'features/sidebars/client_search/register.dart';
+import 'features/sidebars/daily_column/register.dart';
 import 'features/sidebars/employee_search/register.dart';
 import 'features/tables/appointments_page_table/register.dart';
 import 'features/tables/client_appointments_table/register.dart';
@@ -53,4 +54,5 @@ Future<void> initSl() async {
   registerClientYearlyAppointments(sl);
   registerAppCalendar(sl);
   registerAppointmentsPageTable(sl);
+  registerDailyColumn(sl);
 }

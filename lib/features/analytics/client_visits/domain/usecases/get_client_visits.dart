@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../../core/error/failures.dart';
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../repositories/client_visits_repository.dart';
 
 class GetClientVisitsUseCase extends UseCase<Map<String, double>, int> {

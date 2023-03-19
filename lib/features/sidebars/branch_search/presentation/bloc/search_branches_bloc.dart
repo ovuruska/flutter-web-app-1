@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/usecases/use_case.dart';
+import '../../../../../core/use_case.dart';
 import '../../domain/usecases/create_new_branch.dart';
 import '../../domain/usecases/get_branches.dart';
 import '../../domain/usecases/remove_branch.dart';

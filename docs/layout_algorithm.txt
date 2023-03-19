@@ -1,0 +1,22 @@
+This algorithm is designed to layout a list of appointment cards (DashboardAppointmentEntity) in a calendar or timetable view, where overlapping appointments are displayed side by side. It processes a list of appointments and returns a list of AppointmentLayout objects, which include the original appointment and additional layout information, such as the left and right positions.
+
+The algorithm consists of the following steps:
+
+Sort appointments by start time, then by end time.
+Iterate through the sorted appointments and create columns of non-overlapping appointments.
+For each appointment, find the maximum number of columns it can span without colliding with other appointments.
+Calculate the left and right positions for each appointment based on the number of columns and the column index.
+Here's an explanation of the functions used in the algorithm:
+
+isEqual: Compares two DateTime objects to check if they are equal down to the minute.
+layoutAppointments: Main function that takes a list of appointments and returns a list of AppointmentLayout objects.
+collidesWith: Checks if two appointments overlap in time.
+packAppointments: Sets the left and right positions for each appointment in the connected group.
+expandAppointments: Determines how many columns an appointment can expand into without colliding with other appointments.
+Algorithmic complexity:
+The time complexity of this algorithm is primarily determined by the sorting step and the nested loop structure in the layoutAppointments function. The sorting step has a time complexity of O(n * log(n)), where n is the number of appointments. The nested loops in the layoutAppointments function have a time complexity of O(n * m), where m is the maximum number of overlapping appointments. In the worst case, when all appointments overlap, the complexity would be O(n^2). However, in practical scenarios, the number of overlapping appointments is usually much smaller than the total number of appointments, making the average-case complexity lower.
+
+The space complexity of the algorithm is O(n), as it creates a new list of AppointmentLayout objects and columns for the appointments.
+
+For onboarding Flutter software engineers:
+This algorithm is particularly useful for creating a calendar or timetable view in a Flutter application, where appointments or events need to be displayed without overlapping. Understanding the underlying logic and how appointments are processed and positioned can help you customize the layout and presentation according to your app's requirements.
