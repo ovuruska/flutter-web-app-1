@@ -22,3 +22,4 @@ class SchedulingContextProvider extends InheritedWidget {
     return schedulingContext != oldWidget.schedulingContext;
   }
 }
+

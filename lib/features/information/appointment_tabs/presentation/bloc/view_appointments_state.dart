@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 
 
 
@@ -14,9 +14,9 @@ class ViewAppointmentsState extends Equatable {
 class Initial extends ViewAppointmentsState {}
 
 class Loaded extends ViewAppointmentsState {
-  final List<DashboardAppointmentEntity> waitlistAppointments;
-  final List<DashboardAppointmentEntity> cancelledAppointments;
-  final List<DashboardAppointmentEntity> pendingAppointments;
+  final List<SchedulingAppointmentEntity> waitlistAppointments;
+  final List<SchedulingAppointmentEntity> cancelledAppointments;
+  final List<SchedulingAppointmentEntity> pendingAppointments;
 
   Loaded({
     this.waitlistAppointments = const [],
@@ -24,7 +24,7 @@ class Loaded extends ViewAppointmentsState {
     this.pendingAppointments = const [],
   });
 
-  setCancelledAppointments(List<DashboardAppointmentEntity> appointments) {
+  setCancelledAppointments(List<SchedulingAppointmentEntity> appointments) {
     return Loaded(
       cancelledAppointments: appointments,
       pendingAppointments: pendingAppointments,
@@ -32,7 +32,7 @@ class Loaded extends ViewAppointmentsState {
     );
   }
 
-  setPendingAppointments(List<DashboardAppointmentEntity> appointments) {
+  setPendingAppointments(List<SchedulingAppointmentEntity> appointments) {
     return Loaded(
       cancelledAppointments: cancelledAppointments,
       pendingAppointments: appointments,
@@ -40,7 +40,7 @@ class Loaded extends ViewAppointmentsState {
     );
   }
 
-  setWaitlistAppointments(List<DashboardAppointmentEntity> appointments) {
+  setWaitlistAppointments(List<SchedulingAppointmentEntity> appointments) {
     return Loaded(
       cancelledAppointments: cancelledAppointments,
       pendingAppointments: pendingAppointments,

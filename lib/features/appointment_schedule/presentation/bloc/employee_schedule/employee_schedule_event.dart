@@ -1,8 +1,6 @@
-
-
 import 'package:equatable/equatable.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 
 class EmployeeScheduleEvent extends Equatable {
   const EmployeeScheduleEvent();
@@ -27,7 +25,7 @@ class EmployeeScheduleGetAppointmentsEvent extends EmployeeScheduleEvent {
 }
 
 class EmployeeSchedulePatchEvent extends EmployeeScheduleEvent {
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   EmployeeSchedulePatchEvent({required this.appointment});
 
@@ -36,7 +34,7 @@ class EmployeeSchedulePatchEvent extends EmployeeScheduleEvent {
 }
 
 class EmployeeScheduleLocalPatchEvent extends EmployeeScheduleEvent {
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   EmployeeScheduleLocalPatchEvent({required this.appointment});
 

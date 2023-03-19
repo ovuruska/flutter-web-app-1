@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import 'list_cancelled.dart';
 import 'list_pending.dart';
 import 'list_waitlist.dart';
 import 'tab_bar.dart';
 
 class ViewAppointments extends StatefulWidget {
-  final List<DashboardAppointmentEntity> pendingAppointments;
-  final List<DashboardAppointmentEntity> waitlistAppointments;
-  final List<DashboardAppointmentEntity> cancelledAppointments;
+  final List<SchedulingAppointmentEntity> pendingAppointments;
+  final List<SchedulingAppointmentEntity> waitlistAppointments;
+  final List<SchedulingAppointmentEntity> cancelledAppointments;
 
   const ViewAppointments(
       {Key? key,

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:scrubbers_employee_application/widgets/cards/root/entity.dart';
+import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 
 class EmployeeScheduleState extends Equatable {
   @override
@@ -13,7 +13,7 @@ class EmployeeScheduleLoading extends EmployeeScheduleState {}
 
 class EmployeeScheduleLoaded extends EmployeeScheduleState {
 
-  final List<DashboardAppointmentEntity> appointments;
+  final List<SchedulingAppointmentEntity> appointments;
   final int id;
 
   EmployeeScheduleLoaded({required this.id,this.appointments = const []});

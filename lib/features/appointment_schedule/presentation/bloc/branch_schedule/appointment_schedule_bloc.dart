@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/usecases/get_appointments.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../domain/usecases/get_branch_employees.dart';
 import '../../../domain/usecases/patch_appointment.dart';
 import 'appointment_schedule_event.dart';
@@ -98,8 +98,8 @@ class AppointmentScheduleBloc
     });
   }
 
-  List<DashboardAppointmentEntity> filterAppointments(
-      List<DashboardAppointmentEntity> appointments) {
+  List<SchedulingAppointmentEntity> filterAppointments(
+      List<SchedulingAppointmentEntity> appointments) {
     return appointments
         .where((e) =>
             allowed.contains(e.status) &&
@@ -110,7 +110,7 @@ class AppointmentScheduleBloc
   }
 
   List<DashboardEmployeeEntity> getAppointmentEmployees(
-      List<DashboardAppointmentEntity> appointments) {
+      List<SchedulingAppointmentEntity> appointments) {
     List<DashboardEmployeeEntity> result = [];
     List<int> ids = [];
     for (var appointment in appointments) {

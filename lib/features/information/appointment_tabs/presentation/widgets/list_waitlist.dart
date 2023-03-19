@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import 'item_waitlist.dart';
 
 class AppointmentListWaitlist extends StatelessWidget {
-  final List<DashboardAppointmentEntity> appointments;
+  final List<SchedulingAppointmentEntity> appointments;
   const AppointmentListWaitlist({Key? key, required this.appointments})
       : super(key: key);
 

@@ -1,9 +1,6 @@
-
-
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
 
 
 class AppointmentScheduleEvent extends Equatable {
@@ -45,7 +42,7 @@ class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
 
 class AppointmentSchedulePatchLocalEvent extends AppointmentScheduleEvent {
 
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   AppointmentSchedulePatchLocalEvent({
     required this.appointment
@@ -57,7 +54,7 @@ class AppointmentSchedulePatchLocalEvent extends AppointmentScheduleEvent {
 
 class AppointmentSchedulePatchEvent extends AppointmentScheduleEvent {
 
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   AppointmentSchedulePatchEvent({
     required this.appointment

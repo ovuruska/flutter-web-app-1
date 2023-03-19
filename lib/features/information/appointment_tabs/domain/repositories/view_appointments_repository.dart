@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../core/error/failures.dart';
-import '../../../../../widgets/cards/root/entity.dart';
 
 
 abstract class ViewAppointmentsRepository {
 
-  Future<Either<Failure,List<DashboardAppointmentEntity>>> getPendingAppointments();
-  Future<Either<Failure,List<DashboardAppointmentEntity>>> getWaitlistAppointments();
-  Future<Either<Failure,List<DashboardAppointmentEntity>>> getCancelledAppointments();
+  Future<Either<Failure,List<SchedulingAppointmentEntity>>> getPendingAppointments();
+  Future<Either<Failure,List<SchedulingAppointmentEntity>>> getWaitlistAppointments();
+  Future<Either<Failure,List<SchedulingAppointmentEntity>>> getCancelledAppointments();
 }

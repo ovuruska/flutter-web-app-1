@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
+import 'package:scrubbers_employee_application/common/scheduling/current_time_ray.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_daily_calendar_column.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_hour_column.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
 import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
-import '../../../domain/entities/dashboard_employee_entity.dart';
-import '../../../utils/constants.dart';
-import '../daily_calendar.dart';
-import '../hour_column.dart';
+import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+import '../../../../common/scheduling/scheduling_context_provider.dart';
+import '../../domain/entities/dashboard_employee_entity.dart';
 
 class EmployeeWeeklySchedule extends StatefulWidget {
   final DateTime date;
-  final List<DashboardAppointmentEntity> appointments;
+  final List<SchedulingAppointmentEntity> appointments;
   final DashboardEmployeeEntity employee;
 
   const EmployeeWeeklySchedule({
@@ -43,55 +44,16 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
     return days;
   }
 
-  Widget _ray() {
-    var now = DateTime.now();
-    if (now.hour < 8 || now.hour > 20) {
-      return Container();
-    }
-    var top = headerHeight +
-        now
-                .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
-                .inMinutes *
-            boxHeight /
-            60;
-    var width = MediaQuery.of(context).size.width - 2 * calendarMargin;
-
-    return Positioned(
-        top: top.toDouble(),
-        left: hourWidth + 27,
-        child: Container(
-            width: width,
-            height: 10,
-            child: Row(
-              children: [
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF718BE9),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    height: 3,
-                    color: const Color(0xFF718BE9),
-                  ),
-                )
-              ],
-            )));
-  }
-
   List<Widget> dayColumns(DateTime date){
     var weekDays = getWeekDays(widget.date);
     // 24 January 2023, Wednesday
     var formatter = DateFormat('EEEE, d MMMM yyyy');
     return weekDays
-        .map((current) => DailyCalendar(
-      onAccept: onAcceptWithEmployee,
+        .map((current) => SchedulingDailyCalendarColumn(
+      onAccept: onAcceptWithEmployee(context),
         date: current,
         appointments: widget.appointments
-            .where((appointment) => isSameDay(appointment.start, current))
+            .where((appointment) => appointment.start.isSameDay( current))
             .toList(),
         header: formatter.format(current),
         employeeId: widget.employee.id,
@@ -101,40 +63,37 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
 
   }
 
-  Widget _horizontal() {
-
+  Widget _horizontal(BuildContext context) {
+    var schedulingContext = SchedulingContextProvider.of(context);
     return Scrollbar(
-        controller: horizontalController,
+        controller: schedulingContext.horizontalController,
         scrollbarOrientation: ScrollbarOrientation.top,
         child: SingleChildScrollView(
-            controller: horizontalController,
+            controller: schedulingContext.horizontalController,
             scrollDirection: Axis.horizontal,
             child: Stack(children: [
               Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
                     padding: EdgeInsets.only(left: 16, right: 16),
-                    child: HourColumn(
-                      start: 8,
-                      end: 20,
+                    child: SchedulingHourColumn(
                     )),
                 ...dayColumns(widget.date)
               ]),
-              _ray()
+              CurrentTimeRay()
             ])));
   }
 
-  Widget _nobranch() => Container(
-        child: Center(child: Text("No branch selected.")),
-      );
+
 
   @override
   Widget build(BuildContext context) {
+    var schedulingContext = SchedulingContextProvider.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       extendBody: true,
       body: SingleChildScrollView(
-        controller: verticalController,
-        child: _horizontal(),
+        controller: schedulingContext.verticalController,
+        child: _horizontal(context),
       ),
     );
   }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/widgets/cards/pending.dart';
 
+import '../../../../../common/scheduling/cards/pending.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../flutter_flow/flutter_flow_theme.dart';
 import '../../../../../injection.dart';
-import '../../../../../widgets/cards/root/entity.dart';
 import '../bloc/view_appointments_bloc.dart';
 import '../bloc/view_appointments_event.dart';
 
 class AppointmentItemWaitlist extends StatelessWidget {
-  DashboardAppointmentEntity appointment;
+  SchedulingAppointmentEntity appointment;
 
   AppointmentItemWaitlist({required this.appointment});
 
@@ -47,7 +47,7 @@ class AppointmentItemWaitlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var draggedAppointment = appointment.copyWith(status: "Pending");
-    return Draggable<DashboardAppointmentEntity>(
+    return Draggable<SchedulingAppointmentEntity>(
       data: draggedAppointment,
       child: _build(context),
       hitTestBehavior: HitTestBehavior.translucent,

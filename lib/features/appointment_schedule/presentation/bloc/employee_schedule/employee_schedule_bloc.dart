@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_event.dart';
 
 import '../../../domain/usecases/get_employee_appointments.dart';
@@ -23,7 +24,7 @@ class EmployeeScheduleBloc
 
       var results = await getAppointments(params);
       results.fold((l) => emit(EmployeeScheduleInitial()),
-          (r) => emit(EmployeeScheduleLoaded(id: event.id, appointments: r)));
+          (r) => emit(EmployeeScheduleLoaded(id: event.id, appointments: r as List<SchedulingAppointmentEntity>)));
     });
 
     on<EmployeeSchedulePatchEvent>((event, emit) async {

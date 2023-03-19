@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
-import 'package:scrubbers_employee_application/common/scheduling/default_context.dart';
 
 import 'cards/index.dart';
 import 'cards/wrapper.dart';
 import 'models/scheduling_appointment_entity.dart';
 import 'models/scheduling_appointment_layout.dart';
 import 'resizable.dart';
-import 'scheduling_context.dart';
 import 'scheduling_context_provider.dart';
 
-class AppointmentScheduleCard extends StatelessWidget {
+class SchedulingAppointmentCard extends StatelessWidget {
   final SchedulingAppointmentLayout layout;
   final int start;
   final DateTime date;
@@ -20,7 +17,7 @@ class AppointmentScheduleCard extends StatelessWidget {
   final Function(DragTargetDetails<SchedulingAppointmentEntity>) Function(
       DateTime, int, int)? onAccept;
 
-  const AppointmentScheduleCard(
+  const SchedulingAppointmentCard(
       {Key? key,
       required this.layout,
       required this.start,
@@ -64,8 +61,7 @@ class AppointmentScheduleCard extends StatelessWidget {
                 return DragWrapper(
                     data: appointment,
                     child: SchedulingContextProvider(
-                        schedulingContext: getItMaybe<SchedulingContext>() ??
-                            defaultSchedulingContext,
+                        schedulingContext: schedulingContext,
                         child: SchedulingResizableWrapper(
                             onLocalUpdate: onLocalUpdate,
                             onRemoteUpdate: onRemoteUpdate,

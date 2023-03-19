@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../../../services/auth.dart';
-import '../../../../../widgets/cards/root/entity.dart';
 import '../../domain/repositories/view_appointments_repository.dart';
 
 class Interval {
@@ -24,7 +24,7 @@ class ViewAppointmentsRepositoryImpl extends ViewAppointmentsRepository {
   }
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>>
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>>
       getCancelledAppointments() async {
 
     var interval = getInterval();
@@ -44,7 +44,7 @@ class ViewAppointmentsRepositoryImpl extends ViewAppointmentsRepository {
     if(response.statusCode != 200) {
       return Left(ServerFailure());
     }else{
-      var appointmentEntities = respJson.map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e)).toList();
+      var appointmentEntities = respJson.map<SchedulingAppointmentEntity>((e) => SchedulingAppointmentEntity.fromJson(e)).toList();
       return Right(appointmentEntities);
     }
 
@@ -52,7 +52,7 @@ class ViewAppointmentsRepositoryImpl extends ViewAppointmentsRepository {
   }
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>>
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>>
       getPendingAppointments() async {
     var interval = getInterval();
     var formatter = new DateFormat('yyyy-MM-dd');
@@ -69,14 +69,14 @@ class ViewAppointmentsRepositoryImpl extends ViewAppointmentsRepository {
     if(response.statusCode != 200) {
       return Left(ServerFailure());
     }else{
-      var appointmentEntities = respJson.map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e)).toList();
+      var appointmentEntities = respJson.map<SchedulingAppointmentEntity>((e) => SchedulingAppointmentEntity.fromJson(e)).toList();
       return Right(appointmentEntities);
     }
 
   }
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>>
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>>
       getWaitlistAppointments() async {
     var interval = getInterval();
     var formatter = new DateFormat('yyyy-MM-dd');
@@ -93,7 +93,7 @@ class ViewAppointmentsRepositoryImpl extends ViewAppointmentsRepository {
     if(response.statusCode != 200) {
       return Left(ServerFailure());
     }else{
-      var appointmentEntities = respJson.map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e)).toList();
+      var appointmentEntities = respJson.map<SchedulingAppointmentEntity>((e) => SchedulingAppointmentEntity.fromJson(e)).toList();
       return Right(appointmentEntities);
     }
 

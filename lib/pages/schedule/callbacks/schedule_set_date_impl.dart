@@ -1,7 +1,7 @@
 
 
 
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule/appointment_schedule.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/appointment_schedule.dart';
 
 import '../../../features/app_calendar/presentation/bloc/app_calendar_bloc.dart';
 import '../../../features/app_calendar/presentation/bloc/app_calendar_event.dart';

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:scrubbers_employee_application/widgets/cards/root/entity.dart';
 
+import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/use_case.dart';
 import '../repositories/appointment_repository.dart';
@@ -17,14 +17,14 @@ class GetEmployeeAppointmentsParams {
   });
 }
 
-class GetEmployeeAppointmentsUseCase extends UseCase<List<DashboardAppointmentEntity>,GetEmployeeAppointmentsParams>
+class GetEmployeeAppointmentsUseCase extends UseCase<List<SchedulingAppointmentEntity>,GetEmployeeAppointmentsParams>
 {
   final DashboardAppointmentRepository repository;
 
   GetEmployeeAppointmentsUseCase(this.repository);
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>> call(GetEmployeeAppointmentsParams params) async {
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>> call(GetEmployeeAppointmentsParams params) async {
     return await repository.getAppointmentByEmployee(params.id, params.start, params.end);
   }
 }

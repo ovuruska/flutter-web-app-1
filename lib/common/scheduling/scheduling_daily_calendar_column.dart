@@ -78,7 +78,7 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
             builder: _buildHours)
       ]),
       ...layouts.map((layout) {
-        return AppointmentScheduleCard(
+        return SchedulingAppointmentCard(
           onAccept: onAccept,
           onRemoteUpdate: onRemoteUpdate,
           onLocalUpdate: onLocalUpdate,

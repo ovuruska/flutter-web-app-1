@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../flutter_flow/flutter_flow_theme.dart';
-import '../../../../../widgets/cards/root/entity.dart';
 
 
 
 class AppointmentItemPending extends StatelessWidget {
-  DashboardAppointmentEntity appointment;
+  SchedulingAppointmentEntity appointment;
 
   AppointmentItemPending({required this.appointment});
 
