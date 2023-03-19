@@ -9,7 +9,10 @@ import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar
 
 import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../common/scheduling/scheduling_context_provider.dart';
+import '../../../../injection.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
+import '../bloc/employee_schedule/employee_schedule_bloc.dart';
+import '../bloc/employee_schedule/employee_schedule_event.dart';
 
 class EmployeeWeeklySchedule extends StatefulWidget {
   final DateTime date;
@@ -45,13 +48,18 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
   }
 
   List<Widget> dayColumns(BuildContext context,DateTime date){
-    var schedulingContext = SchedulingContextProvider.of(context);
 
     var weekDays = getWeekDays(widget.date);
     // 24 January 2023, Wednesday
     var formatter = DateFormat('EEEE, d MMMM yyyy');
     return weekDays
         .map((current) => SchedulingDailyCalendarColumn(
+        onLocalUpdate: (appointment) {
+          sl<EmployeeScheduleBloc>().add(EmployeeScheduleLocalPatchEvent(appointment: appointment));
+        },
+        onRemoteUpdate: (appointment) {
+          sl<EmployeeScheduleBloc>().add(EmployeeSchedulePatchEvent(appointment: appointment));
+        },
       onAccept: onAcceptWithEmployee(context),
         date: current,
         appointments: widget.appointments

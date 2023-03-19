@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/scheduling/current_time_ray.dart';
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_hour_column.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
 
 import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../common/scheduling/scheduling_daily_calendar_column.dart';
+import '../../../../injection.dart';
 import '../../domain/entities/dashboard_employee_entity.dart';
+import '../bloc/branch_schedule/appointment_schedule_bloc.dart';
 
 class AppointmentSchedule extends StatefulWidget {
   final DateTime date;
@@ -43,11 +46,22 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
             child: Stack(children: [
               Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Container(
-                    margin: EdgeInsets.only(top: schedulingContext.headerHeight),
+                    margin:
+                        EdgeInsets.only(top: schedulingContext.headerHeight),
                     padding: EdgeInsets.only(left: 16, right: 16),
                     child: SchedulingHourColumn()),
                 ...widget.employees
                     .map((employee) => SchedulingDailyCalendarColumn(
+                        onLocalUpdate: (appointment) {
+                          sl<AppointmentScheduleBloc>().add(
+                              AppointmentSchedulePatchLocalEvent(
+                                  appointment: appointment));
+                        },
+                        onRemoteUpdate: (appointment) {
+                          sl<AppointmentScheduleBloc>().add(
+                              AppointmentSchedulePatchEvent(
+                                  appointment: appointment));
+                        },
                         onAccept: onAcceptWithBranch(context),
                         date: widget.date,
                         appointments: widget.appointments

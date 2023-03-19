@@ -39,3 +39,14 @@ class DailyColumnEventPatchAppointment extends DailyColumnEvent {
   List<Object?> get props => [appointment];
 }
 
+class DailyColumnEventPatchLocalAppointment extends DailyColumnEvent {
+  final SchedulingAppointmentEntity appointment;
+
+  DailyColumnEventPatchLocalAppointment({
+    required this.appointment,
+  });
+
+  @override
+  List<Object?> get props => [appointment];
+}
+

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/features/sidebars/daily_column/domain/usecases/patch_appointment.dart';
+import 'package:scrubbers_employee_application/features/sidebars/daily_column/presentation/bloc/daily_column_bloc.dart';
+import 'package:scrubbers_employee_application/features/sidebars/daily_column/presentation/bloc/daily_column_event.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../common/scheduling/scheduling_daily_calendar_column.dart';
 import '../../utils/on_accept_with_details.dart';
+import '../../../../../injection.dart';
 
 class DailyColumnSidebar extends StatelessWidget {
   final DateTime date;
@@ -32,6 +36,12 @@ class DailyColumnSidebar extends StatelessWidget {
     }).toList();
 
     return SchedulingDailyCalendarColumn(
+        onLocalUpdate: (appointment) {
+          sl<DailyColumnBloc>().add(DailyColumnEventPatchLocalAppointment(appointment: appointment));
+          },
+        onRemoteUpdate: (appointment) {
+          sl<DailyColumnBloc>().add(DailyColumnEventPatchAppointment(appointment: appointment));
+        },
         appointments: filteredAppointments,
         onAccept:onAcceptWithContext(context),
         header: employeeName,
