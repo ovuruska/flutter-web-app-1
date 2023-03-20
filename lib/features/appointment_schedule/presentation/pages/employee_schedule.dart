@@ -39,7 +39,7 @@ class _EmployeeScheduleViewState extends State<EmployeeScheduleView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppointmentScheduleHeaderBloc,ScheduleHeaderState>(
+    return BlocBuilder<AppointmentScheduleHeaderBloc,AppointmentScheduleHeaderState>(
         bloc: sl<AppointmentScheduleHeaderBloc>(),
         buildWhen: (previous, current) => !previous.date.isSameWeek(current.date),
         builder: (context,headerState) => BlocBuilder<EmployeeScheduleBloc, EmployeeScheduleState>(

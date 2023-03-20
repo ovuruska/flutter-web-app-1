@@ -19,7 +19,7 @@ class ScheduleHeader extends StatelessWidget {
 
   void setDate(DateTime date) {
     sl<AppointmentScheduleHeaderBloc>()
-        .add(ScheduleHeaderSetDateEvent(date: date));
+        .add(AppointmentScheduleHeaderEventSetDate(date: date));
     getItMaybe<AppointmentHeaderSetDateCallback>()?.call(date);
 
   }

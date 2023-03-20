@@ -17,7 +17,6 @@ class DailyColumnBloc extends Bloc<DailyColumnEvent, DailyColumnState> {
 
     on<DailyColumnEventClearTarget>((event, emit) {
       emit(DailyColumnInitial());
-      print("asdf");
     });
     on<DailyColumnEventSetTarget>((event, emit) async {
       emit(DailyColumnLoading());

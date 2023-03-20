@@ -17,12 +17,13 @@ class AppointmentScheduleParentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
+    return BlocBuilder<AppointmentScheduleHeaderBloc,AppointmentScheduleHeaderState>(
+      bloc:sl<AppointmentScheduleHeaderBloc>(),
+        builder:(context,headerState) => BlocBuilder<
                 ScheduleHeaderDropdownBloc, ScheduleHeaderDropdownState>(
             bloc: sl<ScheduleHeaderDropdownBloc>(),
             builder: (context, state) {
               var value = state.value;
-              var headerState = (sl<AppointmentScheduleHeaderBloc>().state as ScheduleHeaderState);
               var branch = headerState.branch;
               var date = headerState.date;
               if (value == 'All Employees') {
@@ -42,6 +43,6 @@ class AppointmentScheduleParentView extends StatelessWidget {
                     allEmployees.firstWhere((element) => element.name == value);
                 return EmployeeScheduleView(key:Key(value), employee: employee);
               }
-            });
+            }));
   }
 }

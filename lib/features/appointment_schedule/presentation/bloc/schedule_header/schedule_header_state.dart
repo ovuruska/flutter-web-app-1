@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class ScheduleHeaderState extends Equatable {
+class AppointmentScheduleHeaderState extends Equatable {
   final DateTime date;
   final int? branch;
 
-  const ScheduleHeaderState({
+  const AppointmentScheduleHeaderState({
     required this.date,
     this.branch,
   });

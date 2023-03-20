@@ -48,6 +48,20 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
       return _readOnly();
     } else {
       return Autocomplete<ClientEntity>(
+        fieldViewBuilder: (BuildContext context,
+            TextEditingController fieldTextEditingController,
+            FocusNode fieldFocusNode,
+            VoidCallback onFieldSubmitted) {
+          return TextField(
+            controller: fieldTextEditingController,
+            focusNode: fieldFocusNode,
+            decoration: InputDecoration(
+              labelText: 'Client name',
+              border: OutlineInputBorder(),
+            ),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          );
+        },
         onSelected: (ClientEntity selection) {
           if (widget.onSelected != null) {
             widget.onSelected!(selection);

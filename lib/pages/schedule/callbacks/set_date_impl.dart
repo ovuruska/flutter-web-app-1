@@ -16,7 +16,7 @@ class ScheduleSetDateCallbackImpl extends AppCalendarSetDateCallback{
       AppointmentScheduleGetAppointmentsEvent(date:date,branch:branch ?? -1),
     );
     sl<AppointmentScheduleHeaderBloc>().add(
-      ScheduleHeaderSetDateEvent(date:date),
+      AppointmentScheduleHeaderEventSetDate(date:date),
     );
   }
 }

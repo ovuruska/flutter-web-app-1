@@ -9,7 +9,7 @@ import '../widgets/schedule_header.dart';
 class ScheduleHeaderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppointmentScheduleHeaderBloc, ScheduleHeaderState>(
+    return BlocBuilder<AppointmentScheduleHeaderBloc, AppointmentScheduleHeaderState>(
       bloc: sl<AppointmentScheduleHeaderBloc>(),
       builder: (context, state) {
         var date = state.date;

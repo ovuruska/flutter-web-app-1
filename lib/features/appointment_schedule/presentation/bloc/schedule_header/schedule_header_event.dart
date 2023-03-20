@@ -3,17 +3,17 @@
 import 'package:equatable/equatable.dart';
 
 
-class ScheduleHeaderEvent extends Equatable {
-  const ScheduleHeaderEvent();
+class AppointmentScheduleHeaderEvent extends Equatable {
+  const AppointmentScheduleHeaderEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class ScheduleHeaderSetDateEvent extends ScheduleHeaderEvent{
+class AppointmentScheduleHeaderEventSetDate extends AppointmentScheduleHeaderEvent{
   final DateTime date;
 
-  ScheduleHeaderSetDateEvent({
+  AppointmentScheduleHeaderEventSetDate({
     required this.date,
   });
 
@@ -21,10 +21,10 @@ class ScheduleHeaderSetDateEvent extends ScheduleHeaderEvent{
   List<Object> get props => [date];
 }
 
-class ScheduleHeaderSetBranchEvent extends ScheduleHeaderEvent{
+class AppointmentScheduleHeaderEventSetBranch extends AppointmentScheduleHeaderEvent{
   final int? branch;
 
-  ScheduleHeaderSetBranchEvent({
+  AppointmentScheduleHeaderEventSetBranch({
     required this.branch,
   });
 

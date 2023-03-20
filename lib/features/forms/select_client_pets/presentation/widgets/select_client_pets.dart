@@ -14,12 +14,16 @@ class SelectClientPets extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonFormField<PetEntity>(
         value: selected,
+        decoration: InputDecoration(
+          labelText: 'Pet',
+          border: OutlineInputBorder(),
+        ),
         items: options.map((PetEntity pet) {
           return DropdownMenuItem<PetEntity>(
             value: pet,
             child: Text(pet.name),
           );
         }).toList(),
-        onChanged:onChanged);
+        onChanged:(val){});
   }
 }

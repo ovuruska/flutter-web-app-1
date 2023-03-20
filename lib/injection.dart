@@ -10,6 +10,7 @@ import 'features/analytics/client_yearly_appointment/register.dart';
 import 'features/app_calendar/register.dart';
 import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
+import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_modify/register.dart';
 import 'features/forms/create_appointment/register.dart';
 import 'features/forms/employee_modify/register.dart';
@@ -60,4 +61,5 @@ Future<void> initSl() async {
   registerAppointmentsPageTable(sl);
   registerDailyColumn(sl);
   registerRebookAppointment2(sl);
+  registerAverageServiceTime(sl);
 }
