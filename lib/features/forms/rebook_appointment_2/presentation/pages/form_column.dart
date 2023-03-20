@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/pages/client_autocomplete_view.dart';
+
+import '../../../client_autocomplete/presentation/pages/client_autocomplete.dart';
+import '../../../select_client_pets/presentation/pages/select_client_pets.dart';
 
 class FormColumn extends StatelessWidget {
   @override
@@ -9,7 +11,7 @@ class FormColumn extends StatelessWidget {
     return Column(
       children: [
         ClientAutocompleteView(),
-
+        SelectClientPetsView()
       ],
     );
   }

@@ -2,7 +2,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/domain/usecases/search_client_name.dart';
+import '../../../../../core/domain/usecases/search_client_name.dart';
 import 'client_autocomplete_event.dart';
 import 'client_autocomplete_state.dart';
 

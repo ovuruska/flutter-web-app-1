@@ -2,7 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 
-import '../../../../../../core/domain/entities/client_entity.dart';
+import '../../../../../core/domain/entities/client_entity.dart';
 
 class ClientAutocompleteEvent extends Equatable {
   const ClientAutocompleteEvent();
