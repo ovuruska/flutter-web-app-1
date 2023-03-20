@@ -4,6 +4,7 @@ import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule_header_dropdown.dart';
 
 import '../../../../injection.dart';
+import '../../../forms/rebook_appointment_2/presentation/pages/layout.dart';
 import '../../domain/callbacks/appointment_header_set_date.dart';
 import '../../domain/callbacks/schedule_header_week_changed.dart';
 import '../bloc/schedule_header/schedule_header_bloc.dart';
@@ -49,8 +50,9 @@ class ScheduleHeader extends StatelessWidget {
     setDate(DateTime.now());
   }
 
-  void _onAdd() {
+  void _onAdd(BuildContext context) {
     // Handle add icon button click
+    showDialog(context: context, builder: (context) => RebookAppointment2Layout());
   }
 
   @override
@@ -106,7 +108,7 @@ class ScheduleHeader extends StatelessWidget {
         Tooltip(
           message: 'Add Appointment',
           child: IconButton(
-            onPressed: _onAdd,
+            onPressed:()=> _onAdd(context),
             icon: Icon(Icons.add),
           ),
         ),

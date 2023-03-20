@@ -15,14 +15,14 @@ class EmployeeModifyBloc extends Bloc<EmployeeModifyEvent, EmployeeModifyState> 
     required this.patchEmployee,
     required this.getEmployee,
 
-  }) : super(Initial()) {
+  }) : super(EmployeeModifyStateInitial()) {
 
     on<EmployeeModifyRemoveEvent>((event,emit)async {
       var id = event.id;
-      emit(Loading());
+      emit(EmployeeModifyStateLoading());
       var params = DeleteEmployeeParams(id: id);
       await deleteEmployee(params);
-      emit(Initial());
+      emit(EmployeeModifyStateInitial());
 
     });
     on<EmployeeModifySaveEvent>((event,emit) async {
@@ -35,11 +35,11 @@ class EmployeeModifyBloc extends Bloc<EmployeeModifyEvent, EmployeeModifyState> 
     });
     on<EmployeeModifySetEvent>((event,emit)async{
       var employee = event.id;
-      emit(Loading());
+      emit(EmployeeModifyStateLoading());
       var params = GetEmployeeParams(id: employee);
 
       var result = await getEmployee(params);
-      result.fold((failure) => emit(Failure("Request failed.")), (employee) =>emit(Loaded(employee)));
+      result.fold((failure) => emit(EmployeeModifyStateFailure("Request failed.")), (employee) =>emit(Loaded(employee)));
     });
 
   }

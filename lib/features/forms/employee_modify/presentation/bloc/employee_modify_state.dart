@@ -11,15 +11,15 @@ class EmployeeModifyState extends Equatable{
 
 }
 
-class Empty extends EmployeeModifyState {}
+class EmployeeModifyStateEmpty extends EmployeeModifyState {}
 
-class Initial extends EmployeeModifyState {}
+class EmployeeModifyStateInitial extends EmployeeModifyState {}
 
-class Loading extends EmployeeModifyState {}
-class Failure extends EmployeeModifyState {
+class EmployeeModifyStateLoading extends EmployeeModifyState {}
+class EmployeeModifyStateFailure extends EmployeeModifyState {
   final String message;
 
-  Failure(this.message);
+  EmployeeModifyStateFailure(this.message);
 
   @override
   List<Object?> get props => [message];

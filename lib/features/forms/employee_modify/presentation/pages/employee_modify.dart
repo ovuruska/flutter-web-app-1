@@ -37,7 +37,7 @@ class EmployeeModifyView extends StatelessWidget {
                 onRemoved?.call(initialValue);
               },
             );
-          } else if (state is Loading) {
+          } else if (state is EmployeeModifyStateLoading) {
             return Center(child: CircularProgressIndicator());
           } else {
             return Container();

@@ -15,6 +15,7 @@ import 'features/forms/create_appointment/register.dart';
 import 'features/forms/employee_modify/register.dart';
 import 'features/forms/employee_working_hours/register.dart';
 import 'features/forms/rebook_appointment/register.dart';
+import 'features/forms/rebook_appointment_2/register.dart';
 import 'features/information/appointment_tabs/register.dart';
 import 'features/information/client_information/register.dart';
 import 'features/information/client_pets/register.dart';
@@ -58,4 +59,5 @@ Future<void> initSl() async {
   registerAppCalendar(sl);
   registerAppointmentsPageTable(sl);
   registerDailyColumn(sl);
+  registerRebookAppointment2(sl);
 }
