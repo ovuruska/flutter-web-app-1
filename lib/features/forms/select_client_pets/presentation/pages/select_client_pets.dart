@@ -19,6 +19,7 @@ class SelectClientPetsView extends StatelessWidget{
           selected: state.selected,
           onChanged: (value){
             sl<SelectClientPetsBloc>().add(SelectClientPetsEventSelected(selected:value));
+
           },
         );
       },

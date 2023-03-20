@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ServiceTime extends StatefulWidget {
+class AverageServiceTime extends StatefulWidget {
   final int? averageServiceTime;
 
-  const ServiceTime({Key? key, this.averageServiceTime}) : super(key: key);
+  const AverageServiceTime({Key? key, this.averageServiceTime}) : super(key: key);
 
   @override
-  _ServiceTimeState createState() => _ServiceTimeState();
+  _AverageServiceTimeState createState() => _AverageServiceTimeState();
 }
 
-class _ServiceTimeState extends State<ServiceTime> {
+class _AverageServiceTimeState extends State<AverageServiceTime> {
   final TextEditingController _controller = TextEditingController();
 
   @override

@@ -3,10 +3,6 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.d
 import 'package:scrubbers_employee_application/pages/admin_branches/admin_branches.dart';
 import 'package:scrubbers_employee_application/widgets/header.dart';
 
-import '../../admin_employees/admin_employees.dart';
-import 'branches/view.dart';
-import 'employees/view.dart';
-import 'Services/view.dart';
 
 class AdminTabsView extends StatelessWidget {
   @override

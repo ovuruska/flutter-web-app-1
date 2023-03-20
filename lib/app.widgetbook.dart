@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:scrubbers_employee_application/app.dart';
@@ -25,24 +24,6 @@ import 'package:scrubbers_employee_application/features/analytics/client_top_cat
 import 'package:scrubbers_employee_application/features/analytics/client_visits/widgetbook/client_visits.dart';
 import 'package:scrubbers_employee_application/features/analytics/client_visits/widgetbook/visits_pie_chart.dart';
 import 'package:scrubbers_employee_application/features/analytics/client_visits/widgetbook/visits_pie_chart_2.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/appointment_card.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgetbook/appointment_schedule.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/daily_calendar.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/hour_column.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/all_breeds.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/appointment_entity.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/branch_entity.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/domain/entities/employee_entity.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/appointment_section.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/branch_section.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/presentation/widgets/customer_section.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/appointment_section.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/branch_section.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/create_appointment_form.dart';
-import 'package:scrubbers_employee_application/features/create_appointment/widgetbook/customer_section.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_modify/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_modify/domain/usecases/save_branch.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_modify/presentation/bloc/modify_branch_bloc.dart';
@@ -51,6 +32,18 @@ import 'package:scrubbers_employee_application/features/forms/branch_modify/pres
 import 'package:scrubbers_employee_application/features/forms/branch_modify/presentation/widgets/branch_card_settings.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_modify/widgetbook/branch_card_settings.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_modify/widgetbook/modify_branch.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/domain/all_breeds.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/domain/entities/appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/domain/entities/employee_entity.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/presentation/widgets/appointment_section.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/presentation/widgets/branch_section.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/presentation/widgets/customer_section.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/widgetbook/appointment_section.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/widgetbook/branch_section.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/widgetbook/create_appointment_form.dart';
+import 'package:scrubbers_employee_application/features/forms/create_appointment/widgetbook/customer_section.dart';
+import 'package:scrubbers_employee_application/features/forms/groomer_select/presentation/widgetbook/groomer_select.dart';
 import 'package:scrubbers_employee_application/features/information/client_information/domain/entities/client_information.dart';
 import 'package:scrubbers_employee_application/features/information/client_information/widgetbook/client_information_loaded.dart';
 import 'package:scrubbers_employee_application/features/information/client_information/widgetbook/client_information_loading.dart';
@@ -77,9 +70,6 @@ import 'package:scrubbers_employee_application/features/tables/client_appointmen
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
-import 'package:scrubbers_employee_application/widgets/cards/root/appointment_card.dart';
-import 'package:scrubbers_employee_application/widgets/cards/root/entity.dart';
-import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -147,79 +137,58 @@ class HotReload extends StatelessWidget {
                       builder: (context) => branchFilledUseCase(context),
                     ),
                   ],
-                  isExpanded: true,
                 ),
               ],
-              folders: [
-                WidgetbookFolder(
-                  name: 'cards',
-                  widgets: [
-                    WidgetbookComponent(
-                      name: 'AppointmentCardCancelled',
-                      useCases: [
-                        WidgetbookUseCase(
-                          name: 'Appointment Card Cancelled',
-                          builder: (context) =>
-                              appointmentCardCancelledUseCase(context),
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                    WidgetbookComponent(
-                      name: 'AppointmentCardApproved',
-                      useCases: [
-                        WidgetbookUseCase(
-                          name: 'Appointment Card Approved',
-                          builder: (context) =>
-                              appointmentCardApprovedUseCase(context),
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                    WidgetbookComponent(
-                      name: 'AppointmentCardCompleted',
-                      useCases: [
-                        WidgetbookUseCase(
-                          name: 'Appointment Card Completed',
-                          builder: (context) =>
-                              appointmentCardCompletedUseCase(context),
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                    WidgetbookComponent(
-                      name: 'AppointmentCardPending',
-                      useCases: [
-                        WidgetbookUseCase(
-                          name: 'Appointment Card Pending',
-                          builder: (context) =>
-                              appointmentCardPendingUseCase(context),
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                    WidgetbookComponent(
-                      name: 'AppointmentCardInProgress',
-                      useCases: [
-                        WidgetbookUseCase(
-                          name: 'Appointment Card In Progress',
-                          builder: (context) =>
-                              appointmentCardInProgressUseCase(context),
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                  ],
-                  folders: [],
-                  isExpanded: true,
-                ),
-              ],
-              isExpanded: true,
+              folders: [],
             ),
             WidgetbookFolder(
               name: 'features',
               widgets: [],
               folders: [
+                WidgetbookFolder(
+                  name: 'tables',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'client_appointments_table',
+                      widgets: [],
+                      folders: [
+                        WidgetbookFolder(
+                          name: 'presentation',
+                          widgets: [],
+                          folders: [
+                            WidgetbookFolder(
+                              name: 'widgets',
+                              widgets: [
+                                WidgetbookComponent(
+                                  name: 'DataCard',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'Data Card positive',
+                                      builder: (context) =>
+                                          dataCardPositiveUseCase(context),
+                                    ),
+                                    WidgetbookUseCase(
+                                      name: 'Data Card negative',
+                                      builder: (context) =>
+                                          dataCardNegativeUseCase(context),
+                                    ),
+                                    WidgetbookUseCase(
+                                      name: 'Data Card zero',
+                                      builder: (context) =>
+                                          dataCardZeroUseCase(context),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                              folders: [],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
                 WidgetbookFolder(
                   name: 'information',
                   widgets: [],
@@ -269,17 +238,13 @@ class HotReload extends StatelessWidget {
                                           petItemUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
                       name: 'transactions_grid',
@@ -301,7 +266,6 @@ class HotReload extends StatelessWidget {
                                           logCardUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                                 WidgetbookComponent(
                                   name: 'CardDescription',
@@ -312,7 +276,6 @@ class HotReload extends StatelessWidget {
                                           cardDescriptionUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                                 WidgetbookComponent(
                                   name: 'LogList',
@@ -328,17 +291,13 @@ class HotReload extends StatelessWidget {
                                           logTabsUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
                       name: 'client_information',
@@ -361,7 +320,6 @@ class HotReload extends StatelessWidget {
                                               context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                                 WidgetbookComponent(
                                   name: 'ClientInformationLoadedView',
@@ -373,27 +331,22 @@ class HotReload extends StatelessWidget {
                                               context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                   ],
-                  isExpanded: true,
                 ),
                 WidgetbookFolder(
-                  name: 'forms',
+                  name: 'sidebars',
                   widgets: [],
                   folders: [
                     WidgetbookFolder(
-                      name: 'branch_modify',
+                      name: 'branch_search',
                       widgets: [],
                       folders: [
                         WidgetbookFolder(
@@ -404,46 +357,43 @@ class HotReload extends StatelessWidget {
                               name: 'widgets',
                               widgets: [
                                 WidgetbookComponent(
-                                  name: 'BranchCardSettings',
+                                  name: 'BranchCard',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name: 'BranchCardSettings',
+                                      name: 'BranchCard',
                                       builder: (context) =>
-                                          branchCardSettingsUseCase(context),
+                                          branchCardUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
-                              ],
-                              folders: [],
-                              isExpanded: true,
-                            ),
-                            WidgetbookFolder(
-                              name: 'pages',
-                              widgets: [
                                 WidgetbookComponent(
-                                  name: 'ModifyBranch',
+                                  name: 'BranchList',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name: 'ModifyBranch',
+                                      name: 'BranchCard',
                                       builder: (context) =>
-                                          modifyBranchUseCase(context),
+                                          branchListUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
+                                ),
+                                WidgetbookComponent(
+                                  name: 'SearchBranches',
+                                  useCases: [
+                                    WidgetbookUseCase(
+                                      name: 'BranchCard',
+                                      builder: (context) =>
+                                          searchUseCase(context),
+                                    ),
+                                  ],
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                   ],
-                  isExpanded: true,
                 ),
                 WidgetbookFolder(
                   name: 'analytics',
@@ -469,7 +419,6 @@ class HotReload extends StatelessWidget {
                                           topCategoryUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                                 WidgetbookComponent(
                                   name: 'ClientTopCategory',
@@ -480,17 +429,13 @@ class HotReload extends StatelessWidget {
                                           clientTopCategoryUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
                       name: 'client_visits',
@@ -517,7 +462,6 @@ class HotReload extends StatelessWidget {
                                           visitsPieChartUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                                 WidgetbookComponent(
                                   name: 'ClientVisits',
@@ -528,17 +472,13 @@ class HotReload extends StatelessWidget {
                                           clientVisitsUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
                       name: 'client_cancellation_rate',
@@ -560,17 +500,13 @@ class HotReload extends StatelessWidget {
                                           cancellationRateUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
                       name: 'client_no_show_rate',
@@ -592,27 +528,22 @@ class HotReload extends StatelessWidget {
                                           noShowRateUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                   ],
-                  isExpanded: true,
                 ),
                 WidgetbookFolder(
-                  name: 'tables',
+                  name: 'forms',
                   widgets: [],
                   folders: [
                     WidgetbookFolder(
-                      name: 'client_appointments_table',
+                      name: 'groomer_select',
                       widgets: [],
                       folders: [
                         WidgetbookFolder(
@@ -623,38 +554,24 @@ class HotReload extends StatelessWidget {
                               name: 'widgets',
                               widgets: [
                                 WidgetbookComponent(
-                                  name: 'DataCard',
+                                  name: 'ChipTextField<dynamic>',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name: 'Data Card positive',
+                                      name: 'Chip text field',
                                       builder: (context) =>
-                                          dataCardPositiveUseCase(context),
-                                    ),
-                                    WidgetbookUseCase(
-                                      name: 'Data Card negative',
-                                      builder: (context) =>
-                                          dataCardNegativeUseCase(context),
-                                    ),
-                                    WidgetbookUseCase(
-                                      name: 'Data Card zero',
-                                      builder: (context) =>
-                                          dataCardZeroUseCase(context),
+                                          groomerSelectUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                     WidgetbookFolder(
-                      name: 'appointments_table',
+                      name: 'create_appointment',
                       widgets: [],
                       folders: [
                         WidgetbookFolder(
@@ -665,51 +582,30 @@ class HotReload extends StatelessWidget {
                               name: 'widgets',
                               widgets: [
                                 WidgetbookComponent(
-                                  name: 'InfiniteScrollableTable<dynamic>',
+                                  name: 'CreateAppointmentForm',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name:
-                                          'Empty infinite scrollable data table',
+                                      name: 'Create appointment form - Empty',
                                       builder: (context) =>
-                                          infiniteScrollableTableUseCase(
-                                              context),
+                                          createAppointmentFormUseCase(context),
                                     ),
                                     WidgetbookUseCase(
-                                      name:
-                                          'Multiple pages infinite scrollable data table',
+                                      name: 'Create appointment form - Filled',
                                       builder: (context) =>
-                                          infiniteScrollableTableUseCaseMultiplePages(
-                                              context),
-                                    ),
-                                    WidgetbookUseCase(
-                                      name:
-                                          'Multiple pages infinite scrollable data table',
-                                      builder: (context) =>
-                                          infiniteScrollableTableUseCaseInfinitePages(
+                                          createAppointmentFormFilledUseCase(
                                               context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
-                  ],
-                  isExpanded: true,
-                ),
-                WidgetbookFolder(
-                  name: 'sidebars',
-                  widgets: [],
-                  folders: [
                     WidgetbookFolder(
-                      name: 'branch_search',
+                      name: 'branch_modify',
                       widgets: [],
                       folders: [
                         WidgetbookFolder(
@@ -720,130 +616,41 @@ class HotReload extends StatelessWidget {
                               name: 'widgets',
                               widgets: [
                                 WidgetbookComponent(
-                                  name: 'BranchCard',
+                                  name: 'BranchCardSettings',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name: 'BranchCard',
+                                      name: 'BranchCardSettings',
                                       builder: (context) =>
-                                          branchCardUseCase(context),
+                                          branchCardSettingsUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
-                                ),
-                                WidgetbookComponent(
-                                  name: 'BranchList',
-                                  useCases: [
-                                    WidgetbookUseCase(
-                                      name: 'BranchCard',
-                                      builder: (context) =>
-                                          branchListUseCase(context),
-                                    ),
-                                  ],
-                                  isExpanded: true,
-                                ),
-                                WidgetbookComponent(
-                                  name: 'SearchBranches',
-                                  useCases: [
-                                    WidgetbookUseCase(
-                                      name: 'BranchCard',
-                                      builder: (context) =>
-                                          searchUseCase(context),
-                                    ),
-                                  ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
-                          ],
-                          isExpanded: true,
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                  ],
-                  isExpanded: true,
-                ),
-                WidgetbookFolder(
-                  name: 'create_appointment',
-                  widgets: [],
-                  folders: [
-                    WidgetbookFolder(
-                      name: 'presentation',
-                      widgets: [],
-                      folders: [
-                        WidgetbookFolder(
-                          name: 'widgets',
-                          widgets: [
-                            WidgetbookComponent(
-                              name: 'CreateAppointmentForm',
-                              useCases: [
-                                WidgetbookUseCase(
-                                  name: 'Create appointment form - Empty',
-                                  builder: (context) =>
-                                      createAppointmentFormUseCase(context),
-                                ),
-                                WidgetbookUseCase(
-                                  name: 'Create appointment form - Filled',
-                                  builder: (context) =>
-                                      createAppointmentFormFilledUseCase(
-                                          context),
-                                ),
-                              ],
-                              isExpanded: true,
-                            ),
-                          ],
-                          folders: [],
-                          isExpanded: true,
-                        ),
-                      ],
-                      isExpanded: true,
-                    ),
-                  ],
-                  isExpanded: true,
-                ),
-                WidgetbookFolder(
-                  name: 'appointment_schedule',
-                  widgets: [],
-                  folders: [
-                    WidgetbookFolder(
-                      name: 'presentation',
-                      widgets: [],
-                      folders: [
-                        WidgetbookFolder(
-                          name: 'widgets',
-                          widgets: [],
-                          folders: [
                             WidgetbookFolder(
-                              name: 'schedule',
+                              name: 'pages',
                               widgets: [
                                 WidgetbookComponent(
-                                  name: 'AppointmentSchedule',
+                                  name: 'ModifyBranch',
                                   useCases: [
                                     WidgetbookUseCase(
-                                      name: 'Appointment Schedule',
+                                      name: 'ModifyBranch',
                                       builder: (context) =>
-                                          appointmentScheduleUseCase(context),
+                                          modifyBranchUseCase(context),
                                     ),
                                   ],
-                                  isExpanded: true,
                                 ),
                               ],
                               folders: [],
-                              isExpanded: true,
                             ),
                           ],
-                          isExpanded: true,
                         ),
                       ],
-                      isExpanded: true,
                     ),
                   ],
-                  isExpanded: true,
                 ),
               ],
-              isExpanded: true,
             ),
           ],
           widgets: [],

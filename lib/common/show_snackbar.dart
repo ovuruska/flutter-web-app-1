@@ -31,7 +31,7 @@ void showUndoSnackbar({
   final snackBar = SnackBar(
     content: Text(content,style:GoogleFonts.poppins()),
     duration: duration,
-    backgroundColor: Colors.green,
+    backgroundColor: const Color(0xFFB1C97F),
     action: SnackBarAction(
       label: 'Undo',
       textColor: Colors.white,
@@ -53,7 +53,7 @@ void showUndoAlertSnackbar({
   final snackBar = SnackBar(
     content: Text(content,style:GoogleFonts.poppins()),
     duration: duration,
-    backgroundColor: Colors.red,
+    backgroundColor: const Color(0xFFFF5B5B),
     action: SnackBarAction(
       label: 'Undo',
       textColor: Colors.white,

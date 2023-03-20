@@ -12,7 +12,6 @@ import 'pages/dashboard/controller.dart';
 import 'pages/dashboard/repository.dart';
 import 'pages/dashboard/sidebar/controller.dart';
 import 'repositories/branch.dart';
-import 'repositories/employee.dart';
 import 'repositories/product.dart';
 import 'repositories/service.dart';
 
@@ -37,9 +36,7 @@ Future<void> initFromServer() async {
         dashboardBloc.fetchDailyAppointments(branches[0], DateTime.now());
       }
     }),
-    EmployeeRepository.instance.fetchAll().then((employees) {
-      employeesBloc.setEmployees(employees!);
-    }),
+
     DashboardRepository.instance
         .getPendingAppointments()
         .then((appointments) {
