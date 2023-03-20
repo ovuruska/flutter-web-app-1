@@ -3,13 +3,13 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../create_appointment/domain/usecases/get_branches.dart';
 import '../data/repositories/create_new_branch_impl.dart';
 import '../data/repositories/remove_branch_impl.dart';
 import '../domain/repositories/create_new_branch.dart';
 import '../domain/repositories/remove_branch.dart';
 import '../domain/repositories/search_branches.dart';
 import '../domain/usecases/create_new_branch.dart';
+import '../domain/usecases/get_branches.dart';
 import '../domain/usecases/remove_branch.dart';
 import '../presentation/bloc/search_branches_bloc.dart';
 import '../presentation/pages/search_branches.dart';

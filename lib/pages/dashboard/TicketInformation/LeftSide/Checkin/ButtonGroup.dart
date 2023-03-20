@@ -5,8 +5,8 @@ import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/utils.dart';
 import 'package:scrubbers_employee_application/repositories/appointment.dart';
 
-import '../../../../../features/create_appointment/presentation/pages/create_appointment_dialog.dart';
-import '../../../../../features/rebook_appointment/presentation/pages/rebook_appointment_dialog.dart';
+import '../../../../../features/forms/rebook_appointment/presentation/pages/rebook_appointment_dialog.dart';
+
 
 
 class TicketInformationCheckinButtonGroup extends StatelessWidget {

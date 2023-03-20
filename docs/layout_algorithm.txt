@@ -19,4 +19,4 @@ The time complexity of this algorithm is primarily determined by the sorting ste
 The space complexity of the algorithm is O(n), as it creates a new list of AppointmentLayout objects and columns for the appointments.
 
 For onboarding Flutter software engineers:
-This algorithm is particularly useful for creating a calendar or timetable view in a Flutter application, where appointments or events need to be displayed without overlapping. Understanding the underlying logic and how appointments are processed and positioned can help you customize the layout and presentation according to your app's requirements.
+This algorithm is particularly useful for creating a calendar or timetable view in a Flutter application, where appointments or events need to be displayed without overlapping. Understanding the underlying logic and how appointments are processed and positioned can help you customize the layout and presentation according to the app's requirements.
