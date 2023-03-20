@@ -62,7 +62,6 @@ class DataTableScreen extends StatelessWidget {
       rowsPerPage: 20,
       columns: const [
         DataColumn2(label: Text(""), size: ColumnSize.S),
-        DataColumn2(label: Text(""), size: ColumnSize.S),
         DataColumn2(label: Text("Ticket Id"), size: ColumnSize.S),
         DataColumn2(
           label: Text("Date"),

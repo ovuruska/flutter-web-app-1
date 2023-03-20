@@ -20,8 +20,9 @@ class DailyColumnSidebarView extends StatelessWidget {
                   child: SchedulingContextProvider(
                       schedulingContext: getDefaultSchedulingContext().copyWith(
                         topOffset: 96,
-                        hourColumnWidth: 128,
+                        hourColumnWidth: 64,
                         boxWidth: 192,
+                        headerHeight: 48,
                       ),
                       child: DailyColumnScroll(
                         date: state.date,

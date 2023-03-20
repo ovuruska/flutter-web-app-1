@@ -40,7 +40,7 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
       MaterialState.focused,
     };
     if (states.any(interactiveStates.contains)) {
-      return Colors.blue;
+      return const Color(0xFF3894D7);
     }
     //return Colors.green; // Use the default value.
     return Colors.transparent;
@@ -53,9 +53,9 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
       MaterialState.focused,
     };
     if (states.any(interactiveStates.contains)) {
-      return Colors.blue;
+      return const Color(0xFF3894D7);
     } else {
-      return Colors.blueAccent[100]!;
+      return const Color(0xFFEBF4FB);
     }
   }
 
@@ -97,22 +97,26 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
             (ifSelected) ? _selectedRawColor : _getDataRowColor),
         key: ValueKey(data.id),
         cells: [
-          DataCell(IconButton(
+          DataCell(
+              Row(
+        children: [
+          IconButton(
               icon: Icon(Icons.done),
-              color: Colors.green,
+              color: const Color(0xFF3894D7),
               onPressed: () {
                 onApprove(data);
                 onTap(data, ifSelected)();
-              })),
-          DataCell(IconButton(
-            icon: Icon(Icons.delete),
-            color: Colors.red,
-            onPressed: () {
-              onDecline(data);
-              onTap(data, ifSelected)();
+              }),IconButton(
+              icon: Icon(Icons.close),
+              color: const Color(0xFFCCCCCC),
+              onPressed: () {
+                onDecline(data);
+                onTap(data, ifSelected)();
 
-            }
-          )),
+              }
+          )
+      ],
+    )),
           DataCell(Text(data.id.toString())),
           DataCell(Text(apptDate)),
           DataCell(Text(apptTime)),

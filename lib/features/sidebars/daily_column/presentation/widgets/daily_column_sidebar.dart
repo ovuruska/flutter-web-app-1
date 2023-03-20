@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/sidebars/daily_column/domain/usecases/patch_appointment.dart';
 import 'package:scrubbers_employee_application/features/sidebars/daily_column/presentation/bloc/daily_column_bloc.dart';
 import 'package:scrubbers_employee_application/features/sidebars/daily_column/presentation/bloc/daily_column_event.dart';
 
