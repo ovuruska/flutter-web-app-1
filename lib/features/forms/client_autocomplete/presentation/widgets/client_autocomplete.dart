@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/domain/entities/client_entity.dart';
 
@@ -36,8 +37,8 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
       readOnly: true,
       controller: _controller,
       decoration: InputDecoration(
-        labelText: 'Client',
-        border: OutlineInputBorder(),
+        labelText: 'Owner name',
+        border: UnderlineInputBorder(),
       ),
     );
   }
@@ -56,10 +57,18 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
             controller: fieldTextEditingController,
             focusNode: fieldFocusNode,
             decoration: InputDecoration(
-              labelText: 'Client name',
-              border: OutlineInputBorder(),
+              floatingLabelStyle: GoogleFonts.openSans(
+                fontSize: 12,
+                color: const Color(0xFF2D7CB6),
+              ),
+              contentPadding: const EdgeInsets.all(8),
+              labelText: 'Owner name',
+              labelStyle: GoogleFonts.openSans(color:const Color(0xFF9AA6AC)),
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(color:const Color(0xFFDDE2E4),width:0.5),
+              ),
             ),
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: GoogleFonts.openSans(color:const Color(0xFF000000)),
           );
         },
         onSelected: (ClientEntity selection) {

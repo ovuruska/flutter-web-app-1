@@ -7,7 +7,7 @@ import 'package:scrubbers_employee_application/core/data/datasources/employee/em
 import 'package:scrubbers_employee_application/core/domain/repositories/employee_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_average_service_time.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_client_pets.dart';
-import 'package:scrubbers_employee_application/core/domain/usecases/get_groomers.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_all_groomers.dart';
 
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source.dart';
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source_impl.dart';
@@ -32,7 +32,7 @@ registerCore(GetIt sl){
   sl.registerLazySingleton(() => SearchClientNameUseCase(sl()));
   sl.registerLazySingleton(() => GetClientPetsUseCase(sl()));
   sl.registerLazySingleton(() => GetAverageServiceTimeUseCase(sl()));
-  sl.registerLazySingleton(() => GetGroomersUseCase(sl()));
+  sl.registerLazySingleton(() => GetAllGroomersUseCase(sl()));
 
   // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(() => SchedulingAppointmentRepositoryImpl());

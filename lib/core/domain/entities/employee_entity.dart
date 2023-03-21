@@ -23,7 +23,7 @@ class EmployeeEntity {
       name: json['name'],
       email: json['email'],
       phone: json['phone'],
-      role: getRole(int.parse(json['role'] ?? 10)),
+      role: getRole(json['role']),
     );
   }
 

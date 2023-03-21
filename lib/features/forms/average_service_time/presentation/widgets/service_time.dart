@@ -22,11 +22,10 @@ class _AverageServiceTimeState extends State<AverageServiceTime> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _controller,
-      readOnly: true,
       decoration: InputDecoration(
         hintText: widget.averageServiceTime?.toString() ?? '',
-        labelText: 'Average Service Time',
-        border: OutlineInputBorder(),
+        labelText: 'Service Time',
+        border: UnderlineInputBorder(),
       ),
     );
   }

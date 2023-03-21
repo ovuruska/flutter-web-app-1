@@ -1,0 +1,34 @@
+
+
+import 'package:equatable/equatable.dart';
+import 'package:scrubbers_employee_application/features/forms/branch_modify/domain/usecases/save_branch.dart';
+
+class ProductEntity extends Equatable {
+
+  final int id;
+  final String name;
+  final double cost;
+  final String description;
+  final String category;
+
+  ProductEntity({
+    required this.id,
+    required this.name,
+    required this.cost,
+    required this.description,
+    required this.category,
+  });
+
+  @override
+  List<Object?> get props => [id, name, cost, description, category];
+
+  factory ProductEntity.fromJson(Map<String, dynamic> json) {
+    return ProductEntity(
+      id: json['id'],
+      name: json['name'],
+      cost: double.parse(json['cost']),
+      description: json['description'],
+      category: json['category'],
+    );
+  }
+}
