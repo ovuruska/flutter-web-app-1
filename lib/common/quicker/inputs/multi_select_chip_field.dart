@@ -8,8 +8,9 @@ class QuickerMultiSelectChip<T extends Object> extends StatefulWidget {
   final List<T>? initialValue;
   final String? headerText;
   final bool allowAllSelected;
+  final Function(List<T> value)? onSelected;
 
-  const QuickerMultiSelectChip({Key? key, this.options = const [], this.initialValue, this.headerText, this.allowAllSelected = true})
+  const QuickerMultiSelectChip({Key? key, this.options = const [], this.initialValue, this.headerText, this.allowAllSelected = true, this.onSelected})
       : super(key: key);
 
   @override
@@ -22,7 +23,12 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
   @override
   void initState() {
     super.initState();
-    _selected = widget.initialValue ?? [];
+    if(widget.allowAllSelected){
+      _selected = widget.options;
+    }else {
+      _selected = widget.initialValue ?? [];
+    }
+    if(widget.onSelected != null) widget.onSelected!(_selected);
   }
 
   String _headerText(int lengthOfSelected) {
@@ -43,7 +49,10 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
     List<T> filteredOptions = widget.options
         .where((element) => !_selected.contains(element))
         .toList();
-    _selected.sort((a, b) => a.toString().compareTo(b.toString()));
+    try{
+      _selected.sort((a, b) => a.toString().compareTo(b.toString()));
+    }catch(e){
+    }
     List<T> options = _selected + filteredOptions;
 
     return MultiSelectChipField<T>(
@@ -64,7 +73,9 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
             setState(() {
               _selected = value;
             });
+            if(widget.onSelected != null) widget.onSelected!(_selected);
           }
+
         },
         title: Text(_headerText(_selected.length),
             style: GoogleFonts.inter(fontSize: 16, color: Colors.white)),

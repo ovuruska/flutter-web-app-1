@@ -22,7 +22,7 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
     if (response.statusCode == 200) {
       var respString = await response.stream.bytesToString();
       var respJson = jsonDecode(respString);
-      List<ProductEntity> products = respJson.map((e) => ProductEntity.fromJson(e)).toList();
+      List<ProductEntity> products = respJson.map<ProductEntity>((e) => ProductEntity.fromJson(e)).toList();
       return Right(products);
     } else {
       return Left(ServerFailure());

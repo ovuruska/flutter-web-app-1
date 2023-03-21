@@ -31,4 +31,6 @@ class ProductEntity extends Equatable {
       category: json['category'],
     );
   }
+
+  String toString() => name;
 }

@@ -13,10 +13,12 @@ import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_modify/register.dart';
+import 'features/forms/branch_select/register.dart';
 import 'features/forms/create_appointment/register.dart';
 import 'features/forms/employee_modify/register.dart';
 import 'features/forms/employee_working_hours/register.dart';
 import 'features/forms/groomer_select/register.dart';
+import 'features/forms/product_select/register.dart';
 import 'features/forms/rebook_appointment/register.dart';
 import 'features/forms/rebook_appointment_2/register.dart';
 import 'features/information/appointment_tabs/register.dart';
@@ -67,6 +69,6 @@ Future<void> initSl() async {
   registerAverageServiceTime(sl);
   registerGroomerSelect(sl);
   registerAppMultiCalendar(sl);
-
-
+  registerProductSelect(sl);
+  registerBranchSelect(sl);
 }
