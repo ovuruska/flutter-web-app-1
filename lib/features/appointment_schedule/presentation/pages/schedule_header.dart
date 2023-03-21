@@ -13,7 +13,7 @@ class ScheduleHeaderView extends StatelessWidget {
       bloc: sl<AppointmentScheduleHeaderBloc>(),
       builder: (context, state) {
         var date = state.date;
-        return ScheduleHeader(date: date);
+        return ScheduleHeader(date: date,branch:state.branch);
       },
     );
   }

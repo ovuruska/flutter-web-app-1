@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/app_calendar/presentation/pages/app_calendar.dart';
+import '../../features/app_multi_calendar/presentation/pages/app_multi_calendar.dart';
 import '../../features/app_select_branch/presentation/pages/app_select_branch.dart';
 
 
@@ -14,10 +15,11 @@ class CalendarAndBranchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: Column(children: [
           AppSelectBranchView(),
           Container(height: 16),
-          Expanded(child: AppCalendarView())
+          Expanded(child: AppMultiCalendarView())
         ]));
   }
 }

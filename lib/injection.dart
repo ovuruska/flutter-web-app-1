@@ -8,6 +8,7 @@ import 'features/analytics/client_top_category/register.dart';
 import 'features/analytics/client_visits/register.dart';
 import 'features/analytics/client_yearly_appointment/register.dart';
 import 'features/app_calendar/register.dart';
+import 'features/app_multi_calendar/register.dart';
 import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
@@ -29,6 +30,7 @@ import 'features/sidebars/employee_search/register.dart';
 import 'features/tables/appointments_page_table/register.dart';
 import 'features/tables/client_appointments_table/register.dart';
 import 'pages/clients/register.dart';
+import 'pages/schedule/register.dart';
 
 final sl = GetIt.instance;
 
@@ -64,4 +66,7 @@ Future<void> initSl() async {
   registerRebookAppointment2(sl);
   registerAverageServiceTime(sl);
   registerGroomerSelect(sl);
+  registerAppMultiCalendar(sl);
+
+
 }

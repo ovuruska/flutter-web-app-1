@@ -90,7 +90,7 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
     var schedulingContext = SchedulingContextProvider.of(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: const Color(0XFFFFFFFF),
       extendBody: true,
       body: Scrollbar(
           controller: schedulingContext.verticalController,

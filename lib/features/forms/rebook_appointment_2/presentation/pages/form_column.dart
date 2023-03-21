@@ -9,7 +9,7 @@ import '../../../client_autocomplete/presentation/pages/client_autocomplete.dart
 import '../../../groomer_select/presentation/pages/groomer_select.dart';
 import '../../../select_client_pets/presentation/pages/select_client_pets.dart';
 
-class FormColumn extends StatelessWidget {
+class RebookAppointment2View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

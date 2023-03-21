@@ -27,4 +27,20 @@ extension DateUtils on DateTime {
   DateTime get startOfDay => DateTime(year, month, day);
 
   DateTime get endOfDay => DateTime(year, month, day, 23, 59);
+
+  DateTime previousMonth() {
+    if (month == 1) {
+      return DateTime(year - 1, 12);
+    } else {
+      return DateTime(year, month - 1);
+    }
+  }
+
+  DateTime nextMonth() {
+    if (month == 12) {
+      return DateTime(year + 1, 1);
+    } else {
+      return DateTime(year, month + 1);
+    }
+  }
 }

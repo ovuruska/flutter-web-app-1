@@ -28,12 +28,12 @@ class AppointmentScheduleParentView extends StatelessWidget {
               var date = headerState.date;
               if (value == 'All Employees') {
                 return AppointmentScheduleView(
-                  branch: branch,
+                  branch: branch?.id,
                   date: date,
                 );
               } else if (nonEmployeeTabs.contains(value)) {
                 return AppointmentScheduleView(
-                  branch: branch,
+                  branch: branch?.id,
                   date: date,
                   role: value,
                 );

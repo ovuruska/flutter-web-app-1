@@ -17,7 +17,7 @@ class ScheduleSetBranchCallbackImpl extends AppSelectBranchSetBranchCallback{
       AppointmentScheduleGetAppointmentsEvent(date:date,branch:branch?.id),
     );
     sl<AppointmentScheduleHeaderBloc>().add(
-      AppointmentScheduleHeaderEventSetBranch(branch:branch?.id),
+      AppointmentScheduleHeaderEventSetBranch(branch:branch),
     );
   }
 }

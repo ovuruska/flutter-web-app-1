@@ -8,32 +8,32 @@ import 'app_select_branch_event.dart';
 import 'app_select_branch_state.dart';
 
 class AppSelectBranchBloc
-    extends Bloc<AppSelectBranchEvent, CalendarAndBranchState> {
+    extends Bloc<AppSelectBranchEvent, AppSelectBranchState> {
   final AppSelectBranchRepository repository;
 
-  AppSelectBranchBloc(this.repository) : super(Loading()) {
+  AppSelectBranchBloc(this.repository) : super(AppBranchStateLoading()) {
     on<GetAllBranchesEvent>((event, emit) async {
       var result = await repository.getBranches();
 
-      result.fold((l) => emit(Loaded(branches: [])), (r) {
+      result.fold((l) => emit(AppBranchStateLoaded(branches: [])), (r) {
         BranchIdAndName? branch;
         if (r.length > 0) {
           branch = r.first;
           getItMaybe<AppSelectBranchSetBranchCallback>()?.call(branch);
         }
-        emit(Loaded(branches: r, branch: branch));
+        emit(AppBranchStateLoaded(branches: r, branch: branch));
 
       });
     });
 
     on<AppSelectBranchSetBranchEvent>((event, emit) async {
-      if (state is Loaded) {
-        var stateAsLoaded = state as Loaded;
+      if (state is AppBranchStateLoaded) {
+        var stateAsLoaded = state as AppBranchStateLoaded;
         var branch = stateAsLoaded.branches
             .firstWhere((element) => element == event.branch);
-        emit(Loaded(branches: stateAsLoaded.branches, branch: branch));
+        emit(AppBranchStateLoaded(branches: stateAsLoaded.branches, branch: branch));
       } else {
-        emit(Loaded(branches: []));
+        emit(AppBranchStateLoaded(branches: []));
       }
     });
   }

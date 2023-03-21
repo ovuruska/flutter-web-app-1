@@ -89,7 +89,7 @@ class _ClientsViewState extends State<ClientsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _layout(),
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: const Color(0XFFFFFFFF),
     );
   }
 }

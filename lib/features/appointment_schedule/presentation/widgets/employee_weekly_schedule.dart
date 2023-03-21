@@ -99,7 +99,7 @@ class _EmployeeWeeklyScheduleState extends State<EmployeeWeeklySchedule> {
   Widget build(BuildContext context) {
     var schedulingContext = SchedulingContextProvider.of(context);
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: const Color(0XFFFFFFFF),
       extendBody: true,
       body: SingleChildScrollView(
         controller: schedulingContext.verticalController,

@@ -24,10 +24,10 @@ class _AppSelectBranchViewState extends State<AppSelectBranchView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppSelectBranchBloc, CalendarAndBranchState>(
+    return BlocBuilder<AppSelectBranchBloc, AppSelectBranchState>(
         bloc: sl<AppSelectBranchBloc>(),
         builder: (context, state) {
-          if (state is Loaded) {
+          if (state is AppBranchStateLoaded) {
             return AppSelectBranch(branches: state.branches,branch: state.branch);
           } else {
             return AppSelectBranch(branches: []);
