@@ -18,5 +18,5 @@ class AppSelectBranchSetBranchEvent extends AppSelectBranchEvent {
   List<Object?> get props => [branch];
 }
 
-class GetAllBranchesEvent extends AppSelectBranchEvent {}
+class AppBranchSelectEventGetAllBranches extends AppSelectBranchEvent {}
 

@@ -16,4 +16,5 @@ registerSchedulePage(GetIt sl){
   sl.registerLazySingleton<AppSelectBranchSetBranchCallback>(() => ScheduleSetBranchCallbackImpl());
   sl.registerLazySingleton<AppMultiCalendarSetDateCallback>(() => ScheduleSetDateCallbackImpl());
   sl.registerLazySingleton<StartDateSelectedCallback>(() => StartDateSelectedCallbackImpl());
+
 }

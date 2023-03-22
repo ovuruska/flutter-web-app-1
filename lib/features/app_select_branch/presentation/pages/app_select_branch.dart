@@ -18,7 +18,7 @@ class AppSelectBranchView extends StatefulWidget {
 class _AppSelectBranchViewState extends State<AppSelectBranchView> {
   void initState() {
     super.initState();
-    sl.get<AppSelectBranchBloc>().add(GetAllBranchesEvent());
+    sl.get<AppSelectBranchBloc>().add(AppBranchSelectEventGetAllBranches());
 
   }
 

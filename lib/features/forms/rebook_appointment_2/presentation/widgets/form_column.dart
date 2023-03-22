@@ -5,10 +5,10 @@ import 'package:scrubbers_employee_application/features/forms/rebook_appointment
 
 import '../../../../../common/quicker/inputs/date_picker.dart';
 import '../../../average_service_time/presentation/widgets/service_time.dart';
-import '../../../branch_select/presentation/pages/branch_select.dart';
 import '../../../client_autocomplete/presentation/pages/client_autocomplete.dart';
-import '../../../groomer_select/presentation/pages/groomer_select.dart';
-import '../../../product_select/presentation/pages/product_select.dart';
+import '../../../multi_branch_select/presentation/pages/branch_select.dart';
+import '../../../multi_groomer_select/presentation/pages/groomer_select.dart';
+import '../../../multi_product_select/presentation/pages/product_select.dart';
 import '../../../select_client_pets/presentation/pages/select_client_pets.dart';
 import '../../domain/callbacks/start_date_selected_callback.dart';
 

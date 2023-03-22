@@ -12,7 +12,7 @@ class AppSelectBranchBloc
   final AppSelectBranchRepository repository;
 
   AppSelectBranchBloc(this.repository) : super(AppBranchStateLoading()) {
-    on<GetAllBranchesEvent>((event, emit) async {
+    on<AppBranchSelectEventGetAllBranches>((event, emit) async {
       var result = await repository.getBranches();
 
       result.fold((l) => emit(AppBranchStateLoaded(branches: [])), (r) {
