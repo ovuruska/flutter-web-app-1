@@ -67,7 +67,7 @@ Future<void> initSl() async {
   registerDailyColumn(sl);
   registerRebookAppointment2(sl);
   registerAverageServiceTime(sl);
-  registerGroomerSelect(sl);
+  registerMultiGroomerSelect(sl);
   registerAppMultiCalendar(sl);
   registerMultiProductSelect(sl);
   registerMultiBranchSelect(sl);

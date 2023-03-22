@@ -4,10 +4,10 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/domain/entities/employee_entity.dart';
 
-class GroomerSelectState extends Equatable {
+class MultiGroomerSelectState extends Equatable {
   final List<EmployeeEntity> options;
 
-  const GroomerSelectState({
+  const MultiGroomerSelectState({
     this.options = const []
 });
 

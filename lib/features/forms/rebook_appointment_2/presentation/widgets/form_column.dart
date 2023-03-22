@@ -45,7 +45,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
           ],
         ),
         Container(height: 16),
-        GroomerSelectView(),
+        MultiGroomerSelectView(),
         Container(height: 16),
         MultiProductSelectView(),
         Container(height: 16),

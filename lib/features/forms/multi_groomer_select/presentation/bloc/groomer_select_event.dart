@@ -2,21 +2,21 @@
 
 import 'package:equatable/equatable.dart';
 
-class GroomerSelectEvent extends Equatable {
-  const GroomerSelectEvent();
+class MultiGroomerSelectEvent extends Equatable {
+  const MultiGroomerSelectEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class GroomerSelectEventChanged extends GroomerSelectEvent {
+class MultiGroomerSelectEventChanged extends MultiGroomerSelectEvent {
   final String query;
 
-  const GroomerSelectEventChanged({required this.query});
+  const MultiGroomerSelectEventChanged({required this.query});
 
   @override
   List<Object> get props => [query];
 }
 
-class GroomerSelectEventFetch extends GroomerSelectEvent {}
+class MultiGroomerSelectEventFetch extends MultiGroomerSelectEvent {}
 

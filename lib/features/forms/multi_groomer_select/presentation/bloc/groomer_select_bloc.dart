@@ -6,17 +6,17 @@ import 'package:scrubbers_employee_application/core/use_case.dart';
 import 'groomer_select_event.dart';
 import 'groomer_select_state.dart';
 
-class GroomerSelectBloc extends Bloc<GroomerSelectEvent, GroomerSelectState> {
+class MultiGroomerSelectBloc extends Bloc<MultiGroomerSelectEvent, MultiGroomerSelectState> {
   final GetAllGroomersUseCase getGroomers;
 
-  GroomerSelectBloc(this.getGroomers) : super(GroomerSelectState()) {
-    on<GroomerSelectEventChanged>((event, emit) {});
-    on<GroomerSelectEventFetch>((event, emit) async {
+  MultiGroomerSelectBloc(this.getGroomers) : super(MultiGroomerSelectState()) {
+    on<MultiGroomerSelectEventChanged>((event, emit) {});
+    on<MultiGroomerSelectEventFetch>((event, emit) async {
       var params = NoParams();
       var response = await getGroomers(params);
       List<EmployeeEntity> groomers = response.fold((l) => [], (r) => r);
       groomers.sort((a, b) => a.name.compareTo(b.name));
-      emit(GroomerSelectState(options: groomers));
+      emit(MultiGroomerSelectState(options: groomers));
     });
   }
 }

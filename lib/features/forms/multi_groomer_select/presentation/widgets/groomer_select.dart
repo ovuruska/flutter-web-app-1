@@ -5,11 +5,11 @@ import 'package:scrubbers_employee_application/core/domain/entities/employee_ent
 
 import '../../../../../common/quicker/inputs/multi_select_chip_field.dart';
 
-class GroomerSelect extends StatelessWidget {
+class MultiGroomerSelect extends StatelessWidget {
   final List<EmployeeEntity> options;
   final List<EmployeeEntity>? initialValue;
 
-  const GroomerSelect({Key? key, required this.options, this.initialValue}) : super(key: key);
+  const MultiGroomerSelect({Key? key, required this.options, this.initialValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
