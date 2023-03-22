@@ -36,7 +36,7 @@ class SchedulePageContextProvider extends InheritedNotifier<SchedulePageContext>
   static SchedulePageContextProvider of(BuildContext context) {
     SchedulePageContextProvider? result = context.dependOnInheritedWidgetOfExactType<SchedulePageContextProvider>();
     if (result == null) {
-      throw FlutterError('No SchedulingContextProvider is found in the widget tree');
+      throw FlutterError('No SchedulePageContextProvider is found in the widget tree');
     }
     return result;
   }

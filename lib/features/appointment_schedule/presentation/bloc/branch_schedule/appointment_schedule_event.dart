@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/domain/entities/branch_id_and_name.dart';
 
 
 

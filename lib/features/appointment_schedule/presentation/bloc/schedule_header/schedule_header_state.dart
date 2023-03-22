@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
-import '../../../../app_select_branch/domain/entities/branch_id_and_name.dart';
 
 class AppointmentScheduleHeaderState extends Equatable {
   final DateTime date;
-  final BranchIdAndName? branch;
+  final BranchEntity? branch;
 
   const AppointmentScheduleHeaderState({
     required this.date,

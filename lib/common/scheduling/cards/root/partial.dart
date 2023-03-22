@@ -12,7 +12,7 @@ class AppointmentCardPartial extends StatelessWidget {
   // Partial card, so we don't need to pass in the entire appointment
   final DateTime? start;
   final DateTime? end;
-  final bool specialHandling;
+  final bool? specialHandling;
   final String? customerName;
   final String? service;
   final String? dogName;
@@ -23,7 +23,7 @@ class AppointmentCardPartial extends StatelessWidget {
       this.width,
       this.start,
       this.end,
-      required this.specialHandling,
+      this.specialHandling = false,
       this.height,
       this.customerName,
       this.service,
@@ -32,7 +32,7 @@ class AppointmentCardPartial extends StatelessWidget {
       : super(key: key);
 
   String _formatTime() {
-    if (start! == null || end! == null) return '';
+    if (start == null || end == null) return '';
     var formatter = new DateFormat('h');
     var formatter2 = new DateFormat('a');
     if (start!.minute == 0 && end!.minute == 0) {
@@ -49,14 +49,18 @@ class AppointmentCardPartial extends StatelessWidget {
   }
 
   String _duration() {
-    if (start! == null || end! == null) return '';
+    if (start == null || end == null) return '';
     var duration = end!.difference(start!).inMinutes;
-    return '$duration min';
+    return '$duration mins';
+  }
+
+  bool _specialHandling() {
+    if (specialHandling == null) return false;
+    return specialHandling!;
   }
 
   @override
   Widget build(BuildContext context) {
-    var schedulingContext = SchedulingContextProvider.of(context);
 
     return Container(
         margin: EdgeInsets.all(calendarMargin),
@@ -113,14 +117,14 @@ class AppointmentCardPartial extends StatelessWidget {
                                         fontFamily: 'Inter',
                                       ),
                                     ),
-                                    (specialHandling)
+                                    (_specialHandling())
                                         ? Icon(
                                             Icons.star,
                                             color: const Color(0xFFFFD8D8),
                                           )
                                         : Container(),
                                     Text(
-                                      _duration.toString() + " mins",
+                                      _duration(),
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.white,

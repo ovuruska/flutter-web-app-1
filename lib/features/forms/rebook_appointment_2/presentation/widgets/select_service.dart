@@ -4,8 +4,9 @@ import '../../../../../common/quicker/inputs/dropdown_button.dart';
 
 class SelectService extends StatelessWidget {
   final Function(String?)? onChanged;
+  final String? initialValue;
 
-  SelectService({Key? key, this.onChanged})
+  SelectService({Key? key, this.onChanged, this.initialValue})
       : super(key: key);
 
   final List<String> options = ['Full Grooming', 'We Wash'];
@@ -14,6 +15,7 @@ class SelectService extends StatelessWidget {
   Widget build(BuildContext context) {
     return QuickerDropdownButton<String>(
       labelText: 'Service',
+      initialValue: initialValue,
       hintText: 'Service',
       items: options,
       onChanged: onChanged,

@@ -27,7 +27,7 @@ class _AppSelectBranchViewState extends State<AppSelectBranchView> {
     return BlocBuilder<AppSelectBranchBloc, AppSelectBranchState>(
         bloc: sl<AppSelectBranchBloc>(),
         builder: (context, state) {
-          if (state is AppBranchStateLoaded) {
+          if (state is AppSelectBranchStateLoaded) {
             return AppSelectBranch(branches: state.branches,branch: state.branch);
           } else {
             return AppSelectBranch(branches: []);

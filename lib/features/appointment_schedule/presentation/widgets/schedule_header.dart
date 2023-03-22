@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/domain/entities/branch_id_and_name.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_bloc.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_state.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule_header_dropdown.dart';
 
 import '../../../../injection.dart';
@@ -14,7 +12,7 @@ import '../bloc/schedule_header/schedule_header_event.dart';
 
 class ScheduleHeader extends StatelessWidget {
   final DateTime date;
-  final BranchIdAndName? branch;
+  final BranchEntity? branch;
 
   final DateFormat _dateFormat = DateFormat('d MMMM yyyy');
 

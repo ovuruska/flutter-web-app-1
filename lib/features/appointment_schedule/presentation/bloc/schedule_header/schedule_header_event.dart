@@ -1,7 +1,8 @@
 
 
 import 'package:equatable/equatable.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/domain/entities/branch_id_and_name.dart';
+
+import '../../../../../core/domain/entities/branch_entity.dart';
 
 
 class AppointmentScheduleHeaderEvent extends Equatable {
@@ -23,7 +24,7 @@ class AppointmentScheduleHeaderEventSetDate extends AppointmentScheduleHeaderEve
 }
 
 class AppointmentScheduleHeaderEventSetBranch extends AppointmentScheduleHeaderEvent{
-  final BranchIdAndName? branch;
+  final BranchEntity? branch;
 
   AppointmentScheduleHeaderEventSetBranch({
     required this.branch,

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/branch_id_and_name.dart';
+import '../../../../core/domain/entities/branch_entity.dart';
 
 class AppSelectBranchState extends Equatable {
   @override
@@ -8,10 +8,10 @@ class AppSelectBranchState extends Equatable {
 }
 
 
-class AppBranchStateLoading extends AppSelectBranchState {}
+class AppSelectBranchStateLoading extends AppSelectBranchState {}
 
-class AppBranchStateLoaded  extends AppSelectBranchState {
-  final List<BranchIdAndName> branches;
-  final BranchIdAndName? branch;
-  AppBranchStateLoaded({required this.branches,this.branch  });
+class AppSelectBranchStateLoaded  extends AppSelectBranchState {
+  final List<BranchEntity> branches;
+  final BranchEntity? branch;
+  AppSelectBranchStateLoaded({required this.branches,this.branch  });
 }
