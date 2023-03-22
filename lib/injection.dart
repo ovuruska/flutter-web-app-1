@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:scrubbers_employee_application/features/available_slots/register.dart';
 
 
 import 'core/register.dart';
@@ -71,4 +72,6 @@ Future<void> initSl() async {
   registerAppMultiCalendar(sl);
   registerMultiProductSelect(sl);
   registerMultiBranchSelect(sl);
+  registerAvailableSlots(sl);
+
 }

@@ -36,6 +36,6 @@ class SelectClientPets extends StatelessWidget {
             child: Text(pet.name),
           );
         }).toList(),
-        onChanged:(val){});
+        onChanged:onChanged);
   }
 }

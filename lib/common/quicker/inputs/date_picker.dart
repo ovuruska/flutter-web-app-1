@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class QuickerDataPicker extends StatefulWidget {
+class QuickerDatePicker extends StatefulWidget {
   final DateTime? date;
   final Function(DateTime)? onChanged;
-  const QuickerDataPicker({Key? key, this.date, this.onChanged}) : super(key: key);
+  const QuickerDatePicker({Key? key, this.date, this.onChanged}) : super(key: key);
 
   @override
-  _QuickerDataPickerState createState() => _QuickerDataPickerState();
+  _QuickerDatePickerState createState() => _QuickerDatePickerState();
 }
 
-class _QuickerDataPickerState extends State<QuickerDataPicker> {
+class _QuickerDatePickerState extends State<QuickerDatePicker> {
   late DateTime _date;
   @override
   void initState() {
     super.initState();
     _date = widget.date ?? DateTime.now();
-    if (widget.onChanged != null) widget.onChanged!(_date);
 
   }
 

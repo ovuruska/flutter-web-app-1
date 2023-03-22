@@ -3,49 +3,63 @@ import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
 
-import '../../models/scheduling_appointment_entity.dart';
+class AppointmentCardPartial extends StatelessWidget {
+  final Color backgroundColor = const Color(0xFFFCF9FF);
+  final Color headerColor = const Color(0xFFAB87C8);
 
-class AppointmentCard extends StatelessWidget {
-  final SchedulingAppointmentEntity appointment;
-  final Color backgroundColor;
-  final Color headerColor;
   final double? width;
+  final double? height;
+  // Partial card, so we don't need to pass in the entire appointment
+  final DateTime? start;
+  final DateTime? end;
+  final bool specialHandling;
+  final String? customerName;
+  final String? service;
+  final String? dogName;
+  final String? breed;
 
-
-  const AppointmentCard(
+  const AppointmentCardPartial(
       {Key? key,
-      required this.appointment,
-      required this.backgroundColor,
       this.width,
-      required this.headerColor})
+      this.start,
+      this.end,
+      required this.specialHandling,
+      this.height,
+      this.customerName,
+      this.service,
+      this.dogName,
+      this.breed})
       : super(key: key);
 
   String _formatTime() {
+    if (start! == null || end! == null) return '';
     var formatter = new DateFormat('h');
     var formatter2 = new DateFormat('a');
-    if (appointment.start.minute == 0 && appointment.end.minute == 0) {
-      return '${formatter.format(appointment.start)} - ${formatter.format(appointment.end)} ${formatter2.format(appointment.end)}';
+    if (start!.minute == 0 && end!.minute == 0) {
+      return '${formatter.format(start!)} - ${formatter.format(end!)} ${formatter2.format(end!)}';
     }
-    if (appointment.start.minute == 0 && appointment.end.minute != 0) {
-      return '${formatter.format(appointment.start)} - ${formatter.format(appointment.end)}:${appointment.end.minute} ${formatter2.format(appointment.end)}';
+    if (start!.minute == 0 && end!.minute != 0) {
+      return '${formatter.format(start!)} - ${formatter.format(end!)}:${end!.minute} ${formatter2.format(end!)}';
     }
-    if (appointment.start.minute != 0 && appointment.end.minute == 0) {
-      return '${formatter.format(appointment.start)}:${appointment.start.minute} - ${formatter.format(appointment.end)} ${formatter2.format(appointment.end)}';
+    if (start!.minute != 0 && end!.minute == 0) {
+      return '${formatter.format(start!)}:${start!.minute} - ${formatter.format(end!)} ${formatter2.format(end!)}';
     } else {
-      return '${formatter.format(appointment.start)}:${appointment.start.minute} - ${formatter.format(appointment.end)}:${appointment.end.minute} ${formatter2.format(appointment.end)}';
+      return '${formatter.format(start!)}:${start!.minute} - ${formatter.format(end!)}:${end!.minute} ${formatter2.format(end!)}';
     }
+  }
+
+  String _duration() {
+    if (start! == null || end! == null) return '';
+    var duration = end!.difference(start!).inMinutes;
+    return '$duration min';
   }
 
   @override
   Widget build(BuildContext context) {
-    var duration = appointment.end.difference(appointment.start).inMinutes;
     var schedulingContext = SchedulingContextProvider.of(context);
-    var boxHeight = schedulingContext.boxHeight;
-
-    var height = duration * boxHeight / 60 - 2 * calendarMargin;
 
     return Container(
-      margin:EdgeInsets.all(calendarMargin),
+        margin: EdgeInsets.all(calendarMargin),
         height: height,
         width: width,
         decoration: BoxDecoration(
@@ -99,14 +113,14 @@ class AppointmentCard extends StatelessWidget {
                                         fontFamily: 'Inter',
                                       ),
                                     ),
-                                    (appointment.specialHandling)
+                                    (specialHandling)
                                         ? Icon(
                                             Icons.star,
                                             color: const Color(0xFFFFD8D8),
                                           )
                                         : Container(),
                                     Text(
-                                      duration.toString() + " mins",
+                                      _duration.toString() + " mins",
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.white,
@@ -119,7 +133,7 @@ class AppointmentCard extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 4),
                               child: Text(
-                                appointment.customerName,
+                                customerName ?? "",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -131,7 +145,7 @@ class AppointmentCard extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 4),
                               child: Text(
-                                appointment.dogName,
+                                dogName ?? "",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: const Color(0xFF000000),
@@ -142,7 +156,7 @@ class AppointmentCard extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 4),
                               child: Text(
-                                appointment.breed,
+                                breed ?? "",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: const Color(0xFF989898),
@@ -153,7 +167,7 @@ class AppointmentCard extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 4),
                               child: Text(
-                                appointment.service,
+                                service ?? "",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: const Color(0xFF000000),
@@ -163,22 +177,6 @@ class AppointmentCard extends StatelessWidget {
                             )
                           ],
                         )),
-                    Container(
-                        margin: EdgeInsets.only(left:4),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              appointment.invoice.toStringAsFixed(0) + "\$",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: const Color(0xFF989898),
-                                fontFamily: 'Inter',
-                              ),
-                            ),
-                          ],
-                        ))
                   ],
                 ))));
   }

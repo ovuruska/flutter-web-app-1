@@ -1,46 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
 
-class QuickerMultiSelectChip<T extends Object> extends StatefulWidget {
+class QuickerMultiSelectChip<T > extends StatefulWidget {
   final List<T> options;
   final List<T>? initialValue;
   final String? headerText;
   final bool allowAllSelected;
-  final Function(List<T> value)? onSelected;
+  final void Function(List<T>)? onSelected;
 
-  const QuickerMultiSelectChip({Key? key, this.options = const [], this.initialValue, this.headerText, this.allowAllSelected = true, this.onSelected})
+  const QuickerMultiSelectChip(
+      {Key? key,
+      this.options = const [],
+      this.initialValue,
+      this.headerText,
+      this.allowAllSelected = true,
+      this.onSelected})
       : super(key: key);
 
   @override
-  _QuickerMultiSelectChipState createState() => _QuickerMultiSelectChipState();
+  _QuickerMultiSelectChipState<T> createState() => _QuickerMultiSelectChipState<T>();
 }
 
-class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiSelectChip<T >> {
+class _QuickerMultiSelectChipState<T >
+    extends State<QuickerMultiSelectChip<T>> {
   late List<T> _selected;
 
   @override
   void initState() {
     super.initState();
-    if(widget.allowAllSelected){
+    if (widget.allowAllSelected) {
       _selected = widget.options;
-    }else {
-      _selected = widget.initialValue ?? [];
+    } else {
+      _selected = widget.initialValue ?? <T>[];
     }
-    if(widget.onSelected != null) widget.onSelected!(_selected);
+
   }
 
   String _headerText(int lengthOfSelected) {
-    if(widget.headerText == null) return "";
+    if (widget.headerText == null) return "";
     if (lengthOfSelected == 0) {
-      if(widget.allowAllSelected){
+      if (widget.allowAllSelected) {
         return "${widget.headerText} (All selected)";
-      }else{
-        return "${widget.headerText}  (None selected)";
+      } else {
+        return "${widget.headerText} (None selected)";
       }
     } else {
-      return "${widget.headerText}  ($lengthOfSelected selected)";
+      return "${widget.headerText} ($lengthOfSelected selected)";
     }
   }
 
@@ -49,14 +55,13 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
     List<T> filteredOptions = widget.options
         .where((element) => !_selected.contains(element))
         .toList();
-    try{
+    try {
       _selected.sort((a, b) => a.toString().compareTo(b.toString()));
-    }catch(e){
-    }
+    } catch (e) {}
     List<T> options = _selected + filteredOptions;
 
     return MultiSelectChipField<T>(
-      height:48,
+        height: 48,
         headerColor: const Color(0XFF2D7CB6),
         searchIcon: Icon(Icons.search, color: Colors.white),
         closeSearchIcon: Icon(Icons.close, color: Colors.white),
@@ -74,14 +79,12 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
             setState(() {
               _selected = value;
             });
-            if(widget.onSelected != null) widget.onSelected!(_selected);
+            if (widget.onSelected != null) widget.onSelected!(_selected);
           }
-
         },
         title: Text(_headerText(_selected.length),
             style: GoogleFonts.inter(fontSize: 16, color: Colors.white)),
-        items: options
-            .map((e) => MultiSelectItem<T>(e, e.toString()))
-            .toList());
+        items:
+            options.map((e) => MultiSelectItem<T>(e, e.toString())).toList());
   }
 }
