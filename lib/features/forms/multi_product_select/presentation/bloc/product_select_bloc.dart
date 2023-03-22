@@ -9,15 +9,15 @@ import '../../../../../core/use_case.dart';
 import 'product_select_event.dart';
 import 'product_select_state.dart';
 
-class ProductSelectBloc extends Bloc<ProductSelectEvent,ProductSelectState>{
+class MultiProductSelectBloc extends Bloc<MultiProductSelectEvent,MultiProductSelectState>{
   final GetAllProductsUseCase getAllProducts;
 
-  ProductSelectBloc(this.getAllProducts) : super(ProductSelectState()){
-    on<ProductSelectEventFetch>((event, emit) async {
+  MultiProductSelectBloc(this.getAllProducts) : super(MultiProductSelectState()){
+    on<MultiProductSelectEventFetch>((event, emit) async {
       var params = NoParams();
       var response = await getAllProducts(params);
       List<ProductEntity> products = response.fold((l) => [], (r) => r);
-      emit(ProductSelectState(options: products));
+      emit(MultiProductSelectState(options: products));
     });
   }
 

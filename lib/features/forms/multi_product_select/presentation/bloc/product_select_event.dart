@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-class ProductSelectEvent extends Equatable {
-  const ProductSelectEvent();
+class MultiProductSelectEvent extends Equatable {
+  const MultiProductSelectEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class ProductSelectEventFetch extends ProductSelectEvent {
-  const ProductSelectEventFetch();
+class MultiProductSelectEventFetch extends MultiProductSelectEvent {
+  const MultiProductSelectEventFetch();
 }
 

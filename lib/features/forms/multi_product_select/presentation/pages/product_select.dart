@@ -9,24 +9,24 @@ import '../bloc/product_select_event.dart';
 import '../bloc/product_select_state.dart';
 import '../widgets/product_select.dart';
 
-class ProductSelectView extends StatefulWidget{
+class MultiProductSelectView extends StatefulWidget{
 
   @override
-  _ProductSelectViewState createState() => _ProductSelectViewState();
+  _MultiProductSelectViewState createState() => _MultiProductSelectViewState();
 }
 
-class _ProductSelectViewState extends State<ProductSelectView>{
+class _MultiProductSelectViewState extends State<MultiProductSelectView>{
   void initState(){
     super.initState();
-    sl<ProductSelectBloc>().add(ProductSelectEventFetch());
+    sl<MultiProductSelectBloc>().add(MultiProductSelectEventFetch());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductSelectBloc,ProductSelectState>(
-      bloc: sl<ProductSelectBloc>(),
+    return BlocBuilder<MultiProductSelectBloc,MultiProductSelectState>(
+      bloc: sl<MultiProductSelectBloc>(),
       builder: (context,state){
-        return ProductSelect(
+        return MultiProductSelect(
           options: state.options,
         );
       },
