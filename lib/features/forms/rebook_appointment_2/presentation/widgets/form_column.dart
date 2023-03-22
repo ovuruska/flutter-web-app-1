@@ -49,7 +49,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
         Container(height: 16),
         ProductSelectView(),
         Container(height: 16),
-        BranchSelectView(),
+        MultiBranchSelectView(),
         Container(height:32),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

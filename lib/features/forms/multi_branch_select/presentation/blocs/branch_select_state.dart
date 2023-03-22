@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/domain/entities/branch_entity.dart';
 
-class BranchSelectState extends Equatable {
+class MultiBranchSelectState extends Equatable {
   final List<BranchEntity> options;
 
-  BranchSelectState({
+  MultiBranchSelectState({
     required this.options,
   });
 

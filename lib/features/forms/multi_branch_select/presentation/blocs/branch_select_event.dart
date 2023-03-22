@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class BranchSelectEvent extends Equatable {
-  const BranchSelectEvent();
+class MultiBranchSelectEvent extends Equatable {
+  const MultiBranchSelectEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class BranchSelectEventFetch extends BranchSelectEvent {}
+class MultiBranchSelectEventFetch extends MultiBranchSelectEvent {}

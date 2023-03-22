@@ -7,25 +7,25 @@ import '../blocs/branch_select_event.dart';
 import '../blocs/branch_select_state.dart';
 import '../widgets/branch_select.dart';
 
-class BranchSelectView extends StatefulWidget {
+class MultiBranchSelectView extends StatefulWidget {
   @override
-  _BranchSelectViewState createState() => _BranchSelectViewState();
+  _MultiBranchSelectViewState createState() => _MultiBranchSelectViewState();
 }
 
-class _BranchSelectViewState extends State<BranchSelectView> {
+class _MultiBranchSelectViewState extends State<MultiBranchSelectView> {
 
   @override
   void initState() {
     super.initState();
-    sl<BranchSelectBloc>().add(BranchSelectEventFetch());
+    sl<MultiBranchSelectBloc>().add(MultiBranchSelectEventFetch());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BranchSelectBloc, BranchSelectState>(
-        bloc: sl<BranchSelectBloc>(),
+    return BlocBuilder<MultiBranchSelectBloc, MultiBranchSelectState>(
+        bloc: sl<MultiBranchSelectBloc>(),
         builder: (context, state) {
-          return BranchSelect(options: state.options);
+          return MultiBranchSelect(options: state.options);
         });
   }
 }

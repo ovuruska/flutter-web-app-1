@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import 'presentation/blocs/branch_select_bloc.dart';
 
-registerBranchSelect(GetIt sl){
+registerMultiBranchSelect(GetIt sl){
   //BLoCs
-  sl.registerLazySingleton(() => BranchSelectBloc(sl()));
+  sl.registerLazySingleton(() => MultiBranchSelectBloc(sl()));
 }

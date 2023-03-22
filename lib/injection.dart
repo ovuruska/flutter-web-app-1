@@ -70,5 +70,5 @@ Future<void> initSl() async {
   registerGroomerSelect(sl);
   registerAppMultiCalendar(sl);
   registerProductSelect(sl);
-  registerBranchSelect(sl);
+  registerMultiBranchSelect(sl);
 }
