@@ -56,6 +56,7 @@ class _QuickerMultiSelectChipState<T extends Object> extends State<QuickerMultiS
     List<T> options = _selected + filteredOptions;
 
     return MultiSelectChipField<T>(
+      height:48,
         headerColor: const Color(0XFF2D7CB6),
         searchIcon: Icon(Icons.search, color: Colors.white),
         closeSearchIcon: Icon(Icons.close, color: Colors.white),
