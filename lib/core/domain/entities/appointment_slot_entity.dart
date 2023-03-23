@@ -34,4 +34,11 @@ class AppointmentSlotEntity extends Equatable {
     );
   }
 
+  Map<String,dynamic> toJson() => {
+    'start': start.toUtc().toIso8601String(),
+    'end': end.toUtc().toIso8601String(),
+    'service': service,
+    'employee': employee.toJson(),
+    'branch': branch.toJson(),
+  };
 }

@@ -33,4 +33,16 @@ class BranchEntity extends Equatable{
     email: json["email"] ?? "",
     description: json["description"] ?? "",
   );
+
+  Map<String,dynamic> toJson(){
+    return {
+      "id": id,
+      "name": name,
+      "address": address,
+      "phone": phone,
+      "email": email,
+      "description": description,
+    };
+  }
+
 }

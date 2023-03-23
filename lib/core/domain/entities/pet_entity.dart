@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class PetEntity extends Equatable {
+  int id;
   final String name;
   final String breed;
   final DateTime? birth;
@@ -13,6 +14,7 @@ class PetEntity extends Equatable {
   final String coatType;
 
   PetEntity({
+    required this.id,
     required this.name,
     required this.breed,
     required this.birth,
@@ -38,6 +40,7 @@ class PetEntity extends Equatable {
       ];
 
   factory PetEntity.fromJson(Map<String, dynamic> json) => PetEntity(
+        id: json["id"],
         name: json["name"],
         breed: json["breed"],
         birth: json["birth"] == null ? null : DateTime.parse(json["birth"]),
@@ -51,5 +54,20 @@ class PetEntity extends Equatable {
 
   @override
   String toString() => name;
+
+  Map<String,dynamic> toJson(){
+    return {
+      "id":id,
+      "name": name,
+      "breed": breed,
+      "birth": birth?.toUtc().toIso8601String(),
+      "weight": weight,
+      "rabies_vaccination": rabbiesVaccination.toUtc().toIso8601String(),
+      "special_handling": specialHandling,
+      "employee_notes": specialHandlingNotes,
+      "customer_notes": customerNotes,
+      "coat_type": coatType,
+    };
+  }
 
 }

@@ -35,4 +35,14 @@ class ClientEntity extends Equatable {
   String toString(){
     return name;
   }
+
+  Map<String,dynamic> toJson(){
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'address': address,
+    };
+  }
 }

@@ -33,4 +33,15 @@ class ProductEntity extends Equatable {
   }
 
   String toString() => name;
+
+  Map<String,dynamic> toJson(){
+    return {
+      'id': id,
+      'name': name,
+      'cost': cost,
+      'description': description,
+      'category': category,
+    };
+  }
+
 }
