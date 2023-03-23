@@ -11,7 +11,7 @@ class CurrentTimeRay extends StatelessWidget {
     if (now.hour < schedulingContext.startHour || now.hour > schedulingContext.endHour) {
       return Container();
     }
-    var top = schedulingContext.headerHeight +
+    var top = schedulingContext.headerHeight + schedulingContext.boxHeight / 2 +
         now
             .difference(DateTime(now.year, now.month, now.day, 8, 0, 0))
             .inMinutes *
