@@ -17,15 +17,16 @@ class AppointmentRemoteDataSourceImpl extends AppointmentRemoteDataSource{
   @override
   Future<Either<Failure, AppointmentEntity>> create(AppointmentEntityLocal appointment) async {
     var response = await SchedulingAuthService.instance.jsonRequest(
-      "api/appointment",
+      "api/schedule/appointment",
       method: "POST",
       body: appointment.toJson(),
     );
 
-    var respString = await response.stream.bytesToString();
-    var respJson = jsonDecode(respString);
-    var resultAppointment = AppointmentEntity.fromJson(respJson);
-    if (response.statusCode == 200) {
+
+    if (response.statusCode == 201) {
+      var respString = await response.stream.bytesToString();
+      var respJson = jsonDecode(respString);
+      var resultAppointment = AppointmentEntity.fromJson(respJson);
       return Right(resultAppointment);
     } else {
       return Left(ServerFailure());

@@ -4,7 +4,9 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/dom
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../domain/usecases/get_branch_employees.dart';
+import '../../../domain/usecases/on_drag_create_appointment.dart';
 import '../../../domain/usecases/patch_appointment.dart';
+import '../../../utils/convert.dart';
 import 'appointment_schedule_event.dart';
 import 'appointment_schedule_state.dart';
 
@@ -22,9 +24,11 @@ class AppointmentScheduleBloc
   final PatchAppointmentUseCase patchAppointment;
   final GetAppointmentsUseCase getAppointments;
   final GetBranchEmployeesUseCase getEmployees;
+  final OnDragCreateAppointmentUseCase createAppointment;
 
   AppointmentScheduleBloc(
       {required this.getAppointments,
+      required this.createAppointment,
       required this.getEmployees,
       required this.patchAppointment})
       : super(AppointmentScheduleStateInitial()) {
@@ -37,7 +41,8 @@ class AppointmentScheduleBloc
       var params = PatchAppointmentParams(appointment);
       patchAppointment(params);
 
-      var currentAppointments = (state as AppointmentScheduleStateLoaded).appointments;
+      var currentAppointments =
+          (state as AppointmentScheduleStateLoaded).appointments;
       bool found = false;
 
       currentAppointments = currentAppointments.map((e) {
@@ -79,7 +84,8 @@ class AppointmentScheduleBloc
 
     on<AppointmentSchedulePatchLocalEvent>((event, emit) async {
       var appointment = event.appointment;
-      var currentAppointments = (state as AppointmentScheduleStateLoaded).appointments;
+      var currentAppointments =
+          (state as AppointmentScheduleStateLoaded).appointments;
       bool found = false;
 
       currentAppointments = currentAppointments.map((e) {
@@ -95,6 +101,21 @@ class AppointmentScheduleBloc
       emit(AppointmentScheduleStateLoaded(
           employees: (state as AppointmentScheduleStateLoaded).employees,
           appointments: currentAppointments));
+    });
+
+    on<AppointmentScheduleEventCreate>((event,emit) async {
+      var appointment = event.appointment;
+      var params = OnDragCreateAppointmentParams(appointment:appointment);
+      var result = await createAppointment(params);
+      var appointmentEntity = result.fold((l) => null, (r) => r);
+      if(appointmentEntity != null) {
+        var createdAppointment = convertFromAppointmentEntity(appointmentEntity);
+        var currentAppointments =
+        (state as AppointmentScheduleStateLoaded).appointments + [createdAppointment];
+        emit(AppointmentScheduleStateLoaded(
+            employees: (state as AppointmentScheduleStateLoaded).employees,
+            appointments: currentAppointments));
+      }
     });
   }
 

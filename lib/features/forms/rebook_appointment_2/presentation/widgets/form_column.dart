@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/select_service.dart';
+import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
+import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 
 import '../../../../../common/quicker/inputs/date_picker.dart';
 import '../../../../available_slots/presentation/pages/available_slots.dart';
@@ -12,6 +14,7 @@ import '../../../multi_branch_select/presentation/pages/branch_select.dart';
 import '../../../multi_groomer_select/presentation/pages/groomer_select.dart';
 import '../../../multi_product_select/presentation/pages/product_select.dart';
 import '../../../select_client_pets/presentation/pages/select_client_pets.dart';
+import '../../../../../injection.dart';
 import 'rebook_context.dart';
 import 'rebook_context_provider.dart';
 
@@ -69,6 +72,14 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                   ClientAutocompleteView(
                     onSelected: (value) {
                       rebookContext.setClient(value);
+                      rebookContext.setPet(null);
+                      sl<SelectClientPetsBloc>().add(
+                        SelectClientPetsEventCleared(),
+                      );
+                      sl<SelectClientPetsBloc>().add(
+                        SelectClientPetsEventFetchClientPets(
+                            id: value.id),
+                      );
                     },
                   ),
                   Container(height: 16),

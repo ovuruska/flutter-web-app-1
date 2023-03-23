@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+import '../../../domain/entities/creatable_scheduling_appointment_entity.dart';
 
 class EmployeeScheduleEvent extends Equatable {
   const EmployeeScheduleEvent();
@@ -37,6 +38,15 @@ class EmployeeScheduleLocalPatchEvent extends EmployeeScheduleEvent {
   final SchedulingAppointmentEntity appointment;
 
   EmployeeScheduleLocalPatchEvent({required this.appointment});
+
+  @override
+  List<Object> get props => [appointment];
+}
+
+class EmployeeScheduleEventCreate extends EmployeeScheduleEvent {
+  final CreatableSchedulingAppointmentEntity appointment;
+
+  EmployeeScheduleEventCreate({required this.appointment});
 
   @override
   List<Object> get props => [appointment];

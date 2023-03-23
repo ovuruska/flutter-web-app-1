@@ -19,6 +19,7 @@ import 'package:scrubbers_employee_application/core/domain/usecases/get_all_groo
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source.dart';
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source_impl.dart';
 import 'data/datasources/appointment/appointment_remote_data_source_impl.dart';
+import 'data/datasources/appointment_slot/appointment_slot_local_data_source.dart';
 import 'data/datasources/appointment_slot/appointment_slot_local_data_source_impl.dart';
 import 'data/datasources/appointment_slot/appointment_slot_remote_data_source.dart';
 import 'data/datasources/appointment_slot/appointment_slot_remote_data_source_impl.dart';
@@ -92,6 +93,9 @@ registerCore(GetIt sl) {
 
   sl.registerLazySingleton<AppointmentSlotRemoteDataSource>(
       () => AppointmentSlotRemoteDataSourceImpl());
+
+  sl.registerLazySingleton<AppointmentSlotLocalDataSource>(
+      () => AppointmentSlotLocalDataSourceImpl());
 
   sl.registerLazySingleton<AppointmentRemoteDataSource>(
       () => AppointmentRemoteDataSourceImpl());

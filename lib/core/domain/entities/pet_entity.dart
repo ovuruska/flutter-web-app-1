@@ -44,7 +44,7 @@ class PetEntity extends Equatable {
         name: json["name"],
         breed: json["breed"],
         birth: json["birth"] == null ? null : DateTime.parse(json["birth"]),
-        weight: json["weight"],
+        weight: json["weight"] ?? 0,
         rabbiesVaccination: DateTime.parse(json["rabies_vaccination"]),
         specialHandling: json["special_handling"] ?? false,
         specialHandlingNotes: json["employee_notes"] ?? "",

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 
-
+import '../../../domain/entities/creatable_scheduling_appointment_entity.dart';
 
 class AppointmentScheduleEvent extends Equatable {
   const AppointmentScheduleEvent();
@@ -13,16 +13,13 @@ class AppointmentScheduleEvent extends Equatable {
 class AppointmentScheduleSetBranchEvent extends AppointmentScheduleEvent {
   final int branch;
 
-  AppointmentScheduleSetBranchEvent({
-    required this.branch
-  });
+  AppointmentScheduleSetBranchEvent({required this.branch});
 
   @override
   List<Object> get props => [branch];
 }
 
 class AppointmentScheduleInitializeEvent extends AppointmentScheduleEvent {
-
   @override
   List<Object> get props => [];
 }
@@ -37,28 +34,22 @@ class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
   });
 
   @override
-  List<Object> get props => [date,branch];
+  List<Object> get props => [date, branch];
 }
 
 class AppointmentSchedulePatchLocalEvent extends AppointmentScheduleEvent {
-
   final SchedulingAppointmentEntity appointment;
 
-  AppointmentSchedulePatchLocalEvent({
-    required this.appointment
-  });
+  AppointmentSchedulePatchLocalEvent({required this.appointment});
 
   @override
   List<Object> get props => [appointment];
 }
 
 class AppointmentSchedulePatchEvent extends AppointmentScheduleEvent {
-
   final SchedulingAppointmentEntity appointment;
 
-  AppointmentSchedulePatchEvent({
-    required this.appointment
-  });
+  AppointmentSchedulePatchEvent({required this.appointment});
 
   @override
   List<Object> get props => [appointment];
@@ -74,5 +65,14 @@ class AppointmentScheduleGetAppointmentsEvent extends AppointmentScheduleEvent {
   });
 
   @override
-  List<Object> get props => [date,branch ?? -1];
+  List<Object> get props => [date, branch ?? -1];
+}
+
+class AppointmentScheduleEventCreate extends AppointmentScheduleEvent {
+  final CreatableSchedulingAppointmentEntity appointment;
+
+  AppointmentScheduleEventCreate({required this.appointment});
+
+  @override
+  List<Object> get props => [appointment];
 }

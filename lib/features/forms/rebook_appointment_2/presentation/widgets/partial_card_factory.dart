@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/app_select_branch/presentation/widgets/app_select_branch.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/creatable_scheduling_appointment_entity.dart';
 
 import '../../../../../common/scheduling/cards/root/partial.dart';
 import '../../../../../core/domain/entities/appointment_local.dart';
@@ -35,6 +36,7 @@ class PartialCardFactory extends StatelessWidget {
       branch: branchId,
       employee: employee,
       products: products,
+      service: rebookContext.service!,
     );
 
     return appointmentEntityLocal;
@@ -43,17 +45,22 @@ class PartialCardFactory extends StatelessWidget {
   Widget _valid(RebookContext rebookContext) {
     var branch =
         (sl<AppSelectBranchBloc>().state as AppSelectBranchStateLoaded).branch!;
+    var customerId = rebookContext.client!.id;
     var customerName = rebookContext.client!.name;
+    var dogId = rebookContext.pet!.id;
     var dogName = rebookContext.pet!.name;
     var breed = rebookContext.pet!.breed;
     var service = rebookContext.service!;
     var specialHandling = rebookContext.pet!.specialHandling;
+    var productIds = rebookContext.products.map((e) => e.id).toList();
     var start = DateTime.now();
     var end = start.add(Duration(minutes: 60));
 
-    var schedulingAppointmentEntity = SchedulingAppointmentEntity(
+    var schedulingAppointmentEntity = CreatableSchedulingAppointmentEntity(
         id: -1,
         status: 'Pending',
+        customerId: customerId,
+        dogId: dogId,
         customerName: customerName,
         employee: -1,
         employeeName: "",
@@ -65,6 +72,7 @@ class PartialCardFactory extends StatelessWidget {
         invoice: 0,
         specialHandling: specialHandling,
         branch: branch.id,
+        products: productIds,
         branchName: branch.name);
 
 
@@ -80,10 +88,8 @@ class PartialCardFactory extends StatelessWidget {
 
 
 
-    return Draggable<SchedulingAppointmentEntity>(
+    return Draggable<CreatableSchedulingAppointmentEntity>(
         data: schedulingAppointmentEntity,
-        onDragCompleted: () {
-        },
         feedback: Opacity(
           child: child,
           opacity: .5,
