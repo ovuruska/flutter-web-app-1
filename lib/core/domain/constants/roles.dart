@@ -23,3 +23,20 @@ String getRole(int role) {
       return "We Wash";
   }
 }
+
+int convertRole(String role) {
+  switch (role) {
+    case "We Wash":
+      return EMPLOYEE_WE_WASH;
+    case "Full Grooming":
+      return EMPLOYEE_FULL_GROOMING;
+    case "Accountant":
+      return ACCOUNTANT;
+    case "Manager":
+      return MANAGER;
+    case "Admin":
+      return ADMIN;
+    default:
+      return EMPLOYEE_WE_WASH;
+  }
+}

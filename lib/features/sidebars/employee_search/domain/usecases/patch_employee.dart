@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../../../core/use_case.dart';
-import '../entities/employee_entity.dart';
 import '../repositories/patch_employee.dart';
 
 class PatchEmployeeParams extends Equatable {

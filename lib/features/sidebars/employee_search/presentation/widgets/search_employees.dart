@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../../../../injection.dart';
-import '../../domain/entities/employee_entity.dart';
 import '../bloc/employee_search_bloc.dart';
 import '../bloc/employee_search_event.dart';
 import 'employee_list.dart';
@@ -41,7 +41,7 @@ class _EmployeeSearchState extends State<EmployeeSearch> {
           IconButton(
             icon:const Icon(Icons.add),
             onPressed: () {
-              sl<EmployeeSearchBloc>().add(CreateNewEmployeeEvent());
+              sl<EmployeeSearchBloc>().add(EmployeeSearchEventCreate());
             },
 
           )

@@ -15,6 +15,7 @@ import 'package:scrubbers_employee_application/core/domain/usecases/get_availabl
 import 'package:scrubbers_employee_application/core/domain/usecases/get_average_service_time.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_client_pets.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_all_groomers.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_employee.dart';
 
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source.dart';
 import 'data/datasources/analytics_pet/analytics_pet_remote_data_source_impl.dart';
@@ -44,6 +45,7 @@ import 'domain/repositories/product_repository.dart';
 import 'domain/repositories/scheduling_appointment_repository.dart';
 import 'domain/usecases/get_all_branches.dart';
 import 'domain/usecases/patch_appointment.dart';
+import 'domain/usecases/patch_employee.dart';
 import 'domain/usecases/search_client_name.dart';
 
 registerCore(GetIt sl) {
@@ -57,6 +59,8 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => GetAllBranchesUseCase(sl()));
   sl.registerLazySingleton(() => GetAvailableSlotsUseCase(sl()));
   sl.registerLazySingleton(() => CreateAppointmentUseCase(sl()));
+  sl.registerLazySingleton(() => GetEmployeeUseCase(sl()));
+  sl.registerLazySingleton(() => PatchEmployeeUseCase(sl()));
 
   // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(

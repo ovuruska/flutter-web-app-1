@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:scrubbers_employee_application/common/quicker/inputs/multi_select_dialog.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
 
 import '../../../../../common/quicker/inputs/multi_select_chip_field.dart';
@@ -14,9 +15,10 @@ class MultiGroomerSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QuickerMultiSelectChip<EmployeeEntity>(
+    return QuickerMultiSelectDialog<EmployeeEntity>(
       options: options,
       headerText: "Groomers",
+      hintText: "Click to add groomers",
       initialValue: initialValue,
       onSelected: onSelected,
     );

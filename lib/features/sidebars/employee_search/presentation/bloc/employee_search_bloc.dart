@@ -21,7 +21,7 @@ class EmployeeSearchBloc
     required this.patchEmployee,
     required this.removeEmployee,
   }) : super(Initial()) {
-    on<GetEmployeesEvent>((event, emit) async {
+    on<EmployeeSearchEventGet>((event, emit) async {
       emit(Loading());
 
       final failureOrEmployees = await getEmployees(NoParams());
@@ -31,12 +31,12 @@ class EmployeeSearchBloc
           as EmployeeSearchState),
               (employees) => emit(Loaded(employees: employees)));
     });
-    on<SetEmployeesEvent>((event, emit) async {
+    on<EmployeeSearchEventSetEmployees>((event, emit) async {
       var employees = event.employees;
       emit(Loaded(employees: employees));
     });
 
-    on<PatchEmployeeEvent>((event, emit) async {
+    on<EmployeeSearchEventPatch>((event, emit) async {
       var employee = event.employee;
       var employees = (state as Loaded).employees;
       var updatedEmployees = employees.map((element) {
@@ -48,7 +48,7 @@ class EmployeeSearchBloc
 
       emit(Loaded(employees: updatedEmployees));
     });
-    on<CreateNewEmployeeEvent>((event,emit) async {
+    on<EmployeeSearchEventCreate>((event,emit) async {
       var employees = (state as Loaded).employees;
       final failureOrBranch = await createNewEmployee(NoParams());
       failureOrBranch.fold(
@@ -59,7 +59,7 @@ class EmployeeSearchBloc
               (employee) => emit(Loaded(employees: employees + [employee])));
     });
 
-    on<RemoveEmployeeEvent>((event, emit) async {
+    on<EmployeeSearchEventRemove>((event, emit) async {
       var employees = (state as Loaded).employees;
       var id = event.id;
       removeEmployee(RemoveEmployeeParams(id: id));

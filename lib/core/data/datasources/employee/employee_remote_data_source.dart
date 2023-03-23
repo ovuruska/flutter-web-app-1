@@ -8,4 +8,10 @@ import '../../../error/failures.dart';
 
 abstract class EmployeeRemoteDataSource extends RemoteDataSource{
   Future<Either<Failure,List<EmployeeEntity>>> getGroomers();
+
+  Future<Either<Failure,EmployeeEntity>> getEmployee(int id);
+
+  Future<Either<Failure, void>> delete(int id);
+
+  Future<Either<Failure, EmployeeEntity>> patch(EmployeeEntity employee);
 }

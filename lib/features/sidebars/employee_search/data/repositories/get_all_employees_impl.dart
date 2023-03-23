@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
+import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../../../../services/auth.dart';
-import '../../domain/entities/employee_entity.dart';
 import '../../domain/repositories/get_all_employees.dart';
 
 class GetAllEmployeesRepositoryImpl extends GetAllEmployeesRepository{

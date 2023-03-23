@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/quicker/inputs/multi_select_chip_field.dart';
+import '../../../../../common/quicker/inputs/multi_select_dialog.dart';
 import '../../../../../core/domain/entities/branch_entity.dart';
 
 class MultiBranchSelect extends StatelessWidget{
@@ -14,8 +15,9 @@ class MultiBranchSelect extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return QuickerMultiSelectChip<BranchEntity>(
+    return QuickerMultiSelectDialog<BranchEntity>(
       options: options,
+      hintText: "Click to add branches",
       headerText: 'Branches',
       onSelected: onSelected,
     );

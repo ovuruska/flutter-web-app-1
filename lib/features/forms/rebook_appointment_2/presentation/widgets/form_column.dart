@@ -77,8 +77,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                         SelectClientPetsEventCleared(),
                       );
                       sl<SelectClientPetsBloc>().add(
-                        SelectClientPetsEventFetchClientPets(
-                            id: value.id),
+                        SelectClientPetsEventFetchClientPets(id: value.id),
                       );
                     },
                   ),
@@ -113,24 +112,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(height: 16),
-                  MultiGroomerSelectView(
-                    onSelected: (value) {
-                      rebookContext.setGroomers(value);
-                    },
-                  ),
-                  Container(height: 16),
-                  MultiProductSelectView(
-                    onSelected: (value) {
-                      rebookContext.setProducts(value);
-                    },
-                  ),
-                  Container(height: 16),
-                  MultiBranchSelectView(
-                    onSelected: (value) {
-                      rebookContext.setBranches(value);
-                    },
-                  ),
+
                 ],
               ),
               collapsed: Container(),
@@ -143,16 +125,8 @@ class RebookAppointment2FormColumn extends StatelessWidget {
               color: const Color(0xFF2D7CB6),
               fontWeight: FontWeight.w600)),
       Container(height: 16),
-      Container(
-          decoration: BoxDecoration(
-              color: const Color(0xFFE5E5E5),
-              borderRadius: BorderRadius.circular(8)),
-          height: 192,
-          width: 360,
-          child: Center(
-              child: RebookContextProvider(
-                  notifier: rebookContext, child: PartialCardFactory())
-          )),
+      RebookContextProvider(
+          notifier: rebookContext, child: PartialCardFactory()),
       Container(height: 32),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,13 +136,41 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                   fontSize: 20,
                   color: const Color(0xFF2D7CB6),
                   fontWeight: FontWeight.w600)),
-          QuickerDatePicker(
-            onChanged: (value) {
-              rebookContext.setStartDate(value);
-            },
-          ),
+          Row(
+            children: [
+              Text("starting from",
+                  style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w600)),
+              QuickerDatePicker(
+                onChanged: (value) {
+                  rebookContext.setStartDate(value);
+                },
+              ),
+            ],
+          )
+
         ],
       ),
+          Container(height: 16),
+          MultiGroomerSelectView(
+            onSelected: (value) {
+              rebookContext.setGroomers(value);
+            },
+          ),
+          Container(height: 16),
+          MultiProductSelectView(
+            onSelected: (value) {
+              rebookContext.setProducts(value);
+            },
+          ),
+          Container(height: 16),
+          MultiBranchSelectView(
+            onSelected: (value) {
+              rebookContext.setBranches(value);
+            },
+          ),
       SizedBox(
         height: 360,
         child: AvailableSlotsView(),

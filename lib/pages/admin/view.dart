@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
-import 'package:scrubbers_employee_application/pages/admin/login/controller.dart';
-import 'package:scrubbers_employee_application/pages/admin/tabs/view.dart';
+import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_bloc.dart';
+import 'package:scrubbers_employee_application/pages/schedule/schedule_page_context.dart';
 
-class AdminView extends StatelessWidget {
+import '../../features/app_select_branch/presentation/bloc/app_select_branch_event.dart';
+import '../../injection.dart';
+import 'admin_page_context.dart';
+import 'register.dart';
+import 'screen_factory.dart';
+
+class AdminView extends StatefulWidget {
+
   @override
-  Widget build(BuildContext context) => StreamListenableBuilder(
-      stream: adminLoginBloc.stream,
-      listener: (value) {},
-      builder: (context, snapshot) => _build(context));
+  _AdminViewState createState() => _AdminViewState();
+}
+class _AdminViewState extends State<AdminView> {
 
-  Widget _build(BuildContext context) {
-    return AdminTabsView();
+  @override
+  void initState(){
+    super.initState();
+
+    registerAdminPage(sl);
+
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: const Color(0xFFFFFFFF),
+        body: AdminPageContextProvider(
+          notifier: AdminPageContext(
+          ),
+          child: AdminViewScreenFactory(),
+        ));
   }
 }

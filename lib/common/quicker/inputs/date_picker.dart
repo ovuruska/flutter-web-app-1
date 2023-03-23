@@ -45,6 +45,7 @@ class _QuickerDatePickerState extends State<QuickerDatePicker> {
               }
             },
             child: Container(
+
                 decoration: BoxDecoration(
                     color: const Color(0xFFFFFFFF),
                     border: Border.all(color: Color(0xFFD8DAE5)),

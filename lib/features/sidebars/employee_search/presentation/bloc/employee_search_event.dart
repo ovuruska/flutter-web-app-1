@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../../domain/entities/employee_entity.dart';
+import '../../../../../core/domain/entities/employee_entity.dart';
+
 
 @immutable
 class EmployeeSearchEvent extends Equatable {
@@ -11,34 +12,34 @@ class EmployeeSearchEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class CreateNewEmployeeEvent extends EmployeeSearchEvent {
+class EmployeeSearchEventCreate extends EmployeeSearchEvent {
 
-  CreateNewEmployeeEvent();
+  EmployeeSearchEventCreate();
 
   @override
   List<Object> get props => [];
 }
-class RemoveEmployeeEvent extends EmployeeSearchEvent {
+class EmployeeSearchEventRemove extends EmployeeSearchEvent {
   final int id;
 
-  RemoveEmployeeEvent({required this.id});
+  EmployeeSearchEventRemove({required this.id});
 
   @override
   List<Object> get props => [id];
 }
 
-class GetEmployeesEvent extends EmployeeSearchEvent {
+class EmployeeSearchEventGet extends EmployeeSearchEvent {
 
-  GetEmployeesEvent();
+  EmployeeSearchEventGet();
 
   @override
   List<Object> get props => [];
 }
 
-class PatchEmployeeEvent extends EmployeeSearchEvent {
+class EmployeeSearchEventPatch extends EmployeeSearchEvent {
   final EmployeeEntity employee;
 
-  PatchEmployeeEvent({required this.employee});
+  EmployeeSearchEventPatch({required this.employee});
 
   @override
   List<Object> get props => [employee];
@@ -46,10 +47,10 @@ class PatchEmployeeEvent extends EmployeeSearchEvent {
 
 
 
-class SetEmployeesEvent extends EmployeeSearchEvent {
+class EmployeeSearchEventSetEmployees extends EmployeeSearchEvent {
   final List<EmployeeEntity> employees;
 
-  SetEmployeesEvent({required this.employees});
+  EmployeeSearchEventSetEmployees({required this.employees});
 
   @override
   List<Object> get props => [employees];

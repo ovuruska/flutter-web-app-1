@@ -35,7 +35,23 @@ class EmployeeEntity {
     'name': name,
     'email': email,
     'phone': phone,
-    'role': role,
+    'role': convertRole(role),
   };
+
+  EmployeeEntity copyWith({
+    int? id,
+    String? name,
+    String? email,
+    String? phone,
+    String? role,
+  }) {
+    return EmployeeEntity(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      role: role ?? this.role,
+    );
+  }
 
 }

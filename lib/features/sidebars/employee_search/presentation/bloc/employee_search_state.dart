@@ -2,7 +2,8 @@
 
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/employee_entity.dart';
+import '../../../../../core/domain/entities/employee_entity.dart';
+
 
 class EmployeeSearchState extends Equatable {
   const EmployeeSearchState();

@@ -15,6 +15,7 @@ import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_modify/register.dart';
 import 'features/forms/create_appointment/register.dart';
+import 'features/forms/employee_information_crud/register.dart';
 import 'features/forms/employee_modify/register.dart';
 import 'features/forms/employee_working_hours/register.dart';
 import 'features/forms/multi_branch_select/register.dart';
@@ -73,5 +74,5 @@ Future<void> initSl() async {
   registerMultiProductSelect(sl);
   registerMultiBranchSelect(sl);
   registerAvailableSlots(sl);
-
+  registerEmployeeInformationCrud(sl);
 }

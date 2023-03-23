@@ -19,4 +19,19 @@ class EmployeeRepositoryImpl extends EmployeeRepository {
     return await remoteDataSource.getGroomers();
   }
 
+  @override
+  Future<Either<Failure, EmployeeEntity>> getEmployee(int id) async {
+    return await remoteDataSource.getEmployee(id);
+  }
+
+  @override
+  Future<Either<Failure, void>> delete(int id) async  {
+   return await remoteDataSource.delete(id);
+  }
+
+  @override
+  Future<Either<Failure, EmployeeEntity>> patch(EmployeeEntity employee) async {
+    return await remoteDataSource.patch(employee);
+  }
+
 }

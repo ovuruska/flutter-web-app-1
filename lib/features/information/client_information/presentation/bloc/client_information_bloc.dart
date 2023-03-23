@@ -13,7 +13,7 @@ class ClientInformationBloc extends Bloc<ClientInformationEvent, ClientInformati
       emit(ClientInformationLoading());
       GetClientInformationParams params = GetClientInformationParams(id: event.id);
       final result = await getClientInformation(params);
-      result.fold((l) => print(l), (r) {
+      result.fold((l) => null, (r) {
         emit(ClientInformationLoaded(clientInformation: r));
 
       });

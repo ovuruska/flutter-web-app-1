@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/services/auth.dart';
 
 import '../../../../../core/error/failures.dart';
-import '../../domain/entities/employee_entity.dart';
+import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../domain/repositories/create_new_employee.dart';
 
 class CreateNewEmployeeRepositoryImpl implements CreateNewEmployeeRepository {

@@ -13,9 +13,8 @@ import 'rebook_context.dart';
 import 'rebook_context_provider.dart';
 
 class PartialCardFactory extends StatelessWidget {
-
-
-  AppointmentEntityLocal createAppointmentEntity(RebookContext rebookContext,int employee){
+  AppointmentEntityLocal createAppointmentEntity(
+      RebookContext rebookContext, int employee) {
     var branch =
         (sl<AppSelectBranchBloc>().state as AppSelectBranchStateLoaded).branch!;
     var start = DateTime.now();
@@ -26,11 +25,9 @@ class PartialCardFactory extends StatelessWidget {
     var branchId = branch.id;
     // Branch, customer, products, pet, service will be provided.
 
-
-
     var appointmentEntityLocal = AppointmentEntityLocal(
       customer: customerId,
-      pet:petId,
+      pet: petId,
       start: start,
       end: end,
       branch: branchId,
@@ -75,7 +72,6 @@ class PartialCardFactory extends StatelessWidget {
         products: productIds,
         branchName: branch.name);
 
-
     var child = AppointmentCardPartial(
       width: 240,
       height: 120,
@@ -85,8 +81,6 @@ class PartialCardFactory extends StatelessWidget {
       specialHandling: rebookContext.pet?.specialHandling,
       breed: rebookContext.pet?.breed,
     );
-
-
 
     return Draggable<CreatableSchedulingAppointmentEntity>(
         data: schedulingAppointmentEntity,
@@ -103,6 +97,9 @@ class PartialCardFactory extends StatelessWidget {
         rebookContext.service != null;
   }
 
+  final invalid = const Color(0xFFFFF4F4);
+  final valid = const Color(0xFFFBFDF7);
+
   @override
   Widget build(BuildContext context) {
     var rebookContext = RebookContextProvider.of(context).notifier!;
@@ -110,11 +107,27 @@ class PartialCardFactory extends StatelessWidget {
       bloc: sl<AppSelectBranchBloc>(),
       builder: (context, state) {
         if (isValid(rebookContext)) {
-          return MouseRegion(
-              cursor: SystemMouseCursors.click, child: _valid(rebookContext));
+          return Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xFFFBFDF7),
+                  borderRadius: BorderRadius.circular(8)),
+              height: 192,
+              width: 360,
+              child: Center(
+                  child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: _valid(rebookContext))));
         } else {
-          return MouseRegion(
-              cursor: SystemMouseCursors.click, child: _invalid(rebookContext));
+          return Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xFFFFF4F4),
+                  borderRadius: BorderRadius.circular(8)),
+              height: 192,
+              width: 360,
+              child: Center(
+                  child: MouseRegion(
+                      child: GestureDetector(
+                          child: _invalid(rebookContext)))));
         }
       },
     );
@@ -131,6 +144,4 @@ class PartialCardFactory extends StatelessWidget {
       breed: rebookContext.pet?.breed,
     );
   }
-
-
 }

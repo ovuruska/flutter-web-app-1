@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_util.dart';
 
 
+import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../../../../injection.dart';
-import '../../domain/entities/employee_entity.dart';
 import '../bloc/employee_search_bloc.dart';
 import '../bloc/employee_search_event.dart';
 import '../bloc/employee_search_state.dart';
@@ -29,7 +29,7 @@ class _EmployeeSearchViewState extends State<EmployeeSearchView> {
   @override
   void initState() {
     super.initState();
-    sl<EmployeeSearchBloc>().add(GetEmployeesEvent());
+    sl<EmployeeSearchBloc>().add(EmployeeSearchEventGet());
   }
 
   @override

@@ -1,4 +1,3 @@
-import 'package:scrubbers_employee_application/pages/admin/tabs/Services/services/DataTable/Controller.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/sidebar/tabs/cancelled/controller.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/sidebar/tabs/pending/controller.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/sidebar/tabs/waitlist/controller.dart';
@@ -25,10 +24,6 @@ Future<void> initFromServer() async {
     sidebarCancelledAppointmentsBloc.fetch(),
     sidebarPendingAppointmentsBloc.fetch(),
     sidebarWaitlistBloc.fetch(),
-    ServiceRepository.instance.fetchAll().then((services) {
-
-      servicesDataTableBloc.setServices(services!);
-    }),
     BranchRepository.instance.fetchAll().then((branches) {
       branchesBloc.setBranches(branches!);
       if (branches.length > 0) {
