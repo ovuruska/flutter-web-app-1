@@ -18,7 +18,7 @@ class _ScheduleViewState extends State<ScheduleView> {
   void initState(){
     registerSchedulePage(sl);
     sl<AppSelectBranchBloc>().add(
-        AppBranchSelectEventGetAllBranches()
+        AppSelectBranchEventGetAll()
     );
     super.initState();
   }

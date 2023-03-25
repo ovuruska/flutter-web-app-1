@@ -13,7 +13,7 @@ class AppSelectBranchBloc
   final GetAllBranchesUseCase getAllBranches;
 
   AppSelectBranchBloc(this.getAllBranches) : super(AppSelectBranchStateLoading()) {
-    on<AppBranchSelectEventGetAllBranches>((event, emit) async {
+    on<AppSelectBranchEventGetAll>((event, emit) async {
       var params = NoParams();
       var result = await getAllBranches(params);
 
