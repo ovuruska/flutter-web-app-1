@@ -143,6 +143,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                       fontSize: 12,
                       color: Colors.grey,
                       fontWeight: FontWeight.w600)),
+              Container(width:4),
               QuickerDatePicker(
                 onChanged: (value) {
                   rebookContext.setStartDate(value);

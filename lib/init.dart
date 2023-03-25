@@ -9,7 +9,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'injection.dart';
 
 Future<void> init() async{
-  SharedPreferences.setMockInitialValues({});
 
   await dotenv.load(fileName: ".env");
   await FlutterFlowTheme.initialize();
@@ -17,6 +16,7 @@ Future<void> init() async{
   await SchedulingAuthService.instance.init();
 
   if (SchedulingAuthService.instance.isLogged()) {
+    print("asdf");
     try {
     } catch (e) {
       ;

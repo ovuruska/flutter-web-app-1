@@ -15,10 +15,12 @@ import 'package:scrubbers_employee_application/features/forms/rebook_appointment
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/widgets/select_client_pets.dart';
 import 'package:scrubbers_employee_application/init.dart';
 import 'package:scrubbers_employee_application/injection.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Create a mock class for the SelectClientPetsBloc
 
 main() async {
+  SharedPreferences.setMockInitialValues({});
   TestWidgetsFlutterBinding.ensureInitialized();
 
   await init();
