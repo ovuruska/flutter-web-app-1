@@ -10,10 +10,9 @@ class RebookAppointment2View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         body: Container(
             decoration: BoxDecoration(
-              color: const Color(0xFFF0F3F7).withOpacity(.5),
               borderRadius: BorderRadius.circular(16),
             ),
             padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),

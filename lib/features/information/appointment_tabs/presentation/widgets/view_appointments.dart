@@ -41,6 +41,7 @@ class _ViewAppointmentsState extends State<ViewAppointments>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
         color: Colors.transparent,
         width: double.infinity,
