@@ -17,12 +17,12 @@ class PetEntity extends Equatable {
     required this.id,
     required this.name,
     required this.breed,
-    required this.birth,
+    this.birth,
     required this.weight,
     required this.rabbiesVaccination,
     required this.specialHandling,
-    required this.specialHandlingNotes,
-    required this.customerNotes,
+    this.specialHandlingNotes,
+    this.customerNotes,
     required this.coatType,
   });
 

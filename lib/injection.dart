@@ -14,6 +14,7 @@ import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_modify/register.dart';
+import 'features/forms/client_autocomplete/register.dart';
 import 'features/forms/create_appointment/register.dart';
 import 'features/forms/employee_information_crud/register.dart';
 import 'features/forms/employee_modify/register.dart';
@@ -38,7 +39,7 @@ import 'pages/schedule/register.dart';
 
 final sl = GetIt.instance;
 
-Future<void> initSl() async {
+void initSl()  {
   sl.allowReassignment=true;
 
   registerCore(sl);
@@ -75,4 +76,5 @@ Future<void> initSl() async {
   registerMultiBranchSelect(sl);
   registerAvailableSlots(sl);
   registerEmployeeInformationCrud(sl);
+  registerClientAutocomplete(sl);
 }

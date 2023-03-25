@@ -22,5 +22,5 @@ registerEmployeeWorkingHours(GetIt sl) {
 
   // Repositories
   sl.registerLazySingleton<WorkingHoursRepository>(
-      () => WorkingHoursRepositoryImpl());
+      () => WorkingHoursRepositoryImpl(sl()));
 }

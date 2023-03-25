@@ -1,38 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:scrubbers_employee_application/injection.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
-import 'initWithData.dart';
-import 'services/auth.dart';
+import 'init.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
 
-  await FlutterFlowTheme.initialize();
-  await initSl();
-  await SchedulingAuthService.instance.init();
-  await dotenv.load(fileName: ".env");
-
-  if (SchedulingAuthService.instance.isLogged()) {
-    try {
-      await initFromServer();
-    } catch (e) {
-      ;
-    }
-  }
-
-  if (kDebugMode) {
-    //await initFromServer();
-    //initWithData();
-  }
-
+  await init();
   runApp(MyApp());
 }
 

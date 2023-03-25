@@ -5,6 +5,7 @@ import 'package:scrubbers_employee_application/core/data/datasources/branch/bran
 import 'package:scrubbers_employee_application/core/data/datasources/client/client_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/client_search/client_search_remote_data_source_impl.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/employee/employee_remote_data_source.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/employee_working_hours/employee_working_hours_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/product/product_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/appointment_slot_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/branch_repository.dart';
@@ -27,6 +28,7 @@ import 'data/datasources/appointment_slot/appointment_slot_remote_data_source_im
 import 'data/datasources/client/client_remote_data_source_impl.dart';
 import 'data/datasources/client_search/client_search_remote_data_source.dart';
 import 'data/datasources/employee/employee_remote_data_source_impl.dart';
+import 'data/datasources/employee_working_hours/employee_working_hours_remote_data_source_impl.dart';
 import 'data/datasources/product/product_remote_data_source_impl.dart';
 import 'data/repositories/analytics_pet_repository_impl.dart';
 import 'data/repositories/appointment_repository_impl.dart';
@@ -103,4 +105,6 @@ registerCore(GetIt sl) {
 
   sl.registerLazySingleton<AppointmentRemoteDataSource>(
       () => AppointmentRemoteDataSourceImpl());
+
+  sl.registerLazySingleton<EmployeeWorkingHoursRemoteDataSource>(() => EmployeeWorkingHoursRemoteDataSourceImpl());
 }

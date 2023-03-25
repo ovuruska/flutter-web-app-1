@@ -20,7 +20,7 @@ class EmployeeWorkingHoursBloc
     required this.upsertWorkingHours,
     required this.getWorkingHours,
   }) : super(Empty()) {
-    on<GetEmployeeWorkingHoursEvent>((event, emit) async {
+    on<EmployeeWorkingHoursEventGet>((event, emit) async {
       emit(Loading());
       var employeeId = event.id;
       var interval = event.interval;
@@ -33,13 +33,13 @@ class EmployeeWorkingHoursBloc
     });
 
 
-    on<UpsertWorkingHoursEvent>((event,emit) async {
+    on<EmployeeWorkingHoursEventUpsert>((event,emit) async {
       var workingHours = event.workingHours;
       var employeeId = event.id;
       var params = UpsertWorkingHoursParams(id:employeeId,workingHours: workingHours);
       var failureOrWorkingHours = await upsertWorkingHours(params);
     });
-    on<SetEmployeeEvent>((event, emit) async {
+    on<EmployeeWorkingHoursEventSetEmployee>((event, emit) async {
       emit(Loading());
       var employeeId = event.id;
 
@@ -55,7 +55,7 @@ class EmployeeWorkingHoursBloc
           (workingHours) => emit(Loaded(workingHours: workingHours,id:employeeId)));
     });
 
-    on<ClearWorkingHoursEvent>((event,emit) async {
+    on<EmployeeWorkingHoursEventClear>((event,emit) async {
       var employeeId = event.id;
       var now = DateTime.now();
       var monday = now.subtract(Duration(days: now.weekday - 1));
@@ -67,7 +67,7 @@ class EmployeeWorkingHoursBloc
 
     });
 
-    on<PurgeWorkingHoursEvent>((event,emit) async {
+    on<EmployeeWorkingHoursEventPurge>((event,emit) async {
       emit(Empty());
     });
   }

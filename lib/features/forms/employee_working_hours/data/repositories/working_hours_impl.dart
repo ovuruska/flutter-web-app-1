@@ -3,6 +3,8 @@ import 'dart:convert' show jsonDecode;
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/employee_working_hours/employee_working_hours_remote_data_source.dart';
+import 'package:scrubbers_employee_application/pages/dashboard/constants.dart';
 import 'package:scrubbers_employee_application/services/auth.dart';
 
 import '../../../../../core/error/failures.dart';
@@ -13,42 +15,31 @@ import '../../domain/repositories/working_hours_repository.dart';
 
 class WorkingHoursRepositoryImpl extends WorkingHoursRepository {
 
+  final EmployeeWorkingHoursRemoteDataSource remoteDataSource;
+
+  WorkingHoursRepositoryImpl(this.remoteDataSource);
+
 
   @override
   Future<Either<Failure, List<DailyScheduleEntity>>> get(int employeeId,IntervalEntity intervalEntity) async {
-    // 2022-02-01
-    var formatter = new DateFormat('yyyy-MM-dd');
-    var queryParams = {
-      "start": formatter.format(intervalEntity.start),
-      "end": formatter.format(intervalEntity.end),
-    };
-    var response = await SchedulingAuthService.instance.request(
-        "/api/scheduling/hours/employee/${employeeId.toString()}",method:"GET", queryParams: queryParams);
-    var respString = await response.stream.bytesToString();
-    var respJson = jsonDecode(respString);
-    if (response.statusCode == 200) {
-      var workingHours = respJson["working_hours"];
-      var employee = respJson["employee"];
-      List<DailyScheduleEntity> workingHoursList = workingHours.map<DailyScheduleEntity>((e){
-        var branch = e["branch"] == null ? null : e["branch"]["id"];
-        var start,end;
+  return await remoteDataSource.getWeeklySchedule(employeeId, intervalEntity.start,intervalEntity.end).then(
+      (value) {
+        if(value is Left){
+          return Left(ServerFailure());
 
-        if (e["start"] != null){
-          start = DateTime.parse(e["start"]);
-          start = TimeOfDay(hour: start.hour, minute: start.minute);
-        }
-        if (e["end"] != null){
-          end = DateTime.parse(e["end"]);
-          end = TimeOfDay(hour: end.hour, minute: end.minute);
-        }
-        var date = DateTime.parse(e["date"]);
-        return DailyScheduleEntity(branch:branch,start: start, end: end, date: date, employee: employee["id"]);
-      }).toList();
-      return Right(workingHoursList);
-    } else {
-      return Left(ServerFailure());
-    }
 
+        }else{
+          var workingHours = value.getOrElse(() => []);
+          var dailyScheduleEntity = workingHours.map<DailyScheduleEntity>((e) => DailyScheduleEntity(
+            date: e.date,
+            start: e.start,
+            end: e.end,
+            branch: e.branch, employee: employeeId,
+          )).toList();
+          return Right(dailyScheduleEntity);
+        }
+      }
+    );
   }
 
 

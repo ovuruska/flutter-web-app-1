@@ -10,27 +10,27 @@ class EmployeeWorkingHoursEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetEmployeeWorkingHoursEvent extends EmployeeWorkingHoursEvent {
+class EmployeeWorkingHoursEventGet extends EmployeeWorkingHoursEvent {
   final int id;
   final IntervalEntity interval;
-  const GetEmployeeWorkingHoursEvent({required this.id,required this.interval});
+  const EmployeeWorkingHoursEventGet({required this.id,required this.interval});
 
   @override
   List<Object> get props => [id];
 }
 
-class SetEmployeeEvent extends EmployeeWorkingHoursEvent {
+class EmployeeWorkingHoursEventSetEmployee extends EmployeeWorkingHoursEvent {
   final int id;
-  const SetEmployeeEvent({required this.id});
+  const EmployeeWorkingHoursEventSetEmployee({required this.id});
 
   @override
   List<Object> get props => [id];
 }
 
-class ClearWorkingHoursEvent extends EmployeeWorkingHoursEvent {
+class EmployeeWorkingHoursEventClear extends EmployeeWorkingHoursEvent {
   final int id;
 
-  const ClearWorkingHoursEvent({
+  const EmployeeWorkingHoursEventClear({
     required this.id,
 });
 
@@ -38,11 +38,11 @@ class ClearWorkingHoursEvent extends EmployeeWorkingHoursEvent {
   List<Object> get props => [id];
 }
 
-class UpsertWorkingHoursEvent extends EmployeeWorkingHoursEvent {
+class EmployeeWorkingHoursEventUpsert extends EmployeeWorkingHoursEvent {
   final List<DailyScheduleEntity> workingHours;
   final int id;
 
-  const UpsertWorkingHoursEvent({
+  const EmployeeWorkingHoursEventUpsert({
     required this.id,
     required this.workingHours,
   });
@@ -51,7 +51,7 @@ class UpsertWorkingHoursEvent extends EmployeeWorkingHoursEvent {
   List<Object> get props => workingHours;
 }
 
-class PurgeWorkingHoursEvent extends EmployeeWorkingHoursEvent {
+class EmployeeWorkingHoursEventPurge extends EmployeeWorkingHoursEvent {
 
 
 }

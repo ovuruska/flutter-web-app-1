@@ -1,7 +1,3 @@
-
-
-import 'dart:html';
-
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/client_search_repository.dart';
