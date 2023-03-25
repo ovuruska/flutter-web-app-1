@@ -13,7 +13,7 @@ class SelectClientPetsBloc extends Bloc<SelectClientPetsEvent,SelectClientPetsSt
   final GetClientPetsUseCase getClientPets;
 
   SelectClientPetsBloc(this.getClientPets) : super(SelectClientPetsState()){
-    on<SelectClientPetsEventSelected>((event, emit) async {
+    on<SelectClientPetsEventSelect>((event, emit) async {
         emit(SelectClientPetsState(options: state.options,selected: event.selected,id:state.id));
     });
 

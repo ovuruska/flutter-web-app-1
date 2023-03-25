@@ -17,7 +17,7 @@ class SelectClientPets extends StatelessWidget {
         value: selected,
         decoration: InputDecoration(
 
-          labelText: 'Pet',
+          labelText: (options.length == 0) ? 'No pets found' : 'Select a pet',
           floatingLabelStyle: GoogleFonts.openSans(
             fontSize: 12,
             color: const Color(0xFF2D7CB6),

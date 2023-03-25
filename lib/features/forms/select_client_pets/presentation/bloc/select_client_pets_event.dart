@@ -36,10 +36,10 @@ class SelectClientPetsEventFetchClientPets extends SelectClientPetsEvent {
 }
 
 
-class SelectClientPetsEventSelected extends SelectClientPetsEvent {
+class SelectClientPetsEventSelect extends SelectClientPetsEvent {
   final PetEntity? selected;
 
-  const SelectClientPetsEventSelected({
+  const SelectClientPetsEventSelect({
     this.selected = null,
   });
 

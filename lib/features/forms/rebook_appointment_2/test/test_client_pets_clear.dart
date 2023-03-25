@@ -12,6 +12,8 @@ import 'package:scrubbers_employee_application/core/domain/entities/client_entit
 import 'package:scrubbers_employee_application/core/domain/entities/pet_entity.dart';
 import 'package:scrubbers_employee_application/features/forms/client_autocomplete/presentation/pages/client_autocomplete.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/form_column.dart';
+import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
+import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/widgets/select_client_pets.dart';
 import 'package:scrubbers_employee_application/init.dart';
 import 'package:scrubbers_employee_application/injection.dart';
@@ -45,63 +47,67 @@ main() async {
       id: 3, name: 'John Doe', email: '', phone: '', address: '');
 
   sl.registerLazySingleton<ClientSearchRemoteDataSource>(
-      () => ClientSearchRemoteDataSourceTest());
+          () => ClientSearchRemoteDataSourceTest());
   sl.registerLazySingleton<AnalyticsPetRemoteDataSource>(
-      () => AnalyticsPetRemoteDataSourceTest());
+          () => AnalyticsPetRemoteDataSourceTest());
   sl.registerLazySingleton<EmployeeRemoteDataSource>(
-      () => EmployeeRemoteDataSourceTest());
+          () => EmployeeRemoteDataSourceTest());
   sl.registerLazySingleton<ClientRemoteDataSource>(
-      () => ClientRemoteDataSourceTest());
+          () => ClientRemoteDataSourceTest());
 
   testWidgets(
-      "When ClientAutocompleteView is changed, pets SelectClientpetsView options should be equal to client's pets",
-      (WidgetTester tester) async {
-    // Initialize the mock bloc
+      "When ClientAutocompleteView is changed, pets SelectClientpetsView selected value should be cleared",
+          (WidgetTester tester) async {
+        // Initialize the mock bloc
 
-    // Pump the RebookAppointment2FormColumn widget
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: RebookAppointment2FormColumn(),
-      ),
-    ));
+        // Pump the RebookAppointment2FormColumn widget
+        await tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+            body: RebookAppointment2FormColumn(),
+          ),
+        ));
 
-    // Find the ClientAutocompleteView widget
-    final clientAutocompleteViewFinder = find.byType(ClientAutocompleteView);
-    final selectClientPetsViewFinder = find.byType(SelectClientPets);
+        // Find the ClientAutocompleteView widget
+        final clientAutocompleteViewFinder = find.byType(ClientAutocompleteView);
+        final selectClientPetsViewFinder = find.byType(SelectClientPets);
 
-    // Verify the widget exists
-    expect(clientAutocompleteViewFinder, findsOneWidget);
-    expect(selectClientPetsViewFinder, findsOneWidget);
+        // Verify the widget exists
+        expect(clientAutocompleteViewFinder, findsOneWidget);
+        expect(selectClientPetsViewFinder, findsOneWidget);
 
-    // Get the onChanged function from the ClientAutocompleteView widget
-    final onChanged = (clientAutocompleteViewFinder.evaluate().first.widget
-            as ClientAutocompleteView)
-        .onSelected;
-    var clientDataSource = sl<ClientRemoteDataSource>() as ClientRemoteDataSourceTest;
+        // Get the onChanged function from the ClientAutocompleteView widget
+        final onChanged = (clientAutocompleteViewFinder.evaluate().first.widget
+        as ClientAutocompleteView)
+            .onSelected;
+        var clientDataSource = sl<ClientRemoteDataSource>() as ClientRemoteDataSourceTest;
 
+        var test =[mockClient,defaultPets];
 
-    var tests = [
-      [mockClient,defaultPets],
-      [mockClient2,pets],
-      [mockClient3,<PetEntity>[]],
-      [mockClient,defaultPets],
-    ];
+        onChanged!(test[0] as ClientEntity);
+        // Inject pets.
+        var clientPets = test[1] as List<PetEntity>;
+        sl<SelectClientPetsBloc>().add(SelectClientPetsEventSelect(selected: clientPets[0]));
 
-    for (var test in tests) {
-      onChanged!(test[0] as ClientEntity);
-      // Inject pets.
-      var clientPets = test[1] as List<PetEntity>;
-      clientDataSource.setPets(clientPets);
+        // Pump the widget again to rebuild the UI
+        await tester.pump();
 
-      // Pump the widget again to rebuild the UI
-      await tester.pump();
+        var selectClientPetsView = selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets;
+        expect(selectClientPetsView.selected, clientPets[0]);
 
-      var petOptions =
-          (selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets)
-              .options;
-      expect(petOptions.length, clientPets.length);
-    }
+        sl<SelectClientPetsBloc>().add(SelectClientPetsEventSelect(selected: clientPets[1]));
 
-  });
+        // Pump the widget again to rebuild the UI
+        await tester.pump();
+
+        selectClientPetsView = selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets;
+        expect(selectClientPetsView.selected, clientPets[1]);
+
+        onChanged!(mockClient2);
+        await tester.pump();
+
+        selectClientPetsView = selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets;
+        expect(selectClientPetsView.selected, null);
+
+      });
 
 }
