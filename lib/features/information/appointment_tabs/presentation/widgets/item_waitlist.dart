@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 
 import '../../../../../common/scheduling/cards/pending.dart';
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
@@ -47,6 +48,8 @@ class AppointmentItemWaitlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var draggedAppointment = appointment.copyWith(status: "Pending");
+    var schedulingContext = SchedulingContextProvider.of(context);
+
     return Draggable<SchedulingAppointmentEntity>(
       data: draggedAppointment,
       child: _build(context),
@@ -57,13 +60,15 @@ class AppointmentItemWaitlist extends StatelessWidget {
         var event = RemoveWaitlistAppointmentEvent(appointment: appointmentId);
       sl<ViewAppointmentsBloc>().add(event);
     },
-      feedback: Opacity(
+      feedback: SchedulingContextProvider(
+          schedulingContext: schedulingContext,
+          child:Opacity(
           opacity: .5,
           child: GestureDetector(
               behavior: HitTestBehavior.deferToChild,
               child: AppointmentCardPending(
                 appointment: draggedAppointment,
-              ))),
+              )))),
       childWhenDragging: Container(),
     );
   }
