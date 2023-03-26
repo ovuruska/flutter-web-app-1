@@ -9,7 +9,6 @@ import '../../error/failures.dart';
 import '../../domain/entities/appointment_slot_entity.dart';
 import '../../domain/entities/branch_entity.dart';
 import '../../domain/entities/employee_entity.dart';
-import '../datasources/appointment_slot/appointment_slot_local_data_source.dart';
 
 class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
 

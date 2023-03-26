@@ -21,7 +21,7 @@ class AppointmentSlotRemoteDataSourceImpl
       required int duration}) async {
     var formatter = DateFormat('yyyy-MM-dd');
     var response = await SchedulingAuthService.instance.jsonRequest(
-      '/api/scheduling/appointment-slots',
+      '/api/schedule/slots',
       method: 'POST',
       body: {
         'date': formatter.format(start),

@@ -54,12 +54,14 @@ class _QuickerMultiSelectDialogState<T>
           onTap: (item) {
             setState(() {
               _selected.remove(item);
+              widget.onSelected?.call(_selected);
             });
           },
         ),
         items: multiSelect,
         onConfirm: (values) => setState(() {
               _selected = values;
+              widget.onSelected?.call(_selected);
             })));
   }
 }

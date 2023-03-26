@@ -1,6 +1,8 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_bloc.dart';
+import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_event.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/select_service.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
@@ -158,18 +160,39 @@ class RebookAppointment2FormColumn extends StatelessWidget {
           MultiGroomerSelectView(
             onSelected: (value) {
               rebookContext.setGroomers(value);
+              sl<AvailableSlotsBloc>().add(
+                AvailableSlotsEventFetch(
+                  start: rebookContext.startDate,
+                  groomers: rebookContext.groomers,
+                  branches: rebookContext.branches,
+                  service: rebookContext.service ?? "Full Grooming",
+                  duration: rebookContext.duration ?? 60,
+                ),
+              );
             },
           ),
+          // Container with width 16
+
           Container(height: 16),
           MultiProductSelectView(
             onSelected: (value) {
               rebookContext.setProducts(value);
             },
           ),
+
           Container(height: 16),
           MultiBranchSelectView(
             onSelected: (value) {
               rebookContext.setBranches(value);
+              sl<AvailableSlotsBloc>().add(
+                AvailableSlotsEventFetch(
+                  start: rebookContext.startDate,
+                  groomers: rebookContext.groomers,
+                  branches: rebookContext.branches,
+                  service: rebookContext.service ?? "Full Grooming",
+                  duration: rebookContext.duration ?? 60,
+                ),
+              );
             },
           ),
       SizedBox(
