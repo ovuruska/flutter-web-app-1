@@ -1,6 +1,8 @@
 
 
 import 'package:dartz/dartz.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/appointment/appointment_remote_data_source.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/appointment_slot/appointment_slot_remote_data_source.dart';
 
 import '../../domain/repositories/appointment_slot_repository.dart';
 import '../../error/failures.dart';
@@ -11,9 +13,10 @@ import '../datasources/appointment_slot/appointment_slot_local_data_source.dart'
 
 class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
 
-  final AppointmentSlotLocalDataSource localDataSource;
+  final AppointmentSlotRemoteDataSource remoteDataSource;
 
-  AppointmentSlotRepositoryImpl(this.localDataSource);
+
+  AppointmentSlotRepositoryImpl(this.remoteDataSource);
 
   Future<Either<Failure, List<AppointmentSlotEntity>>> getAvailableSlots({
     required DateTime start,
@@ -22,7 +25,7 @@ class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
     required String service,
     required int duration,
   }) async {
-    return await localDataSource.getAvailableSlots(
+    return await remoteDataSource.getAvailableSlots(
       start: start,
       groomers: groomers,
       branches: branches,

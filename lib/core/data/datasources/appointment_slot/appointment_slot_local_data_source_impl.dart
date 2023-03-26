@@ -35,25 +35,25 @@ class AppointmentSlotLocalDataSourceImpl extends AppointmentSlotLocalDataSource{
         start: DateTime.now(),
         end: DateTime.now().add(Duration(minutes: 30)),
         branch: branch,
-        employee: employee, service: 'Full Grooming',
+        employee: employee,
       ),
       AppointmentSlotEntity(
         start: DateTime.now().add(Duration(minutes: 30)),
         end: DateTime.now().add(Duration(minutes: 60)),
         branch: branch,
-        employee: employee, service: 'Full Grooming',
+        employee: employee,
       ),
       AppointmentSlotEntity(
         start: DateTime.now().add(Duration(minutes: 60)),
         end: DateTime.now().add(Duration(minutes: 90)),
         branch: branch,
-        employee: employee, service: 'Full Grooming',
+        employee: employee,
       ),
       AppointmentSlotEntity(
         start: DateTime.now().add(Duration(minutes: 90)),
         end: DateTime.now().add(Duration(minutes: 120)),
         branch: branch,
-        employee: employee, service: 'Full Grooming',
+        employee: employee,
       ),
     ];
     return Right(slots);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SchedulePageContext extends ChangeNotifier {
 
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
   bool _isFullScreen = false;
 
   SchedulePageContext();

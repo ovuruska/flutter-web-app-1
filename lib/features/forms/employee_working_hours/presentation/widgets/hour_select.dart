@@ -23,8 +23,14 @@ class HourSelect extends StatelessWidget {
         TimeOfDay? max,
         TimeOfDay? min})
       : super(key: key) {
-    this.min = min ?? TimeOfDay(hour: 7, minute: 30);
-    this.max = max ?? TimeOfDay(hour: 21, minute: 0);
+    this.min = min ?? TimeOfDay(hour: 0, minute: 0);
+    this.max = max ?? TimeOfDay(hour: 24, minute: 0);
+    if (this.min.isAfter(this.max)) {
+      var temp = this.min;
+      this.min = this.max;
+      this.max = temp;
+
+    }
   }
 
   List<TimeOfDay> _options() {

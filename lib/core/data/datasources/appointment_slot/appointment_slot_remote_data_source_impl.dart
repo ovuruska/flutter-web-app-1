@@ -24,7 +24,7 @@ class AppointmentSlotRemoteDataSourceImpl
       '/api/scheduling/appointment-slots',
       method: 'POST',
       body: {
-        'start': formatter.format(start),
+        'date': formatter.format(start),
         'groomers': groomers.map((e) => e.id).toList(),
         'branches': branches.map((e) => e.id).toList(),
         'service': service,

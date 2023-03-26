@@ -69,23 +69,21 @@ class AppMultiCalendar extends StatelessWidget {
         selectedDayPredicate: (day) => isSameDay(day, focusedDay),
         headerVisible: false,
         calendarFormat: CalendarFormat.month,
-
         daysOfWeekStyle: DaysOfWeekStyle(
-
           weekdayStyle: textStyle,
           weekendStyle: textStyle,
         ),
         calendarStyle: CalendarStyle(
-          selectedTextStyle: textStyle.merge(TextStyle(
-    color: Colors.white),
-    ),
+          selectedTextStyle: textStyle.merge(
+            TextStyle(color: Colors.white),
+          ),
           todayTextStyle: textStyle,
           todayDecoration: BoxDecoration(
             color: const Color(0XFF90D7FF).withOpacity(.23),
             shape: BoxShape.circle,
           ),
           outsideDaysVisible: false,
-          weekendTextStyle:textStyle,
+          weekendTextStyle: textStyle,
           defaultTextStyle: textStyle,
         ),
         rowHeight: 24,
@@ -113,16 +111,24 @@ class AppMultiCalendar extends StatelessWidget {
               color: Colors.white,
             ),
             padding: const EdgeInsets.symmetric(horizontal: 32),
-            child:  Column(children: [
+            child: SingleChildScrollView(
+                child: Column(children: [
               AppMultiCalendarHeader(
                   onTodayButtonTap: () => setDate(DateTime.now()),
                   focusedDay: focusedDay,
                   onLeftChevronTap: () => setDate(focusedDay.previousMonth()),
                   onRightChevronTap: () => setDate(focusedDay.nextMonth())),
               Container(height: 32),
-              Expanded(child: _calendar(focusedDay.previousMonth())),
-              Expanded(child: _calendar(focusedDay)),
-              Expanded(child: _calendar(focusedDay.nextMonth())),
-            ])));
+              _calendar(focusedDay.previousMonth().previousMonth()),
+              Container(height: 32),
+              _calendar(focusedDay.previousMonth()),
+              Container(height: 32),
+              _calendar(focusedDay),
+              Container(height: 32),
+              _calendar(focusedDay.nextMonth()),
+              Container(height: 32),
+              _calendar(focusedDay.nextMonth().nextMonth()),
+              Container(height: 32),
+            ]))));
   }
 }

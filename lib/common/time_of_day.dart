@@ -21,5 +21,12 @@ extension TimeOfDayExtension on TimeOfDay {
     return TimeOfDay(hour: hour, minute: minute);
   }
 
+  // Parse 18:00:00
+  static TimeOfDay fromString(String time) {
+    var parts = time.split(':');
+    var hour = int.parse(parts[0]);
+    var minute = int.parse(parts[1]);
+    return TimeOfDay(hour: hour, minute: minute);
+  }
 
 }
