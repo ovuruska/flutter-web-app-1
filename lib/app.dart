@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/modify_branch/register.dart';
 import 'package:widgetbook/widgetbook.dart'
     show Apple, Device, DeviceSize, DeviceType, Resolution;
 import 'package:widgetbook_annotation/widgetbook_annotation.dart'
@@ -25,8 +24,8 @@ ThemeData darkTheme() => ThemeData.dark();
     2,
     3,
   ],
-  foldersExpanded: true,
-  widgetsExpanded: true,
+  foldersExpanded: false,
+  widgetsExpanded: false,
 )
 class App extends StatelessWidget {
   @override

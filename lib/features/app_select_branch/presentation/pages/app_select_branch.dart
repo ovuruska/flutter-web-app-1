@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 
 import '../../../../injection.dart';
 import '../bloc/app_select_branch_bloc.dart';
@@ -17,16 +18,16 @@ class AppSelectBranchView extends StatefulWidget {
 class _AppSelectBranchViewState extends State<AppSelectBranchView> {
   void initState() {
     super.initState();
-    sl.get<AppSelectBranchBloc>().add(GetAllBranchesEvent());
+    sl.get<AppSelectBranchBloc>().add(AppSelectBranchEventGetAll());
 
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppSelectBranchBloc, CalendarAndBranchState>(
+    return BlocBuilder<AppSelectBranchBloc, AppSelectBranchState>(
         bloc: sl<AppSelectBranchBloc>(),
         builder: (context, state) {
-          if (state is Loaded) {
+          if (state is AppSelectBranchStateLoaded) {
             return AppSelectBranch(branches: state.branches,branch: state.branch);
           } else {
             return AppSelectBranch(branches: []);

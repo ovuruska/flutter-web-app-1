@@ -1,17 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'package:scrubbers_employee_application/features/client_appointments/presentation/pages/client_appointments.dart';
-import 'package:scrubbers_employee_application/features/client_information/presentation/pages/client_information.dart';
-import 'package:scrubbers_employee_application/features/client_search/presentation/widgets/client_search_loaded.dart';
 
+import '../../features/analytics/client_top_category/presentation/pages/client_top_category.dart';
+import '../../features/analytics/client_yearly_appointment/presentation/pages/client_yearly_appointments.dart';
 import '../../features/app_header/presentation/widgets/header.dart';
-import '../../features/client_cancellation_rate/presentation/pages/cancellation_rate.dart';
-import '../../features/client_no_show_rate/presentation/pages/no_show_rate.dart';
-import '../../features/client_pets/presentation/pages/client_pets.dart';
-import '../../features/client_search/presentation/pages/client_search.dart';
-import '../../features/client_top_category/presentation/pages/client_top_category.dart';
-import '../../features/client_yearly_appointment/presentation/pages/client_yearly_appointments.dart';
+import '../../features/information/client_information/presentation/pages/client_information.dart';
+import '../../features/information/client_pets/presentation/pages/client_pets.dart';
+import '../../features/sidebars/client_search/presentation/pages/client_search.dart';
+import '../../features/tables/client_appointments_table/presentation/pages/client_appointments.dart';
 import 'analytics_column.dart';
 
 class ClientsView extends StatefulWidget {
@@ -93,7 +89,7 @@ class _ClientsViewState extends State<ClientsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _layout(),
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: const Color(0XFFFFFFFF),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/features/modify_branch/presentation/pages/modify_branch.dart';
-import 'package:scrubbers_employee_application/features/search_branches/presentation/bloc/search_branches_bloc.dart';
-import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
-import '../../features/modify_branch/presentation/bloc/modify_branch_bloc.dart';
-import '../../features/modify_branch/presentation/bloc/modify_branch_event.dart';
-import '../../features/search_branches/presentation/bloc/search_branches_event.dart';
-import '../../features/search_branches/presentation/pages/search_branches.dart';
+import '../../features/forms/branch_modify/presentation/bloc/modify_branch_bloc.dart';
+import '../../features/forms/branch_modify/presentation/bloc/modify_branch_event.dart';
+import '../../features/forms/branch_modify/presentation/pages/modify_branch.dart';
+import '../../features/sidebars/branch_search/presentation/bloc/search_branches_bloc.dart';
+import '../../features/sidebars/branch_search/presentation/bloc/search_branches_event.dart';
+import '../../features/sidebars/branch_search/presentation/pages/search_branches.dart';
+import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../injection.dart';
 import '../../models/Branch.dart';
 

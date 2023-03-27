@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
-import '../../../../core/usecases/use_case.dart';
-import '../../../../widgets/cards/root/entity.dart';
+import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+import '../../../../core/use_case.dart';
 import '../repositories/appointment_repository.dart';
 
 class GetAppointmentsParams extends Equatable {
@@ -20,13 +20,13 @@ class GetAppointmentsParams extends Equatable {
 }
 
 class GetAppointmentsUseCase
-    extends UseCase<List<DashboardAppointmentEntity>, GetAppointmentsParams> {
+    extends UseCase<List<SchedulingAppointmentEntity>, GetAppointmentsParams> {
   final DashboardAppointmentRepository appointmentRepository;
 
   GetAppointmentsUseCase(this.appointmentRepository);
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>> call(
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>> call(
       GetAppointmentsParams params) async {
     return await appointmentRepository.getAppointmentsByBranch(
         params.branch, params.date);

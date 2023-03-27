@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/common/StringUtils.dart';
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 import 'package:scrubbers_employee_application/widgets/headless_table.dart';
 
-import '../../../../features/view_logs/presentation/pages/view_logs_dialog.dart';
+import '../../../../features/information/transactions_grid/presentation/pages/view_logs_dialog.dart';
 import 'cells.dart';
 
 class TicketInformationPetInformation extends StatelessWidget {

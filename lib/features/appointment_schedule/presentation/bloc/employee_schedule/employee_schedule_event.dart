@@ -1,8 +1,7 @@
-
-
 import 'package:equatable/equatable.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
+import '../../../domain/entities/creatable_scheduling_appointment_entity.dart';
 
 class EmployeeScheduleEvent extends Equatable {
   const EmployeeScheduleEvent();
@@ -27,7 +26,7 @@ class EmployeeScheduleGetAppointmentsEvent extends EmployeeScheduleEvent {
 }
 
 class EmployeeSchedulePatchEvent extends EmployeeScheduleEvent {
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   EmployeeSchedulePatchEvent({required this.appointment});
 
@@ -36,10 +35,29 @@ class EmployeeSchedulePatchEvent extends EmployeeScheduleEvent {
 }
 
 class EmployeeScheduleLocalPatchEvent extends EmployeeScheduleEvent {
-  final DashboardAppointmentEntity appointment;
+  final SchedulingAppointmentEntity appointment;
 
   EmployeeScheduleLocalPatchEvent({required this.appointment});
 
   @override
   List<Object> get props => [appointment];
+}
+
+class EmployeeScheduleEventCreate extends EmployeeScheduleEvent {
+  final CreatableSchedulingAppointmentEntity appointment;
+
+  EmployeeScheduleEventCreate({required this.appointment});
+
+  @override
+  List<Object> get props => [appointment];
+}
+
+class EmployeeScheduleEventGoTo extends EmployeeScheduleEvent {
+  final DateTime date;
+  final int id;
+
+  EmployeeScheduleEventGoTo({required this.id, required this.date});
+
+  @override
+  List<Object> get props => [date];
 }

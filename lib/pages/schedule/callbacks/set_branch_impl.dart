@@ -1,23 +1,20 @@
 
 
 
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
+
 import '../../../features/app_select_branch/domain/callbacks/set_branch_callback.dart';
-import '../../../features/app_select_branch/domain/entities/branch_id_and_name.dart';
 import '../../../features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_bloc.dart';
 import '../../../features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_event.dart';
-import '../../../features/appointment_schedule/presentation/bloc/schedule_header/schedule_header_bloc.dart';
-import '../../../features/appointment_schedule/presentation/bloc/schedule_header/schedule_header_event.dart';
 import '../../../injection.dart';
 
 class ScheduleSetBranchCallbackImpl extends AppSelectBranchSetBranchCallback{
   @override
-  void call(BranchIdAndName? branch) {
-    var date = sl<AppointmentScheduleHeaderBloc>().state.date;
+  void call(BranchEntity? branch) {
+    var date = sl<AppMultiCalendarBloc>().state.date;
     sl<AppointmentScheduleBloc>().add(
-      AppointmentScheduleGetAppointmentsEvent(date:date,branch:branch?.id),
-    );
-    sl<AppointmentScheduleHeaderBloc>().add(
-      ScheduleHeaderSetBranchEvent(branch:branch?.id),
+      AppointmentScheduleEventGetAppointments(date:date,branch:branch?.id),
     );
   }
 }

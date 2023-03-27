@@ -1,8 +1,6 @@
-
-
 import 'package:equatable/equatable.dart';
 
-import '../../../../../widgets/cards/root/entity.dart';
+import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../domain/entities/dashboard_employee_entity.dart';
 
 class AppointmentScheduleState extends Equatable {
@@ -16,7 +14,7 @@ class AppointmentScheduleStateInitial extends AppointmentScheduleState {}
 
 class AppointmentScheduleStateLoaded extends AppointmentScheduleState {
   final List<DashboardEmployeeEntity> employees;
-  final List<DashboardAppointmentEntity> appointments;
+  final List<SchedulingAppointmentEntity> appointments;
 
   AppointmentScheduleStateLoaded({
     this.employees = const [],

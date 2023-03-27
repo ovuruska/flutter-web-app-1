@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_util.dart';
-import 'package:scrubbers_employee_application/initWithData.dart';
 import 'package:scrubbers_employee_application/pages/login/repository.dart';
 
 import 'login_button.dart';
@@ -28,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
       final result =
           await LoginViewRepository.instance.login(username, password);
       if (result) {
-        await initFromServer();
         setState(() => loading = false);
         context.pushNamed('Dashboard');
       } else{

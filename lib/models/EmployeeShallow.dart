@@ -1,6 +1,5 @@
 import 'package:scrubbers_employee_application/common/WeeklySchedule.dart';
 
-import 'Branch.dart';
 
 class EmployeeShallow {
   final String id;

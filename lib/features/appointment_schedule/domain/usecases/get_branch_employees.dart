@@ -6,7 +6,7 @@ import 'package:scrubbers_employee_application/core/error/failures.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/repositories/branch_repository.dart';
 
-import '../../../../core/usecases/use_case.dart';
+import '../../../../core/use_case.dart';
 
 class GetBranchEmployeesParams extends Equatable {
   final DateTime date;

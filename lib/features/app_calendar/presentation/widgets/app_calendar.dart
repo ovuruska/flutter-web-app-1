@@ -43,6 +43,19 @@ class AppCalendar extends StatelessWidget {
     var startOfMonth = DateTime(focusedDay.year, focusedDay.month, 1);
     var lastDayOfMonth = DateTime(focusedDay.year, focusedDay.month + 1, 0);
     return Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF90D7FF).withOpacity(.23),
+              offset: Offset(0, 4),
+              blurRadius: 10,
+            ),
+          ],
+          color: Colors.white,
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Column(children: [
           AppCalendarHeader(

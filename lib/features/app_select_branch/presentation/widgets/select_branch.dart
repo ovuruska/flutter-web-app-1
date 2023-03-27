@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/branch_id_and_name.dart';
+import '../../../../core/domain/entities/branch_entity.dart';
+
 
 class SelectBranch extends StatelessWidget {
-  final Function(BranchIdAndName?)? onBranchSelected;
-  final List<BranchIdAndName> branches;
-  final BranchIdAndName? selectedBranch;
+  final Function(BranchEntity?)? onBranchSelected;
+  final List<BranchEntity> branches;
+  final BranchEntity? selectedBranch;
   const SelectBranch(
       {Key? key, required this.onBranchSelected, required this.branches, this.selectedBranch})
       : super(key: key);
@@ -15,7 +16,7 @@ class SelectBranch extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text('Branch', style: TextStyle(fontFamily: "Poppins", fontSize: 20)),
       Container(height: 8),
-      DropdownButtonFormField<BranchIdAndName>(
+      DropdownButtonFormField<BranchEntity>(
         decoration: InputDecoration(
           border: OutlineInputBorder(),
         ),
@@ -24,7 +25,7 @@ class SelectBranch extends StatelessWidget {
           if (onBranchSelected != null) onBranchSelected!(value);
         },
         items: branches
-            .map((e) => DropdownMenuItem<BranchIdAndName>(
+            .map((e) => DropdownMenuItem<BranchEntity>(
                   value: e,
                   child: Text(
                     e.name,

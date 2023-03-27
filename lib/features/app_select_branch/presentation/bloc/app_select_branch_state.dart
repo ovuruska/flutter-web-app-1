@@ -1,17 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/branch_id_and_name.dart';
+import '../../../../core/domain/entities/branch_entity.dart';
 
-class CalendarAndBranchState extends Equatable {
+class AppSelectBranchState extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
 
-class Loading extends CalendarAndBranchState {}
+class AppSelectBranchStateLoading extends AppSelectBranchState {}
 
-class Loaded  extends CalendarAndBranchState {
-  final List<BranchIdAndName> branches;
-  final BranchIdAndName? branch;
-  Loaded({required this.branches,this.branch  });
+class AppSelectBranchStateLoaded  extends AppSelectBranchState {
+  final List<BranchEntity> branches;
+  final BranchEntity? branch;
+  AppSelectBranchStateLoaded({required this.branches,this.branch  });
+
+  @override
+  List<Object?> get props => [branches,branch];
 }

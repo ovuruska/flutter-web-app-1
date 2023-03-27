@@ -7,7 +7,7 @@ import 'package:scrubbers_employee_application/core/error/failures.dart';
 
 import 'package:scrubbers_employee_application/services/auth.dart';
 
-import '../../../../widgets/cards/root/entity.dart';
+import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../domain/repositories/appointment_repository.dart';
 
 class DashboardAppointmentRepositoryImpl
@@ -18,8 +18,8 @@ class DashboardAppointmentRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, DashboardAppointmentEntity>> patch(
-      DashboardAppointmentEntity appointment) async {
+  Future<Either<Failure, SchedulingAppointmentEntity>> patch(
+      SchedulingAppointmentEntity appointment) async {
 
     var response = await SchedulingAuthService.instance.jsonRequest(
       "/api/schedule/appointment/${appointment.id}",
@@ -29,14 +29,14 @@ class DashboardAppointmentRepositoryImpl
     var respString = await response.stream.bytesToString();
     var respJson = jsonDecode(respString);
     if (response.statusCode == 200) {
-      return Right(DashboardAppointmentEntity.fromJson(respJson));
+      return Right(SchedulingAppointmentEntity.fromJson(respJson));
     } else {
       return Left(ServerFailure());
     }
   }
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>>
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>>
       getAppointmentsByBranch(int branchId, DateTime date) async {
     var formatter = DateFormat('yyyy-MM-dd');
     var formatted = formatter.format(date);
@@ -54,7 +54,7 @@ class DashboardAppointmentRepositoryImpl
     if (response.statusCode == 200) {
 
       return Right(respJson
-          .map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e))
+          .map<SchedulingAppointmentEntity>((e) => SchedulingAppointmentEntity.fromJson(e))
           .toList());
     } else {
       return Left(ServerFailure());
@@ -62,7 +62,7 @@ class DashboardAppointmentRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, List<DashboardAppointmentEntity>>> getAppointmentByEmployee(int employeeId, DateTime start, DateTime end) async {
+  Future<Either<Failure, List<SchedulingAppointmentEntity>>> getAppointmentByEmployee(int employeeId, DateTime start, DateTime end) async {
     var formatter = DateFormat('yyyy-MM-dd');
     var formattedStart = formatter.format(start);
     var formattedEnd = formatter.format(end);
@@ -77,7 +77,7 @@ class DashboardAppointmentRepositoryImpl
     var respJson = jsonDecode(respString);
     if (response.statusCode == 200) {
       return Right(respJson
-          .map<DashboardAppointmentEntity>((e) => DashboardAppointmentEntity.fromJson(e))
+          .map<SchedulingAppointmentEntity>((e) => SchedulingAppointmentEntity.fromJson(e))
           .toList());
     } else {
       return Left(ServerFailure());

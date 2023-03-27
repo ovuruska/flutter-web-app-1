@@ -1,7 +1,6 @@
-
-
 import 'package:equatable/equatable.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/domain/entities/branch_id_and_name.dart';
+
+import '../../../../core/domain/entities/branch_entity.dart';
 
 class AppSelectBranchEvent extends Equatable {
   @override
@@ -10,13 +9,20 @@ class AppSelectBranchEvent extends Equatable {
 
 }
 
-class AppSelectBranchSetBranchEvent extends AppSelectBranchEvent {
-  final BranchIdAndName? branch;
-  AppSelectBranchSetBranchEvent({required this.branch});
+class AppSelectBranchEventSetBranch extends AppSelectBranchEvent {
+  final BranchEntity? branch;
+  AppSelectBranchEventSetBranch({required this.branch});
 
   @override
   List<Object?> get props => [branch];
 }
 
-class GetAllBranchesEvent extends AppSelectBranchEvent {}
+class AppSelectBranchEventGetAll extends AppSelectBranchEvent {}
 
+class AppSelectBranchEventSetId extends AppSelectBranchEvent {
+  final int id;
+  AppSelectBranchEventSetId({required this.id});
+
+  @override
+  List<Object?> get props => [id];
+}

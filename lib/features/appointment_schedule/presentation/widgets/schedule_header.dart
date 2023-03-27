@@ -1,56 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_event.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/callbacks/appointment_header_set_date.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule_header_dropdown.dart';
 
 import '../../../../injection.dart';
-import '../../domain/callbacks/appointment_header_set_date.dart';
-import '../../domain/callbacks/schedule_header_week_changed.dart';
-import '../bloc/schedule_header/schedule_header_bloc.dart';
-import '../bloc/schedule_header/schedule_header_event.dart';
 
 class ScheduleHeader extends StatelessWidget {
   final DateTime date;
+  final BranchEntity? branch;
 
   final DateFormat _dateFormat = DateFormat('d MMMM yyyy');
 
-  ScheduleHeader({Key? key, required this.date}) : super(key: key);
+  ScheduleHeader({Key? key, required this.date, this.branch}) : super(key: key);
 
   void setDate(DateTime date) {
-    sl<AppointmentScheduleHeaderBloc>()
-        .add(ScheduleHeaderSetDateEvent(date: date));
     getItMaybe<AppointmentHeaderSetDateCallback>()?.call(date);
 
+    sl<AppMultiCalendarBloc>()
+        .add(AppMultiCalendarEventSetDate(date: date));
   }
 
-  void weekChanged(DateTime date) {
-    getItMaybe<ScheduleHeaderWeekChangedCallback>()?.call(date);
+
+  String getBranchName() {
+      if (branch == null) {
+        return '';
+      }
+      return branch!.name;
   }
 
   void _onPrevious() {
     var previousDay = date.subtract(Duration(days: 1));
-    if(previousDay.day == 1) {
-      weekChanged(previousDay);
-    }
     setDate(previousDay);
   }
 
   void _onNext() {
-
     var nextDay = date.add(Duration(days: 1));
-    if(nextDay.day == 1) {
-      weekChanged(nextDay);
-    }
-
     setDate(nextDay);
   }
 
   void _onToday() {
     setDate(DateTime.now());
-  }
-
-  void _onAdd() {
-    // Handle add icon button click
   }
 
   @override
@@ -68,34 +61,21 @@ class ScheduleHeader extends StatelessWidget {
             Container(width: 16),
             Container(
               width: 160,
-              child:ScheduleHeaderDropdown(),
+              child: ScheduleHeaderDropdown(),
             ),
             Container(width: 16),
-            DropdownButton<String>(
-              value: 'Filter',
-              items: <String>['Filter', 'Option 1', 'Option 2']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-
-              },
-            ),
           ],
         ),
         Row(
           children: [
             Tooltip(
-              message: 'Go to ${_dateFormat.format(DateTime.now().subtract(Duration(days:1)))}',
+              message:
+                  'Go to ${_dateFormat.format(DateTime.now().subtract(Duration(days: 1)))}',
               child: IconButton(
                 onPressed: _onPrevious,
                 icon: Icon(Icons.chevron_left),
               ),
             ),
-
             Container(
               width: 32,
             ),
@@ -107,7 +87,8 @@ class ScheduleHeader extends StatelessWidget {
               width: 32,
             ),
             Tooltip(
-              message: 'Go to ${_dateFormat.format(DateTime.now().add(Duration(days:1)))}',
+              message:
+                  'Go to ${_dateFormat.format(DateTime.now().add(Duration(days: 1)))}',
               child: IconButton(
                 onPressed: _onNext,
                 icon: Icon(Icons.chevron_right),
@@ -115,13 +96,9 @@ class ScheduleHeader extends StatelessWidget {
             ),
           ],
         ),
-        Tooltip(
-          message: 'Add Appointment',
-          child: IconButton(
-            onPressed: _onAdd,
-            icon: Icon(Icons.add),
-          ),
-        ),
+        Container(
+            width:240,
+            child: Text(getBranchName(),textAlign: TextAlign.right,)),
       ],
     );
   }
