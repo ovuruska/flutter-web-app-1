@@ -19,6 +19,7 @@ registerAppointmentSchedule(GetIt sl) {
       createAppointment: sl(),
       getAppointments: sl(),
       getEmployees: sl(),
+      getBranchDailyInformation: sl(),
       patchAppointment: sl()));
   sl.registerLazySingleton(() => ScheduleHeaderDropdownBloc());
   sl.registerLazySingleton(() => EmployeeScheduleBloc(

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_branch_daily_information.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/usecases/get_appointments.dart';
 
@@ -25,18 +26,20 @@ class AppointmentScheduleBloc
   final GetAppointmentsUseCase getAppointments;
   final GetBranchEmployeesUseCase getEmployees;
   final OnDragCreateAppointmentUseCase createAppointment;
+  final GetBranchDailyInformationUseCase getBranchDailyInformation;
 
   AppointmentScheduleBloc(
       {required this.getAppointments,
       required this.createAppointment,
       required this.getEmployees,
+      required this.getBranchDailyInformation,
       required this.patchAppointment})
       : super(AppointmentScheduleStateInitial()) {
     on<AppointmentScheduleEventInitialize>((event, emit) {
       emit(AppointmentScheduleStateInitial());
     });
 
-    on<AppointmentScheduleEventGoTo>((event,emit) async {
+    on<AppointmentScheduleEventGoTo>((event, emit) async {
       var id = event.id;
       var date = event.date;
       add(
@@ -70,7 +73,10 @@ class AppointmentScheduleBloc
           employees: (state as AppointmentScheduleStateLoaded).employees,
           appointments: currentAppointments));
     });
-    on<AppointmentScheduleEventGetEmployees>((event, emit) async {});
+    on<AppointmentScheduleEventGetEmployees>((event, emit) async {
+      add(AppointmentScheduleEventGetAppointments(
+          date: event.date, branch: event.branch));
+    });
     on<AppointmentScheduleEventGetAppointments>((event, emit) async {
       List<DashboardEmployeeEntity> employees = [];
       if (state == AppointmentScheduleStateLoaded) {
@@ -82,14 +88,24 @@ class AppointmentScheduleBloc
       if (branch == null) {
         emit(AppointmentScheduleStateInitial());
       } else {
-        var params = GetAppointmentsParams(date: date, branch: branch);
-        var result = await getAppointments(params);
-
-        result.fold((l) {}, (r) {
-          employees = mergeEmployees(employees, getAppointmentEmployees(r));
+        var params = GetBranchDailyInformationParams(date: date, id: branch);
+        var result = await getBranchDailyInformation(params);
+        if (result != null) {
+          var schedulingAppointments = result.appointments
+              .map((appt) => convertFromAppointmentEntity(appt))
+              .toList();
+          var dashboardEmployees = result.employees.map((e) {
+            var employee = DashboardEmployeeEntity(
+                id: e.id,
+                name: e.name,
+                role: e.role,
+            );
+            return employee;
+          }).toList();
           emit(AppointmentScheduleStateLoaded(
-              employees: employees, appointments: filterAppointments(r)));
-        });
+              employees: dashboardEmployees,
+              appointments: filterAppointments(schedulingAppointments)));
+        }
       }
     });
 
@@ -114,15 +130,17 @@ class AppointmentScheduleBloc
           appointments: currentAppointments));
     });
 
-    on<AppointmentScheduleEventCreate>((event,emit) async {
+    on<AppointmentScheduleEventCreate>((event, emit) async {
       var appointment = event.appointment;
-      var params = OnDragCreateAppointmentParams(appointment:appointment);
+      var params = OnDragCreateAppointmentParams(appointment: appointment);
       var result = await createAppointment(params);
       var appointmentEntity = result.fold((l) => null, (r) => r);
-      if(appointmentEntity != null) {
-        var createdAppointment = convertFromAppointmentEntity(appointmentEntity);
+      if (appointmentEntity != null) {
+        var createdAppointment =
+            convertFromAppointmentEntity(appointmentEntity);
         var currentAppointments =
-        (state as AppointmentScheduleStateLoaded).appointments + [createdAppointment];
+            (state as AppointmentScheduleStateLoaded).appointments +
+                [createdAppointment];
         emit(AppointmentScheduleStateLoaded(
             employees: (state as AppointmentScheduleStateLoaded).employees,
             appointments: currentAppointments));

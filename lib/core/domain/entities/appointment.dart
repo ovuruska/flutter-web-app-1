@@ -32,8 +32,6 @@ class AppointmentEntity {
   EmployeeEntity? checkoutBy;
   DateTime? checkoutTime;
   bool submitted;
-  final DateTime createdAt;
-  final DateTime updatedAt;
   final DateTime? lastDogAppointment;
   final DateTime? lastCustomerAppointment;
 
@@ -60,8 +58,6 @@ class AppointmentEntity {
     this.checkoutTime,
     this.checkoutStatus = false,
     this.submitted = false,
-    required this.createdAt,
-    required this.updatedAt,
     required this.lastCustomerAppointment,
     required this.lastDogAppointment,
   });
@@ -70,23 +66,30 @@ class AppointmentEntity {
 
   factory AppointmentEntity.fromJson(Map<String, dynamic> json) {
 
+    var tip = json['tip'];
+    if(tip is String){
+      tip = double.parse(tip);
+    }else if(tip is int){
+      tip = tip.toDouble();
+    }else if(tip == null){
+      tip = 0;
+    }
+
     return AppointmentEntity(
       id: json['id'],
       customer: ClientEntity.fromJson(json['customer']),
       pet: PetEntity.fromJson(json['dog']),
       start: DateTime.parse(json['start']).toLocal(),
       end: DateTime.parse(json['end']).toLocal(),
-      customerNotes: json['customer_notes'],
-      employeeNotes: json['employee_notes'],
+      customerNotes: json['customer_notes'] ?? "",
+      employeeNotes: json['employee_notes'] ?? "",
       status: json['status'],
       branch: BranchEntity.fromJson(json['branch']),
       employee: EmployeeEntity.fromJson(json['employee']),
-      createdAt: DateTime.parse(json['created_at']).toLocal(),
-      updatedAt: DateTime.parse(json['updated_at']).toLocal(),
       products:
           (json['products'] as List).map((e) => ProductEntity.fromJson(e)).toList(),
       service: json['appointment_type'],
-      tip: double.parse(json['tip']),
+      tip: tip,
       reminderSent: json['reminder_sent'] != null
           ? DateTime.parse(json['reminder_sent'])
           : null,
@@ -165,8 +168,6 @@ class AppointmentEntity {
     DateTime? checkoutTime,
   }) =>
       AppointmentEntity(
-        createdAt: this.createdAt,
-        updatedAt: this.updatedAt,
         id: this.id,
         customer: customer ?? this.customer,
         pet: pet ?? this.pet,

@@ -25,9 +25,9 @@ class ClientEntity extends Equatable {
     return ClientEntity(
       id: json['id'],
       name: json['name'],
-      email: json['email'],
-      phone: json['phone'],
-      address: json['address'],
+      email: json['email'] ?? "",
+      phone: json['phone'] ?? "",
+      address: json['address'] ?? "",
     );
   }
 

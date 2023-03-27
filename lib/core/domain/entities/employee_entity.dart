@@ -18,13 +18,25 @@ class EmployeeEntity {
   });
 
   factory EmployeeEntity.fromJson(Map<String, dynamic> json) {
-    return EmployeeEntity(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      phone: json['phone'],
-      role: getRole(json['role']),
-    );
+    if(json['role'] is String){
+      return EmployeeEntity(
+        id: json['id'],
+        name: json['name'],
+        email: json['email'] ?? "",
+        phone: json['phone'] ?? "",
+        role: json['role'],
+      );
+    }else{
+      return EmployeeEntity(
+        id: json['id'],
+        name: json['name'],
+        email: json['email'] ?? "",
+        phone: json['phone'] ?? "",
+        role: getRole(json['role']),
+      );
+    }
+
+
   }
 
   @override

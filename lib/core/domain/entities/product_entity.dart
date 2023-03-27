@@ -23,12 +23,16 @@ class ProductEntity extends Equatable {
   List<Object?> get props => [id, name, cost, description, category];
 
   factory ProductEntity.fromJson(Map<String, dynamic> json) {
+    var cost = json['cost'];
+    if(cost is String){
+      cost = double.parse(cost);
+    }
     return ProductEntity(
       id: json['id'],
       name: json['name'],
-      cost: double.parse(json['cost']),
-      description: json['description'],
-      category: json['category'],
+      cost: cost,
+      description: json['description'] ?? "",
+      category: json['category'] ?? "",
     );
   }
 

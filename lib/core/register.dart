@@ -14,6 +14,7 @@ import 'package:scrubbers_employee_application/core/domain/usecases/create_appoi
 import 'package:scrubbers_employee_application/core/domain/usecases/get_all_products.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_available_slots.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_average_service_time.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_branch_daily_information.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_client_pets.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_all_groomers.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_employee.dart';
@@ -63,6 +64,7 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => CreateAppointmentUseCase(sl()));
   sl.registerLazySingleton(() => GetEmployeeUseCase(sl()));
   sl.registerLazySingleton(() => PatchEmployeeUseCase(sl()));
+  sl.registerLazySingleton(() => GetBranchDailyInformationUseCase(sl()));
 
   // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(
@@ -106,5 +108,6 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton<AppointmentRemoteDataSource>(
       () => AppointmentRemoteDataSourceImpl());
 
-  sl.registerLazySingleton<EmployeeWorkingHoursRemoteDataSource>(() => EmployeeWorkingHoursRemoteDataSourceImpl());
+  sl.registerLazySingleton<EmployeeWorkingHoursRemoteDataSource>(
+      () => EmployeeWorkingHoursRemoteDataSourceImpl());
 }

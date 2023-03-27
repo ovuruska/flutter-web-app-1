@@ -22,7 +22,6 @@ class AppointmentHeaderSetDateCallbackImpl extends AppointmentHeaderSetDateCallb
     sl<AppMultiCalendarBloc>().add(
       AppMultiCalendarEventSetDate(date: date),
     );
-
     var branch = sl<AppSelectBranchBloc>().getBranch();
 
     if(branch != null){

@@ -23,8 +23,6 @@ extension AppointmentSection on AppointmentEntity {
       checkoutStatus: checkoutStatus,
       checkoutBy: checkoutBy,
       checkoutTime: checkoutTime,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
       lastCustomerAppointment: lastCustomerAppointment,
       lastDogAppointment: lastDogAppointment,
       submitted: submitted);

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_daily_information.dart';
 
 import '../../domain/entities/branch_entity.dart';
 import '../../domain/repositories/branch_repository.dart';
@@ -14,4 +15,9 @@ class BranchRepositoryImpl extends BranchRepository {
   Future<Either<Failure, List<BranchEntity>>> getBranches() async {
     return await remoteDataSource.getBranches();
   }
+
+  Future<Either<Failure, BranchDailyInformationEntity>> getDailyInformation(int branchId, DateTime date) async {
+    return await remoteDataSource.getDailyInformation(branchId, date);
+  }
+
 }
