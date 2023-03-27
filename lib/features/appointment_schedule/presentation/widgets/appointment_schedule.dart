@@ -54,12 +54,12 @@ class _AppointmentScheduleState extends State<AppointmentSchedule> {
                     .map((employee) => SchedulingDailyCalendarColumn(
                         onLocalUpdate: (appointment) {
                           sl<AppointmentScheduleBloc>().add(
-                              AppointmentSchedulePatchLocalEvent(
+                              AppointmentScheduleEventPatchLocal(
                                   appointment: appointment));
                         },
                         onRemoteUpdate: (appointment) {
                           sl<AppointmentScheduleBloc>().add(
-                              AppointmentSchedulePatchEvent(
+                              AppointmentScheduleEventPatch(
                                   appointment: appointment));
                         },
                         onAccept: onAcceptWithBranch(context),

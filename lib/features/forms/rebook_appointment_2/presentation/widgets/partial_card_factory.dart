@@ -15,8 +15,7 @@ import 'rebook_context_provider.dart';
 class PartialCardFactory extends StatelessWidget {
   AppointmentEntityLocal createAppointmentEntity(
       RebookContext rebookContext, int employee) {
-    var branch =
-        (sl<AppSelectBranchBloc>().state as AppSelectBranchStateLoaded).branch!;
+    var branch = sl<AppSelectBranchBloc>().getBranch()!;
     var start = DateTime.now();
     var end = start.add(Duration(minutes: 60));
     var customerId = rebookContext.client!.id;
@@ -40,8 +39,7 @@ class PartialCardFactory extends StatelessWidget {
   }
 
   Widget _valid(RebookContext rebookContext) {
-    var branch =
-        (sl<AppSelectBranchBloc>().state as AppSelectBranchStateLoaded).branch!;
+    var branch = sl<AppSelectBranchBloc>().getBranch()!;
     var customerId = rebookContext.client!.id;
     var customerName = rebookContext.client!.name;
     var dogId = rebookContext.pet!.id;
@@ -126,8 +124,7 @@ class PartialCardFactory extends StatelessWidget {
               width: 360,
               child: Center(
                   child: MouseRegion(
-                      child: GestureDetector(
-                          child: _invalid(rebookContext)))));
+                      child: GestureDetector(child: _invalid(rebookContext)))));
         }
       },
     );

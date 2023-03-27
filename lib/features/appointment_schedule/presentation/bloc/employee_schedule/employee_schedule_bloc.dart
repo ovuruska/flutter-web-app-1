@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/convert.dart';
@@ -18,6 +19,19 @@ class EmployeeScheduleBloc
   EmployeeScheduleBloc(
       {required this.getAppointments, required this.patchAppointment, required this.createAppointment})
       : super(EmployeeScheduleInitial()) {
+    on<EmployeeScheduleEventGoTo>((event,emit) async {
+
+      var id = event.id;
+      var start = event.date.startOfWeek();
+      var end = event.date.endOfWeek();
+      add(
+        EmployeeScheduleGetAppointmentsEvent(
+          id: id,
+          start: start,
+          end: end,
+        ),
+      );
+    });
     on<EmployeeScheduleGetAppointmentsEvent>((event, emit) async {
       emit(EmployeeScheduleLoading());
       var params = GetEmployeeAppointmentsParams(

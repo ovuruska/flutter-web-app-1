@@ -17,13 +17,12 @@ class AppSelectBranch extends StatelessWidget {
   const AppSelectBranch({Key? key, this.branch, required this.branches}) : super(key: key);
 
   onBranchSelected(BranchEntity? branch) {
-    sl<AppSelectBranchBloc>().add(AppSelectBranchSetBranchEvent(branch: branch));
+    sl<AppSelectBranchBloc>().add(AppSelectBranchEventSetBranch(branch: branch));
     getItMaybe<AppSelectBranchSetBranchCallback>()?.call(branch);
   }
 
   @override
   Widget build(BuildContext context) {
-
     return SelectBranch(
       branches: branches,
       selectedBranch: branch,

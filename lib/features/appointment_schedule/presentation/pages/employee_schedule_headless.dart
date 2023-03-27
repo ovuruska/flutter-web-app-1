@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/common/DateUtils.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_state.dart';
+import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_bloc.dart';
+import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_state.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/dashboard_employee_entity.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header/schedule_header_bloc.dart';
 
-import '../../../../common/scheduling/default_context.dart';
-import '../../../../common/scheduling/scheduling_context_provider.dart';
 import '../../../../injection.dart';
 import '../bloc/employee_schedule/employee_schedule_bloc.dart';
 import '../bloc/employee_schedule/employee_schedule_event.dart';
 import '../bloc/employee_schedule/employee_schedule_state.dart';
-import '../bloc/schedule_header/schedule_header_state.dart';
 import '../widgets/employee_weekly_schedule.dart';
 
 class EmployeeScheduleHeadlessView extends StatefulWidget {
@@ -29,7 +29,7 @@ class EmployeeScheduleHeadlessView extends StatefulWidget {
 class _EmployeeScheduleHeadlessViewState extends State<EmployeeScheduleHeadlessView> {
   void initState() {
     super.initState();
-    var date = sl<AppointmentScheduleHeaderBloc>().state.date;
+    var date = sl<AppMultiCalendarBloc>().state.date;
     var start = date.startOfWeek();
     var end = date.endOfWeek();
     sl<EmployeeScheduleBloc>().add(EmployeeScheduleGetAppointmentsEvent(
@@ -39,9 +39,13 @@ class _EmployeeScheduleHeadlessViewState extends State<EmployeeScheduleHeadlessV
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppointmentScheduleHeaderBloc,AppointmentScheduleHeaderState>(
-        bloc: sl<AppointmentScheduleHeaderBloc>(),
-        buildWhen: (previous, current) => !previous.date.isSameWeek(current.date),
+    return BlocBuilder<AppMultiCalendarBloc, AppMultiCalendarState>(
+        buildWhen: (previous, current) =>
+    !previous.date.isSameWeek(current.date),
+    bloc: sl<AppMultiCalendarBloc>(),
+    builder: (context, calendarState) =>
+    BlocBuilder<AppSelectBranchBloc, AppSelectBranchState>(
+    bloc: sl<AppSelectBranchBloc>(),
         builder: (context,headerState) => BlocBuilder<EmployeeScheduleBloc, EmployeeScheduleState>(
           bloc: sl<EmployeeScheduleBloc>(),
           builder: (context, state) {
@@ -52,7 +56,7 @@ class _EmployeeScheduleHeadlessViewState extends State<EmployeeScheduleHeadlessV
             } else if (state is EmployeeScheduleLoaded) {
 
               return EmployeeWeeklySchedule(
-                    date: headerState.date,
+                    date: calendarState.date,
                     appointments: state.appointments,
                     employee: widget.employee,
                   );
@@ -60,6 +64,6 @@ class _EmployeeScheduleHeadlessViewState extends State<EmployeeScheduleHeadlessV
               return Container();
             }
           },
-        ));
+        )));
   }
 }

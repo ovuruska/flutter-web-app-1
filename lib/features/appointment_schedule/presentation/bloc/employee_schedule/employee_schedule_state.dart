@@ -3,7 +3,6 @@ import 'package:scrubbers_employee_application/common/scheduling/models/scheduli
 
 class EmployeeScheduleState extends Equatable {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 

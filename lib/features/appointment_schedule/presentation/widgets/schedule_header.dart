@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule_header_dropdown.dart';
 
 import '../../../../injection.dart';
-import '../../domain/callbacks/appointment_header_set_date.dart';
-import '../../domain/callbacks/schedule_header_week_changed.dart';
-import '../bloc/schedule_header/schedule_header_bloc.dart';
-import '../bloc/schedule_header/schedule_header_event.dart';
 
 class ScheduleHeader extends StatelessWidget {
   final DateTime date;
@@ -19,14 +16,10 @@ class ScheduleHeader extends StatelessWidget {
   ScheduleHeader({Key? key, required this.date, this.branch}) : super(key: key);
 
   void setDate(DateTime date) {
-    sl<AppointmentScheduleHeaderBloc>()
-        .add(AppointmentScheduleHeaderEventSetDate(date: date));
-    getItMaybe<AppointmentHeaderSetDateCallback>()?.call(date);
+    sl<AppMultiCalendarBloc>()
+        .add(AppMultiCalendarEventSetDate(date: date));
   }
 
-  void weekChanged(DateTime date) {
-    getItMaybe<ScheduleHeaderWeekChangedCallback>()?.call(date);
-  }
 
   String getBranchName() {
       if (branch == null) {
@@ -37,17 +30,11 @@ class ScheduleHeader extends StatelessWidget {
 
   void _onPrevious() {
     var previousDay = date.subtract(Duration(days: 1));
-    if (previousDay.day == 1) {
-      weekChanged(previousDay);
-    }
     setDate(previousDay);
   }
 
   void _onNext() {
     var nextDay = date.add(Duration(days: 1));
-    if (nextDay.day == 1) {
-      weekChanged(nextDay);
-    }
 
     setDate(nextDay);
   }

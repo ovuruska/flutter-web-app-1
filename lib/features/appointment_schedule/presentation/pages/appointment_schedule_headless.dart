@@ -28,9 +28,9 @@ class AppointmentScheduleHeadlessViewState extends State<AppointmentScheduleHead
     super.initState();
     if (widget.branch != null) {
       var branch = widget.branch!;
-      sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetAppointmentsEvent(
+      sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventGetAppointments(
           branch: branch, date: widget.date));
-      sl<AppointmentScheduleBloc>().add(AppointmentScheduleGetEmployeesEvent(
+      sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventGetEmployees(
           date: widget.date, branch: branch));
     }
   }

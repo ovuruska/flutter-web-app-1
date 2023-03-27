@@ -51,3 +51,13 @@ class EmployeeScheduleEventCreate extends EmployeeScheduleEvent {
   @override
   List<Object> get props => [appointment];
 }
+
+class EmployeeScheduleEventGoTo extends EmployeeScheduleEvent {
+  final DateTime date;
+  final int id;
+
+  EmployeeScheduleEventGoTo({required this.id, required this.date});
+
+  @override
+  List<Object> get props => [date];
+}

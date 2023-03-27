@@ -27,7 +27,7 @@ onAcceptWithBranch(BuildContext context)=>(DateTime date,int startHour,int emplo
     var data = calculateAppointmentDetails(schedulingContext,details,date,startHour,employee);
 
     sl<AppointmentScheduleBloc>().add(
-      AppointmentSchedulePatchEvent(appointment: data),
+      AppointmentScheduleEventPatch(appointment: data),
     );
   }
 

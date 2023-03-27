@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/go_to.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
@@ -16,7 +17,10 @@ class AppointmentItemCancelled extends StatelessWidget {
     String formattedDate =
     DateFormat('yyyy/MM/dd h:mm a').format(appointment.start);
     return ListTile(
-      mouseCursor: SystemMouseCursors.grab,
+      onTap: (){
+        goTo(appointment);
+      },
+      mouseCursor: SystemMouseCursors.click,
       title: Row(
         children: [
           Text(

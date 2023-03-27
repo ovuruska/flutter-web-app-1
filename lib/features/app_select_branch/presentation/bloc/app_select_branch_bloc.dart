@@ -13,6 +13,18 @@ class AppSelectBranchBloc
   final GetAllBranchesUseCase getAllBranches;
 
   AppSelectBranchBloc(this.getAllBranches) : super(AppSelectBranchStateLoading()) {
+
+    on<AppSelectBranchEventSetId>((event,emit){
+      var id = event.id;
+      if (state is AppSelectBranchStateLoaded) {
+        var stateAsLoaded = state as AppSelectBranchStateLoaded;
+        BranchEntity branch = stateAsLoaded.branches
+            .firstWhere((element) => element.id == id, orElse: () => stateAsLoaded.branches.first);
+        emit(AppSelectBranchStateLoaded(branches: stateAsLoaded.branches, branch: branch));
+
+      }
+    });
+
     on<AppSelectBranchEventGetAll>((event, emit) async {
       var params = NoParams();
       var result = await getAllBranches(params);
@@ -28,7 +40,7 @@ class AppSelectBranchBloc
       });
     });
 
-    on<AppSelectBranchSetBranchEvent>((event, emit) async {
+    on<AppSelectBranchEventSetBranch>((event, emit) async {
       if (state is AppSelectBranchStateLoaded) {
         var stateAsLoaded = state as AppSelectBranchStateLoaded;
         var branch = stateAsLoaded.branches
@@ -38,5 +50,12 @@ class AppSelectBranchBloc
         emit(AppSelectBranchStateLoaded(branches: []));
       }
     });
+  }
+  BranchEntity? getBranch(){
+    if (state is AppSelectBranchStateLoaded) {
+      var stateAsLoaded = state as AppSelectBranchStateLoaded;
+      return stateAsLoaded.branch;
+    }
+    return null;
   }
 }

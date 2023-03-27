@@ -9,9 +9,9 @@ class AppSelectBranchEvent extends Equatable {
 
 }
 
-class AppSelectBranchSetBranchEvent extends AppSelectBranchEvent {
+class AppSelectBranchEventSetBranch extends AppSelectBranchEvent {
   final BranchEntity? branch;
-  AppSelectBranchSetBranchEvent({required this.branch});
+  AppSelectBranchEventSetBranch({required this.branch});
 
   @override
   List<Object?> get props => [branch];
@@ -19,3 +19,10 @@ class AppSelectBranchSetBranchEvent extends AppSelectBranchEvent {
 
 class AppSelectBranchEventGetAll extends AppSelectBranchEvent {}
 
+class AppSelectBranchEventSetId extends AppSelectBranchEvent {
+  final int id;
+  AppSelectBranchEventSetId({required this.id});
+
+  @override
+  List<Object?> get props => [id];
+}

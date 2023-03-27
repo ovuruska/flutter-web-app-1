@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/go_to.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../../flutter_flow/flutter_flow_theme.dart';
@@ -15,7 +16,10 @@ class AppointmentItemPending extends StatelessWidget {
     String formattedDate =
     DateFormat('yyyy/MM/dd h:mm a').format(appointment.start);
     return ListTile(
-      mouseCursor: SystemMouseCursors.grab,
+      mouseCursor: SystemMouseCursors.click,
+      onTap: (){
+        goTo(appointment);
+      },
       title: Row(
         children: [
           Text(

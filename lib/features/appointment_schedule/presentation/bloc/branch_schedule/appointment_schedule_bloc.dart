@@ -32,11 +32,22 @@ class AppointmentScheduleBloc
       required this.getEmployees,
       required this.patchAppointment})
       : super(AppointmentScheduleStateInitial()) {
-    on<AppointmentScheduleInitializeEvent>((event, emit) {
+    on<AppointmentScheduleEventInitialize>((event, emit) {
       emit(AppointmentScheduleStateInitial());
     });
 
-    on<AppointmentSchedulePatchEvent>((event, emit) async {
+    on<AppointmentScheduleEventGoTo>((event,emit) async {
+      var id = event.id;
+      var date = event.date;
+      add(
+        AppointmentScheduleEventGetAppointments(
+          date: date,
+          branch: id,
+        ),
+      );
+    });
+
+    on<AppointmentScheduleEventPatch>((event, emit) async {
       var appointment = event.appointment;
       var params = PatchAppointmentParams(appointment);
       patchAppointment(params);
@@ -59,8 +70,8 @@ class AppointmentScheduleBloc
           employees: (state as AppointmentScheduleStateLoaded).employees,
           appointments: currentAppointments));
     });
-    on<AppointmentScheduleGetEmployeesEvent>((event, emit) async {});
-    on<AppointmentScheduleGetAppointmentsEvent>((event, emit) async {
+    on<AppointmentScheduleEventGetEmployees>((event, emit) async {});
+    on<AppointmentScheduleEventGetAppointments>((event, emit) async {
       List<DashboardEmployeeEntity> employees = [];
       if (state == AppointmentScheduleStateLoaded) {
         employees = (state as AppointmentScheduleStateLoaded).employees;
@@ -82,7 +93,7 @@ class AppointmentScheduleBloc
       }
     });
 
-    on<AppointmentSchedulePatchLocalEvent>((event, emit) async {
+    on<AppointmentScheduleEventPatchLocal>((event, emit) async {
       var appointment = event.appointment;
       var currentAppointments =
           (state as AppointmentScheduleStateLoaded).appointments;

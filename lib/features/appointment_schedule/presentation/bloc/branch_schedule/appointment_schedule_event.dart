@@ -10,25 +10,25 @@ class AppointmentScheduleEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AppointmentScheduleSetBranchEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventSetBranch extends AppointmentScheduleEvent {
   final int branch;
 
-  AppointmentScheduleSetBranchEvent({required this.branch});
+  AppointmentScheduleEventSetBranch({required this.branch});
 
   @override
   List<Object> get props => [branch];
 }
 
-class AppointmentScheduleInitializeEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventInitialize extends AppointmentScheduleEvent {
   @override
   List<Object> get props => [];
 }
 
-class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventGetEmployees extends AppointmentScheduleEvent {
   final DateTime date;
   final int branch;
 
-  AppointmentScheduleGetEmployeesEvent({
+  AppointmentScheduleEventGetEmployees({
     required this.date,
     required this.branch,
   });
@@ -37,29 +37,29 @@ class AppointmentScheduleGetEmployeesEvent extends AppointmentScheduleEvent {
   List<Object> get props => [date, branch];
 }
 
-class AppointmentSchedulePatchLocalEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventPatchLocal extends AppointmentScheduleEvent {
   final SchedulingAppointmentEntity appointment;
 
-  AppointmentSchedulePatchLocalEvent({required this.appointment});
+  AppointmentScheduleEventPatchLocal({required this.appointment});
 
   @override
   List<Object> get props => [appointment];
 }
 
-class AppointmentSchedulePatchEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventPatch extends AppointmentScheduleEvent {
   final SchedulingAppointmentEntity appointment;
 
-  AppointmentSchedulePatchEvent({required this.appointment});
+  AppointmentScheduleEventPatch({required this.appointment});
 
   @override
   List<Object> get props => [appointment];
 }
 
-class AppointmentScheduleGetAppointmentsEvent extends AppointmentScheduleEvent {
+class AppointmentScheduleEventGetAppointments extends AppointmentScheduleEvent {
   final DateTime date;
   final int? branch;
 
-  AppointmentScheduleGetAppointmentsEvent({
+  AppointmentScheduleEventGetAppointments({
     required this.date,
     this.branch,
   });
@@ -75,4 +75,14 @@ class AppointmentScheduleEventCreate extends AppointmentScheduleEvent {
 
   @override
   List<Object> get props => [appointment];
+}
+
+class AppointmentScheduleEventGoTo extends AppointmentScheduleEvent {
+  final DateTime date;
+  final int id;
+
+  AppointmentScheduleEventGoTo({
+    required this.id,
+    required this.date,
+  });
 }

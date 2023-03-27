@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_bloc.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header/schedule_header_bloc.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header_dropdown/schedule_header_dropdown_bloc.dart';
 
 import 'data/repositories/appointment_repository_impl.dart';
@@ -21,7 +20,6 @@ registerAppointmentSchedule(GetIt sl) {
       getAppointments: sl(),
       getEmployees: sl(),
       patchAppointment: sl()));
-  sl.registerLazySingleton(() => AppointmentScheduleHeaderBloc());
   sl.registerLazySingleton(() => ScheduleHeaderDropdownBloc());
   sl.registerLazySingleton(() => EmployeeScheduleBloc(
       createAppointment: sl(), getAppointments: sl(), patchAppointment: sl()));

@@ -37,9 +37,7 @@ class AppointmentSlotRemoteDataSourceImpl
       List<AppointmentSlotEntity> slots = respJson
           .map<AppointmentSlotEntity>((e) => AppointmentSlotEntity.fromJson(e))
           .toList();
-      return Right(respJson
-          .map<AppointmentSlotEntity>((e) => AppointmentSlotEntity.fromJson(e))
-          .toList());
+      return Right(slots);
     } else {
       return Left(ServerFailure());
     }
