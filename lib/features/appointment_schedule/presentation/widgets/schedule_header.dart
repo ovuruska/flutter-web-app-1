@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
 import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_event.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/domain/callbacks/appointment_header_set_date.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/widgets/schedule_header_dropdown.dart';
 
 import '../../../../injection.dart';
@@ -16,6 +18,8 @@ class ScheduleHeader extends StatelessWidget {
   ScheduleHeader({Key? key, required this.date, this.branch}) : super(key: key);
 
   void setDate(DateTime date) {
+    getItMaybe<AppointmentHeaderSetDateCallback>()?.call(date);
+
     sl<AppMultiCalendarBloc>()
         .add(AppMultiCalendarEventSetDate(date: date));
   }
@@ -35,7 +39,6 @@ class ScheduleHeader extends StatelessWidget {
 
   void _onNext() {
     var nextDay = date.add(Duration(days: 1));
-
     setDate(nextDay);
   }
 
