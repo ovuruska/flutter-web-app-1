@@ -49,40 +49,39 @@ class _TicketInformationState extends State<TicketInformation>
   @override
   Widget build(BuildContext context) {
     return AppointmentContextProvider(
-        child: Scaffold(
-            body: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: DefaultTabController(
-                    length: 2,
-                    initialIndex: 0,
-                    child: Column(mainAxisSize: MainAxisSize.max, children: [
-                      TicketInformationHeader(),
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height - 48,
-                          child: Flex(direction: Axis.horizontal, children: [
-                            Expanded(
-                                child: TicketInformationLeftSideView(
-                              tabController: _tabController,
-                            )),
-                            Container(
-                                width: 360,
-                                height: MediaQuery.of(context).size.height - 48,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: TicketInformationRightSideView()),
-                          ]))
-                    ])))),
-        appointmentContext: AppointmentContext(
-          appointment: widget.appointment,
-        ));
+      child: Scaffold(
+          body: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).primaryBackground,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: DefaultTabController(
+                  length: 2,
+                  initialIndex: 0,
+                  child: Column(mainAxisSize: MainAxisSize.max, children: [
+                    TicketInformationHeader(),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height - 48,
+                        child: Flex(direction: Axis.horizontal, children: [
+                          Expanded(
+                              child: TicketInformationLeftSideView(
+                            tabController: _tabController,
+                          )),
+                          Container(
+                              width: 360,
+                              height: MediaQuery.of(context).size.height - 48,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: TicketInformationRightSideView()),
+                        ]))
+                  ])))),
+      appointment: widget.appointment,
+    );
   }
 }

@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/appointment.dart';
 import 'appointment_context.dart';
 
-class AppointmentContextProvider extends InheritedWidget {
+class AppointmentContextProvider extends InheritedNotifier<AppointmentContext> {
+  final AppointmentEntity appointment;
 
-  final AppointmentContext appointmentContext;
+  AppointmentContextProvider({
+    Key? key,
+    required Widget child,
+    required this.appointment,
+  }) : super(
+            key: key,
+            child: child,
+            notifier: AppointmentContext(appointment: appointment));
 
-
-  AppointmentContextProvider({required Widget child,required this.appointmentContext}) : super(child: child);
-
-  static AppointmentContext of(BuildContext context) {
-    final AppointmentContextProvider? result =
-    context.dependOnInheritedWidgetOfExactType<AppointmentContextProvider>();
+  static AppointmentContextProvider of(BuildContext context) {
+    AppointmentContextProvider? result = context
+        .dependOnInheritedWidgetOfExactType<AppointmentContextProvider>();
     if (result == null) {
-      throw FlutterError('No AppointmentContextProvider is found in the widget tree');
+      throw FlutterError(
+          'No AppointmentContextProvider is found in the widget tree');
     }
-    return result.appointmentContext;
-  }
-
-  @override
-  bool updateShouldNotify(AppointmentContextProvider oldWidget) {
-    return appointmentContext != oldWidget.appointmentContext;
+    return result;
   }
 }
-
