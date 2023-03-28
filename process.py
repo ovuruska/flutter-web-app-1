@@ -5,7 +5,7 @@ from math import ceil
 
 if __name__ == "__main__":
     dates = []
-    with open("commits_mobile.txt", "r") as f:
+    with open("commits.txt", "r") as f:
         for line in f:
 
             line = line.strip()
@@ -19,6 +19,7 @@ if __name__ == "__main__":
             dates.append(date_obj)
 
     pad = 4
+    dollar_per_hour = 42
 
     with open("deliverables_mobile.csv", "w") as f:
         total = 0
@@ -39,4 +40,6 @@ if __name__ == "__main__":
             total += work_hour
             f.write(f"{date_obj['commit']},{work_hour}\n")
 
+        f.write(f"Development cost,{total * dollar_per_hour}\n")
         f.write(f"Total,{total}\n")
+
