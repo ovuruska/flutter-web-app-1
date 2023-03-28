@@ -12,6 +12,7 @@ import 'package:scrubbers_employee_application/core/domain/repositories/branch_r
 import 'package:scrubbers_employee_application/core/domain/repositories/employee_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/create_appointment.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_all_products.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_appointment.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_available_slots.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_average_service_time.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_branch_daily_information.dart';
@@ -64,6 +65,7 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => CreateAppointmentUseCase(sl()));
   sl.registerLazySingleton(() => GetEmployeeUseCase(sl()));
   sl.registerLazySingleton(() => PatchEmployeeUseCase(sl()));
+  sl.registerLazySingleton(() => GetAppointmentUseCase(sl()));
   sl.registerLazySingleton(() => GetBranchDailyInformationUseCase(sl()));
 
   // Repositories

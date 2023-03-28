@@ -9,4 +9,6 @@ import '../entities/appointment_local.dart';
 abstract class AppointmentRepository {
   Future<Either<Failure,AppointmentEntity>> create(AppointmentEntityLocal appointment);
 
+  Future<Either<Failure,AppointmentEntity>> get(int id);
+
 }

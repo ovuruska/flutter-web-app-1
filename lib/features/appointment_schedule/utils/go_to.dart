@@ -1,10 +1,10 @@
 
 
 import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_bloc.dart';
+import 'package:scrubbers_employee_application/features/app_multi_calendar/presentation/bloc/app_multi_calendar_event.dart';
 import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_bloc.dart';
 import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_event.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_state.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/presentation/widgets/app_select_branch.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_bloc.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_bloc.dart';
@@ -30,14 +30,16 @@ void goToWithDetails({
 
   var value = state.value;
   var branchBloc = sl<AppSelectBranchBloc>();
-  var selected = (branchBloc.state as AppSelectBranchStateLoaded).branches.firstWhere((element) => element.id == branch);
+  var calendarBloc = sl<AppMultiCalendarBloc>();
+
+  branchBloc.add(AppSelectBranchEventSetId(id: branch));
+  calendarBloc.add(AppMultiCalendarEventSetDate(date: date));
   if (value == 'All Employees') {
 
-    branchBloc.add(AppSelectBranchEventSetId(id: branch));
+
     sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventGoTo(id:branch,date:date));
 
   } else if (nonEmployeeTabs.contains(value)) {
-    branchBloc.add(AppSelectBranchEventSetId(id: branch));
     sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventGoTo(id:branch,date:date));
 
   } else {

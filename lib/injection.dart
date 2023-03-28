@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:scrubbers_employee_application/features/available_slots/register.dart';
+import 'package:scrubbers_employee_application/features/ticket_information/register.dart';
 
 
 import 'core/register.dart';
@@ -35,7 +36,6 @@ import 'features/sidebars/employee_search/register.dart';
 import 'features/tables/appointments_page_table/register.dart';
 import 'features/tables/client_appointments_table/register.dart';
 import 'pages/clients/register.dart';
-import 'pages/schedule/register.dart';
 
 final sl = GetIt.instance;
 
@@ -77,4 +77,5 @@ void initSl()  {
   registerAvailableSlots(sl);
   registerEmployeeInformationCrud(sl);
   registerClientAutocomplete(sl);
+  registerTicketInformation(sl);
 }
