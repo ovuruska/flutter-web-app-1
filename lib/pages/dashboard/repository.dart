@@ -13,15 +13,15 @@ class DashboardRepository {
 
   DashboardRepository._();
 
-  Future<Appointment?> getAppointment(int id) async {
+  Future<AppointmentEntity?> getAppointment(int id) async {
     var response = await SchedulingAuthService.instance.request(
         "/api/schedule/appointment/${id.toString()}",);
     var respJson = await response.stream.bytesToString();
     var resp = jsonDecode(respJson);
-    return Appointment.fromJson(resp);
+    return AppointmentEntity.fromJson(resp);
   }
 
-  Future<List<Appointment>?> getCancelledAppointments() async {
+  Future<List<AppointmentEntity>?> getCancelledAppointments() async {
     var dateNow = DateTime.now();
 
     var queryParams = {
@@ -37,7 +37,7 @@ class DashboardRepository {
     return result;
   }
 
-  Future<List<Appointment>?> getPriorAppointments(PetModel pet) async {
+  Future<List<AppointmentEntity>?> getPriorAppointments(PetModel pet) async {
     var dateNow = DateTime.now();
 
     var queryParams = {
@@ -56,7 +56,7 @@ class DashboardRepository {
 
 
 
-  Future<List<Appointment>?> getUpcomingAppointments(PetModel pet) async {
+  Future<List<AppointmentEntity>?> getUpcomingAppointments(PetModel pet) async {
     var dateNow = DateTime.now();
 
     var queryParams = {
@@ -73,7 +73,7 @@ class DashboardRepository {
   }
 
 
-  Future<List<Appointment>?> getReschedulingAppointments() async {
+  Future<List<AppointmentEntity>?> getReschedulingAppointments() async {
     var dateNow = DateTime.now();
 
     var queryParams = {
@@ -91,7 +91,7 @@ class DashboardRepository {
     return result;
   }
 
-  Future<List<Appointment>?> getWeeklyAppointments(
+  Future<List<AppointmentEntity>?> getWeeklyAppointments(
       Employee employee, DateTime start) async {
     var queryParams = {
       "start__gt": DateFormat("yyyy-MM-dd").format(start),
@@ -107,7 +107,7 @@ class DashboardRepository {
     return result;
   }
 
-  Future<List<Appointment>?> getPendingAppointments() async {
+  Future<List<AppointmentEntity>?> getPendingAppointments() async {
     var dateNow = DateTime.now();
     var queryParams = {
       "status": "Pending",
@@ -124,7 +124,7 @@ class DashboardRepository {
     return result;
   }
 
-  Future<List<Appointment>?> getDailyAppointments(
+  Future<List<AppointmentEntity>?> getDailyAppointments(
       Branch branch, DateTime dateTime) async {
     const format = "yyyy-MM-dd";
     String startGreaterThan = DateFormat(format).format(dateTime);

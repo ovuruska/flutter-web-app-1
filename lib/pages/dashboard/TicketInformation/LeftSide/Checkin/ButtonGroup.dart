@@ -5,13 +5,12 @@ import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation
 import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/utils.dart';
 import 'package:scrubbers_employee_application/repositories/appointment.dart';
 
-import '../../../../../features/forms/rebook_appointment/presentation/pages/rebook_appointment_dialog.dart';
 
 
 
 class TicketInformationCheckinButtonGroup extends StatelessWidget {
 
-  closeTicket(Appointment appointment) {
+  closeTicket(AppointmentEntity appointment) {
     var newAppointment =
         appointment.update(status: AppointmentStatus.COMPLETED);
     ticketInformationInputBloc.setAppointment(newAppointment);
@@ -34,10 +33,7 @@ class TicketInformationCheckinButtonGroup extends StatelessWidget {
             text: "Close & Rebook",
             onPressed: () {
               closeTicket(appointment);
-              showDialog(context: context, builder: (context)=>RebookAppointmentDialog(
-                petId: appointment.dog.id,
-                customerId: int.parse(appointment.customer.id),
-              ));
+
             }),
         getStyledButton(
 

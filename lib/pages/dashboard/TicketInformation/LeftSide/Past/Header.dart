@@ -9,7 +9,7 @@ import '../../utils.dart';
 
 
 class PastAppointmentHeader extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   const PastAppointmentHeader({Key? key, required this.appointment}) : super(key: key);
 

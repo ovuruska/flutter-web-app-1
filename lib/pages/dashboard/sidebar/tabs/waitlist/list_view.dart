@@ -5,7 +5,7 @@ import 'controller.dart';
 
 class SidebarReschedulingList extends StatelessWidget{
 
-  final List<Appointment> appointments;
+  final List<AppointmentEntity> appointments;
 
   const SidebarReschedulingList({Key? key, required this.appointments}) : super(key: key);
 

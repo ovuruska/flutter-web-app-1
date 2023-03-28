@@ -3,12 +3,12 @@ import 'package:scrubbers_employee_application/models/CustomerDetails.dart';
 import 'package:scrubbers_employee_application/models/Employee.dart';
 
 class TicketInformationInputModel {
-  Appointment? appointment;
-  List<Appointment> priorAppointments = [];
-  List<Appointment> upcomingAppointments = [];
+  AppointmentEntity? appointment;
+  List<AppointmentEntity> priorAppointments = [];
+  List<AppointmentEntity> upcomingAppointments = [];
   CustomerDetails? customerDetails;
 
-  setUpcomingAppointments(List<Appointment> appointments) {
+  setUpcomingAppointments(List<AppointmentEntity> appointments) {
     upcomingAppointments = appointments;
     return this;
   }
@@ -33,12 +33,12 @@ class TicketInformationInputModel {
     return this;
   }
 
-  setPriorAppointments(List<Appointment> appointments) {
+  setPriorAppointments(List<AppointmentEntity> appointments) {
     priorAppointments = appointments;
     return this;
   }
 
-  setAppointment(Appointment? appointment) {
+  setAppointment(AppointmentEntity? appointment) {
     this.appointment = appointment;
     return this;
   }

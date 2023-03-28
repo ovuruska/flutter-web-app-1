@@ -3,10 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/features/ticket_information/presentation/widgets/appointment_context_provider.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 
-import '../bloc/ticket_information_bloc.dart';
-import '../bloc/ticket_information_state.dart';
+import '../bloc/ticket_information/ticket_information_bloc.dart';
+import '../bloc/ticket_information/ticket_information_state.dart';
+import '../widgets/appointment_context.dart';
+import '../widgets/ticket_information.dart';
 
 class TicketInformationView extends StatelessWidget {
   const TicketInformationView({Key? key}) : super(key: key);
@@ -33,7 +36,7 @@ class TicketInformationView extends StatelessWidget {
         return Center(child: Text("Error"));
       } else if (state is TicketInformationStateLoaded) {
         var appointment = state.appointment;
-        return Center(child: Text(appointment.service));
+        return AppointmentContextProvider(child: TicketInformation(), appointmentContext: AppointmentContext(appointment: appointment,));
       } else {
         return Center(child: Text("Unknown"));
       }

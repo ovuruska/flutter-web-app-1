@@ -6,7 +6,7 @@ import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation
 import 'Card.dart';
 
 class TicketInformationUpcomingCardList extends StatelessWidget {
-  final List<Appointment> appointments;
+  final List<AppointmentEntity> appointments;
 
   TicketInformationUpcomingCardList({Key? key, required this.appointments})
       : super(key: key);

@@ -19,7 +19,7 @@ class SidebarBloc extends Bloc<SidebarModel> {
     subject.sink.add(subject.value.setBranch(branch));
   }
 
-  Future<List<Appointment>?> fetchDailyAppointments(Branch branch,DateTime date) async {
+  Future<List<AppointmentEntity>?> fetchDailyAppointments(Branch branch,DateTime date) async {
     var branch = subject.value.currentBranch;
     var date = sidebarCalendarBloc.value.selectedDate;
 
@@ -33,16 +33,16 @@ class SidebarBloc extends Bloc<SidebarModel> {
   }
 
 
-  setCalendarAppointments(List<Appointment> appointments){
+  setCalendarAppointments(List<AppointmentEntity> appointments){
     subject.sink.add(subject.value.setCalendarAppointments(appointments));
   }
 
-  void patchAppointment(Appointment appointment) {
+  void patchAppointment(AppointmentEntity appointment) {
     AppointmentRepository.instance.patchAppointment(appointment);
     subject.sink.add(subject.value.patchAppointment(appointment));
   }
 
-  patchAppointmentsBulk(List<Appointment> appointments){
+  patchAppointmentsBulk(List<AppointmentEntity> appointments){
     var model = subject.value;
     for(int i = 0; i <= appointments.length -1 ;i++){
       model = model.patchAppointment(appointments[i]);

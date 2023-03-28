@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
-import '../../../features/forms/create_appointment/presentation/pages/create_appointment_dialog.dart';
 import '../sidebar/calendar/controller.dart';
 import 'EmployeeSelect.dart';
 
@@ -101,7 +100,6 @@ class DashboardLegendRow extends StatelessWidget {
         padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
         child: ElevatedButton(
           onPressed: () {
-            showDialog(context: context, builder: (context) => CreateNewAppointmentDialog());
           },
           child: Text('Create appointment'),
         ),

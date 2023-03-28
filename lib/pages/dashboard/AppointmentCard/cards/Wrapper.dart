@@ -6,7 +6,7 @@ import '../GestureDetector.dart';
 
 class ContextMenuUseCase {
   final String text;
-  final Function(Appointment) callback;
+  final Function(AppointmentEntity) callback;
   final Color color;
 
   ContextMenuUseCase({
@@ -17,7 +17,7 @@ class ContextMenuUseCase {
 }
 
 class AppointmentCardWrapper extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
   final Widget child;
   final bool draggable;
   final bool editable;

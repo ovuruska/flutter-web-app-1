@@ -25,7 +25,7 @@ bool sameTime(DateTime a, DateTime b) {
 }
 
 CalendarPosition getCalendarPosition(
-    List<Appointment> appointments, Appointment target) {
+    List<AppointmentEntity> appointments, AppointmentEntity target) {
   var totalIndices = 1;
   var order = 0;
   bool after = false;
@@ -60,9 +60,9 @@ int getMinutesFromTimeOfDay(TimeOfDay timeOfDay) {
   return timeOfDay.hour * 60 + timeOfDay.minute;
 }
 
-Function(DragTargetDetails<Appointment>) acceptWithDateAndEmployee(
+Function(DragTargetDetails<AppointmentEntity>) acceptWithDateAndEmployee(
     Employee employee, DateTime date) {
-  void onAcceptWithDetails(DragTargetDetails<Appointment> details) {
+  void onAcceptWithDetails(DragTargetDetails<AppointmentEntity> details) {
     var appointment = details.data;
     double realDy = max(
         details.offset.dy -
@@ -94,8 +94,8 @@ Function(DragTargetDetails<Appointment>) acceptWithDateAndEmployee(
   return onAcceptWithDetails;
 }
 
-Function(DragTargetDetails<Appointment>) acceptWithEmployee(Employee employee) {
-  void onAcceptWithDetails(DragTargetDetails<Appointment> details) {
+Function(DragTargetDetails<AppointmentEntity>) acceptWithEmployee(Employee employee) {
+  void onAcceptWithDetails(DragTargetDetails<AppointmentEntity> details) {
     var appointment = details.data;
     double realDy = max(
         details.offset.dy -

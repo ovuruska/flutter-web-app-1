@@ -15,7 +15,7 @@ import '../../controller.dart';
 
 
 class SidebarAppointmentItem extends StatelessWidget {
-  Appointment appointment;
+  AppointmentEntity appointment;
 
   SidebarAppointmentItem({required this.appointment,Key ? key}) : super(key: key);
 

@@ -1,7 +1,7 @@
 part of 'Appointment.dart';
 
-extension AppointmentSection on Appointment {
-  Appointment clone() => Appointment(
+extension AppointmentSection on AppointmentEntity {
+  AppointmentEntity clone() => AppointmentEntity(
       id: id,
       customer: customer,
       dog: dog,

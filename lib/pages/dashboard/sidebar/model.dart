@@ -3,9 +3,9 @@ import 'package:scrubbers_employee_application/models/Branch.dart';
 
 class SidebarModel {
   Branch currentBranch = Branch.empty();
-  List<Appointment> calendarAppointments = [];
+  List<AppointmentEntity> calendarAppointments = [];
 
-  setCalendarAppointments(List<Appointment> appointments) {
+  setCalendarAppointments(List<AppointmentEntity> appointments) {
     this.calendarAppointments = appointments;
     return this;
   }
@@ -16,7 +16,7 @@ class SidebarModel {
   }
 
 
-  patchAppointment(Appointment appointment) {
+  patchAppointment(AppointmentEntity appointment) {
     bool found = false;
     this.calendarAppointments = this.calendarAppointments.map((a) {
       if (a.id == appointment.id) {

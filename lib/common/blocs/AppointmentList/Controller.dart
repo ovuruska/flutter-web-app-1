@@ -11,15 +11,15 @@ class AppointmentListBloc extends Bloc<AppointmentListModel> {
     subject.sink.add(AppointmentListModel());
   }
 
-  setAppointments(List<Appointment> appointments) {
+  setAppointments(List<AppointmentEntity> appointments) {
     subject.sink.add(subject.value.setAppointments(appointments));
   }
 
-  patchAppointment(Appointment appointment){
+  patchAppointment(AppointmentEntity appointment){
     subject.sink.add(subject.value.patchAppointment(appointment));
   }
 
-  removeAppointment(Appointment appointment) {
+  removeAppointment(AppointmentEntity appointment) {
     subject.sink.add(subject.value.removeAppointment(appointment));
   }
 }

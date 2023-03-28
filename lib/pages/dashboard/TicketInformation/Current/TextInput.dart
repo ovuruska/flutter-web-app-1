@@ -9,7 +9,7 @@ import 'package:scrubbers_employee_application/widgets/savable_text_field.dart';
 import '../Controller.dart';
 
 class EmployeeNotesTextInput extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   const EmployeeNotesTextInput({Key? key, required this.appointment})
       : super(key: key);

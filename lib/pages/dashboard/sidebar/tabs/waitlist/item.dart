@@ -7,7 +7,7 @@ import 'package:scrubbers_employee_application/pages/dashboard/constants.dart';
 import 'controller.dart';
 
 class SidebarReschedulingItem extends StatelessWidget {
-  Appointment appointment;
+  AppointmentEntity appointment;
 
   SidebarReschedulingItem({required this.appointment});
 

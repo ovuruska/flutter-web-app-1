@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'Header.dart';
 
 class TicketInformationPastCard extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   Color textColor = const Color(0xFF2D7CB6);
   Color borderColor = const Color(0xFFD3D9E4);

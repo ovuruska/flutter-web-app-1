@@ -7,7 +7,7 @@ import '../sidebar/tabs/pending/controller.dart';
 import 'showContextMenu.dart';
 
 class PendingAppointmentGestureDetector extends StatelessWidget {
-  Appointment appointment;
+  AppointmentEntity appointment;
   Widget child;
 
   PendingAppointmentGestureDetector(

@@ -6,7 +6,7 @@ import 'AppointmentCard.dart';
 import 'Wrapper.dart';
 
 class DashboardAppointmentCardNoShow extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   DashboardAppointmentCardNoShow({Key? key, required this.appointment})
       : super(key: key);

@@ -11,7 +11,7 @@ class AwaitingAppointmentsService {
 
   AwaitingAppointmentsService._internal();
 
-  Future<List<Appointment>?> fetchAll() async {
+  Future<List<AppointmentEntity>?> fetchAll() async {
     var dateNow = DateTime.now();
 
     var queryParams = {

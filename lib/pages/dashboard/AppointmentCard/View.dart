@@ -6,9 +6,9 @@ import 'Draggable.dart';
 import 'Resizable.dart';
 
 class DashboardAppointmentCardDragTarget extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
   final double width;
-  final Function (DragTargetDetails<Appointment>) dragFunction;
+  final Function (DragTargetDetails<AppointmentEntity>) dragFunction;
 
   const DashboardAppointmentCardDragTarget(
       {Key? key, required this.appointment, required this.dragFunction, required this.width})
@@ -18,7 +18,7 @@ class DashboardAppointmentCardDragTarget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onDoubleTap: () => buildTicketInfoDialog(context, appointment),
-        child: DragTarget<Appointment>(
+        child: DragTarget<AppointmentEntity>(
             onAcceptWithDetails: dragFunction,
             builder: (context, appointments, builder) =>
                 DashboardAppointmentCardResizable(

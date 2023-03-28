@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/appointment.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/client_details.dart';
 
 import 'package:scrubbers_employee_application/core/domain/entities/pet_entity.dart';
 
@@ -39,5 +41,23 @@ class ClientRemoteDataSourceTest extends ClientRemoteDataSource {
   @override
   Future<Either<Failure, List<PetEntity>>> getClientPets(int id) {
     return Future.value(Right(pets));
+  }
+
+  @override
+  Future<Either<Failure, ClientDetails>> getClientDetails(int id) {
+    // TODO: implement getClientDetails
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentEntity>>> getPriorAppointments(int id) {
+    // TODO: implement getPriorAppointments
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentEntity>>> getUpcomingAppointments(int id) {
+    // TODO: implement getUpcomingAppointments
+    throw UnimplementedError();
   }
 }

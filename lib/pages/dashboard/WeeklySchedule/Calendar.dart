@@ -21,7 +21,7 @@ class DashboardWeeklyScheduleCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var employee = dashboardLegendBloc.value.employee!;
-    return DragTarget<Appointment>(
+    return DragTarget<AppointmentEntity>(
       builder: (context, candidateData, rejectedData) => _build(context),
       onAcceptWithDetails: acceptWithDateAndEmployee(employee, date),
     );

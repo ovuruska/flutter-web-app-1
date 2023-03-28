@@ -10,35 +10,35 @@ class DashboardBloc extends Bloc<DashboardModel> {
     subject.sink.add(DashboardModel());
   }
 
-  setAppointments(List<Appointment> appointments){
+  setAppointments(List<AppointmentEntity> appointments){
     subject.sink.add(subject.value.setAppointments(appointments));
   }
 
-  removeAppointment(Appointment appointment){
+  removeAppointment(AppointmentEntity appointment){
     subject.sink.add(subject.value.setAppointments(subject.value.appointments.where((a) => a.id != appointment.id).toList()));
   }
 
-  List<Appointment> filterAppointments(List<Appointment> appointments){
+  List<AppointmentEntity> filterAppointments(List<AppointmentEntity> appointments){
     return appointments.where((a) => a.status != AppointmentStatus.RESCHEDULING && a.status != AppointmentStatus.CANCELLED).toList();
   }
 
-  List<Appointment> cancelled(){
+  List<AppointmentEntity> cancelled(){
     return subject.value.appointments.where((a) => a.status == AppointmentStatus.CANCELLED).toList();
   }
 
-  List<Appointment> rescheduling(){
+  List<AppointmentEntity> rescheduling(){
     return subject.value.appointments.where((a) => a.status == AppointmentStatus.RESCHEDULING).toList();
   }
 
-  List<Appointment> completed(){
+  List<AppointmentEntity> completed(){
     return subject.value.appointments.where((a) => a.status == AppointmentStatus.COMPLETED).toList();
   }
 
-  List<Appointment> confirmed(){
+  List<AppointmentEntity> confirmed(){
     return subject.value.appointments.where((a) => a.status == AppointmentStatus.CONFIRMED).toList();
   }
 
-  List<Appointment> pending(){
+  List<AppointmentEntity> pending(){
     return subject.value.appointments.where((a) => a.status == AppointmentStatus.PENDING).toList();
   }
 
@@ -64,12 +64,12 @@ class DashboardBloc extends Bloc<DashboardModel> {
   }
 
 
-  patchAppointmentLocal(Appointment appointment) async {
+  patchAppointmentLocal(AppointmentEntity appointment) async {
     subject.sink.add(subject.value.patchAppointment(appointment));
 
   }
 
-  patchAppointment(Appointment appointment){
+  patchAppointment(AppointmentEntity appointment){
     subject.sink.add(subject.value.patchAppointment(appointment));
   }
 

@@ -7,7 +7,7 @@ import 'AppointmentCard.dart';
 import 'Wrapper.dart';
 
 class DashboardAppointmentCardPending extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   DashboardAppointmentCardPending({Key? key, required this.appointment})
       : super(key: key);

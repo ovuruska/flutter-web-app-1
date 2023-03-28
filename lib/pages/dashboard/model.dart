@@ -35,14 +35,14 @@ class DashboardModel {
   }
 
   bool scrollUpdated = false;
-  List<Appointment> appointments = [];
+  List<AppointmentEntity> appointments = [];
 
-  setAppointments(List<Appointment> appointments) {
+  setAppointments(List<AppointmentEntity> appointments) {
     this.appointments = appointments;
     return this;
   }
 
-  List<Appointment> filterAppointments() {
+  List<AppointmentEntity> filterAppointments() {
     return this.appointments.where((a) {
       if (a.status == AppointmentStatus.CONFIRMED && this.showConfirmed) {
         return true;
@@ -65,7 +65,7 @@ class DashboardModel {
     }).toList();
   }
 
-  patchAppointment(Appointment appointment) {
+  patchAppointment(AppointmentEntity appointment) {
     bool found = false;
     this.appointments = this.appointments.map((a) {
       if (a.id == appointment.id) {

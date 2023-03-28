@@ -6,7 +6,7 @@ import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation
 import 'package:scrubbers_employee_application/repositories/customer.dart';
 
 Future<void> buildTicketInfoDialog(
-    BuildContext context, Appointment? appointment) async {
+    BuildContext context, AppointmentEntity? appointment) async {
   if (appointment == null)
     ticketInformationInputBloc.setAppointment(null);
   else {

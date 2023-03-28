@@ -15,7 +15,7 @@ import 'cards/Regular.dart';
 import 'cards/SpecialHandling.dart';
 
 class DashboardAppointmentCard extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   const DashboardAppointmentCard({Key? key, required this.appointment})
       : super(key: key);

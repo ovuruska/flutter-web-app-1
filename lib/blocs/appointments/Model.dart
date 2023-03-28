@@ -1,19 +1,19 @@
 import '../../models/Appointment.dart';
 
 class AppointmentsModel {
-  List<Appointment> appointments = [];
+  List<AppointmentEntity> appointments = [];
 
-  setAppointments(List<Appointment> appointments) {
+  setAppointments(List<AppointmentEntity> appointments) {
     this.appointments = appointments;
     return this;
   }
 
-  updateAppointment(Appointment appointment) {
+  updateAppointment(AppointmentEntity appointment) {
     this.appointments = appointments.map((e) => e.id == appointment.id ? appointment : e).toList();
     return this;
   }
 
-  addAppointment(Appointment branch) {
+  addAppointment(AppointmentEntity branch) {
     appointments.add(branch);
     return this;
   }

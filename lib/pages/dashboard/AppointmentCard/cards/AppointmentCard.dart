@@ -5,7 +5,7 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.d
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 
 class AppointmentCard extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
   double itemWidth;
   final Color backgroundColor;
   final Color headerBackgroundColor;
@@ -171,7 +171,7 @@ class AppointmentCard extends StatelessWidget {
     );
   }
 
-  double getTotalInvoice(Appointment appointment) {
+  double getTotalInvoice(AppointmentEntity appointment) {
     var totalInvoice = 0.0;
     for (var i = 0; i < appointment.services.length; i++) {
       totalInvoice += appointment.services[i].cost;

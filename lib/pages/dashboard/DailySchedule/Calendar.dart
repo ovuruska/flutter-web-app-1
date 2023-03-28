@@ -17,7 +17,7 @@ class DashboardDailyScheduleCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget<Appointment>(
+    return DragTarget<AppointmentEntity>(
       builder: (context, candidateData, rejectedData) => _build(context),
       onAcceptWithDetails: acceptWithEmployee(employee),
     );

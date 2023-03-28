@@ -10,7 +10,7 @@ class DashboardCancelledService {
   static final instance = DashboardCancelledService._();
   DashboardCancelledService._();
 
-  Future<List<Appointment>?> fetchAll() async {
+  Future<List<AppointmentEntity>?> fetchAll() async {
     var dateNow = DateTime.now();
 
     var queryParams = {

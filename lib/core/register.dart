@@ -16,6 +16,7 @@ import 'package:scrubbers_employee_application/core/domain/usecases/get_appointm
 import 'package:scrubbers_employee_application/core/domain/usecases/get_available_slots.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_average_service_time.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_branch_daily_information.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_client_details.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_client_pets.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_all_groomers.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/get_employee.dart';
@@ -48,6 +49,8 @@ import 'domain/repositories/client_search_repository.dart';
 import 'domain/repositories/product_repository.dart';
 import 'domain/repositories/scheduling_appointment_repository.dart';
 import 'domain/usecases/get_all_branches.dart';
+import 'domain/usecases/get_client_prior_appointments.dart';
+import 'domain/usecases/get_client_upcoming_appointments.dart';
 import 'domain/usecases/patch_appointment.dart';
 import 'domain/usecases/patch_employee.dart';
 import 'domain/usecases/search_client_name.dart';
@@ -67,6 +70,10 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => PatchEmployeeUseCase(sl()));
   sl.registerLazySingleton(() => GetAppointmentUseCase(sl()));
   sl.registerLazySingleton(() => GetBranchDailyInformationUseCase(sl()));
+  sl.registerLazySingleton(() => GetClientDetailsUseCase(sl()));
+  sl.registerLazySingleton(() => GetClientUpcomingAppointmentsUseCase(sl()));
+  sl.registerLazySingleton(() => GetClientPriorAppointmentsUseCase(sl()));
+
 
   // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(

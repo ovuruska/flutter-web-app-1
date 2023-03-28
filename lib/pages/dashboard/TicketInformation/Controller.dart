@@ -11,7 +11,7 @@ class TicketInformationInputBloc extends Bloc<TicketInformationInputModel> {
     subject.sink.add(TicketInformationInputModel());
   }
 
-  setAppointment(Appointment? appointment) {
+  setAppointment(AppointmentEntity? appointment) {
     subject.sink.add(value.setAppointment(appointment));
   }
 
@@ -39,11 +39,11 @@ class TicketInformationInputBloc extends Bloc<TicketInformationInputModel> {
     subject.sink.add(value.setTip(val));
   }
 
-  setUpcomingAppointments(List<Appointment> appointments) {
+  setUpcomingAppointments(List<AppointmentEntity> appointments) {
     subject.sink.add(value.setUpcomingAppointments(appointments));
   }
 
-  setPriorAppointments(List<Appointment> appointments) {
+  setPriorAppointments(List<AppointmentEntity> appointments) {
     subject.sink.add(value.setPriorAppointments(appointments));
   }
 

@@ -8,7 +8,7 @@ import 'package:scrubbers_employee_application/repositories/appointment.dart';
 class DashboardAppointmentCardResizable extends StatefulWidget {
   final Widget child;
   final double width;
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   const DashboardAppointmentCardResizable(
       {Key? key,

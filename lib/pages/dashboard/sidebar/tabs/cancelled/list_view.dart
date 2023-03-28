@@ -5,7 +5,7 @@ import 'item.dart';
 import 'controller.dart';
 
 class SidebarCancelledAppointmentList extends StatelessWidget {
-  final List<Appointment> appointments;
+  final List<AppointmentEntity> appointments;
 
   const SidebarCancelledAppointmentList({Key? key, required this.appointments}) : super(key: key);
 

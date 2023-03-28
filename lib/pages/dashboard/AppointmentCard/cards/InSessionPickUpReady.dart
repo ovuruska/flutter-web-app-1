@@ -7,7 +7,7 @@ import 'AppointmentCard.dart';
 import 'Wrapper.dart';
 
 class DashboardAppointmentCardInSessionPickupReady extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   DashboardAppointmentCardInSessionPickupReady({Key? key, required this.appointment})
       : super(key: key);

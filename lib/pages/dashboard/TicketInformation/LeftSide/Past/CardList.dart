@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'Card.dart';
 
 class TicketInformationPastCardList extends StatelessWidget {
-  final List<Appointment> appointments;
+  final List<AppointmentEntity> appointments;
 
   TicketInformationPastCardList({Key? key, required this.appointments})
       : super(key: key);

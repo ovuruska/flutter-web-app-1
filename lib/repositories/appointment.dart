@@ -12,7 +12,7 @@ class AppointmentRepository {
 
   AppointmentRepository._();
 
-  Future<Appointment?> patchAppointment(Appointment newAppointment) async {
+  Future<AppointmentEntity?> patchAppointment(AppointmentEntity newAppointment) async {
     var route = "/api/schedule/appointment/${newAppointment.id}";
     var body = newAppointment.shallowJson();
     
@@ -25,14 +25,14 @@ class AppointmentRepository {
     var respString = await response.stream.bytesToString();
 
     if (response.statusCode == 200) {
-      return Appointment.fromJson(jsonDecode(respString));
+      return AppointmentEntity.fromJson(jsonDecode(respString));
     } else {
       print(response.reasonPhrase);
       return null;
     }
   }
 
-  Future<List<Appointment>?> getAppointmentsAfter(DateTime dateTime) async {
+  Future<List<AppointmentEntity>?> getAppointmentsAfter(DateTime dateTime) async {
     String startGreaterThan = DateFormat('dd-MM-yyyy').format(dateTime);
 
     var queryParams = {"start__gt": startGreaterThan};

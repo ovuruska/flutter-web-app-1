@@ -10,7 +10,7 @@ class DashboardWaitlistService {
   static final instance = DashboardWaitlistService._();
   DashboardWaitlistService._();
 
-  Future<List<Appointment>?> fetchAll() async {
+  Future<List<AppointmentEntity>?> fetchAll() async {
     var dateNow = DateTime.now();
 
     var queryParams = {

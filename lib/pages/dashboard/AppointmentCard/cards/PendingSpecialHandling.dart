@@ -6,7 +6,7 @@ import 'AppointmentCard.dart';
 import 'Wrapper.dart';
 
 class DashboardAppointmentCardPendingSpecialHandling extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   DashboardAppointmentCardPendingSpecialHandling({Key? key, required this.appointment})
       : super(key: key);

@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/models/Appointment.dart';
 import 'Card.dart';
 
 class DashboardAppointmentCardDraggable extends StatelessWidget {
-  final Appointment appointment;
+  final AppointmentEntity appointment;
 
   const DashboardAppointmentCardDraggable({Key? key, required this.appointment})
       : super(key: key);

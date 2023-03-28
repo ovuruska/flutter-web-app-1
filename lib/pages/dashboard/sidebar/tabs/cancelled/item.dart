@@ -9,7 +9,7 @@ import '../../../controller.dart';
 import '../../../repository.dart';
 
 class SidebarCancelledAppointmentItem extends StatelessWidget {
-  Appointment appointment;
+  AppointmentEntity appointment;
 
   SidebarCancelledAppointmentItem({required this.appointment});
 
