@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/appointment.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
+import 'package:scrubbers_employee_application/injection.dart';
 
+import '../bloc/prior_appointments/prior_appointments_bloc.dart';
+import '../bloc/prior_appointments/prior_appointments_event.dart';
+import '../bloc/upcoming_appointments/upcoming_appointments_bloc.dart';
+import '../bloc/upcoming_appointments/upcoming_appointments_event.dart';
 import 'header.dart';
 import 'left_side/view.dart';
 import 'right_side/view.dart';
 
 class TicketInformation extends StatefulWidget {
-
-  TicketInformation({Key? key}) : super(key: key);
+  final AppointmentEntity appointment;
+  TicketInformation({Key? key, required this.appointment}) : super(key: key);
 
   @override
   _TicketInformationState createState() =>
@@ -23,6 +29,11 @@ class _TicketInformationState
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 2);
+    var clientId = widget.appointment.customer.id;
+    sl<TicketInformationUpcomingAppointmentsBloc>()
+        .add(TicketInformationUpcomingAppointmentsEventFetch(id: clientId));
+    sl<TicketInformationPriorAppointmentsBloc>()
+        .add(TicketInformationPriorAppointmentsEventFetch(id: clientId));
   }
 
   @override
