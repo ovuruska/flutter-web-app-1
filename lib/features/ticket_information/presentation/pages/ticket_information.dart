@@ -42,9 +42,9 @@ class _TicketInformationViewState extends State<TicketInformationView> {
             return Center(child: Text("Error"));
           } else if (state is TicketInformationStateLoaded) {
             var appointment = state.appointment;
-            return AppointmentContextProvider(child: TicketInformation(
+            return TicketInformation(
               appointment: appointment,
-            ), appointmentContext: AppointmentContext(appointment: appointment,));
+            );
           } else {
             return Center(child: Text("Unknown"));
           }
