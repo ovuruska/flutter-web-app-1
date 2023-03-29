@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/StreamListenableBuilder.dart';
-import 'package:scrubbers_employee_application/common/shadow.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/presentation/widgets/appointment_context_provider.dart';
-import 'package:scrubbers_employee_application/pages/dashboard/TicketInformation/Controller.dart';
 import 'package:scrubbers_employee_application/widgets/savable_text_field.dart';
 import 'package:scrubbers_employee_application/widgets/white_container.dart';
 
@@ -67,7 +64,7 @@ class _TicketInformationRightSideNotesState
                           child: SavableTextField(
                               controller: controller,
                               onSaved: (s) {
-                                ticketInformationInputBloc.setEmployeeNotes(petId, s);
+                                // TODO: Set employee notes
                               })),
                       (customerNotes.isNotEmpty)
                           ? WhiteContainer(

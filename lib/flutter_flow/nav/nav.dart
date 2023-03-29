@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:scrubbers_employee_application/common/login_required.dart';
-import 'package:scrubbers_employee_application/pages/payroll/View.dart';
 import 'package:scrubbers_employee_application/pages/print/View.dart';
 import 'package:scrubbers_employee_application/pages/signout/view.dart';
 
-import '../../index.dart';
 import '../../pages/admin/view.dart';
 import '../../pages/appointments/view.dart';
 import '../../pages/clients/view.dart';
-import '../../pages/dashboard/view.dart';
 import '../../pages/login/view.dart';
 import '../../pages/schedule/view.dart';
 import 'serialization_util.dart';
@@ -74,10 +71,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 name: "Print",
                 path: "print",
                 builder: (context, params) => LoginRequired(PrintView())),
-            FFRoute(
-                name: "Payroll",
-                path: "payroll",
-                builder: (context, params) => LoginRequired(PayrollView())),
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
       ],
