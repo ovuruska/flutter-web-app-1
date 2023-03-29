@@ -3,7 +3,6 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/pages/appointment_schedule_parent.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/pages/schedule_header.dart';
 
-import 'appointment_schedule.dart';
 
 class AppointmentScheduleLayout extends StatelessWidget {
   @override

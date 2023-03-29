@@ -3,7 +3,6 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../../common/scheduling/models/scheduling_appointment_entity.dart';
-import '../../../../../common/scheduling/models/scheduling_employee_entity.dart';
 
 class DailyColumnState extends Equatable{
   @override

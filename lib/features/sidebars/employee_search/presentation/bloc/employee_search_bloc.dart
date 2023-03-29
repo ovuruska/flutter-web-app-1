@@ -27,8 +27,7 @@ class EmployeeSearchBloc
       final failureOrEmployees = await getEmployees(NoParams());
 
       failureOrEmployees.fold(
-              (failure) => emit(Failed(message: "Failed to get branches.")
-          as EmployeeSearchState),
+              (failure) => emit(Failed(message: "Failed to get branches.")),
               (employees) => emit(Loaded(employees: employees)));
     });
     on<EmployeeSearchEventSetEmployees>((event, emit) async {

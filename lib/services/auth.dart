@@ -105,7 +105,7 @@ SchedulingAuthService {
 
 
   Future<bool> _login(String username, String password) async {
-    if (username == null || password == null) {
+    if (password == null) {
       throw Exception("Username and password must be set before logging in");
     }
 

@@ -75,12 +75,10 @@ class _QuickerMultiSelectChipState<T >
         ),
         searchable: true,
         onTap: (value) {
-          if (value != null) {
-            setState(() {
-              _selected = value;
-            });
-            if (widget.onSelected != null) widget.onSelected!(_selected);
-          }
+          setState(() {
+            _selected = value;
+          });
+          if (widget.onSelected != null) widget.onSelected!(_selected);
         },
         title: Text(_headerText(_selected.length),
             style: GoogleFonts.inter(fontSize: 16, color: Colors.white)),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/client_entity.dart';
-import 'package:scrubbers_employee_application/init.dart';
 
 import '../../../../../injection.dart';
 import '../../domain/callbacks/client_autocomplete_client_selected.dart';

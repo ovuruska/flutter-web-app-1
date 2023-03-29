@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
-import 'package:scrubbers_employee_application/features/app_select_branch/presentation/widgets/app_select_branch.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/creatable_scheduling_appointment_entity.dart';
 
 import '../../../../../common/scheduling/cards/root/partial.dart';

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
-import 'package:scrubbers_employee_application/features/ticket_information/presentation/bloc/client_details/client_details_bloc.dart';
 
 import '../../../../../core/domain/entities/branch_entity.dart';
 import '../../../../../core/domain/entities/client_entity.dart';

@@ -71,9 +71,7 @@ class _ControlledTextInputState extends State<ControlledTextInput> {
               maxLines: widget.maxLines,
               controller: _controller,
               onChanged: (value) => setState(() {
-                if (widget.onChanged != null) {
-                  widget.onChanged(value);
-                }
+                widget.onChanged(value);
               }),
               decoration: InputDecoration(
                 hintText: widget.hintText,
@@ -96,9 +94,7 @@ class _ControlledTextInputState extends State<ControlledTextInput> {
                     ? IconButton(
                   onPressed: () => setState(() {
                     _controller.clear();
-                    if (widget.onChanged != null) {
-                      widget.onChanged(null);
-                    }
+                    widget.onChanged(null);
                   }),
                   icon: Icon(
                     Icons.clear,

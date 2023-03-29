@@ -2,7 +2,6 @@ import 'dart:convert' show jsonDecode, jsonEncode;
 
 import 'package:scrubbers_employee_application/models/Service.dart';
 import 'package:scrubbers_employee_application/services/auth.dart';
-import 'package:scrubbers_employee_application/services/scheduling_api.dart';
 
 
 class ServiceRepository {
@@ -51,6 +50,7 @@ class ServiceRepository {
     } else {
       print(response.reasonPhrase);
     }
+    return null;
   }
 
   Future<bool> removeService(ServiceModel service) async {

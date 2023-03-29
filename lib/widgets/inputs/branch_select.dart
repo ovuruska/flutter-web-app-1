@@ -6,7 +6,6 @@ import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_drop_do
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 
-import 'ControlledDropdownButton.dart';
 
 class BranchSelect extends StatelessWidget {
 

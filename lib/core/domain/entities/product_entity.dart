@@ -1,7 +1,6 @@
 
 
 import 'package:equatable/equatable.dart';
-import 'package:scrubbers_employee_application/features/forms/branch_modify/domain/usecases/save_branch.dart';
 
 class ProductEntity extends Equatable {
 

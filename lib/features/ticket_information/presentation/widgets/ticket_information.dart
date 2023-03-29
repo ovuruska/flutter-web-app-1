@@ -9,7 +9,6 @@ import '../bloc/prior_appointments/prior_appointments_bloc.dart';
 import '../bloc/prior_appointments/prior_appointments_event.dart';
 import '../bloc/upcoming_appointments/upcoming_appointments_bloc.dart';
 import '../bloc/upcoming_appointments/upcoming_appointments_event.dart';
-import 'appointment_context.dart';
 import 'appointment_context_provider.dart';
 import 'header.dart';
 import 'left_side/view.dart';

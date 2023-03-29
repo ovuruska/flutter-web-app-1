@@ -87,7 +87,7 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
           if (widget.onChanged != null) {
             widget.onChanged!(textEditingValue.text);
           }
-          return widget.options as Iterable<ClientEntity>;
+          return widget.options;
         },
       );
     }

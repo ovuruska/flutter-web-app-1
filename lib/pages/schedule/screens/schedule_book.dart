@@ -6,7 +6,6 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import '../../../features/app_header/presentation/widgets/header.dart';
 import '../../../features/appointment_schedule/presentation/pages/layout.dart';
 import '../../../features/forms/rebook_appointment_2/presentation/pages/rebook_appointment_2.dart';
-import '../../../features/forms/rebook_appointment_2/presentation/widgets/form_column.dart';
 import '../navbar.dart';
 import '../schedule_page_context.dart';
 

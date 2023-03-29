@@ -31,7 +31,7 @@ class _ViewAppointmentsPageState extends State<ViewAppointmentsPage> {
         if (state is Initial) {
           return ViewAppointmentsLoadingState();
         } else if(state is Loaded){
-          var stateAsLoaded = state as Loaded;
+          var stateAsLoaded = state;
           return ViewAppointments(
             pendingAppointments: stateAsLoaded.pendingAppointments,
             waitlistAppointments: stateAsLoaded.waitlistAppointments,

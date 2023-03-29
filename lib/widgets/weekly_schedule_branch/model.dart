@@ -1,7 +1,5 @@
-import 'package:scrubbers_employee_application/common/DateUtils.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
 import 'package:scrubbers_employee_application/models/branch_wh.dart';
-import 'package:scrubbers_employee_application/models/employee_wh.dart';
 
 class WeeklyScheduleBranchModel {
   final bool working;

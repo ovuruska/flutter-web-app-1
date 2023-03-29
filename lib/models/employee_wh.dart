@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:scrubbers_employee_application/models/Branch.dart';
-import 'package:scrubbers_employee_application/models/Employee.dart';
 
 import 'EmployeeShallow.dart';
 

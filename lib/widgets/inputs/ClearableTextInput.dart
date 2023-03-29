@@ -61,9 +61,7 @@ class _ClearableTextInputState extends State<ClearableTextInput> {
             maxLines: widget.maxLines,
             controller: controller,
             onChanged: (value) => setState(() {
-              if (widget.onChanged != null) {
-                widget.onChanged(value);
-              }
+              widget.onChanged(value);
             }),
             decoration: InputDecoration(
               hintText: widget.hintText,
@@ -86,9 +84,7 @@ class _ClearableTextInputState extends State<ClearableTextInput> {
                   ? IconButton(
                       onPressed: () => setState(() {
                         controller.clear();
-                        if (widget.onChanged != null) {
-                          widget.onChanged(null);
-                        }
+                        widget.onChanged(null);
                       }),
                       icon: Icon(
                         Icons.clear,

@@ -3,7 +3,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart'
     show WidgetbookUseCase;
 import '../domain/entity/customer_entity.dart';
 import '../domain/entity/log_entity.dart';
-import '../presentation/widgets/log_card.dart';
 import '../presentation/widgets/log_list.dart';
 
 @WidgetbookUseCase(name: 'Log List', type: LogList)

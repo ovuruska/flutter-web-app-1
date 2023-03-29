@@ -102,7 +102,7 @@ main() async {
         selectClientPetsView = selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets;
         expect(selectClientPetsView.selected, clientPets[1]);
 
-        onChanged!(mockClient2);
+        onChanged(mockClient2);
         await tester.pump();
 
         selectClientPetsView = selectClientPetsViewFinder.evaluate().first.widget as SelectClientPets;

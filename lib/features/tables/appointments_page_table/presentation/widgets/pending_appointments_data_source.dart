@@ -67,7 +67,7 @@ class PendingAppointmentsDataSource extends AsyncDataTableSource {
   }
 
   onTap(AppointmentsTableDataRowEntity data, bool selected) => () {
-        if (selected != null && selected == data.id) {
+        if (selected == data.id) {
           sl<AppointmentsPageTableBloc>()
               .add(AppointmentsPageTableEventDeselect());
         } else {

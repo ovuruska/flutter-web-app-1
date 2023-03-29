@@ -1,6 +1,5 @@
 import 'package:scrubbers_employee_application/common/Bloc.dart';
 import 'package:scrubbers_employee_application/models/Appointment.dart';
-import 'package:scrubbers_employee_application/repositories/appointment.dart';
 import 'Model.dart';
 
 class AppointmentsBloc extends Bloc<AppointmentsModel> {

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../common/quicker/inputs/multi_select_chip_field.dart';
 import '../../../../../common/quicker/inputs/multi_select_dialog.dart';
 import '../../../../../core/domain/entities/branch_entity.dart';
 

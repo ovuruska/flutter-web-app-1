@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/common/quicker/inputs/multi_select_chip_field.dart';
 import 'package:scrubbers_employee_application/common/quicker/inputs/multi_select_dialog.dart';
 
 import '../../../../../core/domain/entities/product_entity.dart';

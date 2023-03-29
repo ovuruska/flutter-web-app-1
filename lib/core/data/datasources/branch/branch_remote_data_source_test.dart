@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/branch/branch_remote_data_source.dart';
@@ -6,7 +5,6 @@ import 'package:scrubbers_employee_application/core/domain/entities/branch_daily
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
-import '../../../../services/auth.dart';
 
 final defaultBranches = [
   BranchEntity(id: 1, name: "Royal Oaks"),

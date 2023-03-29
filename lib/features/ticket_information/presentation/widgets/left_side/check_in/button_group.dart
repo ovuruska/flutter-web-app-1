@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
-import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/appointment.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header_dropdown/schedule_header_dropdown_bloc.dart';
-import 'package:scrubbers_employee_application/features/forms/client_autocomplete/presentation/bloc/client_autocomplete_bloc.dart';
-import 'package:scrubbers_employee_application/features/forms/client_autocomplete/presentation/widgets/client_autocomplete.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/bloc/rebook_appointment_2_bloc.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
@@ -19,8 +16,6 @@ import '../../../../../../injection.dart';
 import '../../../../../../pages/schedule/schedule_page_context.dart';
 import '../../../../../appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_bloc.dart';
 import '../../../../../appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_bloc.dart';
-import '../../../../../forms/client_autocomplete/domain/callbacks/client_autocomplete_client_selected.dart';
-import '../../../../../forms/client_autocomplete/presentation/bloc/client_autocomplete_event.dart';
 import '../../../../../forms/rebook_appointment_2/presentation/bloc/rebook_appointment_2_event.dart';
 import '../../../../utils/style.dart';
 

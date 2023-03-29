@@ -19,7 +19,7 @@ class _ClientInformationViewState extends State<ClientInformationView> {
       bloc: sl<ClientInformationBloc>(),
       builder: (context, state) {
         if (state is ClientInformationLoaded) {
-          var loadedState = state as ClientInformationLoaded;
+          var loadedState = state;
           var clientInformation = loadedState.clientInformation;
           return Scaffold(
               body: ClientInformationLoadedView(client: clientInformation));

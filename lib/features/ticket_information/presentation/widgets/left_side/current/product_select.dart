@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/widgets/quicker_multi_select/multi_select.dart';
 
 import '../../../../../forms/multi_product_select/presentation/pages/product_select.dart';
 import '../../appointment_context_provider.dart';

@@ -2,11 +2,8 @@ import 'dart:convert';
 
 import 'package:scrubbers_employee_application/services/auth.dart';
 
-import '../constants.dart';
 import '../models/Branch.dart';
-import 'package:http/http.dart' as http;
 
-import 'utils.dart';
 
 class BranchRepository {
   static final instance = BranchRepository._();
@@ -62,6 +59,7 @@ class BranchRepository {
     else {
       print(response.reasonPhrase);
     }
+    return null;
 
 
 

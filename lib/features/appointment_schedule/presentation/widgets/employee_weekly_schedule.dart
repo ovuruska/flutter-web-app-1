@@ -5,7 +5,6 @@ import 'package:scrubbers_employee_application/common/scheduling/current_time_ra
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_daily_calendar_column.dart';
 import 'package:scrubbers_employee_application/common/scheduling/scheduling_hour_column.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/on_accept_with_details.dart';
-import 'package:scrubbers_employee_application/widgets/inputs/ControlledCalendar.dart';
 
 import '../../../../common/scheduling/models/scheduling_appointment_entity.dart';
 import '../../../../common/scheduling/scheduling_context_provider.dart';

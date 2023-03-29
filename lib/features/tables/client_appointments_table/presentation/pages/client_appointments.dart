@@ -26,7 +26,7 @@ class _ClientAppointmentsViewState extends State<ClientAppointmentsView> {
             )
           );
         }else if(state is Loaded){
-          var loadedState = state as Loaded;
+          var loadedState = state;
           var appointments = loadedState.appointments;
           return ClientAppointmentsLoaded(appointments: appointments);
         }else if(state is Loading){

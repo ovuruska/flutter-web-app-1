@@ -80,9 +80,7 @@ class _ControlledFloatingPointInputState extends State<ControlledFloatingPointIn
                   maxLines: widget.maxLines,
                   controller: controller,
                   onChanged: (value) => setState(() {
-                    if (widget.onChanged != null) {
-                      widget.onChanged(value);
-                    }
+                    widget.onChanged(value);
                   }),
                   decoration: InputDecoration(
                     hintText: widget.hintText,
@@ -105,9 +103,7 @@ class _ControlledFloatingPointInputState extends State<ControlledFloatingPointIn
                         ? IconButton(
                       onPressed: () => setState(() {
                         controller.clear();
-                        if (widget.onChanged != null) {
-                          widget.onChanged(null);
-                        }
+                        widget.onChanged(null);
                       }),
                       icon: Icon(
                         Icons.clear,

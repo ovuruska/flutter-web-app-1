@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import '../../../../../injection.dart';
-import '../../domain/entities/client_search_entity.dart';
 import '../bloc/client_search_bloc.dart';
 import '../bloc/client_search_event.dart';
 import '../bloc/client_search_state.dart';
@@ -76,7 +75,7 @@ class _ClientSearchViewState extends State<ClientSearchView> {
             ),
           ));
         } else if (state is Loaded) {
-          var clients = state.clients as List<ClientSearchEntity>;
+          var clients = state.clients;
 
           return _scaffold(
               child: ClientList(clients: clients, query: state.query));

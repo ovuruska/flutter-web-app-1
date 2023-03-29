@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
 import '../../../../../services/auth.dart';
-import '../../domain/entities/appointments_table_data_row_entity.dart';
 import '../../domain/entities/paginated_appointments.dart';
 import '../../domain/repositories/paginated_appointments_repository.dart';
 

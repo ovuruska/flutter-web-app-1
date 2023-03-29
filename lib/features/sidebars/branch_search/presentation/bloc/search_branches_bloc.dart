@@ -24,8 +24,7 @@ class SearchBranchesBloc
       final failureOrBranches = await getBranches(NoParams());
 
       failureOrBranches.fold(
-          (failure) => emit(Failed(message: "Failed to get branches.")
-              as SearchBranchesState),
+          (failure) => emit(Failed(message: "Failed to get branches.")),
           (branches) => emit(Loaded(branches: branches)));
     });
     on<SetBranchesEvent>((event, emit) async {
@@ -51,8 +50,7 @@ class SearchBranchesBloc
       final failureOrBranch = await createNewBranch(NoParams());
 
       failureOrBranch.fold(
-              (failure) => emit(Failed(message: "Failed to create new branch.")
-              as SearchBranchesState),
+              (failure) => emit(Failed(message: "Failed to create new branch.")),
               (branch) => emit(Loaded(branches: branches + [branch])));
     });
 

@@ -1,5 +1,4 @@
 import 'package:card_settings/card_settings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/branch_entity.dart';
@@ -88,6 +87,7 @@ class _BranchCardSettingsState extends State<BranchCardSettings> {
               validator: (value) {
                 if (value == null || value.isEmpty) return 'Name is required.';
                 if (value.length > 80) return 'Name is too long.';
+                return null;
               },
             ),
             CardSettingsText(

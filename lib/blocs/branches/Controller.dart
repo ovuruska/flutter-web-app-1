@@ -1,7 +1,6 @@
 import 'package:scrubbers_employee_application/blocs/branches/Model.dart';
 import 'package:scrubbers_employee_application/common/Bloc.dart';
 import 'package:scrubbers_employee_application/models/Branch.dart';
-import 'package:uuid/uuid.dart';
 
 class BranchesBloc extends Bloc<BranchesModel> {
   BranchesBloc() {

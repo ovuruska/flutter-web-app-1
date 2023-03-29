@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:scrubbers_employee_application/models/branch_wh.dart';
-import 'package:scrubbers_employee_application/models/employee_wh.dart';
 import '../../utils.dart';
 
 class WorkingHoursBranchRepository {

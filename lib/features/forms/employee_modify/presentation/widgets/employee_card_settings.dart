@@ -88,6 +88,7 @@ class _EmployeeCardSettingsState extends State<EmployeeCardSettings> {
               validator: (value) {
                 if (value == null || value.isEmpty) return 'Name is required.';
                 if (value.length > 80) return 'Name is too long.';
+                return null;
               },
             ),
             CardSettingsText(

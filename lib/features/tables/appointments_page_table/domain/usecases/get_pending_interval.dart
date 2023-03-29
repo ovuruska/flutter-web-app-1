@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 
 import '../../../../../core/use_case.dart';
-import '../entities/appointments_table_data_row_entity.dart';
 import '../entities/paginated_appointments.dart';
 import '../repositories/paginated_appointments_repository.dart';
 

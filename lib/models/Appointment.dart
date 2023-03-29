@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 
 import '../common/DataTypes.dart';
 import 'Branch.dart';

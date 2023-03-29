@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/common/scheduling/models/scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/go_to.dart';
 
 import '../../../../core/domain/entities/appointment_slot_entity.dart';

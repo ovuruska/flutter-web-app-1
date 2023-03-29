@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../../core/error/failures.dart';
-import '../entities/appointments_table_data_row_entity.dart';
 import '../entities/paginated_appointments.dart';
 
 abstract class PaginatedAppointmentsRepository {

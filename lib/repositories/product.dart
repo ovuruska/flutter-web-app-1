@@ -58,6 +58,7 @@ class ProductRepository {
       print(response.reasonPhrase);
       print(response.body);
     }
+    return null;
   }
 
   Future<bool> removeService(Product product) async {

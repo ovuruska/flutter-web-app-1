@@ -1,6 +1,5 @@
 
 
-import 'package:scrubbers_employee_application/models/Employee.dart';
 import 'package:scrubbers_employee_application/models/Product.dart';
 
 class ProductsBlocModel {

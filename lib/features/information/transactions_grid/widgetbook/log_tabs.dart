@@ -5,7 +5,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart'
 import '../domain/entity/customer_entity.dart';
 import '../domain/entity/employee_entity.dart';
 import '../domain/entity/log_entity.dart';
-import '../presentation/widgets/log_card.dart';
 import '../presentation/widgets/log_list.dart';
 import '../presentation/widgets/log_tabs.dart';
 

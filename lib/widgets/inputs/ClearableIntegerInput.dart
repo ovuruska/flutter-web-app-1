@@ -65,9 +65,7 @@ class _ClearableIntegerInputState
               maxLines: widget.maxLines,
               controller: controller,
               onChanged: (value) => setState(() {
-                if (widget.onChanged != null) {
-                  widget.onChanged(value);
-                }
+                widget.onChanged(value);
               }),
               decoration: InputDecoration(
                 hintText: widget.hintText,
@@ -90,9 +88,7 @@ class _ClearableIntegerInputState
                     ? IconButton(
                         onPressed: () => setState(() {
                           controller.clear();
-                          if (widget.onChanged != null) {
-                            widget.onChanged(null);
-                          }
+                          widget.onChanged(null);
                         }),
                         icon: Icon(
                           Icons.clear,

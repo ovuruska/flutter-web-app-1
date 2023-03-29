@@ -21,8 +21,7 @@ class ModifyBranchBloc
       final failureOrBranches = await modifyBranch(SaveBranchParams(branch: branch));
 
       failureOrBranches.fold(
-              (failure) => emit(Failed(message: "Failed to get branches.")
-          as ModifyBranchState),
+              (failure) => emit(Failed(message: "Failed to get branches.")),
               (branches) => emit(Updated(branch: branch)));
     });
 

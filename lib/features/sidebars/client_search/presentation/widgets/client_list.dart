@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/get_it_maybe.dart';
 
-import '../../../../../injection.dart';
 import '../../domain/callbacks/select_client_callback.dart';
 import '../../domain/entities/client_search_entity.dart';
 import 'client_item.dart';

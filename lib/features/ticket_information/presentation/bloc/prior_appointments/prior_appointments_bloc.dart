@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/domain/usecases/get_client_prior_appointments.dart';
-import '../upcoming_appointments/upcoming_appointments_event.dart';
-import '../upcoming_appointments/upcoming_appointments_state.dart';
 import 'prior_appointments_event.dart';
 import 'prior_appointments_state.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrubbers_employee_application/common/scheduling/scheduling_context_provider.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
 
 class AppointmentCardPartial extends StatelessWidget {

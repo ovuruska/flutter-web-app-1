@@ -11,7 +11,7 @@ class BranchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var branchName = branch.name;
-    var firstLetter = (branchName != null && branchName.isNotEmpty) ? branchName[0].toUpperCase() : '';
+    var firstLetter = (branchName.isNotEmpty) ? branchName[0].toUpperCase() : '';
     return ListTile(
       selected: selected,
       selectedColor: Colors.grey.shade300,

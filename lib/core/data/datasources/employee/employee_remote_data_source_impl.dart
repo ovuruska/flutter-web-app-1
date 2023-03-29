@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/employee/employee_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
-import 'package:scrubbers_employee_application/core/remote_data_source.dart';
 
 import '../../../../services/auth.dart';
 import '../../../domain/constants/roles.dart';

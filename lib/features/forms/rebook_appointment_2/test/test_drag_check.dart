@@ -18,10 +18,7 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/dom
 import 'package:scrubbers_employee_application/features/forms/client_autocomplete/presentation/pages/client_autocomplete.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/form_column.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/pages/select_client_pets.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/widgets/select_client_pets.dart';
 import 'package:scrubbers_employee_application/init.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';

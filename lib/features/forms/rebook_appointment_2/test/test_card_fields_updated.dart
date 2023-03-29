@@ -14,15 +14,11 @@ import 'package:scrubbers_employee_application/core/domain/entities/client_entit
 import 'package:scrubbers_employee_application/core/domain/entities/pet_entity.dart';
 import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_bloc.dart';
 import 'package:scrubbers_employee_application/features/app_select_branch/presentation/bloc/app_select_branch_event.dart';
-import 'package:scrubbers_employee_application/features/appointment_schedule/domain/entities/creatable_scheduling_appointment_entity.dart';
 import 'package:scrubbers_employee_application/features/forms/client_autocomplete/presentation/pages/client_autocomplete.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/form_column.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/select_service.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/pages/select_client_pets.dart';
-import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/widgets/select_client_pets.dart';
 import 'package:scrubbers_employee_application/init.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -121,7 +117,7 @@ main() async {
         textFinder = find.text("Full Grooming");
         find.descendant(of: partialCardFactoryFinder, matching: textFinder);
 
-        serviceChanged!("We Wash");
+        serviceChanged("We Wash");
         await tester.pump();
         textFinder = find.text("We Wash");
         find.descendant(of: partialCardFactoryFinder, matching: textFinder);

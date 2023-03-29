@@ -1,6 +1,5 @@
 
 
-import 'package:equatable/equatable.dart';
 
 import 'client_entity.dart';
 import 'pet_entity.dart';
