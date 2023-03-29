@@ -21,8 +21,8 @@ class AppointmentEntityLocal extends Equatable {
     return {
       "customer": customer,
       "dog": pet,
-      "start": start.toIso8601String(),
-      "end": end.toIso8601String(),
+      "start": start.toUtc().toIso8601String(),
+      "end": end.toUtc().toIso8601String(),
       "branch": branch,
       "employee": employee,
       "products": products,
