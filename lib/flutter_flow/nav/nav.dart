@@ -36,12 +36,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/login',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => LoginRequired(DashboardView()),
+      errorBuilder: (context, _) => LoginRequired(ScheduleView()),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => LoginRequired(DashboardView()),
+          builder: (context, _) => LoginRequired(ScheduleView()),
           routes: [
             FFRoute(
               name: 'Dashboard',

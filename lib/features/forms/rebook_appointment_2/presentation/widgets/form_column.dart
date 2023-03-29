@@ -1,6 +1,8 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
 import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_bloc.dart';
 import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_event.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
@@ -9,6 +11,7 @@ import 'package:scrubbers_employee_application/features/forms/select_client_pets
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 
 import '../../../../../common/quicker/inputs/date_picker.dart';
+import '../../../../../core/domain/entities/client_entity.dart';
 import '../../../../available_slots/presentation/pages/available_slots.dart';
 import '../../../average_service_time/presentation/widgets/service_time.dart';
 import '../../../client_autocomplete/presentation/pages/client_autocomplete.dart';
@@ -22,13 +25,28 @@ import 'rebook_context_provider.dart';
 
 class RebookAppointment2FormColumn extends StatelessWidget {
   late RebookContext rebookContext;
-  RebookAppointment2FormColumn({Key? key}) : super(key: key) {
+  final List<EmployeeEntity> groomers;
+  final List<BranchEntity> branches;
+  final String service;
+  final int duration;
+  final DateTime? startDate;
+  final ClientEntity? client;
+  RebookAppointment2FormColumn({
+    Key? key,
+    this.groomers = const [],
+    this.branches = const [],
+    this.service = 'Full Grooming',
+    this.duration = 60,
+    this.startDate,
+    this.client,
+  }) : super(key: key) {
     rebookContext = RebookContext(
-      startDate: DateTime.now(),
-      groomers: [],
-      branches: [],
-      service: "Full Grooming",
-      duration: 60,
+      client: client,
+      startDate: startDate ?? DateTime.now(),
+      groomers: groomers,
+      branches: branches,
+      service: service,
+      duration: duration,
     );
   }
 
@@ -72,6 +90,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                 children: [
                   Container(height: 16),
                   ClientAutocompleteView(
+                    initialValue: rebookContext.client,
                     onSelected: (value) {
                       rebookContext.setClient(value);
                       rebookContext.setPet(null);
@@ -114,7 +133,6 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                       )
                     ],
                   ),
-
                 ],
               ),
               collapsed: Container(),
@@ -145,7 +163,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                       fontSize: 12,
                       color: Colors.grey,
                       fontWeight: FontWeight.w600)),
-              Container(width:4),
+              Container(width: 4),
               QuickerDatePicker(
                 onChanged: (value) {
                   rebookContext.setStartDate(value);
@@ -153,48 +171,47 @@ class RebookAppointment2FormColumn extends StatelessWidget {
               ),
             ],
           )
-
         ],
       ),
-          Container(height: 16),
-          MultiGroomerSelectView(
-            onSelected: (value) {
-              rebookContext.setGroomers(value);
-              sl<AvailableSlotsBloc>().add(
-                AvailableSlotsEventFetch(
-                  start: rebookContext.startDate,
-                  groomers: rebookContext.groomers,
-                  branches: rebookContext.branches,
-                  service: rebookContext.service ?? "Full Grooming",
-                  duration: rebookContext.duration ?? 60,
-                ),
-              );
-            },
-          ),
-          // Container with width 16
+      Container(height: 16),
+      MultiGroomerSelectView(
+        onSelected: (value) {
+          rebookContext.setGroomers(value);
+          sl<AvailableSlotsBloc>().add(
+            AvailableSlotsEventFetch(
+              start: rebookContext.startDate,
+              groomers: rebookContext.groomers,
+              branches: rebookContext.branches,
+              service: rebookContext.service ?? "Full Grooming",
+              duration: rebookContext.duration ?? 60,
+            ),
+          );
+        },
+      ),
+      // Container with width 16
 
-          Container(height: 16),
-          MultiProductSelectView(
-            onSelected: (value) {
-              rebookContext.setProducts(value);
-            },
-          ),
+      Container(height: 16),
+      MultiProductSelectView(
+        onSelected: (value) {
+          rebookContext.setProducts(value);
+        },
+      ),
 
-          Container(height: 16),
-          MultiBranchSelectView(
-            onSelected: (value) {
-              rebookContext.setBranches(value);
-              sl<AvailableSlotsBloc>().add(
-                AvailableSlotsEventFetch(
-                  start: rebookContext.startDate,
-                  groomers: rebookContext.groomers,
-                  branches: rebookContext.branches,
-                  service: rebookContext.service ?? "Full Grooming",
-                  duration: rebookContext.duration ?? 60,
-                ),
-              );
-            },
-          ),
+      Container(height: 16),
+      MultiBranchSelectView(
+        onSelected: (value) {
+          rebookContext.setBranches(value);
+          sl<AvailableSlotsBloc>().add(
+            AvailableSlotsEventFetch(
+              start: rebookContext.startDate,
+              groomers: rebookContext.groomers,
+              branches: rebookContext.branches,
+              service: rebookContext.service ?? "Full Grooming",
+              duration: rebookContext.duration ?? 60,
+            ),
+          );
+        },
+      ),
       SizedBox(
         height: 360,
         child: AvailableSlotsView(),

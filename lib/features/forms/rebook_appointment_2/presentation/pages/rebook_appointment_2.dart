@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/rebook_context_provider.dart';
+import 'package:scrubbers_employee_application/injection.dart';
 
+import '../bloc/rebook_appointment_2_bloc.dart';
+import '../bloc/rebook_appointment_2_state.dart';
 import '../widgets/form_column.dart';
 import '../widgets/rebook_context.dart';
 
@@ -9,13 +13,31 @@ class RebookAppointment2View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-            child: RebookAppointment2FormColumn()));
+    return BlocBuilder<RebookAppointment2Bloc, RebookAppointment2State>(
+        bloc: sl<RebookAppointment2Bloc>(),
+        builder: (context, state) {
+          RebookAppointment2FormColumn form;
+          if (state is RebookAppointment2StateInitial) {
+            form = RebookAppointment2FormColumn(
+              startDate: state.startDate,
+              groomers: state.groomers,
+              service: state.service,
+              duration: state.duration,
+              client: state.client,
+              branches: state.branches,
+            );
+          } else {
+            form = RebookAppointment2FormColumn();
+          }
+
+          return Scaffold(
+              backgroundColor: Colors.white,
+              body: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+                  child: form));
+        });
   }
 }
