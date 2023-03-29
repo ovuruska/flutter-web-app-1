@@ -53,7 +53,7 @@ class AppointmentScheduleHeadlessViewState extends State<AppointmentScheduleHead
                 .where((element) => element.role == widget.role)
                 .toList();
 
-          return AppointmentSchedule(
+            return AppointmentSchedule(
                 branch: widget.branch,
                 date: widget.date,
                 employees: employees,

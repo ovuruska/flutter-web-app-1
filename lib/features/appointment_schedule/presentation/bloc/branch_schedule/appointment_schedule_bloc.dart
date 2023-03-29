@@ -17,7 +17,9 @@ const allowed = <String>[
   "CheckedIn",
   "PickUpReady",
   "Completed",
-  "Cancelled"
+  "Cancelled",
+  "NoShow",
+  "NoShowUnpaid"
 ];
 
 class AppointmentScheduleBloc

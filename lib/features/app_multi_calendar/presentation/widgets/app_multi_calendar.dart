@@ -48,6 +48,8 @@ class AppMultiCalendar extends StatelessWidget {
   DateTime get focusedDay => date ?? DateTime.now();
 
   Widget _calendar(DateTime date) {
+    // 19/10/2021
+    var formatter = DateFormat('dd/MM/yyyy');
     var startOfMonth = DateTime(date.year, date.month, 1);
     var lastDayOfMonth = DateTime(date.year, date.month + 1, 0);
     return Column(children: [
@@ -62,6 +64,7 @@ class AppMultiCalendar extends StatelessWidget {
       ),
       Container(height: 16),
       TableCalendar(
+        key: Key(formatter.format(date)),
         availableCalendarFormats: const {
           CalendarFormat.month: 'Month',
         },

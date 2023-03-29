@@ -9,6 +9,7 @@ import 'package:scrubbers_employee_application/features/forms/rebook_appointment
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_event.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/presentation/widgets/appointment_context_provider.dart';
+import 'package:scrubbers_employee_application/features/ticket_information/utils/conversion.dart';
 
 import '../../../../../../core/domain/usecases/patch_appointment.dart';
 import '../../../../../../injection.dart';
@@ -20,32 +21,21 @@ import '../../../../utils/style.dart';
 
 class TicketInformationCheckinButtonGroup extends StatelessWidget {
   closeTicket(BuildContext context) {
-    var notifier = AppointmentContextProvider.of(context).notifier;
-    notifier?.setStatus("Completed");
+    var appointment = AppointmentContextProvider.of(context).appointment;
+    var notifier = AppointmentContextProvider.of(context).notifier!;
+    notifier.setStatus("Completed");
+    patch(appointment.update(status: "Completed"));
   }
 
+  patch(AppointmentEntity appointment){
+    var params =
+        PatchAppointmentParams(appointment.toSchedulingAppointmentEntity());
+    sl<PatchAppointmentUseCase>().call(params);
+  }
   onSaved(BuildContext context) {
     var notifier = AppointmentContextProvider.of(context).notifier!;
     var appointment = notifier.appointment;
-    var params = PatchAppointmentParams(
-      SchedulingAppointmentEntity(
-        id: appointment.id,
-        status: appointment.status,
-        customerName: appointment.customer.name,
-        employee: appointment.employee.id,
-        service: appointment.service,
-        breed: appointment.pet.breed,
-        dogName: appointment.pet.name,
-        start: appointment.start,
-        end: appointment.end,
-        employeeName: appointment.employee.name,
-        branch: appointment.branch.id,
-        specialHandling: appointment.specialHandling,
-        branchName: appointment.branch.name,
-        invoice: 0,
-      ),
-    );
-    sl<PatchAppointmentUseCase>().call(params);
+    patch(appointment);
   }
 
   isSame(BuildContext context) {
@@ -90,10 +80,10 @@ class TicketInformationCheckinButtonGroup extends StatelessWidget {
                   SelectClientPetsEventCleared(),
                 );
                 sl<SelectClientPetsBloc>().add(
-                  SelectClientPetsEventFetchClientPets(id: appointment.customer.id),
+                  SelectClientPetsEventFetchClientPets(
+                      id: appointment.customer.id),
                 );
               });
-
             }),
         getStyledButton(
             disabled: isSame(context) || isCompleted(context),
