@@ -16,7 +16,8 @@ class QuickerMultiSelectDialog<T> extends StatefulWidget {
       this.initialValue,
       this.headerText,
       this.allowAllSelected = true,
-      this.onSelected, this.hintText})
+      this.onSelected,
+      this.hintText})
       : super(key: key);
 
   @override
@@ -42,26 +43,37 @@ class _QuickerMultiSelectDialogState<T>
   Widget build(BuildContext context) {
     var multiSelect =
         widget.options.map((e) => MultiSelectItem(e, e.toString())).toList();
+
     return Container(
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(5)),
-        child:MultiSelectDialogField<T>(
-        buttonText: Text(widget.hintText ?? ""),
-        title: Text(widget.headerText ?? ""),
-        chipDisplay: MultiSelectChipDisplay(
-          icon: Icon(Icons.close),
-          onTap: (item) {
-            setState(() {
-              _selected.remove(item);
-              widget.onSelected?.call(_selected);
-            });
-          },
-        ),
-        items: multiSelect,
-        onConfirm: (values) => setState(() {
-              _selected = values;
-              widget.onSelected?.call(_selected);
-            })));
+        child: SingleChildScrollView(
+            child: MultiSelectDialogField<T>(
+
+                searchable: true,
+                initialValue: widget.initialValue ?? <T>[],
+                buttonText: Text(widget.hintText ?? ""),
+                title: Text(widget.headerText ?? ""),
+                chipDisplay: MultiSelectChipDisplay(
+                  icon: Icon(Icons.close),
+                  onTap: (item) {
+                    setState(() {
+                      _selected = _selected.where((e) => e != item).toList();
+                      widget.onSelected?.call(_selected);
+                    });
+                  },
+                ),
+                onSelectionChanged: (values) {
+                  setState(() {
+                    _selected = values;
+                    widget.onSelected?.call(_selected);
+                  });
+                },
+                items: multiSelect,
+                onConfirm: (values) => setState(() {
+                      _selected = values;
+                      widget.onSelected?.call(_selected);
+                    }))));
   }
 }
