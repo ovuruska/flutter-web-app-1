@@ -12,9 +12,10 @@ import '../widgets/product_select.dart';
 
 class MultiProductSelectView extends StatefulWidget{
 
+  final List<ProductEntity>? initialValue;
   final Function(List<ProductEntity>)? onSelected;
 
-  const MultiProductSelectView({Key? key, this.onSelected}) : super(key: key);
+  const MultiProductSelectView({Key? key, this.onSelected, this.initialValue}) : super(key: key);
 
   @override
   _MultiProductSelectViewState createState() => _MultiProductSelectViewState();
@@ -32,7 +33,8 @@ class _MultiProductSelectViewState extends State<MultiProductSelectView>{
       bloc: sl<MultiProductSelectBloc>(),
       builder: (context,state){
         return MultiProductSelect(
-          //onSelected: widget.onSelected,
+          initialValue: widget.initialValue ?? [],
+          onSelected: widget.onSelected,
           options: state.options,
         );
       },

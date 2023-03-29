@@ -24,7 +24,7 @@ enum AppointmentStatus {
 
 }
 
-class Appointment {
+class AppointmentEntity {
   final String id;
   final Customer customer;
   final PetModel dog;
@@ -53,7 +53,7 @@ class Appointment {
   final DateTime? lastDogAppointment;
   final DateTime? lastCustomerAppointment;
 
-  Appointment({
+  AppointmentEntity({
     required this.id,
     this.products = const [],
     this.services = const [],
@@ -85,11 +85,11 @@ class Appointment {
 
   get modifiable => !this.submitted;
 
-  factory Appointment.fromJson(Map<String, dynamic> json) {
+  factory AppointmentEntity.fromJson(Map<String, dynamic> json) {
     var employee = (json["employee"] == null)
         ? Employee.empty()
         : Employee.fromJson(json["employee"]);
-    return Appointment(
+    return AppointmentEntity(
       id: json['id'].toString(),
       customer: Customer.fromJson(json['customer']),
       dog: PetModel.fromJson(json['dog']),
@@ -165,7 +165,7 @@ class Appointment {
         "last_customer_appointment": decodeDateTime(lastCustomerAppointment),
       };
 
-  Appointment update({
+  AppointmentEntity update({
     Customer? customer,
     PetModel? dog,
     DateTime? start,
@@ -188,7 +188,7 @@ class Appointment {
     Employee? checkoutBy,
     DateTime? checkoutTime,
   }) =>
-      Appointment(
+      AppointmentEntity(
         createdAt: this.createdAt,
         updatedAt: this.updatedAt,
         id: this.id,

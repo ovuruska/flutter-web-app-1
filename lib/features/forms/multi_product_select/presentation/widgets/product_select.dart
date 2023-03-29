@@ -16,6 +16,7 @@ class MultiProductSelect extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return QuickerMultiSelectDialog<ProductEntity>(
+      initialValue: initialValue,
       options: options,
       hintText: "Click to add products",
       allowAllSelected: false,

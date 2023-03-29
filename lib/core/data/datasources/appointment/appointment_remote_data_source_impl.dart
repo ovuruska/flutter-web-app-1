@@ -33,4 +33,20 @@ class AppointmentRemoteDataSourceImpl extends AppointmentRemoteDataSource{
     }
   }
 
+  @override
+  Future<Either<Failure, AppointmentEntity>> get(int id) async {
+    var response = await SchedulingAuthService.instance.request(
+      "api/schedule/appointment/$id",
+    );
+
+    if (response.statusCode == 200) {
+      var respString = await response.stream.bytesToString();
+      var respJson = jsonDecode(respString);
+      var resultAppointment = AppointmentEntity.fromJson(respJson);
+      return Right(resultAppointment);
+    } else {
+      return Left(ServerFailure());
+    }
+  }
+
 }

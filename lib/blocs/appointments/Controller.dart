@@ -8,7 +8,7 @@ class AppointmentsBloc extends Bloc<AppointmentsModel> {
     subject.sink.add(AppointmentsModel());
   }
 
-  setAppointments(List<Appointment> appointments) {
+  setAppointments(List<AppointmentEntity> appointments) {
     subject.sink.add(subject.value.setAppointments(appointments));
   }
 
@@ -21,7 +21,7 @@ class AppointmentsBloc extends Bloc<AppointmentsModel> {
 
 
 
-  addAppointment(Appointment appointment) {
+  addAppointment(AppointmentEntity appointment) {
     subject.sink.add(subject.value.addAppointment(appointment));
   }
 

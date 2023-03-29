@@ -1,7 +1,5 @@
-import 'dart:convert' show jsonDecode;
 
 import 'package:dartz/dartz.dart';
-import 'package:scrubbers_employee_application/services/auth.dart';
 
 import '../../../../../core/error/failures.dart';
 import '../../domain/entities/appointment.dart';
@@ -20,5 +18,10 @@ class AppointmentRepositoryImpl extends AppointmentRepository {
   Future<Either<Failure, AppointmentEntity>> create(
       AppointmentEntityLocal appointment) async {
     return await remoteDataSource.create(appointment);
+  }
+
+  @override
+  Future<Either<Failure, AppointmentEntity>> get(int id) async {
+    return await remoteDataSource.get(id);
   }
 }

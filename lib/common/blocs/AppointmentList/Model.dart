@@ -3,15 +3,15 @@
 import 'package:scrubbers_employee_application/models/Appointment.dart';
 
 class AppointmentListModel {
-  List<Appointment> appointments = [];
+  List<AppointmentEntity> appointments = [];
 
 
-  setAppointments(List<Appointment> appointments) {
+  setAppointments(List<AppointmentEntity> appointments) {
     this.appointments = appointments;
     return this;
   }
 
-  patchAppointment(Appointment appointment) {
+  patchAppointment(AppointmentEntity appointment) {
     var index = appointments.indexWhere((a) => a.id == appointment.id);
     if (index == -1) {
       appointments.add(appointment);
@@ -21,7 +21,7 @@ class AppointmentListModel {
     return this;
   }
 
-  removeAppointment(Appointment appointment) {
+  removeAppointment(AppointmentEntity appointment) {
     this.appointments = this.appointments.where((a) => a.id != appointment.id).toList();
     return this;
   }

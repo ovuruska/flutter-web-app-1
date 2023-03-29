@@ -46,7 +46,6 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     List<SchedulingAppointmentLayout> layouts = layoutAppointments(appointments);
     layouts.sort((a, b) => a.zIndex.compareTo(b.zIndex));
-
     var schedulingContext = SchedulingContextProvider.of(context);
     return Stack(children: [
       Column(children: [

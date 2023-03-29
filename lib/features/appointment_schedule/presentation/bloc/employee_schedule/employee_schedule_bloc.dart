@@ -45,6 +45,26 @@ class EmployeeScheduleBloc
           (r) => emit(EmployeeScheduleLoaded(id: event.id, appointments: r as List<SchedulingAppointmentEntity>)));
     });
 
+    on<EmployeeScheduleLocalPatchEvent>((event,emit) async {
+      var appointment = event.appointment;
+      var currentAppointments =
+          (state as EmployeeScheduleLoaded).appointments;
+      bool found = false;
+
+      currentAppointments = currentAppointments.map((e) {
+        if (e.id == appointment.id) {
+          found = true;
+          return appointment;
+        }
+        return e;
+      }).toList();
+      if (!found) {
+        currentAppointments.add(appointment);
+      }
+      emit(EmployeeScheduleLoaded(
+          id: (state as EmployeeScheduleLoaded).id,
+          appointments: currentAppointments));
+    });
     on<EmployeeSchedulePatchEvent>((event, emit) async {
       var appointment = event.appointment;
       var employeeId = appointment.employee;

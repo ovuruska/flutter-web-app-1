@@ -1,0 +1,350 @@
+0f6758c|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 27 19:54:10 2023 +0300|Fix(Fetch on first load) : Appointment schedule.
+1137ad2|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 27 19:35:31 2023 +0300|Fix(Fixed on first load, cannot fetch appts.)
+69870f0|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 27 07:41:44 2023 +0300|Refactor( SSoT for branch in dashboard header): App branch select
+e8582db|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 27 07:41:23 2023 +0300|Refactor( SSoT for date in dashboard header.): App multi calendar
+8ded0b1|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 26 22:08:38 2023 +0300|Fix( No SchedulingContextProvider )
+7a0c396|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 26 21:42:01 2023 +0300|Feat(appointment slot)
+281a05e|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 26 18:54:13 2023 +0300|Fix(Admin employee weekly schedule.
+e309071|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 15:19:12 2023 +0300|Test ( When appt. type is changed, appt. type over appt. card is also changed. )
+fe8165a|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 15:19:00 2023 +0300|Test (When owner is changed, owner name over appt. card is also changed.)
+c280317|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 15:18:27 2023 +0300|Test( When pet is changed, breed and pet name over appt. card is also changed.)
+f3618d2|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 15:01:04 2023 +0300|Test ( When owner name, pet and duration is given, appt. card should be draggable.)
+74fd26a|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 15:00:42 2023 +0300|Test( When owner is changed appointment card becomes undraggable.)
+14c798d|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 12:39:59 2023 +0300|Test(When owner name changed, pet is cleared.)
+763e44e|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 10:45:05 2023 +0300|Style(Rebook widget): Blueshadowed.
+5a06e5b|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 10:34:17 2023 +0300|BugFix(Auto-login)
+7d8cdd1|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 25 10:30:29 2023 +0300|Test(When owner name changed, pets are updated.)
+f4f7b46|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 23 23:57:42 2023 +0300|Feat(Employee information): Implement CLEAN layers.
+a30bb04|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 23 10:55:38 2023 +0300|Bug(Incorrect ray top margin): Increase offset by 30min.
+3095626|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 23 10:51:59 2023 +0300|Feat(Appointment card creation): Implement use case.
+2c10ee1|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 23 08:50:07 2023 +0300|Checkpoint: draggable.
+e2ed15e|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 23 00:06:51 2023 +0300|Feat(Appointment card creation): Partial creation
+4612781|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 22:34:09 2023 +0300|Feat(Available slots): Implement data, domain and presentation.
+fc91331|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 08:00:50 2023 +0300|Refactor(Groomer Select): Renamed as MultiGroomerSelect.
+d0213f0|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 07:59:15 2023 +0300|Refactor(Product Select): Renamed as MultiProductSelect.
+34faea8|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 07:58:22 2023 +0300|Refactor(Branch Select): Renamed as MultiBranchSelect.
+9fbf076|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 07:57:17 2023 +0300|Fix(No branch is available) : Load branches and load first one.
+ef27d7c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 07:47:36 2023 +0300|feat(Update calendar date): When starting date is updated, update schedule date.
+44ac6ea|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 00:50:10 2023 +0300|Branch inputs are added.
+6d44dbf|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 22 00:10:57 2023 +0300|Checkpoint.
+ef8bcdf|Oguz Vuruskaner|ovuruska@outlook.com|Tue Mar 21 08:25:17 2023 +0300|Added scheduling screen.
+fc21bb3|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 22:00:36 2023 +0300|Implemented daily column sidebar.
+af203f8|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 21:13:20 2023 +0300|Checkpoint.
+a791406|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 19:17:05 2023 +0300|Fixed schedule header naming.
+7f56292|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 13:21:30 2023 +0300|Checkpoint.
+c51d0d7|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 09:26:55 2023 +0300|Added client name retrieval.
+d07ebcd|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 20 07:21:25 2023 +0300|Refactors are made.
+855f554|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 22:47:51 2023 +0300|Implemented appointments page.
+4fafa2b|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 20:55:22 2023 +0300|Finetuned drag-and-drop for appointments page.
+61f3e30|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 20:29:01 2023 +0300|Sidebar modification is added.
+e9ed5ef|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 20:20:46 2023 +0300|Fixed drag and drop problems.
+eed67b2|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 19:38:21 2023 +0300|Big refactor.
+20d8a65|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 17:03:19 2023 +0300|Added side appointment dashboard panel.
+943ae8c|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 16:11:23 2023 +0300|Implement selected functionality on data table.
+c69e2cf|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 19 15:30:30 2023 +0300|Checkpoint
+abd3fee|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 18 23:50:03 2023 +0300|Checkpoint
+b7cf222|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 18 16:38:53 2023 +0300|Partial refactoring of features folder.
+495e629|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 18 13:48:17 2023 +0300|Dashboard V1
+8ecbc9c|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 18 10:24:00 2023 +0300|Checkpoint
+ce00f13|Oguz Vuruskaner|ovuruska@outlook.com|Fri Mar 17 20:11:39 2023 +0300|Fixed header overflow.
+14828ad|Oguz Vuruskaner|ovuruska@outlook.com|Fri Mar 17 11:21:57 2023 +0300|Added dashboard schedule header and catched previous functionalities.
+fd41227|Oguz Vuruskaner|ovuruska@outlook.com|Fri Mar 17 10:59:36 2023 +0300|Separated calendar and branch.
+2e790b1|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 15 22:05:37 2023 +0300|Added graph for appointment segment.
+22ff3c1|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 15 09:23:34 2023 +0300|Added visits contaier.
+97f322a|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 15 08:36:57 2023 +0300|Checkpoint #1: total visits widget is being debugged.
+dc139e8|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 15 00:49:16 2023 +0300|Added top category chart.
+1305a79|Oguz Vuruskaner|ovuruska@outlook.com|Tue Mar 14 23:18:58 2023 +0300|Added client information feature.
+7d947d2|Oguz Vuruskaner|ovuruska@outlook.com|Mon Mar 13 09:56:11 2023 +0300|Implemented paginated query.
+769b7a8|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 21:21:01 2023 +0300|Added real time ray.
+419f2de|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 20:44:28 2023 +0300|Added resizable widget.
+a2b16cf|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 18:46:10 2023 +0300|WTF DID I DO? ,
+a835a82|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 18:42:37 2023 +0300|Removed delay at the patch operation.
+e751af0|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 18:41:02 2023 +0300|Added full screen functionality.
+b56a287|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 18:11:12 2023 +0300|Added header to branch selection.
+601dce8|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:59:40 2023 +0300|Merge pull request #31 from make-quicker/new_dashboard
+7ae2932|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:59:01 2023 +0300|Fixed margin problem.
+af088d1|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:58:36 2023 +0300|Merge pull request #30 from make-quicker/new_dashboard
+f87fe66|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:58:12 2023 +0300|Fixed margin problem.
+f4d3ffb|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:37:30 2023 +0300|Fixed view problems.
+b25747c|Oguz Vuruskaner|ovuruska@outlook.com|Sun Mar 12 09:12:26 2023 +0300|Fixed layout problem.
+fd64dcd|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 22:40:18 2023 +0300|Added remove functionality to waitlist.
+c2492bd|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 21:27:23 2023 +0300|Added scrollbar to top.
+36c0aa3|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 21:18:59 2023 +0300|Fixed drag and drop and data fetching.
+647172b|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 20:17:44 2023 +0300|Checkpoint #4: Draggable does not work. Will test scaffold hypothesiss.
+95402b0|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 19:44:28 2023 +0300|Checkpoint #3: Added drag and drop.
+a6a8722|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 15:55:27 2023 +0300|Checkpoint #2: Only calendar header and integration remains.
+3d82444|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 11 08:44:40 2023 +0300|Checkpoint #1: Implemented header.
+193fae5|Oguz Vuruskaner|ovuruska@outlook.com|Thu Mar 9 08:39:11 2023 +0300|Checkpoint #1: Appointment card design is implemented.
+7877e13|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 21:03:46 2023 +0300|Merge pull request #29 from make-quicker/admin-employee
+b1d38ee|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 21:03:07 2023 +0300|Revised admin employee tab.
+40ed271|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 20:20:23 2023 +0300|Added select role.
+85436a5|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 20:05:21 2023 +0300|Added save feature.
+3259713|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 19:59:35 2023 +0300|Checkpoint #2: Added remove event.
+8365a3f|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 19:49:16 2023 +0300|Checkpoint #1
+4a5ff9e|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 18:13:05 2023 +0300|Added selected.
+848fa57|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 8 15:08:29 2023 +0300|Added all functionalities.
+7814d09|Oguz Vuruskaner|ovuruska@outlook.com|Tue Mar 7 20:52:50 2023 +0300|Added search view.
+7095742|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 4 13:51:57 2023 +0300|Added dog breed picker.
+75a4cb6|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 4 10:56:17 2023 +0300|Removed header shadow in appointment card.
+c901e04|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 4 10:50:06 2023 +0300|Login loader is fixed.
+086d991|Oguz Vuruskaner|ovuruska@outlook.com|Sat Mar 4 10:25:13 2023 +0300|Added post new appointment feature.
+0a09e53|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 1 20:20:47 2023 +0300|Merge pull request #27 from make-quicker/expert-call-2-aftermath
+395f0bc|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 1 20:09:45 2023 +0300|Update main.yml
+e71e847|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 1 20:05:42 2023 +0300|Sorted logs
+e506391|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 1 19:41:17 2023 +0300|Merge pull request #26 from make-quicker/expert-call-2-aftermath
+8979cfe|Oguz Vuruskaner|ovuruska@outlook.com|Wed Mar 1 19:40:41 2023 +0300|Added history feature for appointments.
+d2c0890|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 28 21:00:01 2023 +0300|Implemented history screen.
+b848f92|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 27 17:17:15 2023 +0300|Merge pull request #24 from make-quicker/expert-call-2-aftermath
+ba70ee8|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 27 17:16:37 2023 +0300|Admin page is finalized.
+cb1827b|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 27 16:56:14 2023 +0300|Fixed branches tab.
+46f7865|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 25 12:52:57 2023 +0300|Removed admin from demo.
+f33d5bb|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 25 12:44:31 2023 +0300|Temporarily disabled branches tab.
+cd22694|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 25 10:28:12 2023 +0300|Fixed product select feature.
+6d810ac|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 24 22:37:34 2023 +0300|Added new splash screen.
+2f5dd42|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 24 13:14:44 2023 +0300|Fixed null listener error.
+6412cbf|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 24 13:11:32 2023 +0300|Fixed null error.
+8f2b8b2|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 21:27:26 2023 +0300|Merge pull request #23 from make-quicker/expert-call-2
+e6dd8d2|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 21:22:01 2023 +0300|Disabled tab bar.
+78dbdc1|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 21:13:06 2023 +0300|Fixed pending appts. tab does not update.
+344d8f9|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 20:44:01 2023 +0300|Weight is convert to integer.
+0a3f125|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 20:18:05 2023 +0300|Improved product select feature.
+4603791|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 17:38:59 2023 +0300|Hardcoded theme mode.
+fd09b90|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 17:38:02 2023 +0300|WIP on expert-call-1: cdcbc36 Cleared icloud artifacts.
+ea9dc48|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 17:38:02 2023 +0300|index on expert-call-1: cdcbc36 Cleared icloud artifacts.
+cdcbc36|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 17:35:34 2023 +0300|Cleared icloud artifacts.
+ea05a39|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 23 17:33:18 2023 +0300|Dark mode is disabled.
+70cc542|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 22:46:41 2023 +0300|Merge pull request #22 from make-quicker/expert-call-1
+eeaaba3|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 22:46:09 2023 +0300|Merge branch 'master' into expert-call-1
+7f1d62d|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 22:44:22 2023 +0300|Updated OG protocol metadata.
+91f085c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 21:08:48 2023 +0300|Checkpoint #1
+3dd0cad|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 18:41:16 2023 +0300|Added new feature.
+04153bb|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 22 15:11:38 2023 +0300|Checkpoint #1: Fetch appointment request is handled.
+3d5932e|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 21 16:57:48 2023 +0300|Fixed ticket information.
+584efb0|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 21 14:26:55 2023 +0300|Fixed special handling notes
+8b4b7b1|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 20 22:46:14 2023 +0300|Added no employees found.
+d76978e|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 20 22:16:17 2023 +0300|Added no appointment texts
+cd714ad|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 20 22:01:04 2023 +0300|Fixed tab bar position.
+6e1ecdb|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 20 21:55:54 2023 +0300|Removed expand all button.
+4b10bf0|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 20 13:14:58 2023 +0300|Added .env.
+31c076e|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 19:02:32 2023 +0300|Update main.yml
+7cb8833|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:58:11 2023 +0300|Update main.yml
+6f7a527|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:49:16 2023 +0300|Update main.yml
+a9a4f0c|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:20:35 2023 +0300|Update main.yml
+1a22b51|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:16:50 2023 +0300|Update main.yml
+6e5017e|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:12:36 2023 +0300|Ignored .env
+d2f5cde|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 19 18:01:22 2023 +0300|Added .env file as asset.
+8248585|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 18 16:11:49 2023 +0300|a
+834d05d|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 18 15:32:07 2023 +0300|Initial commit
+931f236|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 23:04:10 2023 +0300|Added web folder.
+09fe0d8|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:50:38 2023 +0300|Merge branch 'master' into admin_working_hours
+7aea0c1|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:47:44 2023 +0300|Fixed render error.
+7a7ec4a|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:46:17 2023 +0300|Update main.yml
+4061ece|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:43:06 2023 +0300|Update main.yml
+1b98453|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:40:24 2023 +0300|Create CNAME
+6b67e92|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:22:40 2023 +0300|Update main.yml
+3f31a8e|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 22:18:16 2023 +0300|Update main.yml
+c88c8ab|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 15 21:22:17 2023 +0300|Update main.yml
+d38e867|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 14 17:32:32 2023 +0300|Update main.yml
+711d262|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 14 17:28:46 2023 +0300|Update main.yml
+ed7344e|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 16:46:15 2023 +0300|Update main.yml
+cad1859|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 16:18:08 2023 +0300|Update main.yml
+976a442|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 16:12:14 2023 +0300|Update main.yml
+73ecc17|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:56:46 2023 +0300|Update main.yml
+2bcd860|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:55:11 2023 +0300|Update main.yml
+25de7b2|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:54:34 2023 +0300|Update main.yml
+2023035|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:53:09 2023 +0300|Update main.yml
+020d0a1|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:52:19 2023 +0300|Update main.yml
+efd4396|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:51:37 2023 +0300|Update main.yml
+226eead|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:49:17 2023 +0300|Update main.yml
+a75fe46|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:35:34 2023 +0300|Removed everything about faker
+b2d44f5|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:32:42 2023 +0300|Update main.yml
+b94f523|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:27:09 2023 +0300|Update main.yml
+8a0fa90|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:25:58 2023 +0300|Update main.yml
+9c16064|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:24:55 2023 +0300|Update main.yml
+d0aadf8|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:17:15 2023 +0300|Update main.yml
+16648c3|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:13:43 2023 +0300|Update main.yml
+2df7c72|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:12:56 2023 +0300|Update main.yml
+ec0b515|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 15:07:00 2023 +0300|Update main.yml
+8c2442e|Ege Bağırsakçı|egebagirsakci@sabanciuniv.edu|Tue Feb 14 14:47:00 2023 +0300|deleted mock
+0ad26d3|Ege Bağırsakçı|72747256+egebgs@users.noreply.github.com|Tue Feb 14 14:20:24 2023 +0300|Created main.yml
+e3940b2|Oguz Vuruskaner|ovuruska@outlook.com|Tue Feb 14 09:12:32 2023 +0300|Services are not fetched.
+6dc09ed|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 13 10:11:42 2023 +0300|Refactored sidebar.
+84fb3f4|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 13 00:52:08 2023 +0300|Added pending appointments.
+dad887a|Oguz Vuruskaner|ovuruska@outlook.com|Mon Feb 13 00:41:10 2023 +0300|Checkpoint
+0634f49|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 12 21:25:45 2023 +0300|Refactored components library.
+68b5686|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 12 01:20:41 2023 +0300|Fixed sign out issue.
+dc0731c|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 11 16:15:20 2023 +0300|Added auto login.
+0644b12|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 11 13:46:31 2023 +0300|Employee login is implemented.
+8a2f1b5|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 11 13:09:50 2023 +0300|Login is implemented.
+d1c88a3|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 11 13:02:43 2023 +0300|Checkpoint
+32dd265|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 10 11:57:17 2023 +0300|Token fetch is successful.
+e3b79fd|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 10 09:01:57 2023 +0300|Login page is added.
+35b0934|Oguz Vuruskaner|ovuruska@outlook.com|Thu Feb 9 00:06:10 2023 +0300|Fixed datetime serialization.
+4c26084|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 8 23:12:43 2023 +0300|Added Go-To feature to cancelled items.
+33ef71a|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 8 21:06:05 2023 +0300|No view is shown when branch or employee not selected.
+6e2362c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 8 18:52:08 2023 +0300|Employee working hours is implemented.
+945cae0|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 8 13:54:03 2023 +0300|Fixed employee working hour repository.
+04dad5e|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 8 12:49:50 2023 +0300|Implemented weekly schedule v2.
+410e8ce|Oguz Vuruskaner|ovuruska@outlook.com|Sun Feb 5 14:14:36 2023 +0300|Checkpoint.
+f199252|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 4 11:40:05 2023 +0300|Removed redundant code.
+702620c|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 4 11:30:08 2023 +0300|Fixed employee weekly schedule.
+847438d|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 4 10:41:33 2023 +0300|Added long press event handler to weekly calendar.
+6d2fb1e|Oguz Vuruskaner|ovuruska@outlook.com|Sat Feb 4 08:59:23 2023 +0300|Added weekly calendar view.
+04bea83|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 3 16:53:18 2023 +0300|Added date select.
+7894945|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 3 11:56:39 2023 +0300|Merge pull request #16 from Scrubbers-Pet-Grooming-Self-Service/old_interface
+cf09d5f|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 3 11:56:03 2023 +0300|Fixed import error.
+652d788|Oguz Vuruskaner|ovuruska@outlook.com|Fri Feb 3 11:52:53 2023 +0300|Added expand feature.
+d2d436f|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 1 18:01:05 2023 +0300|Added fullscreen.
+c1cff9b|Oguz Vuruskaner|ovuruska@outlook.com|Wed Feb 1 15:09:46 2023 +0300|Checkpoint #1: Positioning is implemented.
+57d6e2f|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 17:37:00 2023 +0300|Added mini dashboard.
+745276a|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 16:29:03 2023 +0300|Fixed styling.
+dcdb3b6|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 16:21:06 2023 +0300|Added incoming appointments.
+4fb5bf4|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 13:34:35 2023 +0300|Added no show,total appts . and branch select component.
+0385103|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 11:41:11 2023 +0300|Grids are constructed.
+1e50041|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 30 11:02:34 2023 +0300|Added new fonts.
+da9aac1|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 26 20:39:38 2023 +0300|Client information panel is filled with real information.
+7fe4387|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 26 20:35:35 2023 +0300|Client information panel is filled with real information.
+97dff5c|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 26 13:32:31 2023 +0300|Added shadow container.
+b324299|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 26 00:35:09 2023 +0300|Merge pull request #15 from Scrubbers-Pet-Grooming-Self-Service/dashboard_final_sprint
+8a17656|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 26 00:28:56 2023 +0300|Running version.
+2a8e691|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 25 23:07:30 2023 +0300|Added special handling.
+781ed67|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 25 21:11:44 2023 +0300|Left side is implemeneted.
+7efb935|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 25 18:43:36 2023 +0300|Fixed bottommost of ticket information.
+f3e0055|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 25 15:39:42 2023 +0300|Upcoming and prior backend integration is implemented.
+9b0a517|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 22:18:32 2023 +0300|Removed redundant files.
+930a7cf|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 22:01:17 2023 +0300|Set headers.
+ddbaad6|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 21:57:30 2023 +0300|Fixed multi select error.
+15b734a|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 20:54:25 2023 +0300|Added text input
+bb40040|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 02:23:40 2023 +0300|Added upcoming abd prior pet appts.
+c034d3e|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 01:59:02 2023 +0300|Merge pull request #14 from Scrubbers-Pet-Grooming-Self-Service/dashboard_final_sprint
+6290cb6|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 01:57:01 2023 +0300|Improved calendar view.
+1963bb7|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 01:28:01 2023 +0300|Added cancel functionality.
+a9a8fd8|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 01:20:35 2023 +0300|Checkpoint #3: Fixed timezone errors.
+1e90a82|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 24 01:07:01 2023 +0300|Checkpoint #2
+7d7c98b|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 23:15:31 2023 +0300|Eliminated non-employee appointments.
+10f97c2|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 23:10:28 2023 +0300|Checkpoint #1 : Created weekly calendar.
+e21c52d|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 21:51:07 2023 +0300|Merge pull request #13 from Scrubbers-Pet-Grooming-Self-Service/dashboard_final_sprint
+ea6ed3e|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 20:36:08 2023 +0300|Fixed top offset calculation on go to items.
+762dc87|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 20:32:39 2023 +0300|Added cards.
+dcb97f1|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 23 00:37:31 2023 +0300|Updated models.
+2337359|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 23:53:47 2023 +0300|Updated color codes.
+e304f82|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 19:10:17 2023 +0300|Fixed legend and branch background colors.
+a8c461d|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 19:09:24 2023 +0300|Fixed legend and branch background colors.
+2b22760|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 18:59:44 2023 +0300|Calendar is limited working hours.
+07996af|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 15:14:09 2023 +0300|Added special handling view.
+8e3e912|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 15:07:09 2023 +0300|Updated appointment model.
+d56a7b5|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 13:20:57 2023 +0300|Added cancelled appointments.
+e3e27c8|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 00:37:22 2023 +0300|Updated background color.
+df43536|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 00:24:19 2023 +0300|Merge pull request #12 from Scrubbers-Pet-Grooming-Self-Service/overlapping_widgets
+787fb15|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 00:23:56 2023 +0300|Fixed date format in appointment cards.
+b46a396|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 22 00:22:44 2023 +0300|Fixed appointment hour view.
+281c4d4|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 22:20:53 2023 +0300|Hour height change checkpoint.
+26fd830|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 21:24:08 2023 +0300|Checkpoint v3.
+f416d9f|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 21:04:29 2023 +0300|Checkpoint #2 : Added top and bottom gesture detectors. Eliminated ticket info dialog event handler.
+43b53a5|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 20:50:54 2023 +0300|Resizable widget checkpoint.
+47353be|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 18:28:54 2023 +0300|Added print functionality.
+d5dbfaf|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 21 15:22:30 2023 +0300|Added approve appointments.
+7d5bf47|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 20 00:14:50 2023 +0300|Fixed expanded calendar navigation bug.
+be4d72f|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 19 23:59:32 2023 +0300|Fixed pending and rescheduling view.
+96fb112|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 19 23:29:21 2023 +0300|Improved drag and drop transaction speed.
+5096456|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 18 21:40:13 2023 +0300|Fixed RenderFlow errors.
+a8cc8c4|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 18 21:13:07 2023 +0300|Fixed RenderFlow errors.
+757bb0d|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 18 20:16:20 2023 +0300|Transfer problem.
+b33f95c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 18 19:21:34 2023 +0300|On card drag is implemented.
+127f92f|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 15:09:27 2023 +0300|Overlapping widgets v1.
+052eef9|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 13:28:26 2023 +0300|Optimized top offset for positioned widgets.
+cc90ded|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 11:51:22 2023 +0300|Merge pull request #11 from Scrubbers-Pet-Grooming-Self-Service/infinite_pagination
+28bc2da|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 11:37:16 2023 +0300|Sidebar folder is moved to dashboard folder.
+016c365|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 11:22:00 2023 +0300|Separated appointment lists from sidebar bloc.
+bbe230a|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 10:44:27 2023 +0300|Draggable waitlist.
+b4305fe|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 17 00:09:29 2023 +0300|Separated calendar from sidebar BLoc.
+03d7dd5|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 23:05:59 2023 +0300|Branch select is converted to select field.
+907cd82|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 22:32:47 2023 +0300|Added splash screen.
+d7fea15|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 19:55:09 2023 +0300|Checked fetch error.
+37e4998|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 19:14:58 2023 +0300|Checkpoint
+62cf4c5|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 18:54:26 2023 +0300|Extracted employees from dashboard bloc.
+3e2efdb|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 16 00:39:11 2023 +0300|Added new appointment.
+bb70396|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 15 22:55:52 2023 +0300|Fixed render warnings.
+b9246a0|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 15 21:24:15 2023 +0300|Merge pull request #10 from Scrubbers-Pet-Grooming-Self-Service/infinite_pagination
+66436a9|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 15 01:38:14 2023 +0300|Calendar is implemented.
+9741c5a|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 15 01:24:35 2023 +0300|Animated calendar expansion.
+edb4d19|Oguz Vuruskaner|ovuruska@outlook.com|Sun Jan 15 01:14:19 2023 +0300|Implemented expandable calendar.
+4e85955|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 14 23:59:21 2023 +0300|Added infinite scroll.
+b1de195|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 14 21:08:21 2023 +0300|Added controlled calendar.
+dcaae4f|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 14 16:59:09 2023 +0300|Added service edit.
+0dcf131|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 14 15:37:17 2023 +0300|Fixed branch name.
+ea7fd35|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 13 23:03:53 2023 +0300|Merge pull request #9 from Scrubbers-Pet-Grooming-Self-Service/backend_integration
+5a4d202|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 13 23:03:11 2023 +0300|Customer pages are integrated.
+10e3472|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 13 22:55:52 2023 +0300|Pets controller is implemented.
+c67d7c7|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 13 22:26:41 2023 +0300|Fixed appointment ticket view.
+0b60a83|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 13 19:40:42 2023 +0300|Fixed serialization errors.
+b04a209|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 20:37:57 2023 +0300|Added error message on insertion failure.
+73d23d4|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 20:29:55 2023 +0300|Employee backend is integrated.
+43568c8|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 18:51:27 2023 +0300|Removed redundant functionality.
+eb17b05|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 18:46:43 2023 +0300|Removed redundant repository.
+081143c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 18:44:36 2023 +0300|Added appointment repository.
+437ff85|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 11 00:54:20 2023 +0300|Branches are integrated.
+c65cb29|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 7 18:36:16 2023 +0300|Merge pull request #8 from Scrubbers-Pet-Grooming-Self-Service/customer_view
+92dd0cd|Oguz Vuruskaner|ovuruska@outlook.com|Sat Jan 7 18:35:34 2023 +0300|Implemented login.
+293ad0d|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 16:43:51 2023 +0300|Fixed class names.
+42dc8bc|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 16:42:29 2023 +0300|Merge pull request #7 from Scrubbers-Pet-Grooming-Self-Service/customer_view
+746f32c|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 16:41:55 2023 +0300|Customer view is implemented.
+80eb166|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 15:54:14 2023 +0300|Customer view is initiated.
+60625f7|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 15:52:13 2023 +0300|Merge pull request #6 from Scrubbers-Pet-Grooming-Self-Service/pets_view
+c23a63a|Oguz Vuruskaner|ovuruska@outlook.com|Fri Jan 6 15:51:50 2023 +0300|Added branches page.
+e6ec53d|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 20:42:11 2023 +0300|Added branch sidebar.
+6124b66|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 19:29:52 2023 +0300|Employee remove is implemented.
+228f2a1|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 19:27:42 2023 +0300|Workhour manipulation is impelemented.
+f288cd6|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 18:26:15 2023 +0300|Modification is implemented.
+fdfd8d1|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 18:14:33 2023 +0300|New employee creation and modification is implemented.
+2b6bacc|Oguz Vuruskaner|ovuruska@outlook.com|Thu Jan 5 17:26:48 2023 +0300|Added edit button.
+f0dbf3f|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 23:34:54 2023 +0300|Added default avlue for block creation.
+c911044|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 23:30:09 2023 +0300|Grid columns are implemented.
+2c748b2|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 23:18:49 2023 +0300|Grid is imple mented.
+bdf9c00|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 23:01:55 2023 +0300|Added weekly calendar workhout interaction.
+7a7329b|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 20:53:27 2023 +0300|Added employee transition.
+1398036|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 19:59:05 2023 +0300|Added results bar.
+8731b47|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 19:50:35 2023 +0300|Bootstrapped employees tab.
+11df1f0|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 18:13:00 2023 +0300|Added tab bar.
+ba2852d|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 17:12:59 2023 +0300|Completed pets page.
+313572d|Oguz Vuruskaner|ovuruska@outlook.com|Wed Jan 4 17:09:28 2023 +0300|Fixed filtering error.
+303816a|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 19:53:26 2023 +0300|List item styling is implemented.
+017d75e|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 19:45:03 2023 +0300|Added sidebar.
+c978fb2|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 18:40:47 2023 +0300|Merge pull request #5 from Scrubbers-Pet-Grooming-Self-Service/ticket_information
+c7bc0f1|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 18:40:19 2023 +0300|Fixed overflow error.
+cf2af89|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 18:34:41 2023 +0300|Added ticket information modal.
+cb7582d|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 18:05:49 2023 +0300|Added buttons.
+a31c2ba|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 17:14:43 2023 +0300|Checkpoint errors are fixed.
+e5bb200|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 17:09:12 2023 +0300|Checkpoint
+ad65425|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 16:03:41 2023 +0300|Initiated checkout info.
+ebc8762|Oguz Vuruskaner|ovuruska@outlook.com|Tue Jan 3 15:15:41 2023 +0300|Added data table.
+1fe1f84|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 2 20:56:34 2023 +0300|Added checkbox fields.
+7cf95a1|Oguz Vuruskaner|ovuruska@outlook.com|Mon Jan 2 19:21:11 2023 +0300|Initiated modal view.
+9fe87be|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 19:28:45 2022 +0300|Fixed services view.
+d8a6615|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 19:20:11 2022 +0300|Fixed data table in appointments page.
+19cf66d|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 19:14:30 2022 +0300|Added mock data.
+849f49c|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 28 15:59:49 2022 +0300|Added filter row.
+a985049|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 27 19:40:42 2022 +0300|Merge pull request #3 from Scrubbers-Pet-Grooming-Self-Service/services_page
+bd2bf94|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 27 19:39:52 2022 +0300|Fixed oveflow error.
+6794fd4|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 27 19:37:48 2022 +0300|CRUD are implemented.
+38fb5b3|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 27 19:17:44 2022 +0300|Proliferated services data table.
+a783603|Oguz Vuruskaner|ovuruska@outlook.com|Mon Dec 26 17:34:54 2022 +0300|Input fields are implemented.
+0a3cbbd|Oguz Vuruskaner|ovuruska@outlook.com|Thu Dec 22 04:48:43 2022 +0300|Merge pull request #2 from Scrubbers-Pet-Grooming-Self-Service/appointments-page
+19361b8|Oguz Vuruskaner|ovuruska@outlook.com|Thu Dec 22 04:48:04 2022 +0300|Added advanced querying.
+72c76f3|Oguz Vuruskaner|ovuruska@outlook.com|Thu Dec 22 03:54:51 2022 +0300|Added data table.
+ad3b6ab|Oguz Vuruskaner|ovuruska@outlook.com|Thu Dec 22 02:01:17 2022 +0300|Top layout is finished.
+01ecac8|Oguz Vuruskaner|ovuruska@outlook.com|Wed Dec 21 20:42:08 2022 +0300|Fixed vertical view problem in legend row.
+c3eb9b7|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 05:11:17 2022 +0300|Merge pull request #1 from Scrubbers-Pet-Grooming-Self-Service/dashboard-page
+a2ec1d8|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 05:05:14 2022 +0300|Checkboxes are added.
+b28831e|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 04:50:01 2022 +0300|Print button's size is decreased and service type filter is implemented.
+0cb5827|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 04:26:14 2022 +0300|Awaiting appointments now update current branch too.
+2063d3d|Oguz Vuruskaner|ovuruska@outlook.com|Tue Dec 20 04:24:17 2022 +0300|Text is shown when no branch is selected.
+7fa5e18|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 23:53:54 2022 +0300|Header is refactored.
+60f095f|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 18:39:56 2022 +0300|Fixed overflow errors.
+9a7f3da|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 18:20:31 2022 +0300|Sidebar appointment results are sorted.
+4613b29|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 17:58:33 2022 +0300|Sidebar is implemented.
+467f5b7|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 17:42:41 2022 +0300|Reactive sidebar.
+e567f17|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 14:56:23 2022 +0300|Added horizontal and vertical scrolling.
+8011f3c|Oguz Vuruskaner|ovuruska@outlook.com|Sun Dec 18 14:29:48 2022 +0300|Temporary
+e8b1035|Oguz Vuruskaner|ovuruska@outlook.com|Fri Dec 16 14:19:38 2022 +0300|Fixed rendorflow issue.
+535a0d8|Oguz Vuruskaner|ovuruska@outlook.com|Fri Dec 16 13:49:29 2022 +0300|Initial commit

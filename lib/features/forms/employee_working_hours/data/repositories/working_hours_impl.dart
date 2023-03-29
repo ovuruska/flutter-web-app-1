@@ -1,10 +1,7 @@
-import 'dart:convert' show jsonDecode;
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/employee_working_hours/employee_working_hours_remote_data_source.dart';
-import 'package:scrubbers_employee_application/pages/dashboard/constants.dart';
 import 'package:scrubbers_employee_application/services/auth.dart';
 
 import '../../../../../core/error/failures.dart';

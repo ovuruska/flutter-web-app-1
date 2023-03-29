@@ -19,8 +19,11 @@ class AppointmentCardFactory extends StatelessWidget {
       case "Confirmed":
         return AppointmentCardApproved(appointment: appointment);
       case "Cancelled":
+      case "NoShow":
+      case "ClosedCharged":
         return AppointmentCardCancelled(appointment: appointment);
       case "Pending":
+      case "Rescheduling":
         return AppointmentCardPending(appointment: appointment);
       case "Completed":
         return AppointmentCardCompleted(appointment: appointment);

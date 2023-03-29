@@ -35,6 +35,7 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
   Widget _readOnly() {
     return TextFormField(
       readOnly: true,
+      initialValue: widget.initialValue,
       controller: _controller,
       decoration: InputDecoration(
         labelText: 'Owner name',
@@ -49,6 +50,9 @@ class _ClientAutocompleteState extends State<ClientAutocomplete> {
       return _readOnly();
     } else {
       return Autocomplete<ClientEntity>(
+        initialValue: widget.initialValue != null
+            ? TextEditingValue(text: widget.initialValue!)
+            : null,
         fieldViewBuilder: (BuildContext context,
             TextEditingController fieldTextEditingController,
             FocusNode fieldFocusNode,

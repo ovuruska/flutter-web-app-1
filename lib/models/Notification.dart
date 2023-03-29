@@ -3,7 +3,7 @@ import 'Employee.dart';
 
 class NotificationModel {
   Employee sender;
-  Appointment appointment;
+  AppointmentEntity appointment;
   String body;
   String title;
 

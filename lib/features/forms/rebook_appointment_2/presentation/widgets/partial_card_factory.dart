@@ -20,7 +20,7 @@ class PartialCardFactory extends StatelessWidget {
     var end = start.add(Duration(minutes: 60));
     var customerId = rebookContext.client!.id;
     var petId = rebookContext.pet!.id;
-    var products = rebookContext.products!.map((e) => e.id).toList();
+    var products = rebookContext.products.map((e) => e.id).toList();
     var branchId = branch.id;
     // Branch, customer, products, pet, service will be provided.
 
