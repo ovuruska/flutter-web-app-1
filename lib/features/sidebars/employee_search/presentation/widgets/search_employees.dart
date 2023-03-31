@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/domain/entities/employee_entity.dart';
 import '../../../../../injection.dart';
@@ -23,7 +24,27 @@ class _EmployeeSearchState extends State<EmployeeSearch> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "Employees",
+            style: GoogleFonts.poppins(
+              fontSize: 20, fontWeight: FontWeight.w600, color: const Color(0xFF2D7CB6),
+            ),
+          ),
+          TextButton(onPressed: () {
+            sl<EmployeeSearchBloc>().add(EmployeeSearchEventCreate());
+          }, child: Text(
+            "Create New +",
+            style: GoogleFonts.poppins(
+              fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0xFF2D7CB6),
+            ),
+          ))
+        ],
 
+      ),
+      Container(height:16),
       Row(
         children: [
           Expanded(
@@ -35,19 +56,14 @@ class _EmployeeSearchState extends State<EmployeeSearch> {
               decoration: InputDecoration(
                   hintText: "Search",
                   hintStyle: TextStyle(color: Colors.black38),
-                  prefixIcon: Icon(Icons.search, color: Colors.black38)),
+                  prefixIcon: Icon(Icons.search, color:const Color(0xFF2D7CB6))),
             ),
-          ),
-          IconButton(
-            icon:const Icon(Icons.add),
-            onPressed: () {
-              sl<EmployeeSearchBloc>().add(EmployeeSearchEventCreate());
-            },
-
           )
 
         ],
       ),
+      Container(height:16),
+
       Expanded(
         child:SingleChildScrollView(
           child: EmployeeList(
