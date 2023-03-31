@@ -4,7 +4,7 @@ import 'package:scrubbers_employee_application/common/time_of_day.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_theme.dart';
 
-class HourSelect extends StatelessWidget {
+class QuickerHourSelect extends StatelessWidget {
   final int interval;
   late TimeOfDay min;
   late TimeOfDay max;
@@ -13,7 +13,7 @@ class HourSelect extends StatelessWidget {
   final String label;
   final bool disabled;
 
-  HourSelect(
+  QuickerHourSelect(
       {Key? key,
       this.interval = 30,
       required this.onChanged,
@@ -51,12 +51,22 @@ class HourSelect extends StatelessWidget {
     return dates.map<String>((e) => formatter.format(DateTime(0,0,0,e.hour,e.minute))).toList();
   }
 
+  TimeOfDay? quantize(TimeOfDay? timeOfDay){
+    if(timeOfDay == null){
+      return null;
+    }
+    int newMinute = (timeOfDay.minute ~/ 30) * 30;
+    var current = TimeOfDay(hour: timeOfDay.hour, minute: newMinute);
+    return current;
+
+  }
+
   @override
   Widget build(BuildContext context) {
     var options = _options();
     return FlutterFlowDropDown<TimeOfDay?>(
       borderColor: FlutterFlowTheme.of(context).secondaryColor,
-      value: value,
+      value: quantize(value),
       hintText: label,
       optionLabels: _labels(options),
       options: options,

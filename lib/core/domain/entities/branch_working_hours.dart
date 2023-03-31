@@ -9,7 +9,7 @@ class BranchWorkingHours extends Equatable {
   final TimeOfDay? start;
   final TimeOfDay? end;
   final DateTime date;
-  final BranchEntity? branch;
+  final int? branch;
 
   BranchWorkingHours(
       {
@@ -26,11 +26,13 @@ class BranchWorkingHours extends Equatable {
     var start = json['start'] != null ? TimeOfDayExtension.fromString(json['start']) : null;
     var end = json['end'] != null ? TimeOfDayExtension.fromString(json['end']) : null;
     var date = DateTime.parse(json['date']);
-
+    if (json['branch'] is String) {
+      json['branch'] = int.parse(json['branch']);
+    }
     return BranchWorkingHours(
       start: start,
       end: end,
-      branch: BranchEntity.fromJson(json['branch']),
+      branch: json['branch'],
       date: date,
     );
   }

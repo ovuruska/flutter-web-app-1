@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/common/quicker/inputs/hour_select.dart';
 
 import '../../../../../flutter_flow/flutter_flow_util.dart';
 import '../../domain/entities/branch_schedule_entity.dart';
-import 'hour_select.dart';
 
 class DailyScheduleView extends StatefulWidget {
   final Function(BranchScheduleEntity) onSaved;
@@ -43,6 +43,12 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
     if (widget.initialValue != null) {
       _start = widget.initialValue!.start;
       _end = widget.initialValue!.end;
+      if(_end?.minute == 0 && _end?.hour == 0) {
+        _end = TimeOfDay(hour: 23, minute: 30);
+      }
+      if(_start?.minute == 0 && _start?.hour == 0) {
+        _start = TimeOfDay(hour: 0, minute: 30);
+      }
       _branch = widget.initialValue!.branch;
     }
   }
@@ -58,9 +64,8 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
         Container(width: 200, child: Text(dayName)),
         Container(width: 16),
         Flexible(
-            child: HourSelect(
+            child: QuickerHourSelect(
                 value: _start,
-                max: _end,
                 label: "Start",
                 onChanged: (value) {
                   setState(() {
@@ -70,9 +75,8 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
                 })),
         Container(width: 16),
         Flexible(
-            child: HourSelect(
+            child: QuickerHourSelect(
                 label: "End",
-                min: _start,
                 value: _end,
                 onChanged: (value) {
                   setState(() {

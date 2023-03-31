@@ -15,11 +15,11 @@ class BranchInformationCrudView extends StatelessWidget {
       builder: (context, state) {
         return state.branch != null
             ? BranchInformationCrud(
-                key: ValueKey<int>(state.branch!.id),
+                key: ValueKey(state.branch!.id),
                 branch: state.branch!)
             : Container(
                 child: Center(
-                  child: Text('No employee selected'),
+                  child: Text('No branch selected'),
                 ),
               );
       },

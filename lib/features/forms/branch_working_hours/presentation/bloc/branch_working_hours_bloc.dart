@@ -35,8 +35,8 @@ class BranchWorkingHoursBloc
 
     on<BranchWorkingHoursEventUpsert>((event,emit) async {
       var workingHours = event.workingHours;
-      var employeeId = event.id;
-      var params = UpsertWorkingHoursParams(id:employeeId,workingHours: workingHours);
+      var branchId = event.id;
+      var params = UpsertWorkingHoursParams(id:branchId,workingHours: workingHours);
       var failureOrWorkingHours = await upsertWorkingHours(params);
     });
     on<BranchWorkingHoursEventSetBranch>((event, emit) async {

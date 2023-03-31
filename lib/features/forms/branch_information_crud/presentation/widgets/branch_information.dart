@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/models/Branch.dart';
 
 import '../../../../../common/get_it_maybe.dart';
 import '../../../../../common/quicker/inputs/text_field.dart';
@@ -23,6 +24,15 @@ class BranchInformationCrud extends StatefulWidget {
 }
 
 class _BranchInformationCrudState extends State<BranchInformationCrud> {
+
+  late BranchEntity current;
+
+  void initState(){
+    super.initState();
+    current = widget.branch;
+  }
+
+
   Widget _header(String label) => Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
@@ -39,25 +49,32 @@ class _BranchInformationCrudState extends State<BranchInformationCrud> {
       ]));
 
   saveName(String? value) {
-    var newBranch = widget.branch.copyWith(name: value);
+    current = current.copyWith(name: value);
+    setState(() {
+      current = current;
+    });
     sl<BranchInformationCrudBloc>()
-        .add(BranchInformationCrudEventPatch(branch: newBranch));
-    getItMaybe<BranchInformationUpdatedCallback>()?.call(newBranch);
+        .add(BranchInformationCrudEventPatch(branch: current));
+    getItMaybe<BranchInformationUpdatedCallback>()?.call(current);
   }
 
   saveEmail(String? value) {
-    var newBranch = widget.branch.copyWith(email: value);
-    sl<BranchInformationCrudBloc>()
-        .add(BranchInformationCrudEventPatch(branch: newBranch));
-    getItMaybe<BranchInformationUpdatedCallback>()?.call(newBranch);
+    current = current.copyWith(email: value);
+    setState(() {
+      current = current;
+    });    sl<BranchInformationCrudBloc>()
+        .add(BranchInformationCrudEventPatch(branch: current));
+    getItMaybe<BranchInformationUpdatedCallback>()?.call(current);
 
   }
 
   savePhone(String? value) {
-    var newBranch = widget.branch.copyWith(phone: value);
-    sl<BranchInformationCrudBloc>()
-        .add(BranchInformationCrudEventPatch(branch: newBranch));
-    getItMaybe<BranchInformationUpdatedCallback>()?.call(newBranch);
+    current = current.copyWith(phone: value);
+    setState(() {
+      current = current;
+    });    sl<BranchInformationCrudBloc>()
+        .add(BranchInformationCrudEventPatch(branch: current));
+    getItMaybe<BranchInformationUpdatedCallback>()?.call(current);
 
   }
 

@@ -27,7 +27,7 @@ class BranchWorkingHoursRepositoryImpl extends BranchWorkingHoursRepository {
               date: e.date,
               start: e.start,
               end: e.end,
-              branch: e.branch?.id)).toList();
+              branch: e.branch)).toList();
         return Right(dailyScheduleEntity);
       }
     });

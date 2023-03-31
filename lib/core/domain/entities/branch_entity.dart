@@ -44,7 +44,6 @@ class BranchEntity extends Equatable {
   }
 
   BranchEntity copyWith({
-    int? id,
     String? name,
     String? address,
     String? phone,
@@ -52,7 +51,7 @@ class BranchEntity extends Equatable {
     String? description,
   }) =>
       BranchEntity(
-        id: id ?? this.id,
+        id: this.id,
         name: name ?? this.name,
         address: address ?? this.address,
         phone: phone ?? this.phone,

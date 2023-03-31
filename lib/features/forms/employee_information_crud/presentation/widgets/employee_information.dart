@@ -23,6 +23,15 @@ class EmployeeInformationCrud extends StatefulWidget {
 }
 
 class _EmployeeInformationCrudState extends State<EmployeeInformationCrud> {
+
+  late EmployeeEntity current;
+
+  void initState(){
+    super.initState();
+    current = widget.employee;
+  }
+
+
   Widget _header(String label) => Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
@@ -39,26 +48,30 @@ class _EmployeeInformationCrudState extends State<EmployeeInformationCrud> {
       ]));
 
   saveName(String? value) {
-    var newEmployee = widget.employee.copyWith(name: value);
-    sl<EmployeeInformationCrudBloc>()
-        .add(EmployeeInformationCrudEventPatch(employee: newEmployee));
-    getItMaybe<EmployeeInformationUpdatedCallback>()?.call(newEmployee);
+    setState(() {
+      current = current.copyWith(name: value);
+      sl<EmployeeInformationCrudBloc>()
+          .add(EmployeeInformationCrudEventPatch(employee: current));
+      getItMaybe<EmployeeInformationUpdatedCallback>()?.call(current);
+    });
   }
 
   saveEmail(String? value) {
-    var newEmployee = widget.employee.copyWith(email: value);
-    sl<EmployeeInformationCrudBloc>()
-        .add(EmployeeInformationCrudEventPatch(employee: newEmployee));
-    getItMaybe<EmployeeInformationUpdatedCallback>()?.call(newEmployee);
-
+    setState(() {
+      current = current.copyWith(email: value);
+      sl<EmployeeInformationCrudBloc>()
+          .add(EmployeeInformationCrudEventPatch(employee: current));
+      getItMaybe<EmployeeInformationUpdatedCallback>()?.call(current);
+    });
   }
 
   savePhone(String? value) {
-    var newEmployee = widget.employee.copyWith(phone: value);
-    sl<EmployeeInformationCrudBloc>()
-        .add(EmployeeInformationCrudEventPatch(employee: newEmployee));
-    getItMaybe<EmployeeInformationUpdatedCallback>()?.call(newEmployee);
-
+    setState(() {
+      current = current.copyWith(phone: value);
+      sl<EmployeeInformationCrudBloc>()
+          .add(EmployeeInformationCrudEventPatch(employee: current));
+      getItMaybe<EmployeeInformationUpdatedCallback>()?.call(current);
+    });
   }
 
   @override

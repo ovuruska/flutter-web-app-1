@@ -41,10 +41,14 @@ class BranchScheduleEntity extends Equatable {
     return {
       'branch': branch,
       'date': dateFormatter.format(date),
-      'start': timeFormatter.format(DateTime(date.year, date.month, date.day,
-          start?.hour ?? 0, start?.minute ?? 0)),
-      'end': timeFormatter.format(DateTime(
-          date.year, date.month, date.day, end?.hour ?? 0, end?.minute ?? 0)),
+      'start': start == null
+          ? null
+          : timeFormatter.format(DateTime(
+              date.year, date.month, date.day, start!.hour, start!.minute)),
+      'end': end == null
+          ? null
+          : timeFormatter.format(DateTime(
+              date.year, date.month, date.day, end!.hour, end!.minute))
     };
   }
 }

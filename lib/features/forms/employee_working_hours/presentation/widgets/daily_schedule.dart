@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../flutter_flow/flutter_flow_util.dart';
 import '../../domain/entities/daily_schedule_entity.dart';
 import 'branch_select.dart';
-import 'hour_select.dart';
+import '../../../../../common/quicker/inputs/hour_select.dart';
 
 class DailyScheduleView extends StatefulWidget {
   final Function(DailyScheduleEntity) onSaved;
@@ -46,9 +46,12 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
       _start = widget.initialValue!.start;
 
       _end = widget.initialValue!.end;
-      if(_end?.minute == 0 && _end?.hour == 0)
+      if(_end?.minute == 0 && _end?.hour == 0) {
         _end = TimeOfDay(hour: 23, minute: 30);
-
+      }
+      if(_start?.minute == 0 && _start?.hour == 0) {
+        _start = TimeOfDay(hour: 0, minute: 30);
+      }
       _branch = widget.initialValue!.branch;
     }
   }
@@ -73,7 +76,7 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
                 })),
         Container(width: 16),
         Flexible(
-            child: HourSelect(
+            child: QuickerHourSelect(
                 value: _start,
                 label: "Start",
                 onChanged: (value) {
@@ -84,7 +87,7 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
                 })),
         Container(width: 16),
         Flexible(
-            child: HourSelect(
+            child: QuickerHourSelect(
                 label: "End",
                 value: _end,
                 onChanged: (value) {
