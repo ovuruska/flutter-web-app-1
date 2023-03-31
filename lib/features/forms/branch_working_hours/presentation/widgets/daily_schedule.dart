@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../flutter_flow/flutter_flow_util.dart';
-import '../../domain/entities/daily_schedule_entity.dart';
-import 'branch_select.dart';
+import '../../domain/entities/branch_schedule_entity.dart';
 import 'hour_select.dart';
 
 class DailyScheduleView extends StatefulWidget {
-  final Function(DailyScheduleEntity) onSaved;
-  final DailyScheduleEntity? initialValue;
+  final Function(BranchScheduleEntity) onSaved;
+  final BranchScheduleEntity? initialValue;
   final DateTime date;
   final int employee;
 
@@ -30,12 +29,11 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
 
   onChanged() {
     if (_start != null && _end != null && _branch != null) {
-      widget.onSaved(DailyScheduleEntity(
+      widget.onSaved(BranchScheduleEntity(
         start: _start!,
         end: _end!,
         branch: _branch!,
         date: widget.date,
-        employee: widget.employee,
       ));
     }
   }
@@ -44,11 +42,7 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
     super.initState();
     if (widget.initialValue != null) {
       _start = widget.initialValue!.start;
-
       _end = widget.initialValue!.end;
-      if(_end?.minute == 0 && _end?.hour == 0)
-        _end = TimeOfDay(hour: 23, minute: 30);
-
       _branch = widget.initialValue!.branch;
     }
   }
@@ -61,20 +55,12 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
     return Flex(
       direction: Axis.horizontal,
       children: [
-        Container(width: 160, child: Text(dayName)),
-        Flexible(
-            child: BranchSelect(
-                value: _branch,
-                onChanged: (value) {
-                  setState(() {
-                    _branch = value;
-                  });
-                  onChanged();
-                })),
+        Container(width: 200, child: Text(dayName)),
         Container(width: 16),
         Flexible(
             child: HourSelect(
                 value: _start,
+                max: _end,
                 label: "Start",
                 onChanged: (value) {
                   setState(() {
@@ -86,6 +72,7 @@ class _DailyScheduleViewState extends State<DailyScheduleView> {
         Flexible(
             child: HourSelect(
                 label: "End",
+                min: _start,
                 value: _end,
                 onChanged: (value) {
                   setState(() {

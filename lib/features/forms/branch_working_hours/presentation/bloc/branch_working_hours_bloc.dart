@@ -1,46 +1,46 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/interval.dart';
 
-import '../../domain/usecases/clear_working_hours.dart';
-import '../../domain/usecases/get_working_hours.dart';
-import '../../domain/usecases/upsert_working_hours.dart';
-import 'working_hours_event.dart';
-import 'working_hours_state.dart';
+import '../../../../../core/domain/usecases/clear_working_hours.dart';
+import '../../../../../core/domain/usecases/get_working_hours.dart';
+import '../../../../../core/domain/usecases/upsert_working_hours.dart';
+import 'branch_working_hours_event.dart';
+import 'branch_working_hours_state.dart';
 
 
 
-class EmployeeWorkingHoursBloc
-    extends Bloc<EmployeeWorkingHoursEvent, EmployeeWorkingHoursState> {
+class BranchWorkingHoursBloc
+    extends Bloc<BranchWorkingHoursEvent, BranchWorkingHoursState> {
   final GetWorkingHoursUseCase getWorkingHours;
   final ClearWorkingHoursUseCase clearWorkingHours;
   final UpsertWorkingHoursUseCase upsertWorkingHours;
 
-  EmployeeWorkingHoursBloc({
+  BranchWorkingHoursBloc({
     required this.clearWorkingHours,
     required this.upsertWorkingHours,
     required this.getWorkingHours,
-  }) : super(Empty()) {
-    on<EmployeeWorkingHoursEventGet>((event, emit) async {
-      emit(Loading());
+  }) : super(BranchWorkingHoursStateEmpty()) {
+    on<BranchWorkingHoursEventGet>((event, emit) async {
+      emit(BranchWorkingHoursStateLoading());
       var employeeId = event.id;
       var interval = event.interval;
 
       var params = GetWorkingHoursParams(id: employeeId, interval: interval);
       var failureOrWorkingHours = await getWorkingHours(params);
       failureOrWorkingHours.fold(
-          (failure) => emit(Failed(message: "Failed to get working hours.")),
-          (workingHours) => emit(Loaded(workingHours: workingHours,id:employeeId)));
+          (failure) => emit(BranchWorkingHoursStateFailed(message: "Failed to get working hours.")),
+          (workingHours) => emit(BranchWorkingHoursStateLoaded(workingHours: workingHours,id:employeeId)));
     });
 
 
-    on<EmployeeWorkingHoursEventUpsert>((event,emit) async {
+    on<BranchWorkingHoursEventUpsert>((event,emit) async {
       var workingHours = event.workingHours;
       var employeeId = event.id;
       var params = UpsertWorkingHoursParams(id:employeeId,workingHours: workingHours);
       var failureOrWorkingHours = await upsertWorkingHours(params);
     });
-    on<EmployeeWorkingHoursEventSetEmployee>((event, emit) async {
-      emit(Loading());
+    on<BranchWorkingHoursEventSetBranch>((event, emit) async {
+      emit(BranchWorkingHoursStateLoading());
       var employeeId = event.id;
 
       var now = DateTime.now();
@@ -51,11 +51,11 @@ class EmployeeWorkingHoursBloc
 
       var failureOrWorkingHours = await getWorkingHours(params);
       failureOrWorkingHours.fold(
-          (failure) => emit(Failed(message: "Failed to get working hours.")),
-          (workingHours) => emit(Loaded(workingHours: workingHours,id:employeeId)));
+          (failure) => emit(BranchWorkingHoursStateFailed(message: "Failed to get working hours.")),
+          (workingHours) => emit(BranchWorkingHoursStateLoaded(workingHours: workingHours,id:employeeId)));
     });
 
-    on<EmployeeWorkingHoursEventClear>((event,emit) async {
+    on<BranchWorkingHoursEventClear>((event,emit) async {
       var employeeId = event.id;
       var now = DateTime.now();
       var monday = now.subtract(Duration(days: now.weekday - 1));
@@ -63,12 +63,12 @@ class EmployeeWorkingHoursBloc
       var interval = IntervalEntity(start: monday, end: nextMonday);
       var params = ClearWorkingHoursParams(id: employeeId, interval: interval);
       await clearWorkingHours.call(params);
-      emit(Initial(id: employeeId));
+      emit(BranchWorkingHoursStateInitial(id: employeeId));
 
     });
 
-    on<EmployeeWorkingHoursEventPurge>((event,emit) async {
-      emit(Empty());
+    on<BranchWorkingHoursEventPurge>((event,emit) async {
+      emit(BranchWorkingHoursStateEmpty());
     });
   }
 }

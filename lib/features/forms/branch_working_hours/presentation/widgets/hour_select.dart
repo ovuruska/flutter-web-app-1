@@ -51,22 +51,12 @@ class HourSelect extends StatelessWidget {
     return dates.map<String>((e) => formatter.format(DateTime(0,0,0,e.hour,e.minute))).toList();
   }
 
-  TimeOfDay? quantize(TimeOfDay? timeOfDay){
-    if(timeOfDay == null){
-      return null;
-    }
-    int newMinute = (timeOfDay.minute ~/ 30) * 30;
-    var current = TimeOfDay(hour: timeOfDay.hour, minute: newMinute);
-    return current;
-
-  }
-
   @override
   Widget build(BuildContext context) {
     var options = _options();
     return FlutterFlowDropDown<TimeOfDay?>(
       borderColor: FlutterFlowTheme.of(context).secondaryColor,
-      value: quantize(value),
+      value: value,
       hintText: label,
       optionLabels: _labels(options),
       options: options,

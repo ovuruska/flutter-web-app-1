@@ -2,13 +2,17 @@ import 'package:get_it/get_it.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/appointment/appointment_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/branch/branch_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/branch/branch_remote_data_source_impl.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/branch_working_hours/branch_working_hours_remote_data_source.dart';
+import 'package:scrubbers_employee_application/core/data/datasources/branch_working_hours/branch_working_hours_remote_data_source_impl.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/client/client_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/client_search/client_search_remote_data_source_impl.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/employee/employee_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/employee_working_hours/employee_working_hours_remote_data_source.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/product/product_remote_data_source.dart';
+import 'package:scrubbers_employee_application/core/data/repositories/branch_working_hours_repository_impl.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/appointment_slot_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/branch_repository.dart';
+import 'package:scrubbers_employee_application/core/domain/repositories/branch_working_hours_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/repositories/employee_repository.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/create_appointment.dart';
 import 'package:scrubbers_employee_application/core/domain/usecases/delete_branch.dart';
@@ -49,15 +53,18 @@ import 'domain/repositories/client_repository.dart';
 import 'domain/repositories/client_search_repository.dart';
 import 'domain/repositories/product_repository.dart';
 import 'domain/repositories/scheduling_appointment_repository.dart';
+import 'domain/usecases/clear_working_hours.dart';
 import 'domain/usecases/create_branch.dart';
 import 'domain/usecases/get_all_branches.dart';
 import 'domain/usecases/get_branch.dart';
 import 'domain/usecases/get_client_prior_appointments.dart';
 import 'domain/usecases/get_client_upcoming_appointments.dart';
+import 'domain/usecases/get_working_hours.dart';
 import 'domain/usecases/patch_appointment.dart';
 import 'domain/usecases/patch_branch.dart';
 import 'domain/usecases/patch_employee.dart';
 import 'domain/usecases/search_client_name.dart';
+import 'domain/usecases/upsert_working_hours.dart';
 
 registerCore(GetIt sl) {
   // Use Cases
@@ -81,6 +88,9 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => PatchBranchUseCase(sl()));
   sl.registerLazySingleton(() => CreateBranchUseCase(sl()));
   sl.registerLazySingleton(() => DeleteBranchUseCase(sl()));
+  sl.registerLazySingleton(() => GetWorkingHoursUseCase(sl()));
+  sl.registerLazySingleton(() => ClearWorkingHoursUseCase(sl()));
+  sl.registerLazySingleton(() => UpsertWorkingHoursUseCase(sl()));
 
    // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(
@@ -99,6 +109,7 @@ registerCore(GetIt sl) {
       () => AppointmentSlotRepositoryImpl(sl()));
   sl.registerLazySingleton<AppointmentRepository>(
       () => AppointmentRepositoryImpl(sl()));
+  sl.registerLazySingleton<BranchWorkingHoursRepository>(() => BranchWorkingHoursRepositoryImpl(sl()));
 
   // Data Sources
   sl.registerLazySingleton<ClientSearchRemoteDataSource>(
@@ -126,4 +137,7 @@ registerCore(GetIt sl) {
 
   sl.registerLazySingleton<EmployeeWorkingHoursRemoteDataSource>(
       () => EmployeeWorkingHoursRemoteDataSourceImpl());
+
+  sl.registerLazySingleton<BranchWorkingHoursRemoteDataSource>(
+      () => BranchWorkingHoursRemoteDataSourceImpl());
 }

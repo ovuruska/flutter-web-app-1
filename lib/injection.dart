@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:scrubbers_employee_application/features/available_slots/register.dart';
+import 'package:scrubbers_employee_application/features/forms/branch_working_hours/register.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/register.dart';
 
 
@@ -76,4 +77,5 @@ void initSl()  {
   registerClientAutocomplete(sl);
   registerTicketInformation(sl);
   registerBranchInformationCrud(sl);
+  registerBranchWorkingHours(sl);
 }

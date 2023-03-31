@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/interval.dart';
 
 import '../../domain/entities/daily_schedule_entity.dart';
-import '../../domain/entities/interval_entity.dart';
 
 class EmployeeWorkingHoursEvent extends Equatable {
   const EmployeeWorkingHoursEvent();

@@ -1,12 +1,9 @@
 
 import 'package:equatable/equatable.dart';
 
-class IntervalEntity extends Equatable{
+class IntervalEntity extends Equatable {
   final DateTime start;
   final DateTime end;
-
-
-
 
   IntervalEntity({
     required this.start,
@@ -14,5 +11,5 @@ class IntervalEntity extends Equatable{
   });
 
   @override
-  List<Object?> get props => [start,end];
+  List<Object?> get props => [start, end];
 }

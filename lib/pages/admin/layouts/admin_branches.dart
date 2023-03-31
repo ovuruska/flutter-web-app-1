@@ -4,6 +4,9 @@ import 'package:scrubbers_employee_application/features/forms/branch_information
 import 'package:scrubbers_employee_application/features/forms/branch_information_crud/presentation/bloc/branch_information_crud_bloc.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_information_crud/presentation/bloc/branch_information_crud_event.dart';
 import 'package:scrubbers_employee_application/features/forms/branch_information_crud/presentation/pages/branch_information.dart';
+import 'package:scrubbers_employee_application/features/forms/branch_working_hours/presentation/bloc/branch_working_hours_bloc.dart';
+import 'package:scrubbers_employee_application/features/forms/branch_working_hours/presentation/bloc/branch_working_hours_event.dart';
+import 'package:scrubbers_employee_application/features/forms/branch_working_hours/presentation/pages/branch_working_hours.dart';
 import 'package:scrubbers_employee_application/features/forms/employee_working_hours/presentation/pages/employee_working_hours.dart';
 import 'package:scrubbers_employee_application/features/sidebars/branch_search/presentation/pages/branch_search.dart';
 import 'package:scrubbers_employee_application/pages/admin/callbacks/branch_information_updated_callback_impl.dart';
@@ -49,6 +52,9 @@ class _AdminBranchesState extends State<AdminBranches> {
             sl<BranchInformationCrudBloc>().add(
               BranchInformationCrudEventSet(branch:branch),
             );
+            sl<BranchWorkingHoursBloc>().add(
+              BranchWorkingHoursEventSetBranch(id:branch.id),
+            );
           },
         ).withGridPlacement(
           rowStart: 1,
@@ -62,7 +68,7 @@ class _AdminBranchesState extends State<AdminBranches> {
           columnStart: 2,
           columnSpan: 1,
         ),
-        EmployeeWorkingHoursView().withGridPlacement(
+        BranchWorkingHoursView().withGridPlacement(
           rowStart: 2,
           rowSpan: 1,
           columnStart: 2,

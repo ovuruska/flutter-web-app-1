@@ -13,5 +13,6 @@ class BranchInformationUpdatedCallbackImpl extends BranchInformationUpdatedCallb
     sl<SearchBranchesBloc>().add(
       SearchBranchesEventPatch(branch: branch),
     );
+
   }
 }

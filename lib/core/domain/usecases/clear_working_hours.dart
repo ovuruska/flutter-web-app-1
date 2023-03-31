@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/interval.dart';
-import '../../../../../core/error/failures.dart';
-import '../../../../../core/use_case.dart';
-import '../repositories/working_hours_repository.dart';
+import 'package:scrubbers_employee_application/core/domain/repositories/branch_working_hours_repository.dart';
+import '../../error/failures.dart';
+import '../../use_case.dart';
 
 class ClearWorkingHoursParams {
   final IntervalEntity interval;
@@ -12,7 +12,7 @@ class ClearWorkingHoursParams {
 }
 
 class ClearWorkingHoursUseCase extends UseCase<void, ClearWorkingHoursParams> {
-  final WorkingHoursRepository repository;
+  final BranchWorkingHoursRepository repository;
 
   ClearWorkingHoursUseCase(this.repository);
 
