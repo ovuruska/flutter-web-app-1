@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/models/Branch.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
 class BranchCard extends StatelessWidget {
-  final Branch branch;
+  final BranchEntity branch;
   final Function onPressed;
   final bool selected;
 

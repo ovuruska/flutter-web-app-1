@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
 import '../../../../../injection.dart';
-import '../../../../../models/Branch.dart';
 import '../bloc/search_branches_bloc.dart';
 import '../bloc/search_branches_event.dart';
 import 'branch_list.dart';
 
 class SearchBranches extends StatefulWidget {
-  final List<Branch> branches;
+  final List<BranchEntity> branches;
 
-  final Function(Branch)? onPressed;
+  final Function(BranchEntity)? onPressed;
 
   const SearchBranches({Key? key, required this.branches, this.onPressed}) : super(key: key);
 
@@ -23,7 +24,27 @@ class _SearchBranchesState extends State<SearchBranches> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "Branches",
+            style: GoogleFonts.poppins(
+                fontSize: 20, fontWeight: FontWeight.w600, color: const Color(0xFF2D7CB6),
+            ),
+          ),
+          TextButton(onPressed: () {
+          sl<SearchBranchesBloc>().add(SearchBranchesEventCreate());
+          }, child: Text(
+            "Create New +",
+            style: GoogleFonts.poppins(
+              fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0xFF2D7CB6),
+            ),
+          ))
+        ],
 
+      ),
+      Container(height:16),
       Row(
         children: [
           Expanded(
@@ -33,21 +54,15 @@ class _SearchBranchesState extends State<SearchBranches> {
               },
               controller: editingController,
               decoration: InputDecoration(
-                  hintText: "Search",
+                  hintText: "Search Branch",
                   hintStyle: TextStyle(color: Colors.black38),
-                  prefixIcon: Icon(Icons.search, color: Colors.black38)),
+                  prefixIcon: Icon(Icons.search, color: const Color(0xFF2D7CB6))),
             ),
           ),
-          IconButton(
-            icon:const Icon(Icons.add),
-            onPressed: () {
-              sl<SearchBranchesBloc>().add(CreateNewBranchEvent());
-            },
-
-          )
 
         ],
       ),
+      Container(height:16),
 
       SingleChildScrollView(
         child: BranchList(

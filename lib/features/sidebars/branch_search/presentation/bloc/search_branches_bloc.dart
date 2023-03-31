@@ -1,24 +1,25 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/create_branch.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/delete_branch.dart';
+import 'package:scrubbers_employee_application/core/domain/usecases/get_all_branches.dart';
 
 import '../../../../../core/use_case.dart';
-import '../../domain/usecases/create_new_branch.dart';
-import '../../domain/usecases/get_branches.dart';
-import '../../domain/usecases/remove_branch.dart';
 import 'search_branches_event.dart';
 import 'search_branches_state.dart';
 
 class SearchBranchesBloc
     extends Bloc<SearchBranchesEvent, SearchBranchesState> {
-  final GetBranchesUseCase getBranches;
-  final CreateNewBranchUseCase createNewBranch;
-  final RemoveBranchUseCase removeBranch;
+  final GetAllBranchesUseCase getBranches;
+  final CreateBranchUseCase createNewBranch;
+  final DeleteBranchUseCase removeBranch;
 
   SearchBranchesBloc({
     required this.createNewBranch,
     required this.getBranches,
     required this.removeBranch,
   }) : super(Empty()) {
-    on<GetBranchesEvent>((event, emit) async {
+    on<SearchBranchesEventGetBranches>((event, emit) async {
       emit(Loading());
 
       final failureOrBranches = await getBranches(NoParams());
@@ -27,15 +28,15 @@ class SearchBranchesBloc
           (failure) => emit(Failed(message: "Failed to get branches.")),
           (branches) => emit(Loaded(branches: branches)));
     });
-    on<SetBranchesEvent>((event, emit) async {
+    on<SearchBranchesEventSetBranches>((event, emit) async {
       var branches = event.branches;
       emit(Loaded(branches: branches));
     });
 
-    on<PatchBranchEvent>((event, emit) async {
+    on<SearchBranchesEventPatch>((event, emit) async {
       var branch = event.branch;
       var branches = (state as Loaded).branches;
-      var updatedBranches = branches.map((element) {
+      List<BranchEntity> updatedBranches = branches.map<BranchEntity>((element) {
         if(element.id == branch.id) {
           return branch;
         }
@@ -44,7 +45,7 @@ class SearchBranchesBloc
 
       emit(Loaded(branches: updatedBranches));
     });
-    on<CreateNewBranchEvent>((event,emit) async {
+    on<SearchBranchesEventCreate>((event,emit) async {
       var branches = (state as Loaded).branches;
       emit(Loading());
       final failureOrBranch = await createNewBranch(NoParams());
@@ -54,10 +55,10 @@ class SearchBranchesBloc
               (branch) => emit(Loaded(branches: branches + [branch])));
     });
 
-    on<RemoveBranchEvent>((event, emit) async {
+    on<SearchBranchesEventRemove>((event, emit) async {
       var branches = (state as Loaded).branches;
       var id = event.id;
-      removeBranch(RemoveBranchParams(id: id));
+      removeBranch(DeleteBranchParams(id: id));
       var updatedBranches = branches.where((element) => element.id != id).toList();
       emit(Loaded(branches: updatedBranches));
     });

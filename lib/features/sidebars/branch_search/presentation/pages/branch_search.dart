@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
 import '../../../../../injection.dart';
-import '../../../../../models/Branch.dart';
 import '../bloc/search_branches_bloc.dart';
 import '../bloc/search_branches_event.dart';
 import '../bloc/search_branches_state.dart';
 import '../widgets/search_branches.dart';
 
-class SearchBranchesView extends StatefulWidget {
+class BranchSearchView extends StatefulWidget {
 
-  final Function(Branch)? selectBranch;
+  final Function(BranchEntity)? selectBranch;
 
-  const SearchBranchesView({Key? key, this.selectBranch}) : super(key: key);
+  const BranchSearchView({Key? key, this.selectBranch}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _SearchBranchesViewState();
+    return _BranchSearchViewState();
   }
 }
 
-class _SearchBranchesViewState extends State<SearchBranchesView> {
+class _BranchSearchViewState extends State<BranchSearchView> {
   @override
   void initState() {
     super.initState();
-    sl<SearchBranchesBloc>().add(GetBranchesEvent());
+    sl<SearchBranchesBloc>().add(SearchBranchesEventGetBranches());
   }
 
   @override

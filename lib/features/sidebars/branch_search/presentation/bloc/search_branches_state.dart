@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../../../../models/Branch.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
 
 class SearchBranchesState extends Equatable {
@@ -15,12 +14,12 @@ class Start extends SearchBranchesState {}
 class Loading extends SearchBranchesState {}
 
 class Loaded extends SearchBranchesState {
-  final List<Branch> branches;
+  final List<BranchEntity> branches;
 
   const Loaded({required this.branches});
 
   @override
-  List<Object> get props => branches.map((branch) => branch.toJson()).toList();
+  List<Object> get props => [branches];
 }
 
 class Failed extends SearchBranchesState {

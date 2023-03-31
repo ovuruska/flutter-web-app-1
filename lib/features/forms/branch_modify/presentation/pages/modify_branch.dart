@@ -35,7 +35,7 @@ class ModifyBranch extends StatelessWidget {
                 onSaved!(branch.toBranch());
               }
             }, onRemoved: (BranchEntity ) {
-            sl<SearchBranchesBloc>().add(RemoveBranchEvent(id: branchId));
+            sl<SearchBranchesBloc>().add(SearchBranchesEventRemove(id: branchId));
             sl<ModifyBranchBloc>().add(ClearBranchEvent());
           },
           );

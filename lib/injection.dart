@@ -14,6 +14,7 @@ import 'features/app_multi_calendar/register.dart';
 import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
+import 'features/forms/branch_information_crud/register.dart';
 import 'features/forms/branch_modify/register.dart';
 import 'features/forms/client_autocomplete/register.dart';
 import 'features/forms/employee_information_crud/register.dart';
@@ -74,4 +75,5 @@ void initSl()  {
   registerEmployeeInformationCrud(sl);
   registerClientAutocomplete(sl);
   registerTicketInformation(sl);
+  registerBranchInformationCrud(sl);
 }

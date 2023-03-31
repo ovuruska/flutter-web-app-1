@@ -1,13 +1,13 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:scrubbers_employee_application/models/Branch.dart';
 
+import '../../../../../core/domain/entities/branch_entity.dart';
 import 'branch_card.dart';
 
 class BranchList extends StatelessWidget {
-  final List<Branch> branches;
-  final Function(Branch) onPressed;
+  final List<BranchEntity> branches;
+  final Function(BranchEntity) onPressed;
 
   const BranchList({Key? key, required this.branches, required this.onPressed})
       : super(key: key);

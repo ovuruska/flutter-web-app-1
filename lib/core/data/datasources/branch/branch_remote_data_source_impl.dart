@@ -44,4 +44,63 @@ class BranchRemoteDataSourceImpl extends BranchRemoteDataSource {
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, BranchEntity>> getBranch(int id) async {
+
+    var response = await SchedulingAuthService.instance.request('/api/branch/$id', method: 'GET');
+    if (response.statusCode == 200) {
+      var respString = await response.stream.bytesToString();
+      var respJson = jsonDecode(respString);
+      BranchEntity branch = BranchEntity.fromJson(respJson);
+      return Right(branch);
+    } else {
+      return Left(ServerFailure());
+    }
+  }
+
+  Future<Either<Failure, BranchEntity>> patch(BranchEntity branch) async {
+    var response = await SchedulingAuthService.instance.jsonRequest("/api/branch/${branch.id}", method: "PATCH", body: {
+      "name": branch.name,
+      "address": branch.address,
+      "phone": branch.phone,
+      "email": branch.email,
+      "description": branch.description,
+    });
+
+    if (response.statusCode == 200) {
+      var respString = await response.stream.bytesToString();
+      var branch = BranchEntity.fromJson(jsonDecode(respString));
+      return Right(branch);
+    }
+    else {
+      return Left(ServerFailure());
+    }
+
+
+
+  }
+
+  @override
+  Future<Either<Failure, BranchEntity>> create() async {
+    var response = await SchedulingAuthService.instance.jsonRequest("/api/branch", method:"POST");
+    var respString = await response.stream.bytesToString();
+    var respJson = jsonDecode(respString);
+    if (response.statusCode == 201) {
+      return Right(BranchEntity.fromJson(respJson));
+    } else {
+      return Left(ServerFailure());
+    }
+
+  }
+
+  @override
+  Future<Either<Failure,void>>  remove(int id) async {
+    var response = await SchedulingAuthService.instance.request("/api/branch/$id", method: "DELETE");
+    if (response.statusCode == 204) {
+      return Right(null);
+    } else {
+      return Left(ServerFailure());
+    }
+  }
 }

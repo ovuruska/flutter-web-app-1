@@ -16,8 +16,26 @@ class BranchRepositoryImpl extends BranchRepository {
     return await remoteDataSource.getBranches();
   }
 
-  Future<Either<Failure, BranchDailyInformationEntity>> getDailyInformation(int branchId, DateTime date) async {
+  Future<Either<Failure, BranchDailyInformationEntity>> getDailyInformation(
+      int branchId, DateTime date) async {
     return await remoteDataSource.getDailyInformation(branchId, date);
   }
 
+  Future<Either<Failure, BranchEntity>> getBranch(int id) async {
+    return await remoteDataSource.getBranch(id);
+  }
+
+  Future<Either<Failure, BranchEntity>> patch(BranchEntity branch) async {
+    return await remoteDataSource.patch(branch);
+  }
+
+  @override
+  Future<Either<Failure, BranchEntity>> create() async {
+    return await remoteDataSource.create();
+  }
+
+  @override
+  Future<Either<Failure,void>> remove(int id) async {
+    return await remoteDataSource.remove(id);
+  }
 }

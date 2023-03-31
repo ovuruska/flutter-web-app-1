@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 
 import '../../../../../models/Branch.dart';
 
@@ -12,43 +13,43 @@ class SearchBranchesEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PatchBranchEvent extends SearchBranchesEvent {
-  final Branch branch;
+class SearchBranchesEventPatch extends SearchBranchesEvent {
+  final BranchEntity branch;
 
-  PatchBranchEvent({required this.branch});
+  SearchBranchesEventPatch({required this.branch});
 
   @override
   List<Object> get props => [branch];
 }
 
-class CreateNewBranchEvent extends SearchBranchesEvent {
+class SearchBranchesEventCreate extends SearchBranchesEvent {
 
-  CreateNewBranchEvent();
+  SearchBranchesEventCreate();
 
   @override
   List<Object> get props => [];
 }
-class RemoveBranchEvent extends SearchBranchesEvent {
+class SearchBranchesEventRemove extends SearchBranchesEvent {
   final int id;
 
-  RemoveBranchEvent({required this.id});
+  SearchBranchesEventRemove({required this.id});
 
   @override
   List<Object> get props => [id];
 }
 
-class GetBranchesEvent extends SearchBranchesEvent {
+class SearchBranchesEventGetBranches extends SearchBranchesEvent {
 
-  GetBranchesEvent();
+  SearchBranchesEventGetBranches();
 
   @override
   List<Object> get props => [];
 }
 
-class SetBranchesEvent extends SearchBranchesEvent {
-  final List<Branch> branches;
+class SearchBranchesEventSetBranches extends SearchBranchesEvent {
+  final List<BranchEntity> branches;
 
-  SetBranchesEvent({required this.branches});
+  SearchBranchesEventSetBranches({required this.branches});
 
   @override
   List<Object> get props => [branches];

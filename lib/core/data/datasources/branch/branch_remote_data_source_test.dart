@@ -4,6 +4,7 @@ import 'package:scrubbers_employee_application/core/data/datasources/branch/bran
 import 'package:scrubbers_employee_application/core/domain/entities/branch_daily_information.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/core/error/failures.dart';
+import 'package:scrubbers_employee_application/models/Branch.dart';
 
 
 final defaultBranches = [
@@ -27,6 +28,30 @@ class BranchRemoteDataSourceTest extends BranchRemoteDataSource {
 
   @override
   Future<Either<Failure, BranchDailyInformationEntity>> getDailyInformation(int branchId, DateTime date) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, BranchEntity>> patch(BranchEntity branch) {
+    // TODO: implement getBranch
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, BranchEntity>> getBranch(int id) {
+    // TODO: implement getBranch
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, BranchEntity>> create() {
+    // TODO: implement create
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure,void>>  remove(int id) {
+    // TODO: implement remove
     throw UnimplementedError();
   }
 
