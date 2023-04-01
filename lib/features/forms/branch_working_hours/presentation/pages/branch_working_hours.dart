@@ -30,7 +30,7 @@ class _BranchWorkingHoursViewState extends State<BranchWorkingHoursView> {
         WeeklyScheduleWidget(
           key: Key(DateTime.now().toString()),
           initialValue: workingHours,
-          employee: employee,
+          branch: employee,
           onClear: () {
             sl<BranchWorkingHoursBloc>().add(
               BranchWorkingHoursEventClear(

@@ -31,3 +31,5 @@ class BranchInformationCrudEventPatch extends BranchInformationCrudEvent {
   @override
   List<Object?> get props => [branch];
 }
+
+class BranchInformationCrudEventPurge extends BranchInformationCrudEvent {}

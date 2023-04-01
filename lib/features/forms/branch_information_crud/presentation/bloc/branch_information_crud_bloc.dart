@@ -29,5 +29,9 @@ class BranchInformationCrudBloc extends Bloc<BranchInformationCrudEvent,BranchIn
       var params = PatchBranchParams(branch: event.branch);
       final result = await patchBranch(params);
     });
+    on<BranchInformationCrudEventPurge>((event, emit) async {
+      var newState = BranchInformationCrudState();
+      emit(newState);
+    });
   }
 }
