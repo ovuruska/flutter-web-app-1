@@ -17,6 +17,7 @@ import '../../../../../../pages/schedule/schedule_page_context.dart';
 import '../../../../../appointment_schedule/presentation/bloc/branch_schedule/appointment_schedule_bloc.dart';
 import '../../../../../appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_bloc.dart';
 import '../../../../../forms/rebook_appointment_2/presentation/bloc/rebook_appointment_2_event.dart';
+import '../../../../utils/patch.dart';
 import '../../../../utils/style.dart';
 
 class TicketInformationCheckinButtonGroup extends StatelessWidget {
@@ -24,27 +25,14 @@ class TicketInformationCheckinButtonGroup extends StatelessWidget {
     var appointment = AppointmentContextProvider.of(context).appointment;
     var notifier = AppointmentContextProvider.of(context).notifier!;
     notifier.setStatus("Completed");
-    patch(appointment.update(status: "Completed"));
-  }
-
-  patch(AppointmentEntity appointment) {
-    var schedulingAppointment = appointment.toSchedulingAppointmentEntity();
-    var params =
-        PatchAppointmentParams(appointment.toSchedulingAppointmentEntity());
-    sl<PatchAppointmentUseCase>().call(params);
-    if (sl<ScheduleHeaderDropdownBloc>().isEmployee()) {
-      sl<EmployeeScheduleBloc>().add(
-          EmployeeScheduleLocalPatchEvent(appointment: schedulingAppointment));
-    } else {
-      sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventPatchLocal(
-          appointment: schedulingAppointment));
-    }
+    var newAppointment = appointment.update(status: "Completed");
+    ticketInformationPatchAppointment(newAppointment);
   }
 
   onSaved(BuildContext context) {
     var notifier = AppointmentContextProvider.of(context).notifier!;
-    var appointment = notifier.appointment;
-    patch(appointment);
+    var newAppointment = notifier.appointment;
+    ticketInformationPatchAppointment(newAppointment);
   }
 
   isSame(BuildContext context) {

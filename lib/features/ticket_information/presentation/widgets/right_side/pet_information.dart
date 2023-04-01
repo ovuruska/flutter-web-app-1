@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scrubbers_employee_application/common/StringUtils.dart';
 import 'package:scrubbers_employee_application/features/ticket_information/presentation/widgets/appointment_context_provider.dart';
-import 'package:scrubbers_employee_application/features/ticket_information/utils/conversion.dart';
+import 'package:scrubbers_employee_application/features/ticket_information/utils/patch.dart';
 import 'package:scrubbers_employee_application/widgets/headless_table.dart';
 
-import '../../../../../core/domain/usecases/patch_appointment.dart';
-import '../../../../../injection.dart';
 import '../../../../information/transactions_grid/presentation/pages/view_logs_dialog.dart';
 import '../../../utils/contants.dart';
 
@@ -59,9 +57,7 @@ class TicketInformationPetInformation extends StatelessWidget {
                 var newAppointment = appointment.update(
                   status: "NoShow",
                 );
-                var params = PatchAppointmentParams(
-                    newAppointment.toSchedulingAppointmentEntity());
-                sl<PatchAppointmentUseCase>().call(params);
+                ticketInformationPatchAppointment(newAppointment);
               },
               child: Text("No show"),
             ),
