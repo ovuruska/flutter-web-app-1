@@ -55,8 +55,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
         start: rebookContext.startDate,
         employees: rebookContext.groomers.map((e) => e.id).toList(),
         branches: rebookContext.branches.map((e) => e.id).toList(),
-        service: rebookContext.service ?? 'Full Grooming'
-    ));
+        service: rebookContext.service ?? 'Full Grooming'));
   }
 
   @override
@@ -118,29 +117,11 @@ class RebookAppointment2FormColumn extends StatelessWidget {
                     },
                   ),
                   Container(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 192,
-                        height: 48,
-                        child: SelectService(
-                          initialValue: rebookContext.service,
-                          onChanged: (value) {
-                            rebookContext.setService(value);
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        width: 120,
-                        height: 64,
-                        child: AverageServiceTime(
-                          onChanged: (value) {
-                            rebookContext.setDuration(value);
-                          },
-                        ),
-                      )
-                    ],
+                  SelectService(
+                    initialValue: rebookContext.service,
+                    onChanged: (value) {
+                      rebookContext.setService(value);
+                    },
                   ),
                 ],
               ),
@@ -202,15 +183,16 @@ class RebookAppointment2FormColumn extends StatelessWidget {
           fetchAvailableSlots();
         },
       ),
-      Container(height:16),
+      Container(height: 16),
       SizedBox(
         height: 360,
         child: AvailableBranchSlotsView(
           onTap: (value) {
             goToBranchWithService(
-              service: rebookContext.service ?? 'Full Grooming',
-              branch: value.branch.id, date: value.date);
-            },
+                service: rebookContext.service ?? 'Full Grooming',
+                branch: value.branch.id,
+                date: value.date);
+          },
         ),
       ),
       Container(height: 32),
