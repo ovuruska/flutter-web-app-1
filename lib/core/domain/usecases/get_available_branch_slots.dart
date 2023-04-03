@@ -7,16 +7,16 @@ import 'package:scrubbers_employee_application/core/domain/repositories/appointm
 import 'package:scrubbers_employee_application/core/error/failures.dart';
 import 'package:scrubbers_employee_application/core/use_case.dart';
 
-class GetDailyAvailableSlotsParams extends Equatable {
+class GetAvailableBranchSlotsParams extends Equatable {
   final DateTime start;
-  final List<EmployeeEntity> groomers;
-  final List<BranchEntity> branches;
+  final List<int> groomers;
+  final List<int> branches;
   final String service;
 
   @override
   List<Object?> get props => [start, groomers, branches, service];
 
-  GetDailyAvailableSlotsParams({
+  GetAvailableBranchSlotsParams({
     required this.start,
     this.groomers = const [],
     this.branches = const [],
@@ -24,15 +24,15 @@ class GetDailyAvailableSlotsParams extends Equatable {
   });
 }
 
-class GetDailyAvailableSlotsUseCase
-    extends UseCase<List<DailySlotEntity>, GetDailyAvailableSlotsParams> {
+class GetAvailableBranchSlotsUseCase
+    extends UseCase<List<DailySlotEntity>, GetAvailableBranchSlotsParams> {
   final AppointmentSlotRepository repository;
 
-  GetDailyAvailableSlotsUseCase(this.repository);
+  GetAvailableBranchSlotsUseCase(this.repository);
 
   @override
   Future<Either<Failure, List<DailySlotEntity>>> call(
-      GetDailyAvailableSlotsParams params) async {
+      GetAvailableBranchSlotsParams params) async {
     return await repository.getDailySlots(
       start: params.start,
       groomers: params.groomers,

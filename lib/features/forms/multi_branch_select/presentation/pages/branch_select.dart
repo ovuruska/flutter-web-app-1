@@ -11,7 +11,7 @@ import '../widgets/branch_select.dart';
 class MultiBranchSelectView extends StatefulWidget {
   final Function(List<BranchEntity>)? onSelected;
 
-  const MultiBranchSelectView({Key? key, this.onSelected}) : super(key: key);
+  const  MultiBranchSelectView({Key? key, this.onSelected}) : super(key: key);
   @override
   _MultiBranchSelectViewState createState() => _MultiBranchSelectViewState();
 }
@@ -29,7 +29,7 @@ class _MultiBranchSelectViewState extends State<MultiBranchSelectView> {
     return BlocBuilder<MultiBranchSelectBloc, MultiBranchSelectState>(
         bloc: sl<MultiBranchSelectBloc>(),
         builder: (context, state) {
-          return MultiBranchSelect(options: state.options, );
+          return MultiBranchSelect(options: state.options,onSelected: widget.onSelected, );
         });
   }
 }

@@ -10,6 +10,7 @@ import 'package:scrubbers_employee_application/features/appointment_schedule/pre
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_bloc.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/employee_schedule/employee_schedule_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header_dropdown/schedule_header_dropdown_bloc.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/presentation/bloc/schedule_header_dropdown/schedule_header_dropdown_event.dart';
 import 'package:scrubbers_employee_application/features/appointment_schedule/utils/constants.dart';
 import 'package:scrubbers_employee_application/injection.dart';
 
@@ -19,6 +20,20 @@ void goTo(SchedulingAppointmentEntity appointment) {
     employee: appointment.employee,
     date: appointment.start,
   );
+}
+
+void goToBranchWithService({
+  required int branch,
+  required String service,
+  required DateTime date,
+}) {
+  var branchBloc = sl<AppSelectBranchBloc>();
+  var calendarBloc = sl<AppMultiCalendarBloc>();
+
+  branchBloc.add(AppSelectBranchEventSetId(id: branch));
+  calendarBloc.add(AppMultiCalendarEventSetDate(date: date));
+  sl<ScheduleHeaderDropdownBloc>().add(ScheduleHeaderDropdownEventSet(service));
+  sl<AppointmentScheduleBloc>().add(AppointmentScheduleEventGoTo(id:branch,date:date));
 }
 
 void goToWithDetails({

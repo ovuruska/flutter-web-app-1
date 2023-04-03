@@ -7,10 +7,10 @@ class ScheduleHeaderDropdownEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ScheduleHeaderDropdownSetEvent extends ScheduleHeaderDropdownEvent {
+class ScheduleHeaderDropdownEventSet extends ScheduleHeaderDropdownEvent {
   final String value;
 
-  const ScheduleHeaderDropdownSetEvent(this.value);
+  const ScheduleHeaderDropdownEventSet(this.value);
 
   @override
   List<Object> get props => [value];

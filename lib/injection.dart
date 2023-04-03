@@ -14,6 +14,7 @@ import 'features/app_calendar/register.dart';
 import 'features/app_multi_calendar/register.dart';
 import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
+import 'features/available_branch_slots/register.dart';
 import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_information_crud/register.dart';
 import 'features/forms/client_autocomplete/register.dart';
@@ -76,4 +77,5 @@ void initSl()  {
   registerTicketInformation(sl);
   registerBranchInformationCrud(sl);
   registerBranchWorkingHours(sl);
+  registerAvailableBranchSlots(sl);
 }

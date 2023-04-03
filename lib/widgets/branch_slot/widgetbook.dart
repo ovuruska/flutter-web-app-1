@@ -20,7 +20,7 @@ Widget branchSlotBothFull(BuildContext context) {
       branchId: branchId,
       morningCapacity: morningCapacity,
       afternoonCapacity: afternoonCapacity);
-  return BranchSlot(dailySlotEntity: dailySlotEntity);
+  return BranchSlot(slot: dailySlotEntity);
 }
 
 @WidgetbookUseCase(name: 'Daily Slot - Afternoon Full', type: BranchSlot)
@@ -37,7 +37,7 @@ Widget branchSlotAfternoonFull(BuildContext context) {
       branchName: branchName,
       morningCapacity: morningCapacity,
       afternoonCapacity: afternoonCapacity);
-  return BranchSlot(dailySlotEntity: dailySlotEntity);
+  return BranchSlot(slot: dailySlotEntity);
 }
 
 @WidgetbookUseCase(name: 'Daily Slot - Morning Full', type: BranchSlot)
@@ -55,7 +55,7 @@ Widget branchSlotMorningFull(BuildContext context) {
       morningCapacity: morningCapacity,
       afternoonCapacity: afternoonCapacity);
 
-  return BranchSlot(dailySlotEntity: dailySlotEntity);
+  return BranchSlot(slot: dailySlotEntity);
 }
 
 @WidgetbookUseCase(
@@ -74,5 +74,5 @@ Widget branchSlotBothEmpty(BuildContext context) {
       morningCapacity: morningCapacity,
       afternoonCapacity: afternoonCapacity);
 
-  return BranchSlot(dailySlotEntity: dailySlotEntity);
+  return BranchSlot(slot: dailySlotEntity);
 }

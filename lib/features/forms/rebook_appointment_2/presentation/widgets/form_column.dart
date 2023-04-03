@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/branch_entity.dart';
 import 'package:scrubbers_employee_application/core/domain/entities/employee_entity.dart';
-import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_bloc.dart';
-import 'package:scrubbers_employee_application/features/available_slots/presentation/blocs/available_slots_event.dart';
+import 'package:scrubbers_employee_application/features/appointment_schedule/utils/go_to.dart';
+import 'package:scrubbers_employee_application/features/available_branch_slots/bloc/available_branch_slots_event.dart';
+import 'package:scrubbers_employee_application/features/available_branch_slots/view.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/partial_card_factory.dart';
 import 'package:scrubbers_employee_application/features/forms/rebook_appointment_2/presentation/widgets/select_service.dart';
 import 'package:scrubbers_employee_application/features/forms/select_client_pets/presentation/bloc/select_client_pets_bloc.dart';
@@ -12,12 +13,11 @@ import 'package:scrubbers_employee_application/features/forms/select_client_pets
 
 import '../../../../../common/quicker/inputs/date_picker.dart';
 import '../../../../../core/domain/entities/client_entity.dart';
-import '../../../../available_slots/presentation/pages/available_slots.dart';
+import '../../../../available_branch_slots/bloc/available_branch_slots_bloc.dart';
 import '../../../average_service_time/presentation/widgets/service_time.dart';
 import '../../../client_autocomplete/presentation/pages/client_autocomplete.dart';
 import '../../../multi_branch_select/presentation/pages/branch_select.dart';
 import '../../../multi_groomer_select/presentation/pages/groomer_select.dart';
-import '../../../multi_product_select/presentation/pages/product_select.dart';
 import '../../../select_client_pets/presentation/pages/select_client_pets.dart';
 import '../../../../../injection.dart';
 import 'rebook_context.dart';
@@ -48,6 +48,15 @@ class RebookAppointment2FormColumn extends StatelessWidget {
       service: service,
       duration: duration,
     );
+  }
+
+  fetchAvailableSlots() {
+    sl<AvailableBranchSlotsBloc>().add(AvailableBranchSlotsEventFetch(
+        start: rebookContext.startDate,
+        employees: rebookContext.groomers.map((e) => e.id).toList(),
+        branches: rebookContext.branches.map((e) => e.id).toList(),
+        service: rebookContext.service ?? 'Full Grooming'
+    ));
   }
 
   @override
@@ -167,6 +176,7 @@ class RebookAppointment2FormColumn extends StatelessWidget {
               QuickerDatePicker(
                 onChanged: (value) {
                   rebookContext.setStartDate(value);
+                  fetchAvailableSlots();
                 },
               ),
             ],
@@ -177,44 +187,31 @@ class RebookAppointment2FormColumn extends StatelessWidget {
       MultiGroomerSelectView(
         onSelected: (value) {
           rebookContext.setGroomers(value);
-          sl<AvailableSlotsBloc>().add(
-            AvailableSlotsEventFetch(
-              start: rebookContext.startDate,
-              groomers: rebookContext.groomers,
-              branches: rebookContext.branches,
-              service: rebookContext.service ?? "Full Grooming",
-              duration: rebookContext.duration ?? 60,
-            ),
-          );
+          fetchAvailableSlots();
         },
       ),
       // Container with width 16
 
       Container(height: 16),
-      MultiProductSelectView(
-        onSelected: (value) {
-          rebookContext.setProducts(value);
-        },
-      ),
 
       Container(height: 16),
       MultiBranchSelectView(
         onSelected: (value) {
+          print(value);
           rebookContext.setBranches(value);
-          sl<AvailableSlotsBloc>().add(
-            AvailableSlotsEventFetch(
-              start: rebookContext.startDate,
-              groomers: rebookContext.groomers,
-              branches: rebookContext.branches,
-              service: rebookContext.service ?? "Full Grooming",
-              duration: rebookContext.duration ?? 60,
-            ),
-          );
+          fetchAvailableSlots();
         },
       ),
+      Container(height:16),
       SizedBox(
         height: 360,
-        child: AvailableSlotsView(),
+        child: AvailableBranchSlotsView(
+          onTap: (value) {
+            goToBranchWithService(
+              service: rebookContext.service ?? 'Full Grooming',
+              branch: value.branch.id, date: value.date);
+            },
+        ),
       ),
       Container(height: 32),
     ]));

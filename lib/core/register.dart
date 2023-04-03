@@ -56,6 +56,7 @@ import 'domain/repositories/scheduling_appointment_repository.dart';
 import 'domain/usecases/clear_working_hours.dart';
 import 'domain/usecases/create_branch.dart';
 import 'domain/usecases/get_all_branches.dart';
+import 'domain/usecases/get_available_branch_slots.dart';
 import 'domain/usecases/get_branch.dart';
 import 'domain/usecases/get_client_prior_appointments.dart';
 import 'domain/usecases/get_client_upcoming_appointments.dart';
@@ -91,7 +92,7 @@ registerCore(GetIt sl) {
   sl.registerLazySingleton(() => GetWorkingHoursUseCase(sl()));
   sl.registerLazySingleton(() => ClearWorkingHoursUseCase(sl()));
   sl.registerLazySingleton(() => UpsertWorkingHoursUseCase(sl()));
-
+  sl.registerLazySingleton(() => GetAvailableBranchSlotsUseCase(sl()));
    // Repositories
   sl.registerLazySingleton<SchedulingAppointmentRepository>(
       () => SchedulingAppointmentRepositoryImpl());

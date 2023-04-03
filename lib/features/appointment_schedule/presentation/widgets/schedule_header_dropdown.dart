@@ -44,7 +44,7 @@ class ScheduleHeaderDropdown extends StatelessWidget {
                       }).toList(),
                       onChanged: (String? newValue) {
                         sl<ScheduleHeaderDropdownBloc>().add(
-                            ScheduleHeaderDropdownSetEvent(
+                            ScheduleHeaderDropdownEventSet(
                                 newValue ?? 'All Employees'));
                       });
                 });

@@ -47,18 +47,18 @@ class AppointmentSlotRemoteDataSourceImpl
   @override
   Future<Either<Failure, List<DailySlotEntity>>> getDailySlots({
     required DateTime start,
-    List<EmployeeEntity> groomers = const [],
-    List<BranchEntity> branches = const [],
+    List<int> groomers = const [],
+    List<int> branches = const [],
     required String service,
   }) async {
     var formatter = DateFormat('yyyy-MM-dd');
     var response = await SchedulingAuthService.instance.jsonRequest(
-      '/api/schedule/daily-slots',
+      '/api/capacity/daily',
       method: 'POST',
       body: {
         'date': formatter.format(start),
-        'groomers': groomers.map((e) => e.id).toList(),
-        'branches': branches.map((e) => e.id).toList(),
+        'employees': groomers,
+        'branches': branches,
         'service': service,
       },
     );

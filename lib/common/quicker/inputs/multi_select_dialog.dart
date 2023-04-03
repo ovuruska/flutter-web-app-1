@@ -49,9 +49,8 @@ class _QuickerMultiSelectDialogState<T>
             borderRadius: BorderRadius.circular(5)),
         child: SingleChildScrollView(
             child: MultiSelectDialogField<T>(
-
                 searchable: true,
-                initialValue: widget.initialValue ?? <T>[],
+                initialValue: widget.initialValue ?? _selected,
                 buttonText: Text(widget.hintText ?? ""),
                 title: Text(widget.headerText ?? ""),
                 chipDisplay: MultiSelectChipDisplay(
@@ -66,7 +65,6 @@ class _QuickerMultiSelectDialogState<T>
                 onSelectionChanged: (values) {
                   setState(() {
                     _selected = values;
-                    widget.onSelected?.call(_selected);
                   });
                 },
                 items: multiSelect,

@@ -32,8 +32,8 @@ class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
   @override
   Future<Either<Failure, List<DailySlotEntity>>> getDailySlots(
       {required DateTime start,
-      List<EmployeeEntity> groomers = const [],
-      List<BranchEntity> branches = const [],
+      List<int> groomers = const [],
+      List<int> branches = const [],
       required String service}) async {
     return await remoteDataSource.getDailySlots(
       start: start,
