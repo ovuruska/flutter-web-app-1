@@ -2,6 +2,7 @@
 
 
 import 'package:dartz/dartz.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/daily_slot.dart';
 
 import '../../../domain/entities/appointment_slot_entity.dart';
 import '../../../domain/entities/branch_entity.dart';
@@ -18,4 +19,12 @@ abstract class AppointmentSlotRemoteDataSource extends RemoteDataSource{
     required String service,
     required int duration
 });
+
+  Future<Either<Failure,List<DailySlotEntity>>> getDailySlots({
+    required DateTime start,
+    List<EmployeeEntity> groomers = const [],
+    List<BranchEntity> branches = const [],
+    required String service,
+});
+
 }

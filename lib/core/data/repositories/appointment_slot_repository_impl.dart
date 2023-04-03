@@ -1,7 +1,6 @@
-
-
 import 'package:dartz/dartz.dart';
 import 'package:scrubbers_employee_application/core/data/datasources/appointment_slot/appointment_slot_remote_data_source.dart';
+import 'package:scrubbers_employee_application/core/domain/entities/daily_slot.dart';
 
 import '../../domain/repositories/appointment_slot_repository.dart';
 import '../../error/failures.dart';
@@ -10,9 +9,7 @@ import '../../domain/entities/branch_entity.dart';
 import '../../domain/entities/employee_entity.dart';
 
 class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
-
   final AppointmentSlotRemoteDataSource remoteDataSource;
-
 
   AppointmentSlotRepositoryImpl(this.remoteDataSource);
 
@@ -29,6 +26,20 @@ class AppointmentSlotRepositoryImpl extends AppointmentSlotRepository {
       branches: branches,
       service: service,
       duration: duration,
+    );
+  }
+
+  @override
+  Future<Either<Failure, List<DailySlotEntity>>> getDailySlots(
+      {required DateTime start,
+      List<EmployeeEntity> groomers = const [],
+      List<BranchEntity> branches = const [],
+      required String service}) async {
+    return await remoteDataSource.getDailySlots(
+      start: start,
+      groomers: groomers,
+      branches: branches,
+      service: service,
     );
   }
 }

@@ -16,7 +16,6 @@ import 'features/app_select_branch/register.dart';
 import 'features/appointment_schedule/register.dart';
 import 'features/forms/average_service_time/register.dart';
 import 'features/forms/branch_information_crud/register.dart';
-import 'features/forms/branch_modify/register.dart';
 import 'features/forms/client_autocomplete/register.dart';
 import 'features/forms/employee_information_crud/register.dart';
 import 'features/forms/employee_modify/register.dart';
@@ -44,7 +43,6 @@ void initSl()  {
 
   registerCore(sl);
 
-  registerModifyBranchFeature(sl);
   registerSearchBranchesFeature(sl);
   registerViewLogs(sl);
   registerEmployeeSearch(sl);

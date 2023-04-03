@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:scrubbers_employee_application/features/forms/employee_information_crud/presentation/bloc/employee_information_crud_bloc.dart';
+import 'package:scrubbers_employee_application/features/forms/employee_information_crud/presentation/bloc/employee_information_crud_event.dart';
+import 'package:scrubbers_employee_application/features/sidebars/employee_search/presentation/bloc/employee_search_event.dart';
+import 'package:scrubbers_employee_application/flutter_flow/flutter_flow_util.dart';
+import 'package:scrubbers_employee_application/injection.dart';
 
+import '../../../../sidebars/employee_search/presentation/bloc/employee_search_bloc.dart';
 import '../../domain/entities/daily_schedule_entity.dart';
+import '../bloc/working_hours_bloc.dart';
+import '../bloc/working_hours_event.dart';
 import 'button_group.dart';
 import 'daily_schedule.dart';
 
@@ -63,9 +71,22 @@ class _WeeklyScheduleWidgetState extends State<WeeklyScheduleWidget> {
         }),
         ButtonGroup(onClear: (){
           widget.onClear?.call();
+          showSnackbar(context, "Weekly schedule is cleared.");
+
         }, onSave: (){
           widget.onSaved?.call(weeklySchedule);
-        })
+          showSnackbar(context, "Weekly schedule is successfully updated.");
+
+        },onRemove:
+            (){
+          Future.delayed(Duration(milliseconds: 150), () {
+            sl<EmployeeSearchBloc>().add(EmployeeSearchEventRemove(id: widget.employee));
+            sl<EmployeeWorkingHoursBloc>().add(EmployeeWorkingHoursEventPurge());
+            sl<EmployeeInformationCrudBloc>().add(EmployeeInformationCrudEventPurge());
+            showSnackbar(context, "Employee #${widget.employee} removed");
+          });
+        },
+        )
       ]),
     );
   }

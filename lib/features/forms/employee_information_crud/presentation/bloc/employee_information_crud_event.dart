@@ -30,3 +30,5 @@ class EmployeeInformationCrudEventPatch extends EmployeeInformationCrudEvent {
   @override
   List<Object?> get props => [employee];
 }
+
+class EmployeeInformationCrudEventPurge extends EmployeeInformationCrudEvent {}

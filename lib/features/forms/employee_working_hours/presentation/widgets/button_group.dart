@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class ButtonGroup extends StatelessWidget{
   final void Function() onClear;
   final void Function() onSave;
+  final void Function() onRemove;
 
-  const ButtonGroup({Key? key, required this.onClear, required this.onSave}) : super(key: key);
+  const ButtonGroup({Key? key, required this.onClear, required this.onSave, required this.onRemove}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ButtonGroup extends StatelessWidget{
               child: ElevatedButton(
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(Colors.white),
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                  backgroundColor: MaterialStateProperty.all(const Color(0xFF2F80ED)),
                 ),
                 onPressed: onSave,
                 child: Text("Save"),
@@ -37,6 +38,19 @@ class ButtonGroup extends StatelessWidget{
 
                 onPressed: onClear,
                 child: Text("Clear"),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(8),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  backgroundColor: MaterialStateProperty.all(const Color(0xFFEB5757)),
+                ),
+                onPressed: onRemove,
+                child: Text("Remove"),
               ),
             ),
           ),

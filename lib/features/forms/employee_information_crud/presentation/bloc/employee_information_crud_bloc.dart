@@ -26,5 +26,10 @@ class EmployeeInformationCrudBloc extends Bloc<EmployeeInformationCrudEvent,Empl
     on<EmployeeInformationCrudEventPatch>((event, emit) async {
       final result = await patchEmployee(PatchEmployeeParams(employee: event.employee));
     });
+
+    on<EmployeeInformationCrudEventPurge>((event, emit) async {
+      var newState = EmployeeInformationCrudState();
+      emit(newState);
+    });
   }
 }

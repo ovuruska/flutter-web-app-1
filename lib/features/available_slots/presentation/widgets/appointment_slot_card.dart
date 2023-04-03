@@ -35,6 +35,10 @@ class AppointmentSlotCard extends StatelessWidget {
       return "";
     }else{
       // Get first 10 characters
+      // If not available return the whole string
+      if(name.length < 10){
+        return name;
+      }
       return name.substring(0, 10);
     }
   }
