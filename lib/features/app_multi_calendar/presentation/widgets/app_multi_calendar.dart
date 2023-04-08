@@ -48,7 +48,8 @@ class AppMultiCalendar extends StatelessWidget {
 
   Widget _calendar(DateTime date) {
     // 19/10/2021
-    var formatter = DateFormat('dd/MM/yyyy');
+    // Janaury 2023
+    var formatter = DateFormat('MMMM yyyy');
     var startOfMonth = DateTime(date.year, date.month, 1);
     var lastDayOfMonth = DateTime(date.year, date.month + 1, 0);
     return Column(children: [

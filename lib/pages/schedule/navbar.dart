@@ -31,12 +31,6 @@ class ScheduleNavbar extends StatelessWidget {
               child: Icon(Icons.add), message: 'Create new appointment'),
           label: Text('Book'),
         ),
-        NavigationRailDestination(
-          icon: Tooltip(
-              child: Icon(Icons.drag_indicator),
-              message: "View cancelled, pending and waitlist appointments"),
-          label: Text('Appointments'),
-        )
       ],
       selectedIndex: selectedIndex,
       onDestinationSelected: (int index) {

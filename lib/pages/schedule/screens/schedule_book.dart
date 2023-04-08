@@ -22,7 +22,7 @@ class ScheduleBook extends StatelessWidget {
       body: LayoutGrid(
         columnSizes: [
           64.px,
-          420.px,
+          320.px,
           1.fr,
           16.px,
         ],

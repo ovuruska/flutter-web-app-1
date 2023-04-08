@@ -41,7 +41,6 @@ class SchedulingDailyCalendarColumn extends StatelessWidget {
         ));
   }
 
-
   @override
   Widget build(BuildContext context) {
     List<SchedulingAppointmentLayout> layouts = layoutAppointments(appointments);

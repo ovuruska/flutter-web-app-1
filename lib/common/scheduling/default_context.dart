@@ -2,10 +2,10 @@ import 'scheduling_context.dart';
 
 final getDefaultSchedulingContext = () => SchedulingContext(
       headerHeight: 120,
-      boxHeight: 160,
-      boxWidth: 256,
+      boxHeight: 120,
+      boxWidth: 192,
       calendarMargin: 4,
-      hourColumnWidth: 128,
+      hourColumnWidth: 64,
       topOffset: 210,
     );
 

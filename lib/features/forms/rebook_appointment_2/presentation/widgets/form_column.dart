@@ -178,7 +178,6 @@ class RebookAppointment2FormColumn extends StatelessWidget {
       Container(height: 16),
       MultiBranchSelectView(
         onSelected: (value) {
-          print(value);
           rebookContext.setBranches(value);
           fetchAvailableSlots();
         },

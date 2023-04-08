@@ -93,7 +93,7 @@ class PartialCardFactory extends StatelessWidget {
         rebookContext.service != null;
   }
 
-  final invalid = const Color(0xFFFFF4F4);
+  final invalid = const Color(0xFF90D7FF).withOpacity(.23);
   final valid = const Color(0xFFFBFDF7);
 
   @override
@@ -105,7 +105,7 @@ class PartialCardFactory extends StatelessWidget {
         if (isValid(rebookContext)) {
           return Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFFBFDF7),
+                  color: invalid,
                   borderRadius: BorderRadius.circular(8)),
               height: 192,
               width: 360,
@@ -116,7 +116,7 @@ class PartialCardFactory extends StatelessWidget {
         } else {
           return Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFFFF4F4),
+                  color: invalid,
                   borderRadius: BorderRadius.circular(8)),
               height: 192,
               width: 360,
