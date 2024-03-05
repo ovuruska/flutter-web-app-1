@@ -1,13 +1,12 @@
 import 'dart:convert' show jsonDecode, jsonEncode;
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import 'credential.dart';
 import 'scheduling_api.dart';
 import 'token.dart';
 
-class
-
-SchedulingAuthService {
+class SchedulingAuthService {
   final tokenProvider = TokenService.instance;
   final credentialProvider = CredentialService.instance;
   final apiProvider = SchedulingApiService.instance;
@@ -67,7 +66,7 @@ SchedulingAuthService {
   Future<http.StreamedResponse> request(String route,
       {String body = "",
       String method = "GET",
-        Map<String,String> headers = const {},
+      Map<String, String> headers = const {},
       Map<String, dynamic> queryParams = const {}}) async {
     var token = tokenProvider.get();
     var response = await apiProvider.request(route,
@@ -85,11 +84,9 @@ SchedulingAuthService {
     String route, {
     dynamic body = const {},
     String method = "POST",
-        Map<String,String> headers = const {},
+    Map<String, String> headers = const {},
     Map<String, dynamic> queryParams = const {},
-  }
-      )
-  {
+  }) {
     var requestHeaders = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -98,11 +95,14 @@ SchedulingAuthService {
     requestHeaders.addAll(headers);
     var token = tokenProvider.get();
     var response = apiProvider.request(route,
-        body: jsonEncode(body), method: method, token: token, queryParams: queryParams, headers: requestHeaders);
+        body: jsonEncode(body),
+        method: method,
+        token: token,
+        queryParams: queryParams,
+        headers: requestHeaders);
 
     return response;
   }
-
 
   Future<bool> _login(String username, String password) async {
     if (password == null) {
@@ -112,8 +112,7 @@ SchedulingAuthService {
     var body = {"username": username, "password": password};
 
     return await apiProvider
-        .jsonRequest("/api/auth/employee/login",
-            body: body, method: "POST")
+        .jsonRequest("/api/auth/employee/login", body: body, method: "POST")
         .then((resp) async {
       if (resp.statusCode != 200) {
         return false;

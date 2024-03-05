@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
@@ -9,8 +10,9 @@ class SchedulingApiService {
 
   SchedulingApiService._();
 
-  static Uri getUri(String path, {Map<String, dynamic>? queryParams = null}) =>
-      Uri.http(backendUrl, path, queryParams);
+  static Uri getUri(String path, {Map<String, dynamic>? queryParams}) =>
+      Uri.parse('$backendUrl$path').replace(queryParameters: queryParams);
+
 
   Future<http.StreamedResponse> jsonRequest(String route,
       {Map<String,dynamic> body = const{},

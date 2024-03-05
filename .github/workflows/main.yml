@@ -42,4 +42,4 @@ jobs:
             flutter build web --no-null-assertions --no-native-null-assertions --release --web-renderer html
 
       - name: Deploy
-        run: aws s3 sync ./build/web s3://quicker-webapp
+        run: aws s3 sync ./build/web ${{ secrets.S3_URI }}
