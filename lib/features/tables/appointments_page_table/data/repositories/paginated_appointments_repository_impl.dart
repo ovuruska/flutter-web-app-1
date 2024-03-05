@@ -29,7 +29,7 @@ class PaginatedAppointmentsRepositoryImpl
     if(queryParams['start__lt'] == null) queryParams.remove('start__lt');
 
     var response = await SchedulingAuthService.instance
-        .request('/api/v2.1/schedule/appointments', queryParams: queryParams);
+        .request('/api/v2/schedule/appointments', queryParams: queryParams);
     var respString = await response.stream.bytesToString();
     var respJson = jsonDecode(respString);
     var results = respJson['results'] as List;

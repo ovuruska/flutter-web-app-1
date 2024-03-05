@@ -61,7 +61,7 @@ class ServiceRepository {
     };
 
     var response = await SchedulingAuthService.instance.request(
-      "/api/services//${service.id}",
+      "/api/services/${service.id}",
       method: "DELETE",
       headers: headers,
     );

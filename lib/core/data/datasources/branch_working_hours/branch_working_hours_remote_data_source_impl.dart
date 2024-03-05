@@ -40,7 +40,7 @@ class BranchWorkingHoursRemoteDataSourceImpl extends BranchWorkingHoursRemoteDat
 
     var body = jsonEncode(branchWorkingHours.map((e) => e.toJson()).toList());
     var response = await SchedulingAuthService.instance.request(
-      'api/scheduling/hours/branch',
+      '/api/scheduling/hours/branch',
       method: 'POST',
       body: body,
     );

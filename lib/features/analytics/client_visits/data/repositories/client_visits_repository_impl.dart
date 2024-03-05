@@ -9,7 +9,7 @@ import '../../domain/repositories/client_visits_repository.dart';
 class ClientVisitsRepositoryImpl extends ClientVisitsRepository {
   @override
   Future<Either<Failure, Map<String, double>>> get(int id) async {
-    var route = "api/analytics/customer/visits/$id";
+    var route = "/api/analytics/customer/visits/$id";
     var response = await SchedulingAuthService.instance.request(route);
     var respString = await response.stream.bytesToString();
     var respJson = await jsonDecode(respString);

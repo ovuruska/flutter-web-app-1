@@ -38,7 +38,7 @@ class EmployeeWorkingHoursRemoteDataSourceImpl
 
     var body = jsonEncode(employeeWorkingHours.map((e) => e.toJson()).toList());
     var response = await SchedulingAuthService.instance.request(
-      'api/scheduling/hours/employee',
+      '/api/scheduling/hours/employee',
       method: 'POST',
       body: body,
     );

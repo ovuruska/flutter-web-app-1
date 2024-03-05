@@ -10,7 +10,7 @@ import '../../domain/repositories/cancellation_rate_repository.dart';
 class CancellationRateRepositoryImpl implements CancellationRateRepository {
   @override
   Future<Either<Failure, double>> getCancellationRate(int id) async {
-    var route = "api/analytics/customer/cancellation_rate/$id";
+    var route = "/api/analytics/customer/cancellation_rate/$id";
     var response = await SchedulingAuthService.instance.request(route);
     var respString = await response.stream.bytesToString();
     var respJson = await jsonDecode(respString);
